@@ -1,5 +1,5 @@
 class CategoryGoodsListModel {
-  String code;
+  dynamic code;
   String message;
   List<CategoryListData> data;
 

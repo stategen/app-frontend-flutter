@@ -45,16 +45,21 @@ class _HomePageState extends State<HomePage>
           future: request('homePageContent', formData: formData),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              var data = json.decode(snapshot.data.toString());
+              var data;
+              if (snapshot.data is Map) {
+                data = json.decode(json.encode(snapshot.data));
+              } else {
+                data = json.decode(snapshot.data);
+              }
+
               List<Map> swiper = (data['data']['slides'] as List).cast();
               List<Map> navigatorList =
-                  (data['data']['category'] as List).cast();
-              String adPicture =
-                  data['data']['advertesPicture']['PICTURE_ADDRESS'];
+              (data['data']['category'] as List).cast();
+              String adPicture = data['data']['advertesPicture']['PICTURE_ADDRESS'];
               String leaderImage = data['data']['shopInfo']['leaderImage'];
               String leaderPhone = data['data']['shopInfo']['leaderPhone'];
               List<Map> recommendList =
-                  (data['data']['recommend'] as List).cast();
+              (data['data']['recommend'] as List).cast();
 
               String floor1Title = data['data']['floor1Pic']['PICTURE_ADDRESS'];
               String floor2Title = data['data']['floor2Pic']['PICTURE_ADDRESS'];
@@ -108,8 +113,17 @@ class _HomePageState extends State<HomePage>
                   var formData = {'page': page};
                   await request('homePageBelowConten', formData: formData)
                       .then((value) {
-                    var data = json.decode(value.toString());
+                    var data ;
+                    if (value is Map) {
+                      data = json.decode(json.encode(value));
+                    } else {
+                      data = json.decode(value.toString());
+                      debugPrintStack(label: data.runtimeType.toString());
+                    }
                     List<Map> newGoodsList = (data['data'] as List).cast();
+
+                    debugPrintStack(label: json.encode(data));
+                    debugPrintStack(label: json.encode(newGoodsList));
                     setState(() {
                       hotGoodsList.addAll(newGoodsList);
                       page += 1;
@@ -140,13 +154,14 @@ class _HomePageState extends State<HomePage>
   //使用方法创建
   Widget _wrapList() {
     if (hotGoodsList.length != 0) {
+      debugPrintStack(label: json.encode(hotGoodsList));
       List<Widget> listWidget = hotGoodsList.map((value) {
         return InkWell(
           onTap: () {
             //路由跳转
-        Application.router
-            .navigateTo(context, '/detail?id=${value['goodsId']}',transition: TransitionType.native);
-      },
+            Application.router
+                .navigateTo(context, '/detail?id=${value['goodsId']}', transition: TransitionType.native);
+          },
           child: Container(
             width: ScreenUtil().setWidth(370),
             color: Colors.white,
@@ -225,14 +240,14 @@ class SwiperDiy extends StatelessWidget {
         itemCount: swperDateList.length,
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
-            onTap: (){
-
-              Application.router.navigateTo(context, '/detail?id=${swperDateList[index]['goodsId']}',transition: TransitionType.native);
-            },
-            child: Image.network(
+              onTap: () {
+                Application.router.navigateTo(context, '/detail?id=${swperDateList[index]['goodsId']}',
+                    transition: TransitionType.native);
+              },
+              child: Image.network(
                 "${swperDateList[index]['image']}",
                 fit: BoxFit.fill,
-           )
+              )
           );
         },
         pagination: SwiperPagination(),
@@ -361,7 +376,7 @@ class Recommend extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           border:
-              Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
+          Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
       child: Text(
         '商品推荐',
         style: TextStyle(color: Colors.pink),
@@ -371,12 +386,11 @@ class Recommend extends StatelessWidget {
 
   //商品 item
 
-  Widget _item(context,index) {
+  Widget _item(context, index) {
     return InkWell(
         onTap: () {
-
-          Application.router.navigateTo(context, '/detail?id=${recommendList[index]['goodsId']}',transition: TransitionType.native);
-
+          Application.router.navigateTo(
+              context, '/detail?id=${recommendList[index]['goodsId']}', transition: TransitionType.native);
         },
         child: Container(
           height: ScreenUtil().setHeight(330),
@@ -413,7 +427,7 @@ class Recommend extends StatelessWidget {
         itemCount: recommendList.length,
         //构造器
         itemBuilder: (context, index) {
-          return _item(context,index);
+          return _item(context, index);
         },
       ),
     );
@@ -471,11 +485,11 @@ class FloorContent extends StatelessWidget {
   Widget _firstRow(context) {
     return Row(
       children: <Widget>[
-        _goodsItem(context,floorGoodsList[0]),
+        _goodsItem(context, floorGoodsList[0]),
         Column(
           children: <Widget>[
-            _goodsItem(context,floorGoodsList[1]),
-            _goodsItem(context,floorGoodsList[2]),
+            _goodsItem(context, floorGoodsList[1]),
+            _goodsItem(context, floorGoodsList[2]),
           ],
         )
       ],
@@ -483,22 +497,32 @@ class FloorContent extends StatelessWidget {
   }
 
   Widget _otherGoods(context) {
+    List<Widget> children = [];
+    for (var i = 3; i <= 4; i++) {
+      if (i < floorGoodsList.length) {
+        children.add(_goodsItem(context, floorGoodsList[i]));
+      }
+    }
+
     return Row(
-      children: <Widget>[
-        _goodsItem(context,floorGoodsList[3]),
-        _goodsItem(context,floorGoodsList[4]),
-      ],
+      children: children,
     );
   }
 
-  Widget _goodsItem(context,Map goods) {
+  Widget _goodsItem(context, Map goods) {
+    var image = goods['image'];
+    if (image == null) {
+      debugPrintStack(label: goods.toString());
+    }
     return Container(
       width: ScreenUtil().setWidth(375),
       child: InkWell(
-        onTap: () {
-          Application.router.navigateTo(context, '/detail?id=${goods['goodsId']}',transition: TransitionType.native);
-        },
-        child: Image.network(goods['image']),
+          onTap: () {
+            Application.router.navigateTo(
+                context, '/detail?id=${goods['goodsId']}', transition: TransitionType.native);
+          },
+          child: Image.network(goods['image'])
+
       ),
     );
   }

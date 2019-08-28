@@ -116,7 +116,12 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
   //内部方法调试接口
   void _getCategory() async {
     request("getCategory").then((value) {
-      var data = json.decode(value.toString());
+      var data;
+      if (value is Map){
+        data =  json.decode(json.encode(value));
+      } else {
+        data = json.decode(value.toString());
+      }
       CategoryModel categorylist = CategoryModel.fromJson(data);
       setState(() {
         list = categorylist.data;
@@ -136,7 +141,12 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
       "page": 1
     };
     request('getMallGoods', formData: formData).then((value) {
-      var data = json.decode(value.toString());
+      var data ;
+      if (value is Map){
+        data = json.decode(json.encode(value));
+      } else {
+        data = json.decode(value.toString());
+      }
       CategoryGoodsListModel goodsList = CategoryGoodsListModel.fromJson(data);
       //状态管理
 //      Provide.value<CategoryGoodsListProvide>(context)
@@ -314,7 +324,12 @@ class _CategorGoodsListState extends State<CategorGoodsList> {
     };
 
     request('getMallGoods', formData: formData).then((value) {
-      var data = json.decode(value.toString());
+      var data ;
+      if (value is Map){
+        data = json.decode(json.encode(value));
+      } else {
+        data = json.decode(value.toString());
+      }
       CategoryGoodsListModel goodsList = CategoryGoodsListModel.fromJson(data);
       //状态管理
       if (goodsList.data == null) {

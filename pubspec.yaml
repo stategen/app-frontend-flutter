@@ -54,6 +54,11 @@ dependencies:
   #数据持久化
   shared_preferences: ^0.5.3+4
 
+  cookie_jar: ^1.0.0
+  catcher: ^0.2.3
+  path_provider: ^1.2.0
+  oktoast: ^2.1.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,5 +1,5 @@
 class CategoryModel {
-  String code;
+  dynamic code;
   String message;
   List<CategoryBigModel> data;
 

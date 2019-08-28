@@ -1,0 +1,16 @@
+import 'package:fluro/fluro.dart';
+import 'pages.dart';
+
+class PagesRouter {
+  static initRouter(Router router) {
+    router.define(User_mePage.path, handler: User_mePage.handler);
+    router.define(HomePage.path, handler: HomePage.handler);
+    router.define(User_detail_$usernamePage.path, handler: User_detail_$usernamePage.handler);
+    router.define(Topic_detail_$topicIdPage.path, handler: Topic_detail_$topicIdPage.handler);
+    router.define(AppPage.path, handler: AppPage.handler);
+    router.define(LoginPage.path, handler: LoginPage.handler);
+    router.define(MsgPage.path, handler: MsgPage.handler);
+    router.define(TopicPage.path, handler: TopicPage.handler);
+    router.define(Topic_publishPage.path, handler: Topic_publishPage.handler);
+  }
+}

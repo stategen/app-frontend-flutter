@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'dart:async';
 import 'dart:io';
 import '../config/service_url.dart';
+import 'package:flutter/material.dart';
 
 //获取首页主题内容 设置formData是可选参数
 Future request(url, {formData}) async {
@@ -19,9 +20,12 @@ Future request(url, {formData}) async {
     }
 
     if (response.statusCode == 200) {
+      var data =response.data;
+      print('${data.runtimeType} $url : $formData\n${data}' );
+
       return response.data;
     } else {
-      throw Exception('后端接口出现异常');
+      throw Exception(url+'<----------后端接口出现异常');
     }
   } catch (error) {
     return print('ERROR:=======================>${error}');

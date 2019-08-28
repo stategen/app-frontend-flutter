@@ -1,5 +1,5 @@
 class DetailsModel {
-  String code;
+  dynamic code;
   String message;
   DetailsGoodsData data;
 
@@ -61,7 +61,7 @@ class DetailsGoodsData {
 
 class GoodInfo {
   String image5;
-  int amount;
+  dynamic amount;
   String image3;
   String image4;
   String goodsId;
