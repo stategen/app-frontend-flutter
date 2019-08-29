@@ -44,5 +44,17 @@ class AntdPageList<E> {
     return result;
   }
 
+  static Map<int, AntdPageList> toIdMap(List<AntdPageList> antdPageListList) {
+    var result = Map<int, AntdPageList>();
+    if (antdPageListList != null) {
+      int index = 0;
+      for (var antdPageList in antdPageListList) {
+        result[index] = antdPageList;
+        index ++;
+      }
+    }
+    return result;
+  }
+
 }
 

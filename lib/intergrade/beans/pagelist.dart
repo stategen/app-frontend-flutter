@@ -64,5 +64,17 @@ class PageList<E> {
     return result;
   }
 
+  static Map<int, PageList> toIdMap(List<PageList> pageListList) {
+    var result = Map<int, PageList>();
+    if (pageListList != null) {
+      int index = 0;
+      for (var pageList in pageListList) {
+        result[index] = pageList;
+        index ++;
+      }
+    }
+    return result;
+  }
+
 }
 

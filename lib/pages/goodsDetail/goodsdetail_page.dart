@@ -1,18 +1,37 @@
+///  Do not remove this unless you get business authorization.
+///  GoodsDetail
+///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
+///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
+import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
+import 'package:provider/provider.dart';
+import 'goodsdetail_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:baixingshenghuo_shop/provide/details_info.dart';
-import 'package:baixingshenghuo_shop/pages/details_page/details_top_area.dart';
-import 'package:baixingshenghuo_shop/pages/details_page/details_explain.dart';
-import 'package:baixingshenghuo_shop/pages/details_page/details_tabbar.dart';
-import 'package:baixingshenghuo_shop/pages/details_page/details_web.dart';
-import 'package:baixingshenghuo_shop/pages/details_page/details_bottom.dart';
+import './component/details_top_area.dart';
+import './component/details_explain.dart';
+import './component/details_tabbar.dart';
+import './component/details_web.dart';
+import './component/details_bottom.dart';
 
 
-class DetailsPage extends StatelessWidget {
-  final String goodsId;
 
-  //构造函数
-  DetailsPage(this.goodsId);
+class GoodsDetailPage extends StatelessWidget {
+  static final String path = '/goodsDetail';
+  static final Handler handler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return GoodsDetailModel.createProvider(
+          child: GoodsDetailPage(params: params)
+      );
+    }
+  );
+  String goodsId;
+  Map<String, List<String>> params;
+  GoodsDetailPage({this.params}){
+    this.goodsId = params['id'].first;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +74,12 @@ class DetailsPage extends StatelessWidget {
     );
   }
 
-  Future _getGoodsInfo(BuildContext context) async {
-    await Provider.of<DetailsInfoProvide>(context, listen: false)
-        .getGoodsInfo(goodsId);
 
+  Future _getGoodsInfo(BuildContext context) async {
+    GoodsDetailModel goodsDetailModel =GoodsDetailModel.getModel(context,listen:false);
+    await goodsDetailModel.getGoodDetailById(context,goodId:goodsId);
     return '完成加载';
   }
+
 }
+

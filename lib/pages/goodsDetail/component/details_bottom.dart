@@ -1,3 +1,4 @@
+import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +9,9 @@ import 'package:baixingshenghuo_shop/provide/currentIndex.dart';
 class DetailsBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var goodsinfo =
-        Provider.of<DetailsInfoProvide>(context).goodsInfo.data.goodInfo;
+    var goodsDetailModel =GoodsDetailModel.getModel(context);
+    var goodsinfo =goodsDetailModel.goodsWrapArea.valueMap[0].goodInfo;
+
     var goodsId = goodsinfo.goodsId;
     var goodsName = goodsinfo.goodsName;
     var count = 1;

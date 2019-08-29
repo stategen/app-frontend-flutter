@@ -1,8 +1,8 @@
+import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluro/fluro.dart';
 
-import './router_handler.dart';
 
 //整体路由配置
 class Routers {
@@ -21,6 +21,6 @@ class Routers {
         print('ERROR===》ROUTE');
       },
     );
-    router.define(detailsPage, handler: detailsHandler);
+    router.define(detailsPage, handler: GoodsDetailPage.handler);
   }
 }

@@ -29,20 +29,20 @@ class DetailsInfoProvide with ChangeNotifier {
   }
 
   //后台获取商品数据
-  getGoodsInfo(String id) {
+  getGoodsInfo(String id) async {
     var formData = {'goodId': id};
-    request('getGoodDetailById', formData: formData).then((value) {
+
+    var value =await request('getGoodDetailById', formData: formData);
       var data ;
       if (value is Map){
         data = json.decode(json.encode(value));
       } else {
         data = json.decode(value.toString());
       }
-
       if (data != null) {
         goodsInfo = DetailsModel.fromJson(data);
+        debugPrintStack(label: "$data");
         notifyListeners();
       }
-    });
   }
 }

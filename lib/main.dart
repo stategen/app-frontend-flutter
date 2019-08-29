@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(builder: (_) => childCategory),
         ChangeNotifierProvider(builder: (_) => catergoyGoodsListProvide),
-        ChangeNotifierProvider(builder: (_) => detailsInfoProvide),
+//        ChangeNotifierProvider(builder: (_) => detailsInfoProvide),
         ChangeNotifierProvider(builder: (_) => cartProvide),
         ChangeNotifierProvider(builder: (_) => currentIndexProvide),
 

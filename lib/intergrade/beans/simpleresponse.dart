@@ -41,6 +41,18 @@ class SimpleResponse {
     return result;
   }
 
+  static Map<int, SimpleResponse> toIdMap(List<SimpleResponse> simpleResponseList) {
+    var result = Map<int, SimpleResponse>();
+    if (simpleResponseList != null) {
+      int index = 0;
+      for (var simpleResponse in simpleResponseList) {
+        result[index] = simpleResponse;
+        index ++;
+      }
+    }
+    return result;
+  }
+
   static List<Map<String, dynamic>> toMaps(List<SimpleResponse> simpleResponseList) {
     var result = List<Map<String, dynamic>>();
     if (simpleResponseList != null) {

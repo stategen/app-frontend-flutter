@@ -1,5 +1,5 @@
 ///  Do not remove this unless you get business authorization.
-///  Home
+///  Goods
 ///  created by [stategen.progen] ,do not edit it manually otherwise your code will be override by next call progen,
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 
@@ -9,45 +9,40 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../beans/goods.dart';
-import '../beans/homewrap.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
-import '../apis/home_apis.dart';
+import '../apis/goods_apis.dart';
 
-class HomeBaseState {
+class GoodsBaseState {
   AreaState<Goods> goodsArea;
-  AreaState<HomeWrap> homeWrapArea;
 
-  void merge(HomeBaseState source) {
+  void merge(GoodsBaseState source) {
     goodsArea != null ? goodsArea.merge(source.goodsArea) : goodsArea = source.goodsArea;
-    homeWrapArea != null ? homeWrapArea.merge(source.homeWrapArea) : homeWrapArea = source.homeWrapArea;
   }
 
 }
 
-class _HomeState with HomeBaseState {
-  _HomeState({
+class _GoodsState with GoodsBaseState {
+  _GoodsState({
     AreaState<Goods> goodsArea,
-    AreaState<HomeWrap> homeWrapArea,
   }) {
     this.goodsArea = goodsArea;
-    this.homeWrapArea = homeWrapArea;
   }
 
 }
 
 
-abstract class HomeAbstractModel with ChangeNotifier, HomeBaseState {
+abstract class GoodsAbstractModel with ChangeNotifier, GoodsBaseState {
 
 
-  void mergeState(BuildContext context, HomeBaseState newState) {
+  void mergeState(BuildContext context, GoodsBaseState newState) {
     this.merge(newState);
     notifyListeners();
   }
 }
 
 
-abstract class HomeCommand {
+abstract class GoodsCommand {
 
 }

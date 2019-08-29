@@ -46,5 +46,17 @@ class Response<T> extends SimpleResponse {
     return JsonUtil.genFromJsonList(jsonList, Response.fromJson);
   }
 
+  static Map<int, Response> toIdMap(List<Response> responseList) {
+    var result = Map<int, Response>();
+    if (responseList != null) {
+      int index = 0;
+      for (var response in responseList) {
+        result[index] = response;
+        index ++;
+      }
+    }
+    return result;
+  }
+
 }
 

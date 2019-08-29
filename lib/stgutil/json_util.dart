@@ -33,7 +33,11 @@ abstract class JsonUtil {
   }
 
   static dynamic intToJson(int value){
-    return value?.toString();
+    return value;
+  }
+
+  static dynamic doubleToJson(double value){
+    return value;
   }
 
   static bool parseBool(dynamic value) {
@@ -46,6 +50,18 @@ abstract class JsonUtil {
     }
 
     return value == 'true';
+  }
+
+  static double parseDouble(dynamic value) {
+    if (value == null) {
+      return null;
+    }
+
+    if (value is double) {
+      return value;
+    }
+
+    return value as double;
   }
 
   static dynamic boolToJson(bool value){

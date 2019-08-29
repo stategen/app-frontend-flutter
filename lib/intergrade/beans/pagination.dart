@@ -65,6 +65,18 @@ class Pagination {
     return result;
   }
 
+  static Map<int, Pagination> toIdMap(List<Pagination> paginationList) {
+    var result = Map<int, Pagination>();
+    if (paginationList != null) {
+      int index = 0;
+      for (var pagination in paginationList) {
+        result[index] = pagination;
+        index ++;
+      }
+    }
+    return result;
+  }
+
   static List<Map<String, dynamic>> toMaps(List<Pagination> paginationList) {
     var result = List<Map<String, dynamic>>();
     if (paginationList != null) {

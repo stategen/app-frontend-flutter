@@ -23,6 +23,18 @@ class MultipartFile {
     return result;
   }
 
+  static Map<int, MultipartFile> toIdMap(List<MultipartFile> multipartFileList) {
+    var result = Map<int, MultipartFile>();
+    if (multipartFileList != null) {
+      int index = 0;
+      for (var multipartFile in multipartFileList) {
+        result[index] = multipartFile;
+        index ++;
+      }
+    }
+    return result;
+  }
+
   static List<Map<String, dynamic>> toMaps(List<MultipartFile> multipartFileList) {
     var result = List<Map<String, dynamic>>();
     if (multipartFileList != null) {

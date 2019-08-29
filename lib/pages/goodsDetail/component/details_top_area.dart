@@ -1,3 +1,4 @@
+import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -9,8 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DetailsTopAread extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final value =
-        Provider.of<DetailsInfoProvide>(context).goodsInfo.data.goodInfo;
+    var goodsDetailModel =GoodsDetailModel.getModel(context);
+    final value = goodsDetailModel.goodsWrapArea.valueMap[0].goodInfo;
     if (value != null) {
       return Container(
         color: Colors.white,
