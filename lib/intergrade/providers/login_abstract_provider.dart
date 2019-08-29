@@ -34,7 +34,7 @@ class _LoginState with LoginBaseState {
 }
 
 
-abstract class LoginAbstractModel with ChangeNotifier, LoginBaseState {
+abstract class LoginAbstractProvider with ChangeNotifier, LoginBaseState {
 
 
   /// 
@@ -59,7 +59,7 @@ abstract class LoginAbstractModel with ChangeNotifier, LoginBaseState {
 abstract class LoginCommand {
 
   /// 
-  static Future<LoginBaseState> login(LoginAbstractModel loginState, {Map<String, dynamic> payload, @required String username, @required String password }) async {
+  static Future<LoginBaseState> login(LoginAbstractProvider loginState, {Map<String, dynamic> payload, @required String username, @required String password }) async {
     SimpleResponse simpleResponse = await LoginApis.login(payload: payload, username: username, password: password);
     if (simpleResponse != null && !simpleResponse.success) {
       throw simpleResponse.message;
@@ -72,7 +72,7 @@ abstract class LoginCommand {
 
 
   /// 
-  static Future<LoginBaseState> loginByMobile(LoginAbstractModel loginState, {Map<String, dynamic> payload, @required String interCode, @required String mobile, @required String password }) async {
+  static Future<LoginBaseState> loginByMobile(LoginAbstractProvider loginState, {Map<String, dynamic> payload, @required String interCode, @required String mobile, @required String password }) async {
     User user = await LoginApis.loginByMobile(payload: payload, interCode: interCode, mobile: mobile, password: password);
     var oldUserArea = loginState.userArea;
     var userMap = CollectionUtil.appendOrUpdateMap(oldUserArea?.clone()?.valueMap,  User.toIdMap([user]));

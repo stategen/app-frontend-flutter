@@ -9,8 +9,8 @@ import 'package:baixingshenghuo_shop/provide/currentIndex.dart';
 class DetailsBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var goodsDetailModel =GoodsDetailModel.getModel(context);
-    var goodsinfo =goodsDetailModel.goodsWrapArea.valueMap[0].goodInfo;
+    var goodsDetailProvider =GoodsDetailProvider.of(context);
+    var goodsinfo =goodsDetailProvider.goodsWrapArea.valueMap[0].goodInfo;
 
     var goodsId = goodsinfo.goodsId;
     var goodsName = goodsinfo.goodsName;

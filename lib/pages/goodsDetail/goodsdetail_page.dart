@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'goodsdetail_model.dart';
+import 'goodsdetail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:baixingshenghuo_shop/provide/details_info.dart';
@@ -21,11 +21,13 @@ class GoodsDetailPage extends StatelessWidget {
   static final String path = '/goodsDetail';
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return GoodsDetailModel.createProvider(
+      return GoodsDetailProvider.create(
           child: GoodsDetailPage(params: params)
       );
     }
   );
+
+  
   String goodsId;
   Map<String, List<String>> params;
   GoodsDetailPage({this.params}){
@@ -76,8 +78,8 @@ class GoodsDetailPage extends StatelessWidget {
 
 
   Future _getGoodsInfo(BuildContext context) async {
-    GoodsDetailModel goodsDetailModel =GoodsDetailModel.getModel(context,listen:false);
-    await goodsDetailModel.getGoodDetailById(context,goodId:goodsId);
+    GoodsDetailProvider goodsDetailProvider =GoodsDetailProvider.of(context,listen:false);
+    await goodsDetailProvider.getGoodDetailById(context,goodId:goodsId);
     return '完成加载';
   }
 

@@ -11,14 +11,17 @@ class LoginStateEx {
 
 }
 
-class LoginModel extends LoginAbstractModel with LoginStateEx {
-  static ChangeNotifierProvider<LoginModel> createProvider() {
-    return ChangeNotifierProvider<LoginModel>(
-      builder: (_) => LoginModel(),
+class LoginProvider extends LoginAbstractProvider with LoginStateEx {
+  static ChangeNotifierProvider<LoginProvider> create({Widget child}) {
+    return ChangeNotifierProvider<LoginProvider>(
+      builder: (BuildContext context) => LoginProvider(context: context),
+      child: child,
     );
   }
 
-  static LoginModel getModel(BuildContext context) {
-     return Provider.of<LoginModel>(context);
+  static LoginProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<LoginProvider>(context, listen: listen);
   }
+
+  LoginProvider({BuildContext context});
 }

@@ -5,14 +5,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'home_model.dart';
+import 'home_provider.dart';
 
 
 class HomePage extends StatelessWidget {
   static final String path = '/home';
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return HomePage(params: params);
+      return HomeProvider.create(
+        child: HomePage(params: params)
+      );
     }
   );
 
@@ -22,12 +24,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        HomeModel.createProvider(),
-      ],
-      child: HomeScene(),
-    );
+    return HomeScene();
   }
 }
 

@@ -59,7 +59,7 @@ class _AppState with AppBaseState {
 }
 
 
-abstract class AppAbstractModel with ChangeNotifier, AppBaseState {
+abstract class AppAbstractProvider with ChangeNotifier, AppBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await AppCommand.init(this,
@@ -104,7 +104,7 @@ abstract class AppAbstractModel with ChangeNotifier, AppBaseState {
 
 
 abstract class AppCommand {
-  static Future<AppBaseState> init (AppAbstractModel appState, {Map<String, dynamic> getAllMenusSetupParams, Map<String, dynamic> getCookieUserSetupParams}) async {
+  static Future<AppBaseState> init (AppAbstractProvider appState, {Map<String, dynamic> getAllMenusSetupParams, Map<String, dynamic> getCookieUserSetupParams}) async {
     var newState = AppBaseState();
     // 获所所有菜单
     var getAllMenusState = await AppCommand.getAllMenus(appState);
@@ -117,7 +117,7 @@ abstract class AppCommand {
 
 
   /// 获所所有菜单
-  static Future<AppBaseState> getAllMenus(AppAbstractModel appState) async {
+  static Future<AppBaseState> getAllMenus(AppAbstractProvider appState) async {
     List<Menu> menus = await AppApis.getAllMenus();
 
     var newState = _AppState(
@@ -130,7 +130,7 @@ abstract class AppCommand {
 
 
   /// 
-  static Future<AppBaseState> getCookieUser(AppAbstractModel appState) async {
+  static Future<AppBaseState> getCookieUser(AppAbstractProvider appState) async {
     User user = await AppApis.getCookieUser();
 
     var newState = _AppState(
@@ -143,7 +143,7 @@ abstract class AppCommand {
 
 
   /// 
-  static Future<AppBaseState> logout(AppAbstractModel appState) async {
+  static Future<AppBaseState> logout(AppAbstractProvider appState) async {
     SimpleResponse simpleResponse = await AppApis.logout();
     if (simpleResponse != null && !simpleResponse.success) {
       throw simpleResponse.message;

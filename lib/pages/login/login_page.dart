@@ -5,14 +5,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'login_model.dart';
+import 'login_provider.dart';
 
 
 class LoginPage extends StatelessWidget {
   static final String path = '/login';
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return LoginPage(params: params);
+      return LoginProvider.create(
+        child: LoginPage(params: params)
+      );
     }
   );
 
@@ -22,12 +24,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        LoginModel.createProvider(),
-      ],
-      child: LoginScene(),
-    );
+    return LoginScene();
   }
 }
 

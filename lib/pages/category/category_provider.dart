@@ -11,14 +11,17 @@ class CategoryStateEx {
 
 }
 
-class CategoryModel extends CategoryAbstractModel with CategoryStateEx {
-  static ChangeNotifierProvider<CategoryModel> createProvider() {
-    return ChangeNotifierProvider<CategoryModel>(
-      builder: (_) => CategoryModel(),
+class CategoryProvider extends CategoryAbstractProvider with CategoryStateEx {
+  static ChangeNotifierProvider<CategoryProvider> create({Widget child}) {
+    return ChangeNotifierProvider<CategoryProvider>(
+      builder: (BuildContext context) => CategoryProvider(context: context),
+      child: child,
     );
   }
 
-  static CategoryModel getModel(BuildContext context) {
-     return Provider.of<CategoryModel>(context);
+  static CategoryProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<CategoryProvider>(context, listen: listen);
   }
+
+  CategoryProvider({BuildContext context});
 }

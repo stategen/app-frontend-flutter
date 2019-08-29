@@ -38,7 +38,7 @@ class _HomeState with HomeBaseState {
 }
 
 
-abstract class HomeAbstractModel with ChangeNotifier, HomeBaseState {
+abstract class HomeAbstractProvider with ChangeNotifier, HomeBaseState {
 
 
   void mergeState(BuildContext context, HomeBaseState newState) {

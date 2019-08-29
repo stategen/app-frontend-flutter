@@ -5,14 +5,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'topic_publish_model.dart';
+import 'topic_publish_provider.dart';
 
 
 class Topic_publishPage extends StatelessWidget {
   static final String path = '/topic/publish';
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return Topic_publishPage(params: params);
+      return Topic_publishProvider.create(
+        child: Topic_publishPage(params: params)
+      );
     }
   );
 
@@ -22,12 +24,7 @@ class Topic_publishPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Topic_publishModel.createProvider(),
-      ],
-      child: Topic_publishScene(),
-    );
+    return Topic_publishScene();
   }
 }
 

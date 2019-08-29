@@ -35,7 +35,7 @@ class _User_meState with User_meBaseState {
 }
 
 
-abstract class User_meAbstractModel with ChangeNotifier, User_meBaseState {
+abstract class User_meAbstractProvider with ChangeNotifier, User_meBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await User_meCommand.init(this,
@@ -80,7 +80,7 @@ abstract class User_meAbstractModel with ChangeNotifier, User_meBaseState {
 
 
 abstract class User_meCommand {
-  static Future<User_meBaseState> init (User_meAbstractModel user_meState, {Map<String, dynamic> getCurrentUserSetupParams, Map<String, dynamic> getTheUserSetupParams}) async {
+  static Future<User_meBaseState> init (User_meAbstractProvider user_meState, {Map<String, dynamic> getCurrentUserSetupParams, Map<String, dynamic> getTheUserSetupParams}) async {
     var newState = User_meBaseState();
     // 
     var getCurrentUserState = await User_meCommand.getCurrentUser(user_meState);
@@ -93,7 +93,7 @@ abstract class User_meCommand {
 
 
   /// 
-  static Future<User_meBaseState> getCurrentUser(User_meAbstractModel user_meState) async {
+  static Future<User_meBaseState> getCurrentUser(User_meAbstractProvider user_meState) async {
     User user = await User_meApis.getCurrentUser();
 
     var newState = _User_meState(
@@ -106,7 +106,7 @@ abstract class User_meCommand {
 
 
   /// 
-  static Future<User_meBaseState> getTheUser(User_meAbstractModel user_meState) async {
+  static Future<User_meBaseState> getTheUser(User_meAbstractProvider user_meState) async {
     User user = await User_meApis.getTheUser();
 
     var newState = _User_meState(
@@ -119,7 +119,7 @@ abstract class User_meCommand {
 
 
   /// 修改用户
-  static Future<User_meBaseState> update(User_meAbstractModel user_meState, {Map<String, dynamic> payload, List<int> hoppyIds, List<int> cascaderPostAddressIds, String username, String password, RoleType roleType, String name, String nickName, int age, String address, String avatarImgId, String email, DateTime valiDatetime, DateTime birthdayDate, DateTime workTime, String provinceId, String cityId, StatusEnum status, int grade, bool sex, String postAddressId, String userId }) async {
+  static Future<User_meBaseState> update(User_meAbstractProvider user_meState, {Map<String, dynamic> payload, List<int> hoppyIds, List<int> cascaderPostAddressIds, String username, String password, RoleType roleType, String name, String nickName, int age, String address, String avatarImgId, String email, DateTime valiDatetime, DateTime birthdayDate, DateTime workTime, String provinceId, String cityId, StatusEnum status, int grade, bool sex, String postAddressId, String userId }) async {
     User user = await User_meApis.update(payload: payload, hoppyIds: hoppyIds, cascaderPostAddressIds: cascaderPostAddressIds, username: username, password: password, roleType: roleType, name: name, nickName: nickName, age: age, address: address, avatarImgId: avatarImgId, email: email, valiDatetime: valiDatetime, birthdayDate: birthdayDate, workTime: workTime, provinceId: provinceId, cityId: cityId, status: status, grade: grade, sex: sex, postAddressId: postAddressId, userId: userId);
     var oldUserArea = user_meState.userArea;
     var userMap = CollectionUtil.appendOrUpdateMap(oldUserArea?.clone()?.valueMap,  User.toIdMap([user]));

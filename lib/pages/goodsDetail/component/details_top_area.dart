@@ -10,8 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DetailsTopAread extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var goodsDetailModel =GoodsDetailModel.getModel(context);
-    final value = goodsDetailModel.goodsWrapArea.valueMap[0].goodInfo;
+    var goodsDetailProvider =GoodsDetailProvider.of(context);
+    final value = goodsDetailProvider.goodsWrapArea.valueMap[0].goodInfo;
     if (value != null) {
       return Container(
         color: Colors.white,

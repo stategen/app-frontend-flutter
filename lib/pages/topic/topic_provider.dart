@@ -11,14 +11,17 @@ class TopicStateEx {
 
 }
 
-class TopicModel extends TopicAbstractModel with TopicStateEx {
-  static ChangeNotifierProvider<TopicModel> createProvider() {
-    return ChangeNotifierProvider<TopicModel>(
-      builder: (_) => TopicModel(),
+class TopicProvider extends TopicAbstractProvider with TopicStateEx {
+  static ChangeNotifierProvider<TopicProvider> create({Widget child}) {
+    return ChangeNotifierProvider<TopicProvider>(
+      builder: (BuildContext context) => TopicProvider(context: context),
+      child: child,
     );
   }
 
-  static TopicModel getModel(BuildContext context) {
-     return Provider.of<TopicModel>(context);
+  static TopicProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<TopicProvider>(context, listen: listen);
   }
+
+  TopicProvider({BuildContext context});
 }

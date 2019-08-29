@@ -5,14 +5,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'user_me_model.dart';
+import 'user_me_provider.dart';
 
 
 class User_mePage extends StatelessWidget {
   static final String path = '/user/me';
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return User_mePage(params: params);
+      return User_meProvider.create(
+        child: User_mePage(params: params)
+      );
     }
   );
 
@@ -22,12 +24,7 @@ class User_mePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        User_meModel.createProvider(),
-      ],
-      child: User_meScene(),
-    );
+    return User_meScene();
   }
 }
 

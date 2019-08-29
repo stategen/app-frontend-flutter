@@ -58,9 +58,9 @@ class FloorAdvertisePricture extends AdvertisePicture {
     pictureAddressLike,
     toPlaceLike,
     urlTypes,
-    tO_PLACE,
     pICTURE_ADDRESS,
-  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, tO_PLACE: tO_PLACE, pICTURE_ADDRESS: pICTURE_ADDRESS);
+    tO_PLACE,
+  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, pICTURE_ADDRESS: pICTURE_ADDRESS, tO_PLACE: tO_PLACE);
 
   static FloorAdvertisePricture fromJson(Map<String, dynamic> json) {
     if (json == null) {
@@ -90,8 +90,8 @@ class FloorAdvertisePricture extends AdvertisePicture {
       pictureAddressLike: JsonUtil.parseString(json['pictureAddressLike']),
       toPlaceLike: JsonUtil.parseString(json['toPlaceLike']),
       urlTypes: JsonUtil.parseList<int>(json['urlTypes'], JsonUtil.parseInt),
-      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
       pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
+      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
     );
   }
 
@@ -186,11 +186,11 @@ class FloorAdvertisePricture extends AdvertisePicture {
       }
       result['urlTypes'] = list;
     }
-    if (this.tO_PLACE != null) {
-      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
-    }
     if (this.pICTURE_ADDRESS != null) {
       result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
+    }
+    if (this.tO_PLACE != null) {
+      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
     }
     return result;
   }

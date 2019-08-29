@@ -11,14 +11,17 @@ class AppStateEx {
 
 }
 
-class AppModel extends AppAbstractModel with AppStateEx {
-  static ChangeNotifierProvider<AppModel> createProvider() {
-    return ChangeNotifierProvider<AppModel>(
-      builder: (_) => AppModel(),
+class AppProvider extends AppAbstractProvider with AppStateEx {
+  static ChangeNotifierProvider<AppProvider> create({Widget child}) {
+    return ChangeNotifierProvider<AppProvider>(
+      builder: (BuildContext context) => AppProvider(context: context),
+      child: child,
     );
   }
 
-  static AppModel getModel(BuildContext context) {
-     return Provider.of<AppModel>(context);
+  static AppProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<AppProvider>(context, listen: listen);
   }
+
+  AppProvider({BuildContext context});
 }

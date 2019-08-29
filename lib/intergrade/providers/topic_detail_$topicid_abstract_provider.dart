@@ -40,7 +40,7 @@ class _Topic_detail_$topicIdState with Topic_detail_$topicIdBaseState {
 }
 
 
-abstract class Topic_detail_$topicIdAbstractModel with ChangeNotifier, Topic_detail_$topicIdBaseState {
+abstract class Topic_detail_$topicIdAbstractProvider with ChangeNotifier, Topic_detail_$topicIdBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await Topic_detail_$topicIdCommand.init(this,
@@ -106,7 +106,7 @@ abstract class Topic_detail_$topicIdAbstractModel with ChangeNotifier, Topic_det
 
 
 abstract class Topic_detail_$topicIdCommand {
-  static Future<Topic_detail_$topicIdBaseState> init (Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState, {Map<String, dynamic> getTopicDetailSetupParams, Map<String, dynamic> getTopicReplyPageListSetupParams}) async {
+  static Future<Topic_detail_$topicIdBaseState> init (Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> getTopicDetailSetupParams, Map<String, dynamic> getTopicReplyPageListSetupParams}) async {
     var newState = Topic_detail_$topicIdBaseState();
     // 
     var getTopicDetailState = await Topic_detail_$topicIdCommand.getTopicDetail(topic_detail_$topicIdState, payload: getTopicDetailSetupParams);
@@ -119,7 +119,7 @@ abstract class Topic_detail_$topicIdCommand {
 
 
   /// 
-  static Future<Topic_detail_$topicIdBaseState> PostReply(Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId, String replyId, String authorId, String content, String parentReplyId }) async {
+  static Future<Topic_detail_$topicIdBaseState> PostReply(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId, String replyId, String authorId, String content, String parentReplyId }) async {
     TopicReply topicReply = await Topic_detail_$topicIdApis.PostReply(payload: payload, topicId: topicId, replyId: replyId, authorId: authorId, content: content, parentReplyId: parentReplyId);
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     var topicReplyMap = CollectionUtil.appendOrUpdateMap(oldTopicReplyArea?.clone()?.valueMap,  TopicReply.toIdMap([topicReply]));
@@ -134,7 +134,7 @@ abstract class Topic_detail_$topicIdCommand {
 
 
   /// 
-  static Future<Topic_detail_$topicIdBaseState> getTopicDetail(Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId }) async {
+  static Future<Topic_detail_$topicIdBaseState> getTopicDetail(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId }) async {
     Topic topic = await Topic_detail_$topicIdApis.getTopicDetail(null, payload: payload, topicId: topicId);
 
     var newState = _Topic_detail_$topicIdState(
@@ -147,7 +147,7 @@ abstract class Topic_detail_$topicIdCommand {
   }
 
 
-  static Future<Topic_detail_$topicIdBaseState> getTopicDetailRefresh(Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState) async {
+  static Future<Topic_detail_$topicIdBaseState> getTopicDetailRefresh(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState) async {
     var oldTopicArea = topic_detail_$topicIdState.topicArea;
     var payload = {...oldTopicArea.queryRule};
     var newAreaState = await Topic_detail_$topicIdCommand.getTopicDetail(topic_detail_$topicIdState,payload: payload);
@@ -155,7 +155,7 @@ abstract class Topic_detail_$topicIdCommand {
   }
 
   /// 
-  static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageList(Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId, int page, int pageSize }) async {
+  static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageList(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId, int page, int pageSize }) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     payload = {'page': 1, 'pageSize': 10, ...oldTopicReplyArea.queryRule, ...payload};
     PageList<TopicReply> topicReplyPageList = await Topic_detail_$topicIdApis.getTopicReplyPageList(payload: payload, topicId: topicId, page: page, pageSize: pageSize);
@@ -173,7 +173,7 @@ abstract class Topic_detail_$topicIdCommand {
   }
 
 
-  static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageListNext(Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState) async {
+  static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageListNext(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     var pagination = oldTopicReplyArea?.pagination;
     var page = pagination?.current;
@@ -185,7 +185,7 @@ abstract class Topic_detail_$topicIdCommand {
     return newAreaState;
   }
 
-  static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageListRefresh(Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState) async {
+  static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageListRefresh(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     var payload = {...oldTopicReplyArea.queryRule};
     var newAreaState = await Topic_detail_$topicIdCommand.getTopicReplyPageList(topic_detail_$topicIdState,payload: payload);
@@ -193,7 +193,7 @@ abstract class Topic_detail_$topicIdCommand {
   }
 
   /// 
-  static Future<Topic_detail_$topicIdBaseState> replyUp(Topic_detail_$topicIdAbstractModel topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String replyId }) async {
+  static Future<Topic_detail_$topicIdBaseState> replyUp(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String replyId }) async {
     TopicReply topicReply = await Topic_detail_$topicIdApis.replyUp(null, payload: payload, replyId: replyId);
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     var topicReplyMap = CollectionUtil.appendOrUpdateMap(oldTopicReplyArea?.clone()?.valueMap,  TopicReply.toIdMap([topicReply]));

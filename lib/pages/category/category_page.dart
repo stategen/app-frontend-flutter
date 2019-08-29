@@ -5,14 +5,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'category_model.dart';
+import 'category_provider.dart';
 
 
 class CategoryPage extends StatelessWidget {
   static final String path = '/category';
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return CategoryPage(params: params);
+      return CategoryProvider.create(
+        child: CategoryPage(params: params)
+      );
     }
   );
 
@@ -22,12 +24,7 @@ class CategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        CategoryModel.createProvider(),
-      ],
-      child: CategoryScene(),
-    );
+    return CategoryScene();
   }
 }
 

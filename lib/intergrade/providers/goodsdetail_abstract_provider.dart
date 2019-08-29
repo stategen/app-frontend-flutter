@@ -33,7 +33,7 @@ class _GoodsDetailState with GoodsDetailBaseState {
 }
 
 
-abstract class GoodsDetailAbstractModel with ChangeNotifier, GoodsDetailBaseState {
+abstract class GoodsDetailAbstractProvider with ChangeNotifier, GoodsDetailBaseState {
 
 
   /// 
@@ -52,7 +52,7 @@ abstract class GoodsDetailAbstractModel with ChangeNotifier, GoodsDetailBaseStat
 abstract class GoodsDetailCommand {
 
   /// 
-  static Future<GoodsDetailBaseState> getGoodDetailById(GoodsDetailAbstractModel goodsDetailState, {Map<String, dynamic> payload, String goodId }) async {
+  static Future<GoodsDetailBaseState> getGoodDetailById(GoodsDetailAbstractProvider goodsDetailState, {Map<String, dynamic> payload, String goodId }) async {
     GoodsWrap goodsWrap = await GoodsDetailApis.getGoodDetailById(null, payload: payload, goodId: goodId);
 
     var newState = _GoodsDetailState(

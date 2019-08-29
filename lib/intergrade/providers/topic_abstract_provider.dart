@@ -36,7 +36,7 @@ class _TopicState with TopicBaseState {
 }
 
 
-abstract class TopicAbstractModel with ChangeNotifier, TopicBaseState {
+abstract class TopicAbstractProvider with ChangeNotifier, TopicBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await TopicCommand.init(this,
@@ -92,7 +92,7 @@ abstract class TopicAbstractModel with ChangeNotifier, TopicBaseState {
 
 
 abstract class TopicCommand {
-  static Future<TopicBaseState> init (TopicAbstractModel topicState, {Map<String, dynamic> getTopicPageListSetupParams}) async {
+  static Future<TopicBaseState> init (TopicAbstractProvider topicState, {Map<String, dynamic> getTopicPageListSetupParams}) async {
     var newState = TopicBaseState();
     // 
     var getTopicPageListState = await TopicCommand.getTopicPageList(topicState, payload: getTopicPageListSetupParams);
@@ -102,7 +102,7 @@ abstract class TopicCommand {
 
 
   /// 
-  static Future<TopicBaseState> delete(TopicAbstractModel topicState, {Map<String, dynamic> payload, String topicId }) async {
+  static Future<TopicBaseState> delete(TopicAbstractProvider topicState, {Map<String, dynamic> payload, String topicId }) async {
     String result = await TopicApis.delete(null, payload: payload, topicId: topicId);
     var oldTopicArea = topicState.topicArea;
     var topicMap = CollectionUtil.deleteMap(oldTopicArea?.clone()?.valueMap, [result]);
@@ -117,7 +117,7 @@ abstract class TopicCommand {
 
 
   /// 
-  static Future<TopicBaseState> deleteBatch(TopicAbstractModel topicState, {Map<String, dynamic> payload, List<String> topicIds }) async {
+  static Future<TopicBaseState> deleteBatch(TopicAbstractProvider topicState, {Map<String, dynamic> payload, List<String> topicIds }) async {
     List<String> result = await TopicApis.deleteBatch(null, payload: payload, topicIds: topicIds);
     var oldTopicArea = topicState.topicArea;
     var topicMap = CollectionUtil.deleteMap(oldTopicArea?.clone()?.valueMap, result);
@@ -132,7 +132,7 @@ abstract class TopicCommand {
 
 
   /// 
-  static Future<TopicBaseState> getTopicPageList(TopicAbstractModel topicState, {Map<String, dynamic> payload, TopicType topicType, bool mdrender, int page, int pageSize }) async {
+  static Future<TopicBaseState> getTopicPageList(TopicAbstractProvider topicState, {Map<String, dynamic> payload, TopicType topicType, bool mdrender, int page, int pageSize }) async {
     var oldTopicArea = topicState.topicArea;
     payload = {'page': 1, 'pageSize': 10, ...oldTopicArea.queryRule, ...payload};
     AntdPageList<Topic> topicPageList = await TopicApis.getTopicPageList(payload: payload, topicType: topicType, mdrender: mdrender, page: page, pageSize: pageSize);
@@ -150,7 +150,7 @@ abstract class TopicCommand {
   }
 
 
-  static Future<TopicBaseState> getTopicPageListNext(TopicAbstractModel topicState) async {
+  static Future<TopicBaseState> getTopicPageListNext(TopicAbstractProvider topicState) async {
     var oldTopicArea = topicState.topicArea;
     var pagination = oldTopicArea?.pagination;
     var page = pagination?.current;
@@ -162,7 +162,7 @@ abstract class TopicCommand {
     return newAreaState;
   }
 
-  static Future<TopicBaseState> getTopicPageListRefresh(TopicAbstractModel topicState) async {
+  static Future<TopicBaseState> getTopicPageListRefresh(TopicAbstractProvider topicState) async {
     var oldTopicArea = topicState.topicArea;
     var payload = {...oldTopicArea.queryRule};
     var newAreaState = await TopicCommand.getTopicPageList(topicState,payload: payload);
@@ -170,7 +170,7 @@ abstract class TopicCommand {
   }
 
   /// 
-  static Future<TopicBaseState> update(TopicAbstractModel topicState, {Map<String, dynamic> payload, String authorId, String topicType, String content, String title, String lastReplyAt, String good, String top, int visitCount, String createAt, DateTime testTimestamp, DateTime testDatetime, DateTime testDate, DateTime testTime, String topicId }) async {
+  static Future<TopicBaseState> update(TopicAbstractProvider topicState, {Map<String, dynamic> payload, String authorId, String topicType, String content, String title, String lastReplyAt, String good, String top, int visitCount, String createAt, DateTime testTimestamp, DateTime testDatetime, DateTime testDate, DateTime testTime, String topicId }) async {
     Topic topic = await TopicApis.update(payload: payload, authorId: authorId, topicType: topicType, content: content, title: title, lastReplyAt: lastReplyAt, good: good, top: top, visitCount: visitCount, createAt: createAt, testTimestamp: testTimestamp, testDatetime: testDatetime, testDate: testDate, testTime: testTime, topicId: topicId);
     var oldTopicArea = topicState.topicArea;
     var topicMap = CollectionUtil.appendOrUpdateMap(oldTopicArea?.clone()?.valueMap,  Topic.toIdMap([topic]));

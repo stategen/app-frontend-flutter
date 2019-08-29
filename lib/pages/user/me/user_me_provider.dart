@@ -11,14 +11,17 @@ class User_meStateEx {
 
 }
 
-class User_meModel extends User_meAbstractModel with User_meStateEx {
-  static ChangeNotifierProvider<User_meModel> createProvider() {
-    return ChangeNotifierProvider<User_meModel>(
-      builder: (_) => User_meModel(),
+class User_meProvider extends User_meAbstractProvider with User_meStateEx {
+  static ChangeNotifierProvider<User_meProvider> create({Widget child}) {
+    return ChangeNotifierProvider<User_meProvider>(
+      builder: (BuildContext context) => User_meProvider(context: context),
+      child: child,
     );
   }
 
-  static User_meModel getModel(BuildContext context) {
-     return Provider.of<User_meModel>(context);
+  static User_meProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<User_meProvider>(context, listen: listen);
   }
+
+  User_meProvider({BuildContext context});
 }

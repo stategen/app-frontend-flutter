@@ -5,14 +5,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'goods_model.dart';
+import 'goods_provider.dart';
 
 
 class GoodsPage extends StatelessWidget {
   static final String path = '/goods';
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return GoodsPage(params: params);
+      return GoodsProvider.create(
+        child: GoodsPage(params: params)
+      );
     }
   );
 
@@ -22,12 +24,7 @@ class GoodsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        GoodsModel.createProvider(),
-      ],
-      child: GoodsScene(),
-    );
+    return GoodsScene();
   }
 }
 

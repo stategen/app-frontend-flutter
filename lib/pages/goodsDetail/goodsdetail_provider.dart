@@ -14,16 +14,16 @@ class GoodsDetailStateEx {
 
 }
 
-class GoodsDetailModel extends GoodsDetailAbstractModel with GoodsDetailStateEx {
-  static ChangeNotifierProvider<GoodsDetailModel> createProvider({Widget child}) {
-    return ChangeNotifierProvider<GoodsDetailModel>(
-      builder: (_) => GoodsDetailModel(),
+class GoodsDetailProvider extends GoodsDetailAbstractProvider with GoodsDetailStateEx {
+  static ChangeNotifierProvider<GoodsDetailProvider> create({Widget child}) {
+    return ChangeNotifierProvider<GoodsDetailProvider>(
+      builder: (_) => GoodsDetailProvider(),
       child: child,
     );
   }
 
-  static GoodsDetailModel getModel(BuildContext context, {bool listen = true }) {
-    return Provider.of<GoodsDetailModel>(context, listen: listen);
+  static GoodsDetailProvider of(BuildContext context, {bool listen = true }) {
+    return Provider.of<GoodsDetailProvider>(context, listen: listen);
   }
 
   //TabBar切换方法

@@ -11,14 +11,17 @@ class HomeStateEx {
 
 }
 
-class HomeModel extends HomeAbstractModel with HomeStateEx {
-  static ChangeNotifierProvider<HomeModel> createProvider() {
-    return ChangeNotifierProvider<HomeModel>(
-      builder: (_) => HomeModel(),
+class HomeProvider extends HomeAbstractProvider with HomeStateEx {
+  static ChangeNotifierProvider<HomeProvider> create({Widget child}) {
+    return ChangeNotifierProvider<HomeProvider>(
+      builder: (BuildContext context) => HomeProvider(context: context),
+      child: child,
     );
   }
 
-  static HomeModel getModel(BuildContext context) {
-     return Provider.of<HomeModel>(context);
+  static HomeProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<HomeProvider>(context, listen: listen);
   }
+
+  HomeProvider({BuildContext context});
 }

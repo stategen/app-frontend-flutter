@@ -35,7 +35,7 @@ class _User_detail_$usernameState with User_detail_$usernameBaseState {
 }
 
 
-abstract class User_detail_$usernameAbstractModel with ChangeNotifier, User_detail_$usernameBaseState {
+abstract class User_detail_$usernameAbstractProvider with ChangeNotifier, User_detail_$usernameBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await User_detail_$usernameCommand.init(this,
@@ -91,7 +91,7 @@ abstract class User_detail_$usernameAbstractModel with ChangeNotifier, User_deta
 
 
 abstract class User_detail_$usernameCommand {
-  static Future<User_detail_$usernameBaseState> init (User_detail_$usernameAbstractModel user_detail_$usernameState, {Map<String, dynamic> getCurrentUserSetupParams, Map<String, dynamic> getTheUserSetupParams, Map<String, dynamic> getUserDataSetupParams}) async {
+  static Future<User_detail_$usernameBaseState> init (User_detail_$usernameAbstractProvider user_detail_$usernameState, {Map<String, dynamic> getCurrentUserSetupParams, Map<String, dynamic> getTheUserSetupParams, Map<String, dynamic> getUserDataSetupParams}) async {
     var newState = User_detail_$usernameBaseState();
     // 
     var getCurrentUserState = await User_detail_$usernameCommand.getCurrentUser(user_detail_$usernameState);
@@ -107,7 +107,7 @@ abstract class User_detail_$usernameCommand {
 
 
   /// 
-  static Future<User_detail_$usernameBaseState> getCurrentUser(User_detail_$usernameAbstractModel user_detail_$usernameState) async {
+  static Future<User_detail_$usernameBaseState> getCurrentUser(User_detail_$usernameAbstractProvider user_detail_$usernameState) async {
     User user = await User_detail_$usernameApis.getCurrentUser();
 
     var newState = _User_detail_$usernameState(
@@ -120,7 +120,7 @@ abstract class User_detail_$usernameCommand {
 
 
   /// 
-  static Future<User_detail_$usernameBaseState> getTheUser(User_detail_$usernameAbstractModel user_detail_$usernameState) async {
+  static Future<User_detail_$usernameBaseState> getTheUser(User_detail_$usernameAbstractProvider user_detail_$usernameState) async {
     User user = await User_detail_$usernameApis.getTheUser();
 
     var newState = _User_detail_$usernameState(
@@ -133,7 +133,7 @@ abstract class User_detail_$usernameCommand {
 
 
   /// 
-  static Future<User_detail_$usernameBaseState> getUserData(User_detail_$usernameAbstractModel user_detail_$usernameState, {Map<String, dynamic> payload, @required String username }) async {
+  static Future<User_detail_$usernameBaseState> getUserData(User_detail_$usernameAbstractProvider user_detail_$usernameState, {Map<String, dynamic> payload, @required String username }) async {
     User user = await User_detail_$usernameApis.getUserData(null, payload: payload, username: username);
 
     var newState = _User_detail_$usernameState(
@@ -146,7 +146,7 @@ abstract class User_detail_$usernameCommand {
 
 
   /// 修改用户
-  static Future<User_detail_$usernameBaseState> update(User_detail_$usernameAbstractModel user_detail_$usernameState, {Map<String, dynamic> payload, List<int> hoppyIds, List<int> cascaderPostAddressIds, String username, String password, RoleType roleType, String name, String nickName, int age, String address, String avatarImgId, String email, DateTime valiDatetime, DateTime birthdayDate, DateTime workTime, String provinceId, String cityId, StatusEnum status, int grade, bool sex, String postAddressId, String userId }) async {
+  static Future<User_detail_$usernameBaseState> update(User_detail_$usernameAbstractProvider user_detail_$usernameState, {Map<String, dynamic> payload, List<int> hoppyIds, List<int> cascaderPostAddressIds, String username, String password, RoleType roleType, String name, String nickName, int age, String address, String avatarImgId, String email, DateTime valiDatetime, DateTime birthdayDate, DateTime workTime, String provinceId, String cityId, StatusEnum status, int grade, bool sex, String postAddressId, String userId }) async {
     User user = await User_detail_$usernameApis.update(payload: payload, hoppyIds: hoppyIds, cascaderPostAddressIds: cascaderPostAddressIds, username: username, password: password, roleType: roleType, name: name, nickName: nickName, age: age, address: address, avatarImgId: avatarImgId, email: email, valiDatetime: valiDatetime, birthdayDate: birthdayDate, workTime: workTime, provinceId: provinceId, cityId: cityId, status: status, grade: grade, sex: sex, postAddressId: postAddressId, userId: userId);
     var oldUserArea = user_detail_$usernameState.userArea;
     var userMap = CollectionUtil.appendOrUpdateMap(oldUserArea?.clone()?.valueMap,  User.toIdMap([user]));

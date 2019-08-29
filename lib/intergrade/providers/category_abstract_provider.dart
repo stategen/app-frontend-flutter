@@ -33,7 +33,7 @@ class _CategoryState with CategoryBaseState {
 }
 
 
-abstract class CategoryAbstractModel with ChangeNotifier, CategoryBaseState {
+abstract class CategoryAbstractProvider with ChangeNotifier, CategoryBaseState {
 
 
   void mergeState(BuildContext context, CategoryBaseState newState) {

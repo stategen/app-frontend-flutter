@@ -7,10 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DetailsTabbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var goodsDetailModel =GoodsDetailModel.getModel(context);
+    var goodsDetailProvider =GoodsDetailProvider.of(context);
     //状态及时改变
-    final isLeft = goodsDetailModel.isLeft;
-    final isRight = goodsDetailModel.isRight;
+    final isLeft = goodsDetailProvider.isLeft;
+    final isRight = goodsDetailProvider.isRight;
     return Container(
       margin: EdgeInsets.only(top: 10),
       child: Row(
@@ -24,10 +24,10 @@ class DetailsTabbar extends StatelessWidget {
 
   //操作状态需要上下文 (右侧)
   Widget _myTabBarRight(BuildContext context, bool isRight) {
-    var goodsDetailModel =GoodsDetailModel.getModel(context);
+    var goodsDetailProvider =GoodsDetailProvider.of(context);
     return InkWell(
       onTap: () {
-        goodsDetailModel.changeLeftAndRight('right');
+        goodsDetailProvider.changeLeftAndRight('right');
       },
       child: Container(
         padding: EdgeInsets.all(10),
@@ -51,11 +51,11 @@ class DetailsTabbar extends StatelessWidget {
 
 //左边按钮
 Widget _myTabBarLeft(BuildContext context, bool isLeft) {
-  var goodsDetailModel =GoodsDetailModel.getModel(context);
+  var goodsDetailProvider =GoodsDetailProvider.of(context);
   return InkWell(
 
     onTap: () {
-      goodsDetailModel.changeLeftAndRight('left');
+      goodsDetailProvider.changeLeftAndRight('left');
     },
     child: Container(
       padding: EdgeInsets.all(10),

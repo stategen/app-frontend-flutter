@@ -34,7 +34,7 @@ class _Topic_publishState with Topic_publishBaseState {
 }
 
 
-abstract class Topic_publishAbstractModel with ChangeNotifier, Topic_publishBaseState {
+abstract class Topic_publishAbstractProvider with ChangeNotifier, Topic_publishBaseState {
 
 
   /// 
@@ -53,7 +53,7 @@ abstract class Topic_publishAbstractModel with ChangeNotifier, Topic_publishBase
 abstract class Topic_publishCommand {
 
   /// 
-  static Future<Topic_publishBaseState> saveTopic(Topic_publishAbstractModel topic_publishState, {Map<String, dynamic> payload, String topicId, TopicType topicType, String content, String title }) async {
+  static Future<Topic_publishBaseState> saveTopic(Topic_publishAbstractProvider topic_publishState, {Map<String, dynamic> payload, String topicId, TopicType topicType, String content, String title }) async {
     Topic topic = await Topic_publishApis.saveTopic(payload: payload, topicId: topicId, topicType: topicType, content: content, title: title);
 
     var newState = _Topic_publishState(

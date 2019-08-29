@@ -11,14 +11,17 @@ class GoodsStateEx {
 
 }
 
-class GoodsModel extends GoodsAbstractModel with GoodsStateEx {
-  static ChangeNotifierProvider<GoodsModel> createProvider() {
-    return ChangeNotifierProvider<GoodsModel>(
-      builder: (_) => GoodsModel(),
+class GoodsProvider extends GoodsAbstractProvider with GoodsStateEx {
+  static ChangeNotifierProvider<GoodsProvider> create({Widget child}) {
+    return ChangeNotifierProvider<GoodsProvider>(
+      builder: (BuildContext context) => GoodsProvider(context: context),
+      child: child,
     );
   }
 
-  static GoodsModel getModel(BuildContext context) {
-     return Provider.of<GoodsModel>(context);
+  static GoodsProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<GoodsProvider>(context, listen: listen);
   }
+
+  GoodsProvider({BuildContext context});
 }

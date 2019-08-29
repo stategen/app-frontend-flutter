@@ -53,11 +53,11 @@ class AdvertisePicture {
   /// 更新时间Max
   DateTime updateTimeMax;
 
-  /// tO_PLACE
-  String tO_PLACE;
-
   /// pICTURE_ADDRESS
   String pICTURE_ADDRESS;
+
+  /// tO_PLACE
+  String tO_PLACE;
 
   AdvertisePicture({
     this.advertiseId,
@@ -75,8 +75,8 @@ class AdvertisePicture {
     this.createTimeMax,
     this.updateTimeMin,
     this.updateTimeMax,
-    this.tO_PLACE,
     this.pICTURE_ADDRESS,
+    this.tO_PLACE,
   });
 
   static AdvertisePicture fromJson(Map<String, dynamic> json) {
@@ -99,8 +99,8 @@ class AdvertisePicture {
       createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
       updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
       updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
       pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
+      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
     );
   }
 
@@ -163,11 +163,11 @@ class AdvertisePicture {
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
-    if (this.tO_PLACE != null) {
-      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
-    }
     if (this.pICTURE_ADDRESS != null) {
       result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
+    }
+    if (this.tO_PLACE != null) {
+      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
     }
     return result;
   }

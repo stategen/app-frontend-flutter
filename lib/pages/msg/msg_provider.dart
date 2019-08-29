@@ -11,14 +11,17 @@ class MsgStateEx {
 
 }
 
-class MsgModel extends MsgAbstractModel with MsgStateEx {
-  static ChangeNotifierProvider<MsgModel> createProvider() {
-    return ChangeNotifierProvider<MsgModel>(
-      builder: (_) => MsgModel(),
+class MsgProvider extends MsgAbstractProvider with MsgStateEx {
+  static ChangeNotifierProvider<MsgProvider> create({Widget child}) {
+    return ChangeNotifierProvider<MsgProvider>(
+      builder: (BuildContext context) => MsgProvider(context: context),
+      child: child,
     );
   }
 
-  static MsgModel getModel(BuildContext context) {
-     return Provider.of<MsgModel>(context);
+  static MsgProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<MsgProvider>(context, listen: listen);
   }
+
+  MsgProvider({BuildContext context});
 }
