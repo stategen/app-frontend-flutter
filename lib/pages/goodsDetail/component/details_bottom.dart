@@ -10,13 +10,14 @@ class DetailsBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var goodsDetailProvider =GoodsDetailProvider.of(context);
-    var goodsinfo =goodsDetailProvider.goodsWrapArea.valueMap[0].goodInfo;
 
-    var goodsId = goodsinfo.goodsId;
-    var goodsName = goodsinfo.goodsName;
+    var goods =goodsDetailProvider.goodsArea.valueMap.values.toList()[0];
+
+    var goodsId = goods.goodsId;
+    var goodsName = goods.goodsName;
     var count = 1;
-    var price = goodsinfo.oriPrice;
-    var images = goodsinfo.image1;
+    var price = goods.oriPrice;
+    var images = goods.image1;
     final goodsCount = Provider.of<CartProvider>(context).allGoodsCount;
     return Container(
       width: ScreenUtil().setWidth(750),

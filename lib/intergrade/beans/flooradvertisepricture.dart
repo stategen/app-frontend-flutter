@@ -2,11 +2,10 @@
 ///  FloorAdvertisePricture
 ///  created by [stategen.progen] ,do not edit it manually otherwise your code will be override by next call progen,
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
-import '../beans/advertisepicture.dart';
 import '../beans/floorgoods.dart';
 import '../../stgutil/json_util.dart';
 
-class FloorAdvertisePricture extends AdvertisePicture {
+class FloorAdvertisePricture {
   /// floorId
   static const String FloorAdvertisePricture_ID = 'floorId';
 
@@ -16,14 +15,29 @@ class FloorAdvertisePricture extends AdvertisePicture {
   /// floorId
   String floorId;
 
+  /// advertiseId
+  int advertiseId;
+
   /// orderNo
   int orderNo;
 
   /// floorName
   String floorName;
 
+  /// 创建时间
+  DateTime createTime;
+
+  /// 更新时间
+  DateTime updateTime;
+
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
+
   /// floorId s
   List<String> floorIds;
+
+  /// advertiseId s
+  List<int> advertiseIds;
 
   /// orderNoMin
   int orderNoMin;
@@ -34,33 +48,69 @@ class FloorAdvertisePricture extends AdvertisePicture {
   /// floorNameLike
   String floorNameLike;
 
+  /// 创建时间Min
+  DateTime createTimeMin;
+
+  /// 创建时间Max
+  DateTime createTimeMax;
+
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
+  /// 更新时间Max
+  DateTime updateTimeMax;
+
+  /// pictureAddress
+  String pictureAddress;
+
+  /// toPlace
+  String toPlace;
+
+  /// urlType
+  int urlType;
+
+  /// pictureAddressLike
+  String pictureAddressLike;
+
+  /// toPlaceLike
+  String toPlaceLike;
+
+  /// urlType s
+  List<int> urlTypes;
+
+  /// tO_PLACE
+  String tO_PLACE;
+
+  /// pICTURE_ADDRESS
+  String pICTURE_ADDRESS;
+
   FloorAdvertisePricture({
     this.floorGoodss,
     this.floorId,
-    advertiseId,
+    this.advertiseId,
     this.orderNo,
     this.floorName,
-    createTime,
-    updateTime,
-    deleteFlag,
+    this.createTime,
+    this.updateTime,
+    this.deleteFlag,
     this.floorIds,
-    advertiseIds,
+    this.advertiseIds,
     this.orderNoMin,
     this.orderNoMax,
     this.floorNameLike,
-    createTimeMin,
-    createTimeMax,
-    updateTimeMin,
-    updateTimeMax,
-    pictureAddress,
-    toPlace,
-    urlType,
-    pictureAddressLike,
-    toPlaceLike,
-    urlTypes,
-    pICTURE_ADDRESS,
-    tO_PLACE,
-  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, pICTURE_ADDRESS: pICTURE_ADDRESS, tO_PLACE: tO_PLACE);
+    this.createTimeMin,
+    this.createTimeMax,
+    this.updateTimeMin,
+    this.updateTimeMax,
+    this.pictureAddress,
+    this.toPlace,
+    this.urlType,
+    this.pictureAddressLike,
+    this.toPlaceLike,
+    this.urlTypes,
+    this.tO_PLACE,
+    this.pICTURE_ADDRESS,
+  });
 
   static FloorAdvertisePricture fromJson(Map<String, dynamic> json) {
     if (json == null) {
@@ -90,8 +140,8 @@ class FloorAdvertisePricture extends AdvertisePicture {
       pictureAddressLike: JsonUtil.parseString(json['pictureAddressLike']),
       toPlaceLike: JsonUtil.parseString(json['toPlaceLike']),
       urlTypes: JsonUtil.parseList<int>(json['urlTypes'], JsonUtil.parseInt),
-      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
       tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
+      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
     );
   }
 
@@ -186,11 +236,11 @@ class FloorAdvertisePricture extends AdvertisePicture {
       }
       result['urlTypes'] = list;
     }
-    if (this.pICTURE_ADDRESS != null) {
-      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
-    }
     if (this.tO_PLACE != null) {
       result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
+    }
+    if (this.pICTURE_ADDRESS != null) {
+      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
     }
     return result;
   }

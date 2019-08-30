@@ -10,9 +10,12 @@ class DetailsWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var goodsDetailProvider =GoodsDetailProvider.of(context);
-    var goodsDetails = goodsDetailProvider.goodsWrapArea.valueMap[0].goodInfo.goodsDetail;
-    final isLeft = goodsDetailProvider.isLeft;
     if (goodsDetailProvider != null) {
+      var goodss= goodsDetailProvider.goodsArea.valueMap.values.toList();
+      var goodsDetails = goodss[0].goodsDetail;
+      var comments =goodss[0].goodComments;
+
+      final isLeft = goodsDetailProvider.isLeft;
       if (isLeft) {
         return Container(
           margin: EdgeInsets.only(top: 3),

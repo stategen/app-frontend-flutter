@@ -27,12 +27,17 @@ class GoodsDetailPage extends StatelessWidget {
     }
   );
 
-  
+  static ath({String goodsId}) {
+    return '$path?goodsId=$goodsId';
+  }
+
+
   String goodsId;
   Map<String, List<String>> params;
   GoodsDetailPage({this.params}){
     this.goodsId = params['id'].first;
   }
+
 
 
   @override

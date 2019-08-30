@@ -11,16 +11,16 @@ class DetailsTopAread extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var goodsDetailProvider =GoodsDetailProvider.of(context);
-    final value = goodsDetailProvider.goodsWrapArea.valueMap[0].goodInfo;
-    if (value != null) {
+    final goods = goodsDetailProvider.goodsArea.valueMap.values.toList()[0];
+    if (goods != null) {
       return Container(
         color: Colors.white,
         child: Column(
           children: <Widget>[
-            _goodsImage(value.image1),
-            _goodsName(value.goodsName),
-            _goodsNum(value.goodsSerialNumber),
-            _goodsPirce(value.presentPrice, value.oriPrice),
+            _goodsImage(goods.image1),
+            _goodsName(goods.goodsName),
+            _goodsNum(goods.goodsSerialNumber),
+            _goodsPirce(goods.presentPrice, goods.oriPrice),
           ],
         ),
       );

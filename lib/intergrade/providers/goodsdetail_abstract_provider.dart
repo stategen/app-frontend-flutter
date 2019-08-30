@@ -8,26 +8,26 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../beans/goodswrap.dart';
+import '../beans/goods.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
 import '../apis/goodsdetail_apis.dart';
 
 class GoodsDetailBaseState {
-  AreaState<GoodsWrap> goodsWrapArea;
+  AreaState<Goods> goodsArea;
 
   void merge(GoodsDetailBaseState source) {
-    goodsWrapArea != null ? goodsWrapArea.merge(source.goodsWrapArea) : goodsWrapArea = source.goodsWrapArea;
+    goodsArea != null ? goodsArea.merge(source.goodsArea) : goodsArea = source.goodsArea;
   }
 
 }
 
 class _GoodsDetailState with GoodsDetailBaseState {
   _GoodsDetailState({
-    AreaState<GoodsWrap> goodsWrapArea,
+    AreaState<Goods> goodsArea,
   }) {
-    this.goodsWrapArea = goodsWrapArea;
+    this.goodsArea = goodsArea;
   }
 
 }
@@ -53,11 +53,11 @@ abstract class GoodsDetailCommand {
 
   /// 
   static Future<GoodsDetailBaseState> getGoodDetailById(GoodsDetailAbstractProvider goodsDetailState, {Map<String, dynamic> payload, String goodId }) async {
-    GoodsWrap goodsWrap = await GoodsDetailApis.getGoodDetailById(null, payload: payload, goodId: goodId);
+    Goods goods = await GoodsDetailApis.getGoodDetailById(null, payload: payload, goodId: goodId);
 
     var newState = _GoodsDetailState(
-      goodsWrapArea: AreaState(
-        valueMap: GoodsWrap.toIdMap([goodsWrap]),
+      goodsArea: AreaState(
+        valueMap: Goods.toIdMap([goods]),
       ),
     );
     return newState;
