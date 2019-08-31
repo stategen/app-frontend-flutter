@@ -13,10 +13,11 @@ import '../beans/user.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/login_apis.dart';
 
 class LoginBaseState {
-  AreaState<User> userArea;
+  AreaState<User> userArea = AreaState<User>.init();
 
   void merge(LoginBaseState source) {
     userArea != null ? userArea.merge(source.userArea) : userArea = source.userArea;
@@ -34,7 +35,7 @@ class _LoginState with LoginBaseState {
 }
 
 
-abstract class LoginAbstractProvider with ChangeNotifier, LoginBaseState {
+abstract class LoginAbstractProvider with ChangeNotifier, BaseProvider, LoginBaseState {
 
 
   /// 
@@ -79,6 +80,7 @@ abstract class LoginCommand {
 
     var newState = _LoginState(
       userArea: AreaState(
+        fetched: true,
         valueMap: userMap,
       ),
     );

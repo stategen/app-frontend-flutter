@@ -5,8 +5,9 @@
 import '../enums/menutype.dart';
 import '../enums/visitchecktype.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class Menu {
+class Menu with FrontBean {
   /// menuId
   static const String Menu_ID = 'menuId';
 
@@ -115,11 +116,11 @@ class Menu {
   /// id,和MenuId相同，为了生成树
   int id;
 
-  /// menuChildren
-  List<Menu> menuChildren;
-
   /// 打开顺序，前端model存储用
   int opendOrder;
+
+  /// menuChildren
+  List<Menu> menuChildren;
 
   Menu({
     this.roleId,
@@ -157,8 +158,8 @@ class Menu {
     this.updateTimeMin,
     this.updateTimeMax,
     this.id,
-    this.menuChildren,
     this.opendOrder,
+    this.menuChildren,
   });
 
   static Menu fromJson(Map<String, dynamic> json) {
@@ -201,8 +202,8 @@ class Menu {
       updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
       updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
       id: JsonUtil.parseInt(json['id']),
-      menuChildren: Menu.fromJsonList(json['menuChildren']),
       opendOrder: JsonUtil.parseInt(json['opendOrder']),
+      menuChildren: Menu.fromJsonList(json['menuChildren']),
     );
   }
 
@@ -337,15 +338,15 @@ class Menu {
     if (this.id != null) {
       result['id'] = JsonUtil.intToJson(id);
     }
+    if (this.opendOrder != null) {
+      result['opendOrder'] = JsonUtil.intToJson(opendOrder);
+    }
     if (this.menuChildren != null) {
       var list = List();
       for (var v in menuChildren) {
         list.add(v.toMap());
       }
       result['menuChildren'] = list;
-    }
-    if (this.opendOrder != null) {
-      result['opendOrder'] = JsonUtil.intToJson(opendOrder);
     }
     return result;
   }

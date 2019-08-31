@@ -4,8 +4,10 @@
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../beans/goods.dart';
 import '../beans/homewrap.dart';
+import '../beans/pagelist.dart';
 import '../columns/goods_columns.dart';
 import '../columns/homewrap_columns.dart';
+import '../columns/pagelist_columns.dart';
 import '../../stgutil/column_util.dart';
 import '../../stgutil/stg_util.dart';
 

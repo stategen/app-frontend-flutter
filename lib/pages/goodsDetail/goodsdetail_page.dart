@@ -16,15 +16,14 @@ import './component/details_web.dart';
 import './component/details_bottom.dart';
 
 
-
 class GoodsDetailPage extends StatelessWidget {
   static final String path = '/goodsDetail';
   static final Handler handler = Handler(
-    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return GoodsDetailProvider.create(
-          child: GoodsDetailPage(params: params)
-      );
-    }
+      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+        return GoodsDetailProvider.create(
+            child: GoodsDetailPage(params: params)
+        );
+      }
   );
 
   static ath({String goodsId}) {
@@ -34,10 +33,10 @@ class GoodsDetailPage extends StatelessWidget {
 
   String goodsId;
   Map<String, List<String>> params;
-  GoodsDetailPage({this.params}){
+
+  GoodsDetailPage({this.params}) {
     this.goodsId = params['id'].first;
   }
-
 
 
   @override
@@ -83,8 +82,8 @@ class GoodsDetailPage extends StatelessWidget {
 
 
   Future _getGoodsInfo(BuildContext context) async {
-    GoodsDetailProvider goodsDetailProvider =GoodsDetailProvider.of(context,listen:false);
-    await goodsDetailProvider.getGoodDetailById(context,goodId:goodsId);
+    GoodsDetailProvider goodsDetailProvider = GoodsDetailProvider.of(context, listen: false);
+    await goodsDetailProvider.getGoodDetailById(context, goodsId: goodsId);
     return '完成加载';
   }
 

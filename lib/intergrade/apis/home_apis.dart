@@ -5,6 +5,7 @@
 
 import '../beans/goods.dart';
 import '../beans/homewrap.dart';
+import '../beans/pagelist.dart';
 import "../configs/tradeApp_config.dart";
 import '../../stgutil/net_util.dart';
 import 'package:flutter/material.dart';
@@ -12,22 +13,22 @@ import 'package:flutter/material.dart';
 class HomeApis {
   /// POST /api/home/homePageBelowConten
   /// 
-  static Future<List<Goods>> homePageBelowConten(int param, {Map<String, dynamic> payload, int page }) async {
+  static Future<PageList<Goods>> homePageBelowConten({Map<String, dynamic> payload, int pageSize, int pageNum }) async {
     var requestInit = RequestInit();
     requestInit.baseUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/home/homePageBelowConten';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
-    if (param != null) {
-      payload['page'] = param;
+    if (pageSize != null) {
+      payload['pageSize'] = pageSize;
     }
-    if (page != null) {
-      payload['page'] = page;
+    if (pageNum != null) {
+      payload['pageNum'] = pageNum;
     }
     requestInit.data = payload;
     requestInit.method = Method.POST;
     var dest = await NetUtil.fetch(requestInit);
-    return Goods.fromJsonList(dest as List);
+    return PageList.fromJson(dest, Goods.fromJsonList);
   }
 
   /// POST /api/home/homePageContent

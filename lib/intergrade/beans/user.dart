@@ -10,8 +10,9 @@ import '../beans/region.dart';
 import '../enums/roletype.dart';
 import '../enums/statusenum.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class User {
+class User with FrontBean {
   /// userId
   static const String User_ID = 'userId';
 

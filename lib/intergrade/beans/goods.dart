@@ -4,8 +4,9 @@
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../beans/goodscomment.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class Goods {
+class Goods with FrontBean {
   /// goodsId
   static const String Goods_ID = 'goodsId';
 

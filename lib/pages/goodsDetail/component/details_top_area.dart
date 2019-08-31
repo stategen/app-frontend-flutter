@@ -11,7 +11,7 @@ class DetailsTopAread extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var goodsDetailProvider =GoodsDetailProvider.of(context);
-    final goods = goodsDetailProvider.goodsArea.valueMap.values.toList()[0];
+    final goods = goodsDetailProvider.goodsArea.list[0];
     if (goods != null) {
       return Container(
         color: Colors.white,

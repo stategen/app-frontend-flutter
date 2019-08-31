@@ -12,10 +12,11 @@ import '../beans/category.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/category_apis.dart';
 
 class CategoryBaseState {
-  AreaState<Category> categoryArea;
+  AreaState<Category> categoryArea = AreaState<Category>.init();
 
   void merge(CategoryBaseState source) {
     categoryArea != null ? categoryArea.merge(source.categoryArea) : categoryArea = source.categoryArea;
@@ -33,8 +34,25 @@ class _CategoryState with CategoryBaseState {
 }
 
 
-abstract class CategoryAbstractProvider with ChangeNotifier, CategoryBaseState {
+abstract class CategoryAbstractProvider with ChangeNotifier, BaseProvider, CategoryBaseState {
 
+  Future<void> init(BuildContext context) async {
+    var newState = await CategoryCommand.init(this,
+        getCategorySetupParams : getCategorySetupParams(context)
+    );
+    mergeState(context, newState);
+  }
+
+
+  /// 
+  Future<void> getCategory(BuildContext context) async {
+    var newState = await CategoryCommand.getCategory(this);
+    mergeState(context, newState);
+  }
+
+  getCategorySetupParams(BuildContext context) {
+    return null;
+  }
 
   void mergeState(BuildContext context, CategoryBaseState newState) {
     this.merge(newState);
@@ -44,5 +62,27 @@ abstract class CategoryAbstractProvider with ChangeNotifier, CategoryBaseState {
 
 
 abstract class CategoryCommand {
+  static Future<CategoryBaseState> init (CategoryAbstractProvider categoryState, {Map<String, dynamic> getCategorySetupParams}) async {
+    var newState = CategoryBaseState();
+    // 
+    var getCategoryState = await CategoryCommand.getCategory(categoryState);
+    newState.merge(getCategoryState);
+    return newState;
+  }
+
+
+  /// 
+  static Future<CategoryBaseState> getCategory(CategoryAbstractProvider categoryState) async {
+    List<Category> categorys = await CategoryApis.getCategory();
+
+    var newState = _CategoryState(
+      categoryArea: AreaState(
+        fetched: true,
+        valueMap: Category.toIdMap(categorys),
+      ),
+    );
+    return newState;
+  }
+
 
 }

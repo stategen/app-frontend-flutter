@@ -11,7 +11,7 @@ class DetailsBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     var goodsDetailProvider =GoodsDetailProvider.of(context);
 
-    var goods =goodsDetailProvider.goodsArea.valueMap.values.toList()[0];
+    var goods =goodsDetailProvider.goodsArea.list[0];
 
     var goodsId = goods.goodsId;
     var goodsName = goods.goodsName;

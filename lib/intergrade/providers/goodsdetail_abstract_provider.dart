@@ -12,10 +12,11 @@ import '../beans/goods.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/goodsdetail_apis.dart';
 
 class GoodsDetailBaseState {
-  AreaState<Goods> goodsArea;
+  AreaState<Goods> goodsArea = AreaState<Goods>.init();
 
   void merge(GoodsDetailBaseState source) {
     goodsArea != null ? goodsArea.merge(source.goodsArea) : goodsArea = source.goodsArea;
@@ -33,12 +34,12 @@ class _GoodsDetailState with GoodsDetailBaseState {
 }
 
 
-abstract class GoodsDetailAbstractProvider with ChangeNotifier, GoodsDetailBaseState {
+abstract class GoodsDetailAbstractProvider with ChangeNotifier, BaseProvider, GoodsDetailBaseState {
 
 
   /// 
-  Future<void> getGoodDetailById(BuildContext context, {Map<String, dynamic> payload, String goodId }) async {
-    var newState = await GoodsDetailCommand.getGoodDetailById(this, payload: payload, goodId: goodId);
+  Future<void> getGoodDetailById(BuildContext context, {Map<String, dynamic> payload, String goodsId }) async {
+    var newState = await GoodsDetailCommand.getGoodDetailById(this, payload: payload, goodsId: goodsId);
     mergeState(context, newState);
   }
 
@@ -52,11 +53,12 @@ abstract class GoodsDetailAbstractProvider with ChangeNotifier, GoodsDetailBaseS
 abstract class GoodsDetailCommand {
 
   /// 
-  static Future<GoodsDetailBaseState> getGoodDetailById(GoodsDetailAbstractProvider goodsDetailState, {Map<String, dynamic> payload, String goodId }) async {
-    Goods goods = await GoodsDetailApis.getGoodDetailById(null, payload: payload, goodId: goodId);
+  static Future<GoodsDetailBaseState> getGoodDetailById(GoodsDetailAbstractProvider goodsDetailState, {Map<String, dynamic> payload, String goodsId }) async {
+    Goods goods = await GoodsDetailApis.getGoodDetailById(null, payload: payload, goodsId: goodsId);
 
     var newState = _GoodsDetailState(
       goodsArea: AreaState(
+        fetched: true,
         valueMap: Goods.toIdMap([goods]),
       ),
     );

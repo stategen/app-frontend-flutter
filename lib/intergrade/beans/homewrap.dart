@@ -11,8 +11,9 @@ import '../beans/homegoods.dart';
 import '../beans/homeshop.dart';
 import '../beans/slide.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class HomeWrap {
+class HomeWrap with FrontBean {
   /// slides
   List<Slide> slides;
 

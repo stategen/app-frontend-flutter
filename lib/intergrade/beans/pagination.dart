@@ -3,8 +3,9 @@
 ///  created by [stategen.progen] ,do not edit it manually otherwise your code will be override by next call progen,
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class Pagination {
+class Pagination with FrontBean {
   /// page
   int page;
 
@@ -14,18 +15,18 @@ class Pagination {
   /// total
   int total;
 
-  /// current
-  int current;
-
   /// totalPages
   int totalPages;
+
+  /// current
+  int current;
 
   Pagination({
     this.page,
     this.pageSize,
     this.total,
-    this.current,
     this.totalPages,
+    this.current,
   });
 
   static Pagination fromJson(Map<String, dynamic> json) {
@@ -36,8 +37,8 @@ class Pagination {
       page: JsonUtil.parseInt(json['page']),
       pageSize: JsonUtil.parseInt(json['pageSize']),
       total: JsonUtil.parseInt(json['total']),
-      current: JsonUtil.parseInt(json['current']),
       totalPages: JsonUtil.parseInt(json['totalPages']),
+      current: JsonUtil.parseInt(json['current']),
     );
   }
 
@@ -56,11 +57,11 @@ class Pagination {
     if (this.total != null) {
       result['total'] = JsonUtil.intToJson(total);
     }
-    if (this.current != null) {
-      result['current'] = JsonUtil.intToJson(current);
-    }
     if (this.totalPages != null) {
       result['totalPages'] = JsonUtil.intToJson(totalPages);
+    }
+    if (this.current != null) {
+      result['current'] = JsonUtil.intToJson(current);
     }
     return result;
   }

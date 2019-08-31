@@ -4,8 +4,9 @@
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../beans/floorgoods.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class FloorAdvertisePricture {
+class FloorAdvertisePricture with FrontBean {
   /// floorId
   static const String FloorAdvertisePricture_ID = 'floorId';
 

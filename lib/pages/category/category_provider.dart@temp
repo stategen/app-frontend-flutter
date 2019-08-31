@@ -1,4 +1,3 @@
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 ///  Do not remove this unless you get business authorization.
 ///  Category
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
@@ -14,7 +13,6 @@ class CategoryStateEx {
 
 class CategoryProvider extends CategoryAbstractProvider with CategoryStateEx {
   static ChangeNotifierProvider<CategoryProvider> create({Widget child}) {
-    print("ChangeNotifierProvider<CategoryProvider> create");
     return ChangeNotifierProvider<CategoryProvider>(
       builder: (BuildContext context) => CategoryProvider(context: context),
       child: child,
@@ -22,11 +20,8 @@ class CategoryProvider extends CategoryAbstractProvider with CategoryStateEx {
   }
 
   static CategoryProvider of(BuildContext context, {bool listen = true}) {
-    return Provider.of<CategoryProvider>(context, listen: listen);
+     return Provider.of<CategoryProvider>(context, listen: listen);
   }
 
-  CategoryProvider({BuildContext context}) {
-    //this.init(context);
-  }
-
+  CategoryProvider({BuildContext context});
 }

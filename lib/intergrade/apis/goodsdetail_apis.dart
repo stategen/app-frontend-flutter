@@ -11,17 +11,17 @@ import 'package:flutter/material.dart';
 class GoodsDetailApis {
   /// POST /api/goodsDetail/getGoodDetailById
   /// 
-  static Future<Goods> getGoodDetailById(String param, {Map<String, dynamic> payload, String goodId }) async {
+  static Future<Goods> getGoodDetailById(String param, {Map<String, dynamic> payload, String goodsId }) async {
     var requestInit = RequestInit();
     requestInit.baseUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/goodsDetail/getGoodDetailById';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
     if (param != null) {
-      payload['goodId'] = param;
+      payload['goodsId'] = param;
     }
-    if (goodId != null) {
-      payload['goodId'] = goodId;
+    if (goodsId != null) {
+      payload['goodsId'] = goodsId;
     }
     requestInit.data = payload;
     requestInit.method = Method.POST;

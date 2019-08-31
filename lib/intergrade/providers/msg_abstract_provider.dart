@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/msg_apis.dart';
 
 class MsgBaseState {
@@ -25,7 +26,7 @@ class _MsgState with MsgBaseState {
 }
 
 
-abstract class MsgAbstractProvider with ChangeNotifier, MsgBaseState {
+abstract class MsgAbstractProvider with ChangeNotifier, BaseProvider, MsgBaseState {
 
 
   void mergeState(BuildContext context, MsgBaseState newState) {

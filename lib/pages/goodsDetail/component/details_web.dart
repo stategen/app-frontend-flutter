@@ -11,9 +11,9 @@ class DetailsWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     var goodsDetailProvider =GoodsDetailProvider.of(context);
     if (goodsDetailProvider != null) {
-      var goodss= goodsDetailProvider.goodsArea.valueMap.values.toList();
-      var goodsDetails = goodss[0].goodsDetail;
-      var comments =goodss[0].goodComments;
+      var goods= goodsDetailProvider.goodsArea.list[0];
+      var goodsDetails = goods.goodsDetail;
+      var comments =goods.goodComments;
 
       final isLeft = goodsDetailProvider.isLeft;
       if (isLeft) {

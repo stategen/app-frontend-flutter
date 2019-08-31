@@ -1,5 +1,3 @@
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
-
 ///  Do not remove this unless you get business authorization.
 ///  Goods
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
@@ -10,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:baixingshenghuo_shop/intergrade/intergrades.dart';
 
 class GoodsStateEx {
+
 }
 
 class GoodsProvider extends GoodsAbstractProvider with GoodsStateEx {
@@ -21,29 +20,8 @@ class GoodsProvider extends GoodsAbstractProvider with GoodsStateEx {
   }
 
   static GoodsProvider of(BuildContext context, {bool listen = true}) {
-    return Provider.of<GoodsProvider>(context, listen: listen);
+     return Provider.of<GoodsProvider>(context, listen: listen);
   }
 
   GoodsProvider({BuildContext context});
-
-  fetchFirst(BuildContext context) {
-    var categoryProvider = CategoryProvider.of(context, listen: false);
-    this.goodsArea.initState();
-    var current = categoryProvider.categoryArea.current;
-    if (current != null) {
-      var categoryId = current.mallCategoryId;
-      var categorySubId;
-      var categorySubs = current.bxMallSubDto;
-      if (categorySubs != null && categorySubs.isNotEmpty) {
-        var iterator = categorySubs.iterator;
-        while (iterator.moveNext()) {
-          if (iterator.current.frontSelected ?? false ) {
-            categorySubId = iterator.current.mallSubId;
-            break;
-          }
-        }
-      }
-      this.getMallGoods(context, categoryId: categoryId, categorySubId: categorySubId);
-    }
-  }
 }

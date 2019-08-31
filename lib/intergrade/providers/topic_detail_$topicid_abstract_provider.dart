@@ -15,11 +15,12 @@ import '../beans/topicreply.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/topic_detail_\$topicid_apis.dart';
 
 class Topic_detail_$topicIdBaseState {
-  AreaState<Topic> topicArea;
-  AreaState<TopicReply> topicReplyArea;
+  AreaState<Topic> topicArea = AreaState<Topic>.init();
+  AreaState<TopicReply> topicReplyArea = AreaState<TopicReply>.init();
 
   void merge(Topic_detail_$topicIdBaseState source) {
     topicArea != null ? topicArea.merge(source.topicArea) : topicArea = source.topicArea;
@@ -40,7 +41,7 @@ class _Topic_detail_$topicIdState with Topic_detail_$topicIdBaseState {
 }
 
 
-abstract class Topic_detail_$topicIdAbstractProvider with ChangeNotifier, Topic_detail_$topicIdBaseState {
+abstract class Topic_detail_$topicIdAbstractProvider with ChangeNotifier, BaseProvider, Topic_detail_$topicIdBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await Topic_detail_$topicIdCommand.init(this,
@@ -126,6 +127,7 @@ abstract class Topic_detail_$topicIdCommand {
 
     var newState = _Topic_detail_$topicIdState(
       topicReplyArea: AreaState(
+        fetched: true,
         valueMap: topicReplyMap,
       ),
     );
@@ -139,6 +141,7 @@ abstract class Topic_detail_$topicIdCommand {
 
     var newState = _Topic_detail_$topicIdState(
       topicArea: AreaState(
+        fetched: true,
         valueMap: Topic.toIdMap([topic]),
         queryRule: payload,
       ),
@@ -157,13 +160,16 @@ abstract class Topic_detail_$topicIdCommand {
   /// 
   static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageList(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId, int page, int pageSize }) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
-    payload = {'page': 1, 'pageSize': 10, ...oldTopicReplyArea.queryRule, ...payload};
+    payload ??= {};
+    var queryRule = oldTopicReplyArea?.queryRule;
+    payload = {'pageNum': 1, 'pageSize': 10, ...?queryRule, ...payload};
     PageList<TopicReply> topicReplyPageList = await Topic_detail_$topicIdApis.getTopicReplyPageList(payload: payload, topicId: topicId, page: page, pageSize: pageSize);
     var pagination = topicReplyPageList?.pagination;
     var topicReplyMap = CollectionUtil.appendOrUpdateMap(oldTopicReplyArea?.clone()?.valueMap,  TopicReply.toIdMap(topicReplyPageList.items));
 
     var newState = _Topic_detail_$topicIdState(
       topicReplyArea: AreaState(
+        fetched: true,
         valueMap: topicReplyMap,
         pagination: pagination,
         queryRule: payload,
@@ -176,11 +182,11 @@ abstract class Topic_detail_$topicIdCommand {
   static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageListNext(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     var pagination = oldTopicReplyArea?.pagination;
-    var page = pagination?.current;
-    page = (page != null ? page : 0) + 1;
+    var pageNum = pagination?.current;
+    pageNum = (pageNum != null ? pageNum : 0) + 1;
     var totalPages = (pagination.total / (pagination?.pageSize ?? 10)).ceil();
-    page = min(page, totalPages);
-    var payload = {...oldTopicReplyArea.queryRule, 'page': page};
+    pageNum = min(pageNum, totalPages);
+    var payload = {...oldTopicReplyArea.queryRule, 'pageNum': pageNum};
     var newAreaState = await Topic_detail_$topicIdCommand.getTopicReplyPageList(topic_detail_$topicIdState,payload: payload);
     return newAreaState;
   }
@@ -200,6 +206,7 @@ abstract class Topic_detail_$topicIdCommand {
 
     var newState = _Topic_detail_$topicIdState(
       topicReplyArea: AreaState(
+        fetched: true,
         valueMap: topicReplyMap,
       ),
     );

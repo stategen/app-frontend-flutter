@@ -1,0 +1,27 @@
+///  Do not remove this unless you get business authorization.
+///  GoodsDetail
+///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
+///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:baixingshenghuo_shop/intergrade/intergrades.dart';
+
+class GoodsDetailStateEx {
+
+}
+
+class GoodsDetailProvider extends GoodsDetailAbstractProvider with GoodsDetailStateEx {
+  static ChangeNotifierProvider<GoodsDetailProvider> create({Widget child}) {
+    return ChangeNotifierProvider<GoodsDetailProvider>(
+      builder: (BuildContext context) => GoodsDetailProvider(context: context),
+      child: child,
+    );
+  }
+
+  static GoodsDetailProvider of(BuildContext context, {bool listen = true}) {
+     return Provider.of<GoodsDetailProvider>(context, listen: listen);
+  }
+
+  GoodsDetailProvider({BuildContext context});
+}

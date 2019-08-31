@@ -14,10 +14,11 @@ import '../beans/user.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/user_me_apis.dart';
 
 class User_meBaseState {
-  AreaState<User> userArea;
+  AreaState<User> userArea = AreaState<User>.init();
 
   void merge(User_meBaseState source) {
     userArea != null ? userArea.merge(source.userArea) : userArea = source.userArea;
@@ -35,7 +36,7 @@ class _User_meState with User_meBaseState {
 }
 
 
-abstract class User_meAbstractProvider with ChangeNotifier, User_meBaseState {
+abstract class User_meAbstractProvider with ChangeNotifier, BaseProvider, User_meBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await User_meCommand.init(this,
@@ -98,6 +99,7 @@ abstract class User_meCommand {
 
     var newState = _User_meState(
       userArea: AreaState(
+        fetched: true,
         valueMap: User.toIdMap([user]),
       ),
     );
@@ -111,6 +113,7 @@ abstract class User_meCommand {
 
     var newState = _User_meState(
       userArea: AreaState(
+        fetched: true,
         valueMap: User.toIdMap([user]),
       ),
     );
@@ -126,6 +129,7 @@ abstract class User_meCommand {
 
     var newState = _User_meState(
       userArea: AreaState(
+        fetched: true,
         valueMap: userMap,
       ),
     );

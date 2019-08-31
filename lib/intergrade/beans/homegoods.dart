@@ -5,8 +5,9 @@
 import '../beans/goods.dart';
 import '../beans/goodscomment.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class HomeGoods extends Goods {
+class HomeGoods extends Goods with FrontBean {
   /// recommendId
   static const String HomeGoods_ID = 'recommendId';
 

@@ -4,8 +4,9 @@
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../beans/pagination.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class AntdPageList<E> {
+class AntdPageList<E> with FrontBean {
   /// pagination
   Pagination pagination;
 
@@ -17,18 +18,18 @@ class AntdPageList<E> {
     this.list,
   });
 
-  static AntdPageList fromJson(Map<String, dynamic> json, FromJsonListFn genericFromJsonListFn) {
+  static AntdPageList<E> fromJson<E>(Map<String, dynamic> json, FromJsonListFn<E> genericFromJsonListFn) {
     if (json == null) {
       return null;
     }
-    return AntdPageList(
+    return AntdPageList<E>(
       pagination: Pagination.fromJson(json['pagination']),
-      list: genericFromJsonListFn(json['list']),
+      list: genericFromJsonListFn(List<Map<String,dynamic>>.from(json['list'])),
     );
   }
 
-  static List<AntdPageList> fromJsonList(List jsonList, FromJsonListFn genericFromJsonListFn) {
-    List<AntdPageList> result;
+  static List<AntdPageList<E>> fromJsonList<E>(List jsonList, FromJsonListFn<E> genericFromJsonListFn) {
+    List<AntdPageList<E>> result;
     if (jsonList != null){
       List<Map<String, dynamic>> jsonMapList;
       if (jsonList is List<Map<String, dynamic>>){

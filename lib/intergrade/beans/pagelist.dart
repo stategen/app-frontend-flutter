@@ -4,8 +4,9 @@
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../beans/pagination.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class PageList<E> {
+class PageList<E> with FrontBean {
   /// pageSize
   int pageSize;
 
@@ -33,22 +34,22 @@ class PageList<E> {
     this.pagination,
   });
 
-  static PageList fromJson(Map<String, dynamic> json, FromJsonListFn genericFromJsonListFn) {
+  static PageList<E> fromJson<E>(Map<String, dynamic> json, FromJsonListFn<E> genericFromJsonListFn) {
     if (json == null) {
       return null;
     }
-    return PageList(
+    return PageList<E>(
       pageSize: JsonUtil.parseInt(json['pageSize']),
       pageNum: JsonUtil.parseInt(json['pageNum']),
       totalCount: JsonUtil.parseInt(json['totalCount']),
       totalPages: JsonUtil.parseInt(json['totalPages']),
-      items: genericFromJsonListFn(json['items']),
+      items: genericFromJsonListFn(List<Map<String,dynamic>>.from(json['items'])),
       pagination: Pagination.fromJson(json['pagination']),
     );
   }
 
-  static List<PageList> fromJsonList(List jsonList, FromJsonListFn genericFromJsonListFn) {
-    List<PageList> result;
+  static List<PageList<E>> fromJsonList<E>(List jsonList, FromJsonListFn<E> genericFromJsonListFn) {
+    List<PageList<E>> result;
     if (jsonList != null){
       List<Map<String, dynamic>> jsonMapList;
       if (jsonList is List<Map<String, dynamic>>){

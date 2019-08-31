@@ -13,10 +13,11 @@ import '../enums/topictype.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/topic_publish_apis.dart';
 
 class Topic_publishBaseState {
-  AreaState<Topic> topicArea;
+  AreaState<Topic> topicArea = AreaState<Topic>.init();
 
   void merge(Topic_publishBaseState source) {
     topicArea != null ? topicArea.merge(source.topicArea) : topicArea = source.topicArea;
@@ -34,7 +35,7 @@ class _Topic_publishState with Topic_publishBaseState {
 }
 
 
-abstract class Topic_publishAbstractProvider with ChangeNotifier, Topic_publishBaseState {
+abstract class Topic_publishAbstractProvider with ChangeNotifier, BaseProvider, Topic_publishBaseState {
 
 
   /// 
@@ -58,6 +59,7 @@ abstract class Topic_publishCommand {
 
     var newState = _Topic_publishState(
       topicArea: AreaState(
+        fetched: true,
         valueMap: Topic.toIdMap([topic]),
       ),
     );

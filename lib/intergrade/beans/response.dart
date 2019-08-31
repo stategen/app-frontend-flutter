@@ -5,8 +5,9 @@
 import '../enums/responsestatus.dart';
 import '../beans/simpleresponse.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class Response<T> extends SimpleResponse {
+class Response<T> extends SimpleResponse with FrontBean {
   /// code
   int code;
 
@@ -28,11 +29,11 @@ class Response<T> extends SimpleResponse {
     success,
   }) : super(message: message, success: success);
 
-  static Response fromJson(Map<String, dynamic> json) {
+  static Response<T> fromJson<T>(Map<String, dynamic> json) {
     if (json == null) {
       return null;
     }
-    return Response(
+    return Response<T>(
       code: JsonUtil.parseInt(json['code']),
       exeptionClass: JsonUtil.parseString(json['exeptionClass']),
       data: json['data'],
@@ -42,7 +43,7 @@ class Response<T> extends SimpleResponse {
     );
   }
 
-  static List<Response> fromJsonList(List jsonList) {
+  static List<Response<T>> fromJsonList<T>(List jsonList) {
     return JsonUtil.genFromJsonList(jsonList, Response.fromJson);
   }
 

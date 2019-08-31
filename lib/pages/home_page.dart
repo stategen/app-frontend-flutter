@@ -1,3 +1,5 @@
+import 'package:baixingshenghuo_shop/intergrade/beans/goods.dart';
+import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 import '../service/service_method.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -18,7 +20,7 @@ class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
 //火爆专区的列表
   int page = 1;
-  List<Map> hotGoodsList = [];
+  List<Goods> hotGoodsList = [];
 
   GlobalKey<RefreshFooterState> _footerKey = GlobalKey<RefreshFooterState>();
 
@@ -108,26 +110,13 @@ class _HomePageState extends State<HomePage>
                     _hotGoods(),
                   ],
                 ),
-                loadMore: () async {
-                  print('开始加载更多.......');
-                  var formData = {'page': page};
-                  await request('homePageBelowConten', formData: formData)
-                      .then((value) {
-                    var data ;
-                    if (value is Map) {
-                      data = json.decode(json.encode(value));
-                    } else {
-                      data = json.decode(value.toString());
-                      debugPrintStack(label: data.runtimeType.toString());
-                    }
-                    List<Map> newGoodsList = (data['data'] as List).cast();
 
-                    debugPrintStack(label: json.encode(data));
-                    debugPrintStack(label: json.encode(newGoodsList));
-                    setState(() {
-                      hotGoodsList.addAll(newGoodsList);
-                      page += 1;
-                    });
+                loadMore: () async {
+                  HomeProvider homeProvider =HomeProvider.of(context);
+                  await homeProvider.homePageBelowConten(context, pageNum: page);
+                  setState(() {
+                    hotGoodsList.addAll(homeProvider.goodsArea.list);
+                    page += 1;
                   });
                 },
               );
@@ -160,7 +149,7 @@ class _HomePageState extends State<HomePage>
           onTap: () {
             //路由跳转
             Application.router
-                .navigateTo(context, '/detail?id=${value['goodsId']}', transition: TransitionType.native);
+                .navigateTo(context, '/detail?id=${value.goodsId}', transition: TransitionType.native);
           },
           child: Container(
             width: ScreenUtil().setWidth(370),
@@ -171,11 +160,11 @@ class _HomePageState extends State<HomePage>
             child: Column(
               children: <Widget>[
                 Image.network(
-                  value['image'],
+                  value.image,
                   width: ScreenUtil().setWidth(388),
                 ),
                 Text(
-                  value['name'],
+                  value.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -184,11 +173,11 @@ class _HomePageState extends State<HomePage>
                 ),
                 Row(
                   children: <Widget>[
-                    Text('￥${value['mallPrice']}'),
+                    Text('￥${value.mallPrice}'),
                     Container(
                       padding: EdgeInsets.only(left: 5.0),
                       child: Text(
-                        '￥${value['price']}',
+                        '￥${value.price}',
                         style: TextStyle(
                             color: Colors.black26,
                             decoration: TextDecoration.lineThrough,

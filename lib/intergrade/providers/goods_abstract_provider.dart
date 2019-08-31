@@ -9,13 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../beans/goods.dart';
+import '../beans/pagelist.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/goods_apis.dart';
 
 class GoodsBaseState {
-  AreaState<Goods> goodsArea;
+  AreaState<Goods> goodsArea = AreaState<Goods>.init();
 
   void merge(GoodsBaseState source) {
     goodsArea != null ? goodsArea.merge(source.goodsArea) : goodsArea = source.goodsArea;
@@ -33,8 +35,19 @@ class _GoodsState with GoodsBaseState {
 }
 
 
-abstract class GoodsAbstractProvider with ChangeNotifier, GoodsBaseState {
+abstract class GoodsAbstractProvider with ChangeNotifier, BaseProvider, GoodsBaseState {
 
+
+  /// 
+  Future<void> getMallGoods(BuildContext context, {Map<String, dynamic> payload, String categoryId, String categorySubId, int pageSize, int pageNum }) async {
+    var newState = await GoodsCommand.getMallGoods(this, payload: payload, categoryId: categoryId, categorySubId: categorySubId, pageSize: pageSize, pageNum: pageNum);
+    mergeState(context, newState);
+  }
+
+  Future<void> getMallGoodsNext(BuildContext context) async {
+    var newState = await GoodsCommand.getMallGoodsNext(this);
+    mergeState(context, newState);
+  }
 
   void mergeState(BuildContext context, GoodsBaseState newState) {
     this.merge(newState);
@@ -44,5 +57,39 @@ abstract class GoodsAbstractProvider with ChangeNotifier, GoodsBaseState {
 
 
 abstract class GoodsCommand {
+
+  /// 
+  static Future<GoodsBaseState> getMallGoods(GoodsAbstractProvider goodsState, {Map<String, dynamic> payload, String categoryId, String categorySubId, int pageSize, int pageNum }) async {
+    var oldGoodsArea = goodsState.goodsArea;
+    payload ??= {};
+    var queryRule = oldGoodsArea?.queryRule;
+    payload = {'pageNum': 1, 'pageSize': 10, ...?queryRule, ...payload};
+    PageList<Goods> goodsPageList = await GoodsApis.getMallGoods(payload: payload, categoryId: categoryId, categorySubId: categorySubId, pageSize: pageSize, pageNum: pageNum);
+    var pagination = goodsPageList?.pagination;
+    var goodsMap = CollectionUtil.appendOrUpdateMap(oldGoodsArea?.clone()?.valueMap,  Goods.toIdMap(goodsPageList.items));
+
+    var newState = _GoodsState(
+      goodsArea: AreaState(
+        fetched: true,
+        valueMap: goodsMap,
+        pagination: pagination,
+        queryRule: payload,
+      ),
+    );
+    return newState;
+  }
+
+
+  static Future<GoodsBaseState> getMallGoodsNext(GoodsAbstractProvider goodsState) async {
+    var oldGoodsArea = goodsState.goodsArea;
+    var pagination = oldGoodsArea?.pagination;
+    var pageNum = pagination?.current;
+    pageNum = (pageNum != null ? pageNum : 0) + 1;
+    var totalPages = (pagination.total / (pagination?.pageSize ?? 10)).ceil();
+    pageNum = min(pageNum, totalPages);
+    var payload = {...oldGoodsArea.queryRule, 'pageNum': pageNum};
+    var newAreaState = await GoodsCommand.getMallGoods(goodsState,payload: payload);
+    return newAreaState;
+  }
 
 }

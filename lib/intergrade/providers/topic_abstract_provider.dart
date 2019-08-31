@@ -15,10 +15,11 @@ import '../enums/topictype.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/topic_apis.dart';
 
 class TopicBaseState {
-  AreaState<Topic> topicArea;
+  AreaState<Topic> topicArea = AreaState<Topic>.init();
 
   void merge(TopicBaseState source) {
     topicArea != null ? topicArea.merge(source.topicArea) : topicArea = source.topicArea;
@@ -36,7 +37,7 @@ class _TopicState with TopicBaseState {
 }
 
 
-abstract class TopicAbstractProvider with ChangeNotifier, TopicBaseState {
+abstract class TopicAbstractProvider with ChangeNotifier, BaseProvider, TopicBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await TopicCommand.init(this,
@@ -109,6 +110,7 @@ abstract class TopicCommand {
 
     var newState = _TopicState(
       topicArea: AreaState(
+        fetched: true,
         valueMap: topicMap,
       ),
     );
@@ -124,6 +126,7 @@ abstract class TopicCommand {
 
     var newState = _TopicState(
       topicArea: AreaState(
+        fetched: true,
         valueMap: topicMap,
       ),
     );
@@ -134,13 +137,16 @@ abstract class TopicCommand {
   /// 
   static Future<TopicBaseState> getTopicPageList(TopicAbstractProvider topicState, {Map<String, dynamic> payload, TopicType topicType, bool mdrender, int page, int pageSize }) async {
     var oldTopicArea = topicState.topicArea;
-    payload = {'page': 1, 'pageSize': 10, ...oldTopicArea.queryRule, ...payload};
+    payload ??= {};
+    var queryRule = oldTopicArea?.queryRule;
+    payload = {'pageNum': 1, 'pageSize': 10, ...?queryRule, ...payload};
     AntdPageList<Topic> topicPageList = await TopicApis.getTopicPageList(payload: payload, topicType: topicType, mdrender: mdrender, page: page, pageSize: pageSize);
     var pagination = topicPageList?.pagination;
     var topicMap = CollectionUtil.appendOrUpdateMap(oldTopicArea?.clone()?.valueMap,  Topic.toIdMap(topicPageList.list));
 
     var newState = _TopicState(
       topicArea: AreaState(
+        fetched: true,
         valueMap: topicMap,
         pagination: pagination,
         queryRule: payload,
@@ -153,11 +159,11 @@ abstract class TopicCommand {
   static Future<TopicBaseState> getTopicPageListNext(TopicAbstractProvider topicState) async {
     var oldTopicArea = topicState.topicArea;
     var pagination = oldTopicArea?.pagination;
-    var page = pagination?.current;
-    page = (page != null ? page : 0) + 1;
+    var pageNum = pagination?.current;
+    pageNum = (pageNum != null ? pageNum : 0) + 1;
     var totalPages = (pagination.total / (pagination?.pageSize ?? 10)).ceil();
-    page = min(page, totalPages);
-    var payload = {...oldTopicArea.queryRule, 'page': page};
+    pageNum = min(pageNum, totalPages);
+    var payload = {...oldTopicArea.queryRule, 'pageNum': pageNum};
     var newAreaState = await TopicCommand.getTopicPageList(topicState,payload: payload);
     return newAreaState;
   }
@@ -177,6 +183,7 @@ abstract class TopicCommand {
 
     var newState = _TopicState(
       topicArea: AreaState(
+        fetched: true,
         valueMap: topicMap,
       ),
     );

@@ -18,15 +18,16 @@ import '../beans/user.dart';
 import '../../stgutil/stg_util.dart';
 import '../../stgutil/collection_util.dart';
 import '../../stgutil/init_state.dart';
+import '../../stgutil/base_provider.dart';
 import '../apis/app_apis.dart';
 
 class AppBaseState {
-  AreaState<City> cityArea;
-  AreaState<Hoppy> hoppyArea;
-  AreaState<Menu> menuArea;
-  AreaState<Province> provinceArea;
-  AreaState<Region> regionArea;
-  AreaState<User> userArea;
+  AreaState<City> cityArea = AreaState<City>.init();
+  AreaState<Hoppy> hoppyArea = AreaState<Hoppy>.init();
+  AreaState<Menu> menuArea = AreaState<Menu>.init();
+  AreaState<Province> provinceArea = AreaState<Province>.init();
+  AreaState<Region> regionArea = AreaState<Region>.init();
+  AreaState<User> userArea = AreaState<User>.init();
 
   void merge(AppBaseState source) {
     cityArea != null ? cityArea.merge(source.cityArea) : cityArea = source.cityArea;
@@ -59,7 +60,7 @@ class _AppState with AppBaseState {
 }
 
 
-abstract class AppAbstractProvider with ChangeNotifier, AppBaseState {
+abstract class AppAbstractProvider with ChangeNotifier, BaseProvider, AppBaseState {
 
   Future<void> init(BuildContext context) async {
     var newState = await AppCommand.init(this,
@@ -122,6 +123,7 @@ abstract class AppCommand {
 
     var newState = _AppState(
       menuArea: AreaState(
+        fetched: true,
         valueMap: Menu.toIdMap(menus),
       ),
     );
@@ -135,6 +137,7 @@ abstract class AppCommand {
 
     var newState = _AppState(
       userArea: AreaState(
+        fetched: true,
         valueMap: User.toIdMap([user]),
       ),
     );
@@ -151,6 +154,7 @@ abstract class AppCommand {
 
     var newState = _AppState(
       userArea: AreaState(
+        fetched: true,
       ),
     );
     return newState;

@@ -5,8 +5,9 @@
 import '../enums/topictype.dart';
 import '../beans/user.dart';
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class Topic {
+class Topic with FrontBean {
   /// topicId
   static const String Topic_ID = 'topicId';
 

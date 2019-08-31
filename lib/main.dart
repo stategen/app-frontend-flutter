@@ -1,9 +1,8 @@
+import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:baixingshenghuo_shop/pages/index_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:baixingshenghuo_shop/provide/child_category.dart';
-import 'package:baixingshenghuo_shop/provide/cartegory_goods_list.dart';
 import 'package:fluro/fluro.dart';
 import 'package:baixingshenghuo_shop/routers/routers.dart';
 import 'package:baixingshenghuo_shop/routers/application.dart';
@@ -20,9 +19,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //状态管理
     //分类管理
-    var childCategory = ChildCategory();
-//  //分类详情商品列表
-    var catergoyGoodsListProvide = CategoryGoodsListProvide();
     //商品详情
     var detailsInfoProvide = DetailsInfoProvide();
     //购物车
@@ -37,13 +33,10 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(builder: (_) => childCategory),
-        ChangeNotifierProvider(builder: (_) => catergoyGoodsListProvide),
 //        ChangeNotifierProvider(builder: (_) => detailsInfoProvide),
         ChangeNotifierProvider(builder: (_) => cartProvide),
         ChangeNotifierProvider(builder: (_) => currentIndexProvide),
-
-
+        HomeProvider.create(),
       ],
       child: Container(
         child: MaterialApp(
