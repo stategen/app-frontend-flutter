@@ -138,8 +138,7 @@ abstract class TopicCommand {
   static Future<TopicBaseState> getTopicPageList(TopicAbstractProvider topicState, {Map<String, dynamic> payload, TopicType topicType, bool mdrender, int page, int pageSize }) async {
     var oldTopicArea = topicState.topicArea;
     payload ??= {};
-    var queryRule = oldTopicArea?.queryRule;
-    payload = {'pageNum': 1, 'pageSize': 10, ...?queryRule, ...payload};
+    payload = {'pageNum': 1, 'pageSize': 10,  ...payload};
     AntdPageList<Topic> topicPageList = await TopicApis.getTopicPageList(payload: payload, topicType: topicType, mdrender: mdrender, page: page, pageSize: pageSize);
     var pagination = topicPageList?.pagination;
     var topicMap = CollectionUtil.appendOrUpdateMap(oldTopicArea?.clone()?.valueMap,  Topic.toIdMap(topicPageList.list));

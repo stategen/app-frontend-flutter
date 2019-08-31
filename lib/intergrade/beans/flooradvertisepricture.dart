@@ -79,11 +79,11 @@ class FloorAdvertisePricture with FrontBean {
   /// urlType s
   List<int> urlTypes;
 
-  /// tO_PLACE
-  String tO_PLACE;
-
   /// pICTURE_ADDRESS
   String pICTURE_ADDRESS;
+
+  /// tO_PLACE
+  String tO_PLACE;
 
   FloorAdvertisePricture({
     this.floorGoodss,
@@ -109,8 +109,8 @@ class FloorAdvertisePricture with FrontBean {
     this.pictureAddressLike,
     this.toPlaceLike,
     this.urlTypes,
-    this.tO_PLACE,
     this.pICTURE_ADDRESS,
+    this.tO_PLACE,
   });
 
   static FloorAdvertisePricture fromJson(Map<String, dynamic> json) {
@@ -141,8 +141,8 @@ class FloorAdvertisePricture with FrontBean {
       pictureAddressLike: JsonUtil.parseString(json['pictureAddressLike']),
       toPlaceLike: JsonUtil.parseString(json['toPlaceLike']),
       urlTypes: JsonUtil.parseList<int>(json['urlTypes'], JsonUtil.parseInt),
-      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
       pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
+      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
     );
   }
 
@@ -237,11 +237,11 @@ class FloorAdvertisePricture with FrontBean {
       }
       result['urlTypes'] = list;
     }
-    if (this.tO_PLACE != null) {
-      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
-    }
     if (this.pICTURE_ADDRESS != null) {
       result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
+    }
+    if (this.tO_PLACE != null) {
+      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
     }
     return result;
   }

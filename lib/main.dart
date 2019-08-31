@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:fluro/fluro.dart';
 import 'package:baixingshenghuo_shop/routers/routers.dart';
 import 'package:baixingshenghuo_shop/routers/application.dart';
-import 'package:baixingshenghuo_shop/provide/details_info.dart';
 import 'package:baixingshenghuo_shop/provide/cart.dart';
 import 'package:baixingshenghuo_shop/provide/currentIndex.dart';
 
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
     //状态管理
     //分类管理
     //商品详情
-    var detailsInfoProvide = DetailsInfoProvide();
     //购物车
     var cartProvide = CartProvider();
     var currentIndexProvide = CurrentIndexProvide();
@@ -33,7 +31,6 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-//        ChangeNotifierProvider(builder: (_) => detailsInfoProvide),
         ChangeNotifierProvider(builder: (_) => cartProvide),
         ChangeNotifierProvider(builder: (_) => currentIndexProvide),
         HomeProvider.create(),

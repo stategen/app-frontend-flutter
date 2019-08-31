@@ -1,9 +1,6 @@
 import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
-
-import 'package:baixingshenghuo_shop/provide/details_info.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

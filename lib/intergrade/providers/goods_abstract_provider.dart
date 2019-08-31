@@ -62,8 +62,7 @@ abstract class GoodsCommand {
   static Future<GoodsBaseState> getMallGoods(GoodsAbstractProvider goodsState, {Map<String, dynamic> payload, String categoryId, String categorySubId, int pageSize, int pageNum }) async {
     var oldGoodsArea = goodsState.goodsArea;
     payload ??= {};
-    var queryRule = oldGoodsArea?.queryRule;
-    payload = {'pageNum': 1, 'pageSize': 10, ...?queryRule, ...payload};
+    payload = {'pageNum': 1, 'pageSize': 10,  ...payload};
     PageList<Goods> goodsPageList = await GoodsApis.getMallGoods(payload: payload, categoryId: categoryId, categorySubId: categorySubId, pageSize: pageSize, pageNum: pageNum);
     var pagination = goodsPageList?.pagination;
     var goodsMap = CollectionUtil.appendOrUpdateMap(oldGoodsArea?.clone()?.valueMap,  Goods.toIdMap(goodsPageList.items));

@@ -4,11 +4,7 @@
 ///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import 'package:provider/provider.dart';
 import 'goodsdetail_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:baixingshenghuo_shop/provide/details_info.dart';
 import './component/details_top_area.dart';
 import './component/details_explain.dart';
 import './component/details_tabbar.dart';

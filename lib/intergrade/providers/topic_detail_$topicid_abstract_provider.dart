@@ -161,8 +161,7 @@ abstract class Topic_detail_$topicIdCommand {
   static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageList(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId, int page, int pageSize }) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     payload ??= {};
-    var queryRule = oldTopicReplyArea?.queryRule;
-    payload = {'pageNum': 1, 'pageSize': 10, ...?queryRule, ...payload};
+    payload = {'pageNum': 1, 'pageSize': 10,  ...payload};
     PageList<TopicReply> topicReplyPageList = await Topic_detail_$topicIdApis.getTopicReplyPageList(payload: payload, topicId: topicId, page: page, pageSize: pageSize);
     var pagination = topicReplyPageList?.pagination;
     var topicReplyMap = CollectionUtil.appendOrUpdateMap(oldTopicReplyArea?.clone()?.valueMap,  TopicReply.toIdMap(topicReplyPageList.items));
