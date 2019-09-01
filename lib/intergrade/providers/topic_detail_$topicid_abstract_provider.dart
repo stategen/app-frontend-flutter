@@ -161,7 +161,7 @@ abstract class Topic_detail_$topicIdCommand {
   static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageList(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState, {Map<String, dynamic> payload, @required String topicId, int page, int pageSize }) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     payload ??= {};
-    payload = {'pageNum': 1, 'pageSize': 10,  ...payload};
+    payload = {'pageNum': DEFAULT_PAGE_NUM, 'pageSize': DEFAULT_PAGE_SIZE,  ...payload};
     PageList<TopicReply> topicReplyPageList = await Topic_detail_$topicIdApis.getTopicReplyPageList(payload: payload, topicId: topicId, page: page, pageSize: pageSize);
     var pagination = topicReplyPageList?.pagination;
     var topicReplyMap = CollectionUtil.appendOrUpdateMap(oldTopicReplyArea?.clone()?.valueMap,  TopicReply.toIdMap(topicReplyPageList.items));
@@ -181,11 +181,10 @@ abstract class Topic_detail_$topicIdCommand {
   static Future<Topic_detail_$topicIdBaseState> getTopicReplyPageListNext(Topic_detail_$topicIdAbstractProvider topic_detail_$topicIdState) async {
     var oldTopicReplyArea = topic_detail_$topicIdState.topicReplyArea;
     var pagination = oldTopicReplyArea?.pagination;
-    var pageNum = pagination?.current;
-    pageNum = (pageNum != null ? pageNum : 0) + 1;
-    var totalPages = (pagination.total / (pagination?.pageSize ?? 10)).ceil();
-    pageNum = min(pageNum, totalPages);
-    var payload = {...oldTopicReplyArea.queryRule, 'pageNum': pageNum};
+    var pageNum = pagination?.current ?? 0;
+    pageNum++;
+    var pageSize = pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
+    var payload = {...?oldTopicReplyArea.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
     var newAreaState = await Topic_detail_$topicIdCommand.getTopicReplyPageList(topic_detail_$topicIdState,payload: payload);
     return newAreaState;
   }

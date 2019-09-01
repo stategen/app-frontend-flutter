@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(builder: (_) => cartProvide),
         ChangeNotifierProvider(builder: (_) => currentIndexProvide),
-        HomeProvider.create(),
       ],
       child: Container(
         child: MaterialApp(

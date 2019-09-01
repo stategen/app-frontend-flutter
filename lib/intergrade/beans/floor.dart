@@ -1,17 +1,21 @@
 ///  Do not remove this unless you get business authorization.
-///  FloorAdvertisePricture
+///  Floor
 ///  created by [stategen.progen] ,do not edit it manually otherwise your code will be override by next call progen,
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
+import '../beans/advertisepicture.dart';
 import '../beans/floorgoods.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
-class FloorAdvertisePricture with FrontBean {
+class Floor with FrontBean {
   /// floorId
-  static const String FloorAdvertisePricture_ID = 'floorId';
+  static const String Floor_ID = 'floorId';
 
   /// floorGoodss
   List<FloorGoods> floorGoodss;
+
+  /// advertisePicture
+  AdvertisePicture advertisePicture;
 
   /// floorId
   String floorId;
@@ -61,32 +65,9 @@ class FloorAdvertisePricture with FrontBean {
   /// 更新时间Max
   DateTime updateTimeMax;
 
-  /// pictureAddress
-  String pictureAddress;
-
-  /// toPlace
-  String toPlace;
-
-  /// urlType
-  int urlType;
-
-  /// pictureAddressLike
-  String pictureAddressLike;
-
-  /// toPlaceLike
-  String toPlaceLike;
-
-  /// urlType s
-  List<int> urlTypes;
-
-  /// pICTURE_ADDRESS
-  String pICTURE_ADDRESS;
-
-  /// tO_PLACE
-  String tO_PLACE;
-
-  FloorAdvertisePricture({
+  Floor({
     this.floorGoodss,
+    this.advertisePicture,
     this.floorId,
     this.advertiseId,
     this.orderNo,
@@ -103,22 +84,15 @@ class FloorAdvertisePricture with FrontBean {
     this.createTimeMax,
     this.updateTimeMin,
     this.updateTimeMax,
-    this.pictureAddress,
-    this.toPlace,
-    this.urlType,
-    this.pictureAddressLike,
-    this.toPlaceLike,
-    this.urlTypes,
-    this.pICTURE_ADDRESS,
-    this.tO_PLACE,
   });
 
-  static FloorAdvertisePricture fromJson(Map<String, dynamic> json) {
+  static Floor fromJson(Map<String, dynamic> json) {
     if (json == null) {
       return null;
     }
-    return FloorAdvertisePricture(
+    return Floor(
       floorGoodss: FloorGoods.fromJsonList(json['floorGoodss']),
+      advertisePicture: AdvertisePicture.fromJson(json['advertisePicture']),
       floorId: JsonUtil.parseString(json['floorId']),
       advertiseId: JsonUtil.parseInt(json['advertiseId']),
       orderNo: JsonUtil.parseInt(json['orderNo']),
@@ -135,19 +109,11 @@ class FloorAdvertisePricture with FrontBean {
       createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
       updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
       updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      pictureAddress: JsonUtil.parseString(json['pictureAddress']),
-      toPlace: JsonUtil.parseString(json['toPlace']),
-      urlType: JsonUtil.parseInt(json['urlType']),
-      pictureAddressLike: JsonUtil.parseString(json['pictureAddressLike']),
-      toPlaceLike: JsonUtil.parseString(json['toPlaceLike']),
-      urlTypes: JsonUtil.parseList<int>(json['urlTypes'], JsonUtil.parseInt),
-      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
-      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
     );
   }
 
-  static List<FloorAdvertisePricture> fromJsonList(List jsonList) {
-    return JsonUtil.genFromJsonList(jsonList, FloorAdvertisePricture.fromJson);
+  static List<Floor> fromJsonList(List jsonList) {
+    return JsonUtil.genFromJsonList(jsonList, Floor.fromJson);
   }
 
   Map<String, dynamic> toMap() {
@@ -158,6 +124,9 @@ class FloorAdvertisePricture with FrontBean {
         list.add(v.toMap());
       }
       result['floorGoodss'] = list;
+    }
+    if (this.advertisePicture != null) {
+      result['advertisePicture'] = advertisePicture.toMap();
     }
     if (this.floorId != null) {
       result['floorId'] = JsonUtil.stringToJson(floorId);
@@ -215,55 +184,27 @@ class FloorAdvertisePricture with FrontBean {
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
-    if (this.pictureAddress != null) {
-      result['pictureAddress'] = JsonUtil.stringToJson(pictureAddress);
-    }
-    if (this.toPlace != null) {
-      result['toPlace'] = JsonUtil.stringToJson(toPlace);
-    }
-    if (this.urlType != null) {
-      result['urlType'] = JsonUtil.intToJson(urlType);
-    }
-    if (this.pictureAddressLike != null) {
-      result['pictureAddressLike'] = JsonUtil.stringToJson(pictureAddressLike);
-    }
-    if (this.toPlaceLike != null) {
-      result['toPlaceLike'] = JsonUtil.stringToJson(toPlaceLike);
-    }
-    if (this.urlTypes != null) {
-      var list = List();
-      for (var v in urlTypes) {
-        list.add(JsonUtil.intToJson(v));
-      }
-      result['urlTypes'] = list;
-    }
-    if (this.pICTURE_ADDRESS != null) {
-      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
-    }
-    if (this.tO_PLACE != null) {
-      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
-    }
     return result;
   }
 
-  static Map<String, FloorAdvertisePricture> toIdMap(List<FloorAdvertisePricture> floorAdvertisePrictureList) {
-    var result = Map<String, FloorAdvertisePricture>();
-    if (floorAdvertisePrictureList != null) {
-      for (var floorAdvertisePricture in floorAdvertisePrictureList) {
-        if (floorAdvertisePricture != null) {
-          result[floorAdvertisePricture.floorId] = floorAdvertisePricture;
+  static Map<String, Floor> toIdMap(List<Floor> floorList) {
+    var result = Map<String, Floor>();
+    if (floorList != null) {
+      for (var floor in floorList) {
+        if (floor != null) {
+          result[floor.floorId] = floor;
         }
       }
     }
     return result;
   }
 
-  static List<Map<String, dynamic>> toMaps(List<FloorAdvertisePricture> floorAdvertisePrictureList) {
+  static List<Map<String, dynamic>> toMaps(List<Floor> floorList) {
     var result = List<Map<String, dynamic>>();
-    if (floorAdvertisePrictureList != null) {
-      for (var floorAdvertisePricture in floorAdvertisePrictureList) {
-        if (floorAdvertisePricture != null) {
-          result.add(floorAdvertisePricture.toMap());
+    if (floorList != null) {
+      for (var floor in floorList) {
+        if (floor != null) {
+          result.add(floor.toMap());
         }
       }
     }

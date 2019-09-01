@@ -14,7 +14,6 @@ class CategoryStateEx {
 
 class CategoryProvider extends CategoryAbstractProvider with CategoryStateEx {
   static ChangeNotifierProvider<CategoryProvider> create({Widget child}) {
-    print("ChangeNotifierProvider<CategoryProvider> create");
     return ChangeNotifierProvider<CategoryProvider>(
       builder: (BuildContext context) => CategoryProvider(context: context),
       child: child,

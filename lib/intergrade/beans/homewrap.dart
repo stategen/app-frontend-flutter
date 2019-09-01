@@ -3,9 +3,7 @@
 ///  created by [stategen.progen] ,do not edit it manually otherwise your code will be override by next call progen,
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../beans/category.dart';
-import '../beans/flooradvertisepricture.dart';
-import '../beans/floorgoods.dart';
-import '../beans/floornames.dart';
+import '../beans/floor.dart';
 import '../beans/homeadvertise.dart';
 import '../beans/homegoods.dart';
 import '../beans/homeshop.dart';
@@ -26,26 +24,8 @@ class HomeWrap with FrontBean {
   /// advertesPicture
   HomeAdvertise advertesPicture;
 
-  /// floor1
-  List<FloorGoods> floor1;
-
-  /// floor2
-  List<FloorGoods> floor2;
-
-  /// floor3
-  List<FloorGoods> floor3;
-
-  /// floor1Pic
-  FloorAdvertisePricture floor1Pic;
-
-  /// floor2Pic
-  FloorAdvertisePricture floor2Pic;
-
-  /// floor3Pic
-  FloorAdvertisePricture floor3Pic;
-
-  /// floorName
-  FloorNames floorName;
+  /// floors
+  List<Floor> floors;
 
   /// category
   List<Category> category;
@@ -55,13 +35,7 @@ class HomeWrap with FrontBean {
     this.shopInfo,
     this.recommend,
     this.advertesPicture,
-    this.floor1,
-    this.floor2,
-    this.floor3,
-    this.floor1Pic,
-    this.floor2Pic,
-    this.floor3Pic,
-    this.floorName,
+    this.floors,
     this.category,
   });
 
@@ -74,13 +48,7 @@ class HomeWrap with FrontBean {
       shopInfo: HomeShop.fromJson(json['shopInfo']),
       recommend: HomeGoods.fromJsonList(json['recommend']),
       advertesPicture: HomeAdvertise.fromJson(json['advertesPicture']),
-      floor1: FloorGoods.fromJsonList(json['floor1']),
-      floor2: FloorGoods.fromJsonList(json['floor2']),
-      floor3: FloorGoods.fromJsonList(json['floor3']),
-      floor1Pic: FloorAdvertisePricture.fromJson(json['floor1Pic']),
-      floor2Pic: FloorAdvertisePricture.fromJson(json['floor2Pic']),
-      floor3Pic: FloorAdvertisePricture.fromJson(json['floor3Pic']),
-      floorName: FloorNames.fromJson(json['floorName']),
+      floors: Floor.fromJsonList(json['floors']),
       category: Category.fromJsonList(json['category']),
     );
   }
@@ -111,38 +79,12 @@ class HomeWrap with FrontBean {
     if (this.advertesPicture != null) {
       result['advertesPicture'] = advertesPicture.toMap();
     }
-    if (this.floor1 != null) {
+    if (this.floors != null) {
       var list = List();
-      for (var v in floor1) {
+      for (var v in floors) {
         list.add(v.toMap());
       }
-      result['floor1'] = list;
-    }
-    if (this.floor2 != null) {
-      var list = List();
-      for (var v in floor2) {
-        list.add(v.toMap());
-      }
-      result['floor2'] = list;
-    }
-    if (this.floor3 != null) {
-      var list = List();
-      for (var v in floor3) {
-        list.add(v.toMap());
-      }
-      result['floor3'] = list;
-    }
-    if (this.floor1Pic != null) {
-      result['floor1Pic'] = floor1Pic.toMap();
-    }
-    if (this.floor2Pic != null) {
-      result['floor2Pic'] = floor2Pic.toMap();
-    }
-    if (this.floor3Pic != null) {
-      result['floor3Pic'] = floor3Pic.toMap();
-    }
-    if (this.floorName != null) {
-      result['floorName'] = floorName.toMap();
+      result['floors'] = list;
     }
     if (this.category != null) {
       var list = List();

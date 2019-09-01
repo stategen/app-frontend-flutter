@@ -9,6 +9,10 @@ const TIME_FORMAT = "HH:mm:ss";
 const DATE_FORMAT = "YYYY-MM-DD";
 const TIMESTAMP_FORMAT = "YYYY-MM-DD HH:mm:ss";
 
+const DEFAULT_PAGE_NUM =1;
+const DEFAULT_PAGE_SIZE =10;
+
+
 class AreaState<T> {
   String areaName;
   bool fetched;

@@ -3,8 +3,9 @@
 ///  created by [stategen.progen] ,do not edit it manually otherwise your code will be override by next call progen,
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
 import '../../stgutil/json_util.dart';
+import '../../stgutil/front_bean.dart';
 
-class AdvertisePicture {
+class AdvertisePicture with FrontBean {
   /// advertiseId
   static const String AdvertisePicture_ID = 'advertiseId';
 
@@ -53,11 +54,11 @@ class AdvertisePicture {
   /// 更新时间Max
   DateTime updateTimeMax;
 
-  /// pICTURE_ADDRESS
-  String pICTURE_ADDRESS;
-
   /// tO_PLACE
   String tO_PLACE;
+
+  /// pICTURE_ADDRESS
+  String pICTURE_ADDRESS;
 
   AdvertisePicture({
     this.advertiseId,
@@ -75,8 +76,8 @@ class AdvertisePicture {
     this.createTimeMax,
     this.updateTimeMin,
     this.updateTimeMax,
-    this.pICTURE_ADDRESS,
     this.tO_PLACE,
+    this.pICTURE_ADDRESS,
   });
 
   static AdvertisePicture fromJson(Map<String, dynamic> json) {
@@ -99,8 +100,8 @@ class AdvertisePicture {
       createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
       updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
       updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
       tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
+      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
     );
   }
 
@@ -163,11 +164,11 @@ class AdvertisePicture {
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
-    if (this.pICTURE_ADDRESS != null) {
-      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
-    }
     if (this.tO_PLACE != null) {
       result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
+    }
+    if (this.pICTURE_ADDRESS != null) {
+      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
     }
     return result;
   }

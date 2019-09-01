@@ -31,14 +31,14 @@ class GoodsProvider extends GoodsAbstractProvider with GoodsStateEx {
     this.goodsArea.initState();
     var current = categoryProvider.categoryArea.current;
     if (current != null) {
-      var categoryId = current.mallCategoryId;
+      var categoryId = current.categoryId;
       var categorySubId;
-      var categorySubs = current.bxMallSubDto;
+      var categorySubs = current.categorySubs;
       if (categorySubs != null && categorySubs.isNotEmpty) {
         var iterator = categorySubs.iterator;
         while (iterator.moveNext()) {
           if (iterator.current.frontSelected ?? false ) {
-            categorySubId = iterator.current.mallSubId;
+            categorySubId = iterator.current.categorySubId;
             break;
           }
         }

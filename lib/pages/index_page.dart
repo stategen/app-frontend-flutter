@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:baixingshenghuo_shop/pages/home_page.dart';
+import 'package:baixingshenghuo_shop/pages/home/home_page.dart';
 import 'package:baixingshenghuo_shop/pages/cart_page.dart';
 import 'package:baixingshenghuo_shop/pages/category/category_page.dart';
 import 'package:baixingshenghuo_shop/pages/member_page.dart';

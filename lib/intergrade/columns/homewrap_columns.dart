@@ -50,76 +50,14 @@ class HomeWrapColumns{
     //},
   );
 
-  /// floor1  
-  static ColumnConfig floor1 = ColumnConfig(
-    key: 'floor1',
-    title: 'floor1',
+  /// floors  
+  static ColumnConfig floors = ColumnConfig(
+    key: 'floors',
+    title: 'floors',
     // renderColumn: UIColumns.InputRender,
     isArray: true,
     //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return floor1.renderColumn(record, null, text, index, floor1);
-    //},
-  );
-
-  /// floor2  
-  static ColumnConfig floor2 = ColumnConfig(
-    key: 'floor2',
-    title: 'floor2',
-    // renderColumn: UIColumns.InputRender,
-    isArray: true,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return floor2.renderColumn(record, null, text, index, floor2);
-    //},
-  );
-
-  /// floor3  
-  static ColumnConfig floor3 = ColumnConfig(
-    key: 'floor3',
-    title: 'floor3',
-    // renderColumn: UIColumns.InputRender,
-    isArray: true,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return floor3.renderColumn(record, null, text, index, floor3);
-    //},
-  );
-
-  /// floor1Pic  
-  static ColumnConfig floor1Pic = ColumnConfig(
-    key: 'floor1Pic',
-    title: 'floor1Pic',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return floor1Pic.renderColumn(record, null, text, index, floor1Pic);
-    //},
-  );
-
-  /// floor2Pic  
-  static ColumnConfig floor2Pic = ColumnConfig(
-    key: 'floor2Pic',
-    title: 'floor2Pic',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return floor2Pic.renderColumn(record, null, text, index, floor2Pic);
-    //},
-  );
-
-  /// floor3Pic  
-  static ColumnConfig floor3Pic = ColumnConfig(
-    key: 'floor3Pic',
-    title: 'floor3Pic',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return floor3Pic.renderColumn(record, null, text, index, floor3Pic);
-    //},
-  );
-
-  /// floorName  
-  static ColumnConfig floorName = ColumnConfig(
-    key: 'floorName',
-    title: 'floorName',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return floorName.renderColumn(record, null, text, index, floorName);
+    //  return floors.renderColumn(record, null, text, index, floors);
     //},
   );
 

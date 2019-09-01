@@ -2,91 +2,41 @@
 ///  HomeAdvertise
 ///  created by [stategen.progen] ,do not edit it manually otherwise your code will be override by next call progen,
 ///  由 [stategen.progen]代码生成器创建，不要手动修改,否则将在下次创建时自动覆盖
+import '../beans/advertisepicture.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
-class HomeAdvertise with FrontBean {
+class HomeAdvertise extends AdvertisePicture with FrontBean {
   /// homeAdvId
   static const String HomeAdvertise_ID = 'homeAdvId';
 
   /// homeAdvId
   String homeAdvId;
 
-  /// advertiseId
-  int advertiseId;
-
-  /// 创建时间
-  DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
-
   /// homeAdvId s
   List<String> homeAdvIds;
 
-  /// advertiseId s
-  List<int> advertiseIds;
-
-  /// 创建时间Min
-  DateTime createTimeMin;
-
-  /// 创建时间Max
-  DateTime createTimeMax;
-
-  /// 更新时间Min
-  DateTime updateTimeMin;
-
-  /// 更新时间Max
-  DateTime updateTimeMax;
-
-  /// pictureAddress
-  String pictureAddress;
-
-  /// toPlace
-  String toPlace;
-
-  /// urlType
-  int urlType;
-
-  /// pictureAddressLike
-  String pictureAddressLike;
-
-  /// toPlaceLike
-  String toPlaceLike;
-
-  /// urlType s
-  List<int> urlTypes;
-
-  /// pICTURE_ADDRESS
-  String pICTURE_ADDRESS;
-
-  /// tO_PLACE
-  String tO_PLACE;
-
   HomeAdvertise({
     this.homeAdvId,
-    this.advertiseId,
-    this.createTime,
-    this.updateTime,
-    this.deleteFlag,
+    advertiseId,
+    createTime,
+    updateTime,
+    deleteFlag,
     this.homeAdvIds,
-    this.advertiseIds,
-    this.createTimeMin,
-    this.createTimeMax,
-    this.updateTimeMin,
-    this.updateTimeMax,
-    this.pictureAddress,
-    this.toPlace,
-    this.urlType,
-    this.pictureAddressLike,
-    this.toPlaceLike,
-    this.urlTypes,
-    this.pICTURE_ADDRESS,
-    this.tO_PLACE,
-  });
+    advertiseIds,
+    createTimeMin,
+    createTimeMax,
+    updateTimeMin,
+    updateTimeMax,
+    pictureAddress,
+    toPlace,
+    urlType,
+    pictureAddressLike,
+    toPlaceLike,
+    urlTypes,
+    tO_PLACE,
+    pICTURE_ADDRESS,
+  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, tO_PLACE: tO_PLACE, pICTURE_ADDRESS: pICTURE_ADDRESS);
 
   static HomeAdvertise fromJson(Map<String, dynamic> json) {
     if (json == null) {
@@ -110,8 +60,8 @@ class HomeAdvertise with FrontBean {
       pictureAddressLike: JsonUtil.parseString(json['pictureAddressLike']),
       toPlaceLike: JsonUtil.parseString(json['toPlaceLike']),
       urlTypes: JsonUtil.parseList<int>(json['urlTypes'], JsonUtil.parseInt),
-      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
       tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
+      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
     );
   }
 
@@ -184,11 +134,11 @@ class HomeAdvertise with FrontBean {
       }
       result['urlTypes'] = list;
     }
-    if (this.pICTURE_ADDRESS != null) {
-      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
-    }
     if (this.tO_PLACE != null) {
       result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
+    }
+    if (this.pICTURE_ADDRESS != null) {
+      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
     }
     return result;
   }

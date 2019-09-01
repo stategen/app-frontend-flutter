@@ -7,17 +7,17 @@ import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
 class Category with FrontBean {
-  /// mallCategoryId
-  static const String Category_ID = 'mallCategoryId';
+  /// categoryId
+  static const String Category_ID = 'categoryId';
 
-  /// bxMallSubDto
-  List<CategorySub> bxMallSubDto;
+  /// categorySubs
+  List<CategorySub> categorySubs;
 
   /// 大类目录ID
-  String mallCategoryId;
+  String categoryId;
 
   /// 大类目录名称
-  String mallCategoryName;
+  String categoryName;
 
   /// 描述
   String comments;
@@ -35,10 +35,10 @@ class Category with FrontBean {
   int deleteFlag;
 
   /// 大类目录ID s
-  List<String> mallCategoryIds;
+  List<String> categoryIds;
 
   /// 大类目录名称Like
-  String mallCategoryNameLike;
+  String categoryNameLike;
 
   /// 描述Like
   String commentsLike;
@@ -56,16 +56,16 @@ class Category with FrontBean {
   DateTime updateTimeMax;
 
   Category({
-    this.bxMallSubDto,
-    this.mallCategoryId,
-    this.mallCategoryName,
+    this.categorySubs,
+    this.categoryId,
+    this.categoryName,
     this.comments,
     this.image,
     this.createTime,
     this.updateTime,
     this.deleteFlag,
-    this.mallCategoryIds,
-    this.mallCategoryNameLike,
+    this.categoryIds,
+    this.categoryNameLike,
     this.commentsLike,
     this.createTimeMin,
     this.createTimeMax,
@@ -78,16 +78,16 @@ class Category with FrontBean {
       return null;
     }
     return Category(
-      bxMallSubDto: CategorySub.fromJsonList(json['bxMallSubDto']),
-      mallCategoryId: JsonUtil.parseString(json['mallCategoryId']),
-      mallCategoryName: JsonUtil.parseString(json['mallCategoryName']),
+      categorySubs: CategorySub.fromJsonList(json['categorySubs']),
+      categoryId: JsonUtil.parseString(json['categoryId']),
+      categoryName: JsonUtil.parseString(json['categoryName']),
       comments: JsonUtil.parseString(json['comments']),
       image: JsonUtil.parseString(json['image']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      mallCategoryIds: JsonUtil.parseList<String>(json['mallCategoryIds'], JsonUtil.parseString),
-      mallCategoryNameLike: JsonUtil.parseString(json['mallCategoryNameLike']),
+      categoryIds: JsonUtil.parseList<String>(json['categoryIds'], JsonUtil.parseString),
+      categoryNameLike: JsonUtil.parseString(json['categoryNameLike']),
       commentsLike: JsonUtil.parseString(json['commentsLike']),
       createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
       createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
@@ -102,18 +102,18 @@ class Category with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.bxMallSubDto != null) {
+    if (this.categorySubs != null) {
       var list = List();
-      for (var v in bxMallSubDto) {
+      for (var v in categorySubs) {
         list.add(v.toMap());
       }
-      result['bxMallSubDto'] = list;
+      result['categorySubs'] = list;
     }
-    if (this.mallCategoryId != null) {
-      result['mallCategoryId'] = JsonUtil.stringToJson(mallCategoryId);
+    if (this.categoryId != null) {
+      result['categoryId'] = JsonUtil.stringToJson(categoryId);
     }
-    if (this.mallCategoryName != null) {
-      result['mallCategoryName'] = JsonUtil.stringToJson(mallCategoryName);
+    if (this.categoryName != null) {
+      result['categoryName'] = JsonUtil.stringToJson(categoryName);
     }
     if (this.comments != null) {
       result['comments'] = JsonUtil.stringToJson(comments);
@@ -130,15 +130,15 @@ class Category with FrontBean {
     if (this.deleteFlag != null) {
       result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
     }
-    if (this.mallCategoryIds != null) {
+    if (this.categoryIds != null) {
       var list = List();
-      for (var v in mallCategoryIds) {
+      for (var v in categoryIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['mallCategoryIds'] = list;
+      result['categoryIds'] = list;
     }
-    if (this.mallCategoryNameLike != null) {
-      result['mallCategoryNameLike'] = JsonUtil.stringToJson(mallCategoryNameLike);
+    if (this.categoryNameLike != null) {
+      result['categoryNameLike'] = JsonUtil.stringToJson(categoryNameLike);
     }
     if (this.commentsLike != null) {
       result['commentsLike'] = JsonUtil.stringToJson(commentsLike);
@@ -163,7 +163,7 @@ class Category with FrontBean {
     if (categoryList != null) {
       for (var category in categoryList) {
         if (category != null) {
-          result[category.mallCategoryId] = category;
+          result[category.categoryId] = category;
         }
       }
     }

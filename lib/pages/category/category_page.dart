@@ -132,7 +132,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
                   width: 0.5, color: Color.fromRGBO(236, 236, 236, 1.0)),
             )),
         child: Text(
-          categoryProvider.categoryArea.list[index].mallCategoryName,
+          categoryProvider.categoryArea.list[index].categoryName,
           style: TextStyle(fontSize: ScreenUtil().setSp(30)),
         ),
       ),
@@ -156,7 +156,7 @@ class _RightCategoryNavStateState extends State<RightCategoryNavState> {
 
   CategoryProvider categoryProvider;
   GoodsProvider goodsProvider;
-  final all = [CategorySub(mallSubName: "全部")];
+  final all = [CategorySub(subName: "全部")];
 
   @override
   void didChangeDependencies() {
@@ -169,7 +169,7 @@ class _RightCategoryNavStateState extends State<RightCategoryNavState> {
   Widget build(BuildContext context) {
     var category = categoryProvider.categoryArea.current;
     var withAll = [...all];
-    var subs = category?.bxMallSubDto;
+    var subs = category?.categorySubs;
     subs != null ? withAll.addAll(subs) : null;
 
     return Container(
@@ -214,7 +214,7 @@ class _RightCategoryNavStateState extends State<RightCategoryNavState> {
             5.0, ScreenUtil().setHeight(25), 5.0, ScreenUtil().setHeight(25)),
 //        alignment: Alignment.center,
         child: Text(
-          item.mallSubName,
+          item.subName,
           style: TextStyle(
             fontSize: ScreenUtil().setSp(28),
             color: isClick ? Colors.pink : Colors.black,

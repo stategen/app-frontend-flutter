@@ -6,17 +6,17 @@ import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
 class CategorySub with FrontBean {
-  /// mallSubId
-  static const String CategorySub_ID = 'mallSubId';
+  /// categorySubId
+  static const String CategorySub_ID = 'categorySubId';
 
-  /// mallSubId
-  String mallSubId;
+  /// categorySubId
+  String categorySubId;
 
-  /// mallCategoryId
-  String mallCategoryId;
+  /// categoryId
+  String categoryId;
 
-  /// mallSubName
-  String mallSubName;
+  /// subName
+  String subName;
 
   /// comments
   String comments;
@@ -30,14 +30,14 @@ class CategorySub with FrontBean {
   /// 是否删除(0:正常，1删除)
   int deleteFlag;
 
-  /// mallSubId s
-  List<String> mallSubIds;
+  /// categorySubId s
+  List<String> categorySubIds;
 
-  /// mallCategoryId s
-  List<String> mallCategoryIds;
+  /// categoryId s
+  List<String> categoryIds;
 
-  /// mallSubNameLike
-  String mallSubNameLike;
+  /// subNameLike
+  String subNameLike;
 
   /// commentsLike
   String commentsLike;
@@ -55,16 +55,16 @@ class CategorySub with FrontBean {
   DateTime updateTimeMax;
 
   CategorySub({
-    this.mallSubId,
-    this.mallCategoryId,
-    this.mallSubName,
+    this.categorySubId,
+    this.categoryId,
+    this.subName,
     this.comments,
     this.createTime,
     this.updateTime,
     this.deleteFlag,
-    this.mallSubIds,
-    this.mallCategoryIds,
-    this.mallSubNameLike,
+    this.categorySubIds,
+    this.categoryIds,
+    this.subNameLike,
     this.commentsLike,
     this.createTimeMin,
     this.createTimeMax,
@@ -77,16 +77,16 @@ class CategorySub with FrontBean {
       return null;
     }
     return CategorySub(
-      mallSubId: JsonUtil.parseString(json['mallSubId']),
-      mallCategoryId: JsonUtil.parseString(json['mallCategoryId']),
-      mallSubName: JsonUtil.parseString(json['mallSubName']),
+      categorySubId: JsonUtil.parseString(json['categorySubId']),
+      categoryId: JsonUtil.parseString(json['categoryId']),
+      subName: JsonUtil.parseString(json['subName']),
       comments: JsonUtil.parseString(json['comments']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      mallSubIds: JsonUtil.parseList<String>(json['mallSubIds'], JsonUtil.parseString),
-      mallCategoryIds: JsonUtil.parseList<String>(json['mallCategoryIds'], JsonUtil.parseString),
-      mallSubNameLike: JsonUtil.parseString(json['mallSubNameLike']),
+      categorySubIds: JsonUtil.parseList<String>(json['categorySubIds'], JsonUtil.parseString),
+      categoryIds: JsonUtil.parseList<String>(json['categoryIds'], JsonUtil.parseString),
+      subNameLike: JsonUtil.parseString(json['subNameLike']),
       commentsLike: JsonUtil.parseString(json['commentsLike']),
       createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
       createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
@@ -101,14 +101,14 @@ class CategorySub with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.mallSubId != null) {
-      result['mallSubId'] = JsonUtil.stringToJson(mallSubId);
+    if (this.categorySubId != null) {
+      result['categorySubId'] = JsonUtil.stringToJson(categorySubId);
     }
-    if (this.mallCategoryId != null) {
-      result['mallCategoryId'] = JsonUtil.stringToJson(mallCategoryId);
+    if (this.categoryId != null) {
+      result['categoryId'] = JsonUtil.stringToJson(categoryId);
     }
-    if (this.mallSubName != null) {
-      result['mallSubName'] = JsonUtil.stringToJson(mallSubName);
+    if (this.subName != null) {
+      result['subName'] = JsonUtil.stringToJson(subName);
     }
     if (this.comments != null) {
       result['comments'] = JsonUtil.stringToJson(comments);
@@ -122,22 +122,22 @@ class CategorySub with FrontBean {
     if (this.deleteFlag != null) {
       result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
     }
-    if (this.mallSubIds != null) {
+    if (this.categorySubIds != null) {
       var list = List();
-      for (var v in mallSubIds) {
+      for (var v in categorySubIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['mallSubIds'] = list;
+      result['categorySubIds'] = list;
     }
-    if (this.mallCategoryIds != null) {
+    if (this.categoryIds != null) {
       var list = List();
-      for (var v in mallCategoryIds) {
+      for (var v in categoryIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['mallCategoryIds'] = list;
+      result['categoryIds'] = list;
     }
-    if (this.mallSubNameLike != null) {
-      result['mallSubNameLike'] = JsonUtil.stringToJson(mallSubNameLike);
+    if (this.subNameLike != null) {
+      result['subNameLike'] = JsonUtil.stringToJson(subNameLike);
     }
     if (this.commentsLike != null) {
       result['commentsLike'] = JsonUtil.stringToJson(commentsLike);
@@ -162,7 +162,7 @@ class CategorySub with FrontBean {
     if (categorySubList != null) {
       for (var categorySub in categorySubList) {
         if (categorySub != null) {
-          result[categorySub.mallSubId] = categorySub;
+          result[categorySub.categorySubId] = categorySub;
         }
       }
     }

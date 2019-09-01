@@ -62,7 +62,7 @@ abstract class GoodsCommand {
   static Future<GoodsBaseState> getMallGoods(GoodsAbstractProvider goodsState, {Map<String, dynamic> payload, String categoryId, String categorySubId, int pageSize, int pageNum }) async {
     var oldGoodsArea = goodsState.goodsArea;
     payload ??= {};
-    payload = {'pageNum': 1, 'pageSize': 10,  ...payload};
+    payload = {'pageNum': DEFAULT_PAGE_NUM, 'pageSize': DEFAULT_PAGE_SIZE,  ...payload};
     PageList<Goods> goodsPageList = await GoodsApis.getMallGoods(payload: payload, categoryId: categoryId, categorySubId: categorySubId, pageSize: pageSize, pageNum: pageNum);
     var pagination = goodsPageList?.pagination;
     var goodsMap = CollectionUtil.appendOrUpdateMap(oldGoodsArea?.clone()?.valueMap,  Goods.toIdMap(goodsPageList.items));
@@ -82,11 +82,10 @@ abstract class GoodsCommand {
   static Future<GoodsBaseState> getMallGoodsNext(GoodsAbstractProvider goodsState) async {
     var oldGoodsArea = goodsState.goodsArea;
     var pagination = oldGoodsArea?.pagination;
-    var pageNum = pagination?.current;
-    pageNum = (pageNum != null ? pageNum : 0) + 1;
-    var totalPages = (pagination.total / (pagination?.pageSize ?? 10)).ceil();
-    pageNum = min(pageNum, totalPages);
-    var payload = {...oldGoodsArea.queryRule, 'pageNum': pageNum};
+    var pageNum = pagination?.current ?? 0;
+    pageNum++;
+    var pageSize = pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
+    var payload = {...?oldGoodsArea.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
     var newAreaState = await GoodsCommand.getMallGoods(goodsState,payload: payload);
     return newAreaState;
   }

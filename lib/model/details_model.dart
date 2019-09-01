@@ -168,13 +168,13 @@ class AdvertesPicture {
   AdvertesPicture({this.pICTUREADDRESS, this.tOPLACE});
 
   AdvertesPicture.fromJson(Map<String, dynamic> json) {
-    pICTUREADDRESS = json['PICTURE_ADDRESS'];
+    pICTUREADDRESS = json['pictureAddress'];
     tOPLACE = json['TO_PLACE'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['PICTURE_ADDRESS'] = this.pICTUREADDRESS;
+    data['pictureAddress'] = this.pICTUREADDRESS;
     data['TO_PLACE'] = this.tOPLACE;
     return data;
   }

@@ -54,6 +54,12 @@ abstract class HomeAbstractProvider with ChangeNotifier, BaseProvider, HomeBaseS
     mergeState(context, newState);
   }
 
+  /// 
+  Future<void> homePageContent(BuildContext context, {Map<String, dynamic> payload, double lon, double lat }) async {
+    var newState = await HomeCommand.homePageContent(this, payload: payload, lon: lon, lat: lat);
+    mergeState(context, newState);
+  }
+
   void mergeState(BuildContext context, HomeBaseState newState) {
     this.merge(newState);
     notifyListeners();
@@ -67,7 +73,7 @@ abstract class HomeCommand {
   static Future<HomeBaseState> homePageBelowConten(HomeAbstractProvider homeState, {Map<String, dynamic> payload, int pageSize, int pageNum }) async {
     var oldGoodsArea = homeState.goodsArea;
     payload ??= {};
-    payload = {'pageNum': 1, 'pageSize': 10,  ...payload};
+    payload = {'pageNum': DEFAULT_PAGE_NUM, 'pageSize': DEFAULT_PAGE_SIZE,  ...payload};
     PageList<Goods> goodsPageList = await HomeApis.homePageBelowConten(payload: payload, pageSize: pageSize, pageNum: pageNum);
     var pagination = goodsPageList?.pagination;
     var goodsMap = CollectionUtil.appendOrUpdateMap(oldGoodsArea?.clone()?.valueMap,  Goods.toIdMap(goodsPageList.items));
@@ -87,13 +93,26 @@ abstract class HomeCommand {
   static Future<HomeBaseState> homePageBelowContenNext(HomeAbstractProvider homeState) async {
     var oldGoodsArea = homeState.goodsArea;
     var pagination = oldGoodsArea?.pagination;
-    var pageNum = pagination?.current;
-    pageNum = (pageNum != null ? pageNum : 0) + 1;
-    var totalPages = (pagination.total / (pagination?.pageSize ?? 10)).ceil();
-    pageNum = min(pageNum, totalPages);
-    var payload = {...oldGoodsArea.queryRule, 'pageNum': pageNum};
+    var pageNum = pagination?.current ?? 0;
+    pageNum++;
+    var pageSize = pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
+    var payload = {...?oldGoodsArea.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
     var newAreaState = await HomeCommand.homePageBelowConten(homeState,payload: payload);
     return newAreaState;
   }
+
+  /// 
+  static Future<HomeBaseState> homePageContent(HomeAbstractProvider homeState, {Map<String, dynamic> payload, double lon, double lat }) async {
+    HomeWrap homeWrap = await HomeApis.homePageContent(payload: payload, lon: lon, lat: lat);
+
+    var newState = _HomeState(
+      homeWrapArea: AreaState(
+        fetched: true,
+        valueMap: HomeWrap.toIdMap([homeWrap]),
+      ),
+    );
+    return newState;
+  }
+
 
 }

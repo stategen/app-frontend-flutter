@@ -8,20 +8,20 @@ import '../../stgutil/stg_util.dart';
 
 class CategoryColumns{
 
-  /// bxMallSubDto  
-  static ColumnConfig bxMallSubDto = ColumnConfig(
-    key: 'bxMallSubDto',
-    title: 'bxMallSubDto',
+  /// categorySubs  
+  static ColumnConfig categorySubs = ColumnConfig(
+    key: 'categorySubs',
+    title: 'categorySubs',
     // renderColumn: UIColumns.InputRender,
     isArray: true,
     //render: (text: any, record: Category, index: number) =>{
-    //  return bxMallSubDto.renderColumn(record, null, text, index, bxMallSubDto);
+    //  return categorySubs.renderColumn(record, null, text, index, categorySubs);
     //},
   );
 
   /// 大类目录ID  
-  static ColumnConfig mallCategoryId = ColumnConfig(
-    key: 'mallCategoryId',
+  static ColumnConfig categoryId = ColumnConfig(
+    key: 'categoryId',
     title: '大类目录ID',
     // renderColumn: UIColumns.InputRender,
     isId: true,
@@ -32,13 +32,13 @@ class CategoryColumns{
       ),
     ],
     //render: (text: any, record: Category, index: number) =>{
-    //  return mallCategoryId.renderColumn(record, null, text, index, mallCategoryId);
+    //  return categoryId.renderColumn(record, null, text, index, categoryId);
     //},
   );
 
   /// 大类目录名称  
-  static ColumnConfig mallCategoryName = ColumnConfig(
-    key: 'mallCategoryName',
+  static ColumnConfig categoryName = ColumnConfig(
+    key: 'categoryName',
     title: '大类目录名称',
     // renderColumn: UIColumns.InputRender,
     rules: [
@@ -48,7 +48,7 @@ class CategoryColumns{
       ),
     ],
     //render: (text: any, record: Category, index: number) =>{
-    //  return mallCategoryName.renderColumn(record, null, text, index, mallCategoryName);
+    //  return categoryName.renderColumn(record, null, text, index, categoryName);
     //},
   );
 
@@ -123,16 +123,16 @@ class CategoryColumns{
   );
 
   /// 大类目录ID s  
-  static ColumnConfig mallCategoryIds = ColumnConfig(
-    key: 'mallCategoryIds',
+  static ColumnConfig categoryIds = ColumnConfig(
+    key: 'categoryIds',
     title: '大类目录ID',
     noJson: true,
     isArray: true,
   );
 
   /// 大类目录名称Like  
-  static ColumnConfig mallCategoryNameLike = ColumnConfig(
-    key: 'mallCategoryNameLike',
+  static ColumnConfig categoryNameLike = ColumnConfig(
+    key: 'categoryNameLike',
     title: '大类目录名称Like',
     noJson: true,
   );

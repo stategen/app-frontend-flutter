@@ -138,7 +138,7 @@ abstract class TopicCommand {
   static Future<TopicBaseState> getTopicPageList(TopicAbstractProvider topicState, {Map<String, dynamic> payload, TopicType topicType, bool mdrender, int page, int pageSize }) async {
     var oldTopicArea = topicState.topicArea;
     payload ??= {};
-    payload = {'pageNum': 1, 'pageSize': 10,  ...payload};
+    payload = {'pageNum': DEFAULT_PAGE_NUM, 'pageSize': DEFAULT_PAGE_SIZE,  ...payload};
     AntdPageList<Topic> topicPageList = await TopicApis.getTopicPageList(payload: payload, topicType: topicType, mdrender: mdrender, page: page, pageSize: pageSize);
     var pagination = topicPageList?.pagination;
     var topicMap = CollectionUtil.appendOrUpdateMap(oldTopicArea?.clone()?.valueMap,  Topic.toIdMap(topicPageList.list));
@@ -158,11 +158,10 @@ abstract class TopicCommand {
   static Future<TopicBaseState> getTopicPageListNext(TopicAbstractProvider topicState) async {
     var oldTopicArea = topicState.topicArea;
     var pagination = oldTopicArea?.pagination;
-    var pageNum = pagination?.current;
-    pageNum = (pageNum != null ? pageNum : 0) + 1;
-    var totalPages = (pagination.total / (pagination?.pageSize ?? 10)).ceil();
-    pageNum = min(pageNum, totalPages);
-    var payload = {...oldTopicArea.queryRule, 'pageNum': pageNum};
+    var pageNum = pagination?.current ?? 0;
+    pageNum++;
+    var pageSize = pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
+    var payload = {...?oldTopicArea.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
     var newAreaState = await TopicCommand.getTopicPageList(topicState,payload: payload);
     return newAreaState;
   }

@@ -8,10 +8,10 @@ import '../../stgutil/stg_util.dart';
 
 class CategorySubColumns{
 
-  /// mallSubId  
-  static ColumnConfig mallSubId = ColumnConfig(
-    key: 'mallSubId',
-    title: 'mallSubId',
+  /// categorySubId  
+  static ColumnConfig categorySubId = ColumnConfig(
+    key: 'categorySubId',
+    title: 'categorySubId',
     // renderColumn: UIColumns.InputRender,
     isId: true,
     rules: [
@@ -21,14 +21,14 @@ class CategorySubColumns{
       ),
     ],
     //render: (text: any, record: CategorySub, index: number) =>{
-    //  return mallSubId.renderColumn(record, null, text, index, mallSubId);
+    //  return categorySubId.renderColumn(record, null, text, index, categorySubId);
     //},
   );
 
-  /// mallCategoryId  
-  static ColumnConfig mallCategoryId = ColumnConfig(
-    key: 'mallCategoryId',
-    title: 'mallCategoryId',
+  /// categoryId  
+  static ColumnConfig categoryId = ColumnConfig(
+    key: 'categoryId',
+    title: 'categoryId',
     // renderColumn: UIColumns.InputRender,
     rules: [
       ValidationRule(
@@ -37,14 +37,14 @@ class CategorySubColumns{
       ),
     ],
     //render: (text: any, record: CategorySub, index: number) =>{
-    //  return mallCategoryId.renderColumn(record, null, text, index, mallCategoryId);
+    //  return categoryId.renderColumn(record, null, text, index, categoryId);
     //},
   );
 
-  /// mallSubName  
-  static ColumnConfig mallSubName = ColumnConfig(
-    key: 'mallSubName',
-    title: 'mallSubName',
+  /// subName  
+  static ColumnConfig subName = ColumnConfig(
+    key: 'subName',
+    title: 'subName',
     // renderColumn: UIColumns.InputRender,
     rules: [
       ValidationRule(
@@ -53,7 +53,7 @@ class CategorySubColumns{
       ),
     ],
     //render: (text: any, record: CategorySub, index: number) =>{
-    //  return mallSubName.renderColumn(record, null, text, index, mallSubName);
+    //  return subName.renderColumn(record, null, text, index, subName);
     //},
   );
 
@@ -111,26 +111,26 @@ class CategorySubColumns{
     //},
   );
 
-  /// mallSubId s  
-  static ColumnConfig mallSubIds = ColumnConfig(
-    key: 'mallSubIds',
-    title: 'mallSubId',
+  /// categorySubId s  
+  static ColumnConfig categorySubIds = ColumnConfig(
+    key: 'categorySubIds',
+    title: 'categorySubId',
     noJson: true,
     isArray: true,
   );
 
-  /// mallCategoryId s  
-  static ColumnConfig mallCategoryIds = ColumnConfig(
-    key: 'mallCategoryIds',
-    title: 'mallCategoryId',
+  /// categoryId s  
+  static ColumnConfig categoryIds = ColumnConfig(
+    key: 'categoryIds',
+    title: 'categoryId',
     noJson: true,
     isArray: true,
   );
 
-  /// mallSubNameLike  
-  static ColumnConfig mallSubNameLike = ColumnConfig(
-    key: 'mallSubNameLike',
-    title: 'mallSubNameLike',
+  /// subNameLike  
+  static ColumnConfig subNameLike = ColumnConfig(
+    key: 'subNameLike',
+    title: 'subNameLike',
     noJson: true,
   );
 
