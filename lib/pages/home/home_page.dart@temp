@@ -9,7 +9,10 @@ import 'home_provider.dart';
 
 
 class HomePage extends StatelessWidget {
+  // 路由路径
   static final String path = '/home';
+
+  // 路由创建方式
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return HomeProvider.create(
@@ -24,17 +27,39 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScene();
+    // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
+    return HomeProvider.create(
+      child: HomeScene(),
+    );
   }
 }
 
-class HomeScene extends StatelessWidget {
+class HomeScene extends StatefulWidget {
+
+  @override
+  _HomePageState createState() => _HomePageState();
+
+}
+
+class _HomePageState extends State<HomeScene> {
+
+  HomeProvider homeProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // state在整个生部周期只需要拿和注册一次
+    homeProvider = HomeProvider.of(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter home Page"),
-      ),
-    );
+    //var fetched = homeProvider.homeWrapArea.fetched ?? false;
+    //if (!fetched) {
+    //  homeProvider.xxx(context,);
+    //}
+
+    return Text('home Page 创建成功!');
   }
+
 }

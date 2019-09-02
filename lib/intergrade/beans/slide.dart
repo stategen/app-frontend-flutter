@@ -93,15 +93,6 @@ class Slide with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      slideIds: JsonUtil.parseList<String>(json['slideIds'], JsonUtil.parseString),
-      goodsIds: JsonUtil.parseList<String>(json['goodsIds'], JsonUtil.parseString),
-      urlTypes: JsonUtil.parseList<int>(json['urlTypes'], JsonUtil.parseInt),
-      orderNoMin: JsonUtil.parseInt(json['orderNoMin']),
-      orderNoMax: JsonUtil.parseInt(json['orderNoMax']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
     );
   }
 

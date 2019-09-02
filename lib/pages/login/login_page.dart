@@ -9,7 +9,10 @@ import 'login_provider.dart';
 
 
 class LoginPage extends StatelessWidget {
+  // 路由路径
   static final String path = '/login';
+
+  // 路由创建方式
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return LoginProvider.create(
@@ -24,17 +27,39 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoginScene();
+    // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
+    return LoginProvider.create(
+      child: LoginScene(),
+    );
   }
 }
 
-class LoginScene extends StatelessWidget {
+class LoginScene extends StatefulWidget {
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+
+}
+
+class _LoginPageState extends State<LoginScene> {
+
+  LoginProvider loginProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // state在整个生部周期只需要拿和注册一次
+    loginProvider = LoginProvider.of(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter login Page"),
-      ),
-    );
+    //var fetched = loginProvider.loginWrapArea.fetched ?? false;
+    //if (!fetched) {
+    //  loginProvider.xxx(context,);
+    //}
+
+    return Text('login Page 创建成功!');
   }
+
 }

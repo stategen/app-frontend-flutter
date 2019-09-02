@@ -118,16 +118,6 @@ class TopicReply with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      replyIds: JsonUtil.parseList<String>(json['replyIds'], JsonUtil.parseString),
-      topicIds: JsonUtil.parseList<String>(json['topicIds'], JsonUtil.parseString),
-      authorIds: JsonUtil.parseList<String>(json['authorIds'], JsonUtil.parseString),
-      contentLike: JsonUtil.parseString(json['contentLike']),
-      parentReplyIds: JsonUtil.parseList<String>(json['parentReplyIds'], JsonUtil.parseString),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      id: JsonUtil.parseString(json['id']),
     );
   }
 

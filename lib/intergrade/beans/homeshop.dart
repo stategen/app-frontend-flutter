@@ -78,15 +78,6 @@ class HomeShop with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      homeShopIds: JsonUtil.parseList<String>(json['homeShopIds'], JsonUtil.parseString),
-      shopIds: JsonUtil.parseList<String>(json['shopIds'], JsonUtil.parseString),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      leaderImage: JsonUtil.parseString(json['leaderImage']),
-      leaderPhone: JsonUtil.parseString(json['leaderPhone']),
-      leaderPhoneLike: JsonUtil.parseString(json['leaderPhoneLike']),
     );
   }
 

@@ -84,14 +84,6 @@ class CategorySub with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      categorySubIds: JsonUtil.parseList<String>(json['categorySubIds'], JsonUtil.parseString),
-      categoryIds: JsonUtil.parseList<String>(json['categoryIds'], JsonUtil.parseString),
-      subNameLike: JsonUtil.parseString(json['subNameLike']),
-      commentsLike: JsonUtil.parseString(json['commentsLike']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
     );
   }
 

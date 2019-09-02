@@ -86,13 +86,6 @@ class Category with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      categoryIds: JsonUtil.parseList<String>(json['categoryIds'], JsonUtil.parseString),
-      categoryNameLike: JsonUtil.parseString(json['categoryNameLike']),
-      commentsLike: JsonUtil.parseString(json['commentsLike']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
     );
   }
 

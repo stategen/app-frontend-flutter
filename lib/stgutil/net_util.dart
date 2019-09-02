@@ -132,8 +132,8 @@ class NetUtil {
 
       dio = Dio();
       dio.options.baseUrl =baseUrl;
-      dio.options.connectTimeout = 500000; // 10s
-      dio.options.receiveTimeout = 500000; // 10s
+      dio.options.connectTimeout = 10000; // 10s
+      dio.options.receiveTimeout = 10000; // 10s
       Directory tempDir = await getTemporaryDirectory();
       String tempPath = tempDir.path;
 

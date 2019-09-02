@@ -147,22 +147,6 @@ class Region with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      regionIds: JsonUtil.parseList<int>(json['regionIds'], JsonUtil.parseInt),
-      parentRegionIds: JsonUtil.parseList<int>(json['parentRegionIds'], JsonUtil.parseInt),
-      pathLike: JsonUtil.parseString(json['pathLike']),
-      levelMin: JsonUtil.parseInt(json['levelMin']),
-      levelMax: JsonUtil.parseInt(json['levelMax']),
-      regionTypes: RegionType.fromJsonList(json['regionTypes']),
-      nameLike: JsonUtil.parseString(json['nameLike']),
-      nameEnLike: JsonUtil.parseString(json['nameEnLike']),
-      namePinyinLike: JsonUtil.parseString(json['namePinyinLike']),
-      codeLike: JsonUtil.parseString(json['codeLike']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      value: JsonUtil.parseString(json['value']),
-      title: JsonUtil.parseString(json['title']),
     );
   }
 

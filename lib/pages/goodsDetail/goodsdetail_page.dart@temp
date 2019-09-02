@@ -9,7 +9,10 @@ import 'goodsdetail_provider.dart';
 
 
 class GoodsDetailPage extends StatelessWidget {
+  // 路由路径
   static final String path = '/goodsDetail';
+
+  // 路由创建方式
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return GoodsDetailProvider.create(
@@ -24,17 +27,39 @@ class GoodsDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GoodsDetailScene();
+    // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
+    return GoodsDetailProvider.create(
+      child: GoodsDetailScene(),
+    );
   }
 }
 
-class GoodsDetailScene extends StatelessWidget {
+class GoodsDetailScene extends StatefulWidget {
+
+  @override
+  _GoodsDetailPageState createState() => _GoodsDetailPageState();
+
+}
+
+class _GoodsDetailPageState extends State<GoodsDetailScene> {
+
+  GoodsDetailProvider goodsDetailProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // state在整个生部周期只需要拿和注册一次
+    goodsDetailProvider = GoodsDetailProvider.of(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter goodsdetail Page"),
-      ),
-    );
+    //var fetched = goodsDetailProvider.goodsDetailWrapArea.fetched ?? false;
+    //if (!fetched) {
+    //  goodsDetailProvider.xxx(context,);
+    //}
+
+    return Text('goodsDetail Page 创建成功!');
   }
+
 }

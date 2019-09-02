@@ -1,65 +1,65 @@
 ///  Do not remove this unless you get business authorization.
-///  Category
+///  User_detail_$username
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
 ///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'category_provider.dart';
+import 'user_detail_\$username_provider.dart';
 
 
-class CategoryPage extends StatelessWidget {
+class User_detail_$usernamePage extends StatelessWidget {
   // 路由路径
-  static final String path = '/category';
+  static final String path = '/user/detail/\$username';
 
   // 路由创建方式
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return CategoryProvider.create(
-        child: CategoryPage(params: params)
+      return User_detail_$usernameProvider.create(
+        child: User_detail_$usernamePage(params: params)
       );
     }
   );
 
   Map<String, List<String>> params;
 
-  CategoryPage({this.params});
+  User_detail_$usernamePage({this.params});
 
   @override
   Widget build(BuildContext context) {
     // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
-    return CategoryProvider.create(
-      child: CategoryScene(),
+    return User_detail_$usernameProvider.create(
+      child: User_detail_$usernameScene(),
     );
   }
 }
 
-class CategoryScene extends StatefulWidget {
+class User_detail_$usernameScene extends StatefulWidget {
 
   @override
-  _CategoryPageState createState() => _CategoryPageState();
+  _User_detail_$usernamePageState createState() => _User_detail_$usernamePageState();
 
 }
 
-class _CategoryPageState extends State<CategoryScene> {
+class _User_detail_$usernamePageState extends State<User_detail_$usernameScene> {
 
-  CategoryProvider categoryProvider;
+  User_detail_$usernameProvider user_detail_$usernameProvider;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     // state在整个生部周期只需要拿和注册一次
-    categoryProvider = CategoryProvider.of(context);
+    user_detail_$usernameProvider = User_detail_$usernameProvider.of(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    //var fetched = categoryProvider.categoryWrapArea.fetched ?? false;
+    //var fetched = user_detail_$usernameProvider.user_detail_$usernameWrapArea.fetched ?? false;
     //if (!fetched) {
-    //  categoryProvider.xxx(context,);
+    //  user_detail_$usernameProvider.xxx(context,);
     //}
 
-    return Text('category Page 创建成功!');
+    return Text('user_detail_$username Page 创建成功!');
   }
 
 }

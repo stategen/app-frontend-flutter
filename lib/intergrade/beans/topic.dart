@@ -157,23 +157,6 @@ class Topic with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      topicIds: JsonUtil.parseList<String>(json['topicIds'], JsonUtil.parseString),
-      authorIds: JsonUtil.parseList<String>(json['authorIds'], JsonUtil.parseString),
-      topicTypes: TopicType.fromJsonList(json['topicTypes']),
-      contentLike: JsonUtil.parseString(json['contentLike']),
-      titleLike: JsonUtil.parseString(json['titleLike']),
-      lastReplyAtMin: JsonUtil.parseDateTime(json['lastReplyAtMin']),
-      lastReplyAtMax: JsonUtil.parseDateTime(json['lastReplyAtMax']),
-      goodMin: JsonUtil.parseInt(json['goodMin']),
-      goodMax: JsonUtil.parseInt(json['goodMax']),
-      topMin: JsonUtil.parseInt(json['topMin']),
-      topMax: JsonUtil.parseInt(json['topMax']),
-      visitCountMin: JsonUtil.parseInt(json['visitCountMin']),
-      visitCountMax: JsonUtil.parseInt(json['visitCountMax']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
     );
   }
 

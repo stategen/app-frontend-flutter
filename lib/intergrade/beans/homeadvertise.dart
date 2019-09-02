@@ -34,9 +34,9 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
     pictureAddressLike,
     toPlaceLike,
     urlTypes,
-    tO_PLACE,
     pICTURE_ADDRESS,
-  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, tO_PLACE: tO_PLACE, pICTURE_ADDRESS: pICTURE_ADDRESS);
+    tO_PLACE,
+  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, pICTURE_ADDRESS: pICTURE_ADDRESS, tO_PLACE: tO_PLACE);
 
   static HomeAdvertise fromJson(Map<String, dynamic> json) {
     if (json == null) {
@@ -48,20 +48,6 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      homeAdvIds: JsonUtil.parseList<String>(json['homeAdvIds'], JsonUtil.parseString),
-      advertiseIds: JsonUtil.parseList<int>(json['advertiseIds'], JsonUtil.parseInt),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      pictureAddress: JsonUtil.parseString(json['pictureAddress']),
-      toPlace: JsonUtil.parseString(json['toPlace']),
-      urlType: JsonUtil.parseInt(json['urlType']),
-      pictureAddressLike: JsonUtil.parseString(json['pictureAddressLike']),
-      toPlaceLike: JsonUtil.parseString(json['toPlaceLike']),
-      urlTypes: JsonUtil.parseList<int>(json['urlTypes'], JsonUtil.parseInt),
-      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
-      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
     );
   }
 
@@ -134,11 +120,11 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
       }
       result['urlTypes'] = list;
     }
-    if (this.tO_PLACE != null) {
-      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
-    }
     if (this.pICTURE_ADDRESS != null) {
       result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
+    }
+    if (this.tO_PLACE != null) {
+      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
     }
     return result;
   }

@@ -100,15 +100,6 @@ class Floor with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      floorIds: JsonUtil.parseList<String>(json['floorIds'], JsonUtil.parseString),
-      advertiseIds: JsonUtil.parseList<int>(json['advertiseIds'], JsonUtil.parseInt),
-      orderNoMin: JsonUtil.parseInt(json['orderNoMin']),
-      orderNoMax: JsonUtil.parseInt(json['orderNoMax']),
-      floorNameLike: JsonUtil.parseString(json['floorNameLike']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
     );
   }
 

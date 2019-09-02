@@ -110,18 +110,6 @@ class City with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      cityIds: JsonUtil.parseList<String>(json['cityIds'], JsonUtil.parseString),
-      nameLike: JsonUtil.parseString(json['nameLike']),
-      pycodeLike: JsonUtil.parseString(json['pycodeLike']),
-      provinceIds: JsonUtil.parseList<String>(json['provinceIds'], JsonUtil.parseString),
-      postcodeLike: JsonUtil.parseString(json['postcodeLike']),
-      areacodeLike: JsonUtil.parseString(json['areacodeLike']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      value: JsonUtil.parseString(json['value']),
-      title: JsonUtil.parseString(json['title']),
     );
   }
 

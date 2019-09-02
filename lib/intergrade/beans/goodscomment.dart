@@ -109,19 +109,6 @@ class GoodsComment with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      commentsIds: JsonUtil.parseList<String>(json['commentsIds'], JsonUtil.parseString),
-      goodsIds: JsonUtil.parseList<String>(json['goodsIds'], JsonUtil.parseString),
-      commentsLike: JsonUtil.parseString(json['commentsLike']),
-      userNameLike: JsonUtil.parseString(json['userNameLike']),
-      discussTimeMin: JsonUtil.parseDateTime(json['discussTimeMin']),
-      discussTimeMax: JsonUtil.parseDateTime(json['discussTimeMax']),
-      scoreMin: JsonUtil.parseInt(json['scoreMin']),
-      scoreMax: JsonUtil.parseInt(json['scoreMax']),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      sCORE: JsonUtil.parseInt(json['sCORE']),
     );
   }
 

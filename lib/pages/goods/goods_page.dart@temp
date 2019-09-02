@@ -1,65 +1,65 @@
 ///  Do not remove this unless you get business authorization.
-///  Category
+///  Goods
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
 ///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'category_provider.dart';
+import 'goods_provider.dart';
 
 
-class CategoryPage extends StatelessWidget {
+class GoodsPage extends StatelessWidget {
   // 路由路径
-  static final String path = '/category';
+  static final String path = '/goods';
 
   // 路由创建方式
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return CategoryProvider.create(
-        child: CategoryPage(params: params)
+      return GoodsProvider.create(
+        child: GoodsPage(params: params)
       );
     }
   );
 
   Map<String, List<String>> params;
 
-  CategoryPage({this.params});
+  GoodsPage({this.params});
 
   @override
   Widget build(BuildContext context) {
     // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
-    return CategoryProvider.create(
-      child: CategoryScene(),
+    return GoodsProvider.create(
+      child: GoodsScene(),
     );
   }
 }
 
-class CategoryScene extends StatefulWidget {
+class GoodsScene extends StatefulWidget {
 
   @override
-  _CategoryPageState createState() => _CategoryPageState();
+  _GoodsPageState createState() => _GoodsPageState();
 
 }
 
-class _CategoryPageState extends State<CategoryScene> {
+class _GoodsPageState extends State<GoodsScene> {
 
-  CategoryProvider categoryProvider;
+  GoodsProvider goodsProvider;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     // state在整个生部周期只需要拿和注册一次
-    categoryProvider = CategoryProvider.of(context);
+    goodsProvider = GoodsProvider.of(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    //var fetched = categoryProvider.categoryWrapArea.fetched ?? false;
+    //var fetched = goodsProvider.goodsWrapArea.fetched ?? false;
     //if (!fetched) {
-    //  categoryProvider.xxx(context,);
+    //  goodsProvider.xxx(context,);
     //}
 
-    return Text('category Page 创建成功!');
+    return Text('goods Page 创建成功!');
   }
 
 }

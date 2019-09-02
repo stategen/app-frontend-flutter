@@ -106,17 +106,6 @@ class FileSummary with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      fileIds: JsonUtil.parseList<String>(json['fileIds'], JsonUtil.parseString),
-      sizeMin: JsonUtil.parseInt(json['sizeMin']),
-      sizeMax: JsonUtil.parseInt(json['sizeMax']),
-      nameLike: JsonUtil.parseString(json['nameLike']),
-      types: JsonUtil.parseList<String>(json['types'], JsonUtil.parseString),
-      userIds: JsonUtil.parseList<String>(json['userIds'], JsonUtil.parseString),
-      createTimeMin: JsonUtil.parseDateTime(json['createTimeMin']),
-      createTimeMax: JsonUtil.parseDateTime(json['createTimeMax']),
-      updateTimeMin: JsonUtil.parseDateTime(json['updateTimeMin']),
-      updateTimeMax: JsonUtil.parseDateTime(json['updateTimeMax']),
-      uid: JsonUtil.parseString(json['uid']),
     );
   }
 

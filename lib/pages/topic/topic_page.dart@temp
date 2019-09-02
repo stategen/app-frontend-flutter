@@ -1,65 +1,65 @@
 ///  Do not remove this unless you get business authorization.
-///  Category
+///  Topic
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
 ///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'category_provider.dart';
+import 'topic_provider.dart';
 
 
-class CategoryPage extends StatelessWidget {
+class TopicPage extends StatelessWidget {
   // 路由路径
-  static final String path = '/category';
+  static final String path = '/topic';
 
   // 路由创建方式
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return CategoryProvider.create(
-        child: CategoryPage(params: params)
+      return TopicProvider.create(
+        child: TopicPage(params: params)
       );
     }
   );
 
   Map<String, List<String>> params;
 
-  CategoryPage({this.params});
+  TopicPage({this.params});
 
   @override
   Widget build(BuildContext context) {
     // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
-    return CategoryProvider.create(
-      child: CategoryScene(),
+    return TopicProvider.create(
+      child: TopicScene(),
     );
   }
 }
 
-class CategoryScene extends StatefulWidget {
+class TopicScene extends StatefulWidget {
 
   @override
-  _CategoryPageState createState() => _CategoryPageState();
+  _TopicPageState createState() => _TopicPageState();
 
 }
 
-class _CategoryPageState extends State<CategoryScene> {
+class _TopicPageState extends State<TopicScene> {
 
-  CategoryProvider categoryProvider;
+  TopicProvider topicProvider;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     // state在整个生部周期只需要拿和注册一次
-    categoryProvider = CategoryProvider.of(context);
+    topicProvider = TopicProvider.of(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    //var fetched = categoryProvider.categoryWrapArea.fetched ?? false;
+    //var fetched = topicProvider.topicWrapArea.fetched ?? false;
     //if (!fetched) {
-    //  categoryProvider.xxx(context,);
+    //  topicProvider.xxx(context,);
     //}
 
-    return Text('category Page 创建成功!');
+    return Text('topic Page 创建成功!');
   }
 
 }
