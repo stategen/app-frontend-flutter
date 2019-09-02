@@ -78,6 +78,8 @@ class HomeShop with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      leaderImage: JsonUtil.parseString(json['leaderImage']),
+      leaderPhone: JsonUtil.parseString(json['leaderPhone']),
     );
   }
 

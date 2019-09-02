@@ -83,6 +83,8 @@ class Province with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      value: JsonUtil.parseString(json['value']),
+      title: JsonUtil.parseString(json['title']),
     );
   }
 

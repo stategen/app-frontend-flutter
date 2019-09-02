@@ -185,6 +185,9 @@ class Menu with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      id: JsonUtil.parseInt(json['id']),
+      menuChildren: Menu.fromJsonList(json['menuChildren']),
+      opendOrder: JsonUtil.parseInt(json['opendOrder']),
     );
   }
 

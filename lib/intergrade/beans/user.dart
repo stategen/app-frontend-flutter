@@ -272,6 +272,37 @@ class User with FrontBean {
       return null;
     }
     return User(
+      province: Province.fromJson(json['province']),
+      city: City.fromJson(json['city']),
+      cascaderPostAddresss: Region.fromJsonList(json['cascaderPostAddresss']),
+      hoppys: Hoppy.fromJsonList(json['hoppys']),
+      hoppyIds: JsonUtil.parseList<int>(json['hoppyIds'], JsonUtil.parseInt),
+      avatarImg: FileSummary.fromJson(json['avatarImg']),
+      userId: JsonUtil.parseString(json['userId']),
+      username: JsonUtil.parseString(json['username']),
+      roleType: RoleType.fromJson(json['roleType']),
+      name: JsonUtil.parseString(json['name']),
+      nickName: JsonUtil.parseString(json['nickName']),
+      interCode: JsonUtil.parseString(json['interCode']),
+      mobile: JsonUtil.parseString(json['mobile']),
+      age: JsonUtil.parseInt(json['age']),
+      address: JsonUtil.parseString(json['address']),
+      avatarImgId: JsonUtil.parseString(json['avatarImgId']),
+      email: JsonUtil.parseString(json['email']),
+      valiDatetime: JsonUtil.parseDateTime(json['valiDatetime']),
+      birthdayDate: JsonUtil.parseDateTime(json['birthdayDate']),
+      workTime: JsonUtil.parseDateTime(json['workTime']),
+      provinceId: JsonUtil.parseString(json['provinceId']),
+      cityId: JsonUtil.parseString(json['cityId']),
+      status: StatusEnum.fromJson(json['status']),
+      grade: JsonUtil.parseInt(json['grade']),
+      sex: JsonUtil.parseBool(json['sex']),
+      postAddressId: JsonUtil.parseInt(json['postAddressId']),
+      remark: JsonUtil.parseString(json['remark']),
+      createTime: JsonUtil.parseDateTime(json['createTime']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      cascaderPostAddressIds: JsonUtil.parseList<int>(json['cascaderPostAddressIds'], JsonUtil.parseInt),
     );
   }
 

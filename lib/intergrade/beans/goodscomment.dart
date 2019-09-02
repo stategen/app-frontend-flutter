@@ -109,6 +109,7 @@ class GoodsComment with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      sCORE: JsonUtil.parseInt(json['sCORE']),
     );
   }
 

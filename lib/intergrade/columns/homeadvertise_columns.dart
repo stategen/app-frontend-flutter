@@ -188,16 +188,6 @@ class HomeAdvertiseColumns{
     isArray: true,
   );
 
-  /// pICTURE_ADDRESS  
-  static ColumnConfig pICTURE_ADDRESS = ColumnConfig(
-    key: 'pICTURE_ADDRESS',
-    title: 'pICTURE_ADDRESS',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeAdvertise, index: number) =>{
-    //  return pICTURE_ADDRESS.renderColumn(record, null, text, index, pICTURE_ADDRESS);
-    //},
-  );
-
   /// tO_PLACE  
   static ColumnConfig tO_PLACE = ColumnConfig(
     key: 'tO_PLACE',
@@ -205,6 +195,16 @@ class HomeAdvertiseColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: HomeAdvertise, index: number) =>{
     //  return tO_PLACE.renderColumn(record, null, text, index, tO_PLACE);
+    //},
+  );
+
+  /// pICTURE_ADDRESS  
+  static ColumnConfig pICTURE_ADDRESS = ColumnConfig(
+    key: 'pICTURE_ADDRESS',
+    title: 'pICTURE_ADDRESS',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeAdvertise, index: number) =>{
+    //  return pICTURE_ADDRESS.renderColumn(record, null, text, index, pICTURE_ADDRESS);
     //},
   );
 

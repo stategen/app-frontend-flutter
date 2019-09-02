@@ -106,6 +106,7 @@ class FileSummary with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      uid: JsonUtil.parseString(json['uid']),
     );
   }
 

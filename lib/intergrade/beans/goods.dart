@@ -267,6 +267,11 @@ class Goods with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      name: JsonUtil.parseString(json['name']),
+      count: JsonUtil.parseInt(json['count']),
+      oriPrice: JsonUtil.parseDouble(json['oriPrice']),
+      mallPrice: JsonUtil.parseDouble(json['mallPrice']),
+      comPic: JsonUtil.parseString(json['comPic']),
     );
   }
 

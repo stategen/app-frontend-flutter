@@ -118,6 +118,7 @@ class TopicReply with FrontBean {
       createTime: JsonUtil.parseDateTime(json['createTime']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      id: JsonUtil.parseString(json['id']),
     );
   }
 
