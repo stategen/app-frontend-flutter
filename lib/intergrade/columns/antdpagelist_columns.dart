@@ -8,16 +8,6 @@ import '../../stgutil/stg_util.dart';
 
 class AntdPageListColumns{
 
-  /// pagination  
-  static ColumnConfig pagination = ColumnConfig(
-    key: 'pagination',
-    title: 'pagination',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: AntdPageList<dynamic>, index: number) =>{
-    //  return pagination.renderColumn(record, null, text, index, pagination);
-    //},
-  );
-
   /// list  
   static ColumnConfig list = ColumnConfig(
     key: 'list',
@@ -26,6 +16,16 @@ class AntdPageListColumns{
     isArray: true,
     //render: (text: any, record: AntdPageList<dynamic>, index: number) =>{
     //  return list.renderColumn(record, null, text, index, list);
+    //},
+  );
+
+  /// pagination  
+  static ColumnConfig pagination = ColumnConfig(
+    key: 'pagination',
+    title: 'pagination',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: AntdPageList<dynamic>, index: number) =>{
+    //  return pagination.renderColumn(record, null, text, index, pagination);
     //},
   );
 

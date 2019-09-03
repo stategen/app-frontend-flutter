@@ -85,7 +85,7 @@ abstract class GoodsCommand {
     var pageNum = pagination?.current ?? 0;
     pageNum++;
     var pageSize = pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
-    var payload = {...?oldGoodsArea.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
+    var payload = {...?oldGoodsArea?.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
     var newAreaState = await GoodsCommand.getMallGoods(goodsState,payload: payload);
     return newAreaState;
   }

@@ -184,7 +184,7 @@ abstract class Topic_detail_$topicIdCommand {
     var pageNum = pagination?.current ?? 0;
     pageNum++;
     var pageSize = pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
-    var payload = {...?oldTopicReplyArea.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
+    var payload = {...?oldTopicReplyArea?.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
     var newAreaState = await Topic_detail_$topicIdCommand.getTopicReplyPageList(topic_detail_$topicIdState,payload: payload);
     return newAreaState;
   }

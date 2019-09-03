@@ -161,7 +161,7 @@ abstract class TopicCommand {
     var pageNum = pagination?.current ?? 0;
     pageNum++;
     var pageSize = pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
-    var payload = {...?oldTopicArea.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
+    var payload = {...?oldTopicArea?.queryRule, 'pageSize': pageSize, 'pageNum': pageNum};
     var newAreaState = await TopicCommand.getTopicPageList(topicState,payload: payload);
     return newAreaState;
   }
