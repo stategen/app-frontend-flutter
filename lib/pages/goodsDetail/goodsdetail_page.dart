@@ -14,6 +14,7 @@ import './component/details_bottom.dart';
 
 class GoodsDetailPage extends StatelessWidget {
   static final String path = '/goodsDetail';
+
   static final Handler handler = Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params) {
         return GoodsDetailProvider.create(
@@ -22,7 +23,7 @@ class GoodsDetailPage extends StatelessWidget {
       }
   );
 
-  static ath({String goodsId}) {
+  static url({String goodsId}) {
     return '$path?goodsId=$goodsId';
   }
 
@@ -77,7 +78,7 @@ class GoodsDetailPage extends StatelessWidget {
   }
 
 
-  Future _getGoodsInfo(BuildContext context) async {
+  _getGoodsInfo(BuildContext context) async {
     GoodsDetailProvider goodsDetailProvider = GoodsDetailProvider.of(context, listen: false);
     await goodsDetailProvider.getGoodDetailById(context, goodsId: goodsId);
     return '完成加载';
