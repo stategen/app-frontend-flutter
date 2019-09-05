@@ -2,20 +2,19 @@
 ///  Home
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
 ///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
+///
+///
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import 'package:provider/provider.dart';
 import 'home_provider.dart';
 import 'package:baixingshenghuo_shop/intergrade/beans/goods.dart';
 import 'package:baixingshenghuo_shop/intergrade/intergrades.dart';
 import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:baixingshenghuo_shop/routers/application.dart';
-import 'package:fluro/fluro.dart';
+import 'package:baixingshenghuo_shop/stgutil/route_util.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -27,6 +26,7 @@ class HomePage extends StatelessWidget {
       );
     }
   );
+
 
   Map<String, List<String>> params;
 
@@ -40,7 +40,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
 
 
 class HomeScene extends StatefulWidget {
@@ -162,8 +161,9 @@ class _HomePageState extends State<HomeScene> with AutomaticKeepAliveClientMixin
         return InkWell(
           onTap: () {
             //路由跳转
-            Application.router
-                .navigateTo(context, '/detail?id=${value.goodsId}', transition: TransitionType.native);
+            RouterUtil.router
+                .navigateTo(context, '/${GoodsDetailPage.path}?id=${value.goodsId}', transition:
+            TransitionType.native);
           },
           child: Container(
             width: ScreenUtil().setWidth(370),
@@ -244,7 +244,7 @@ class SwiperDiy extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
               onTap: () {
-                Application.router.navigateTo(context, '/detail?id=${swperDateList[index].goodsId}',
+                RouterUtil.router.navigateTo(context, '/${GoodsDetailPage.path}?id=${swperDateList[index].goodsId}',
                     transition: TransitionType.native);
               },
               child: Image.network(
@@ -392,8 +392,8 @@ class Recommend extends StatelessWidget {
   Widget _item(context, index) {
     return InkWell(
         onTap: () {
-          Application.router.navigateTo(
-              context, '/detail?id=${recommendList[index].goodsId}', transition: TransitionType.native);
+          RouterUtil.router.navigateTo(
+              context, '/${GoodsDetailPage.path}?id=${recommendList[index].goodsId}', transition: TransitionType.native);
         },
         child: Container(
           height: ScreenUtil().setHeight(330),
@@ -521,8 +521,8 @@ class FloorContent extends StatelessWidget {
       width: ScreenUtil().setWidth(375),
       child: InkWell(
           onTap: () {
-            Application.router.navigateTo(
-                context, '/detail?id=${goods.goodsId}', transition: TransitionType.native);
+            RouterUtil.router.navigateTo(
+                context, '/${GoodsDetailPage.path}?id=${goods.goodsId}', transition: TransitionType.native);
           },
           child: Image.network(goods.image)
 
