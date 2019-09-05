@@ -1,4 +1,4 @@
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
+import 'package:app_frontend_flutter/intergrade/pages.dart';
 ///  Do not remove this unless you get business authorization.
 ///  Category
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
@@ -6,7 +6,7 @@ import 'package:baixingshenghuo_shop/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:baixingshenghuo_shop/intergrade/intergrades.dart';
+import 'package:app_frontend_flutter/intergrade/intergrades.dart';
 
 class CategoryStateEx {
 

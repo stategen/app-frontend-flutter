@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:baixingshenghuo_shop/provide/cart.dart';
+import 'package:app_frontend_flutter/provide/cart.dart';
 import 'package:provider/provider.dart';
 
 class CartCount extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
-import 'package:baixingshenghuo_shop/intergrade/pages_router.dart';
+import 'package:app_frontend_flutter/intergrade/pages.dart';
+import 'package:app_frontend_flutter/intergrade/pages_router.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluro/fluro.dart';

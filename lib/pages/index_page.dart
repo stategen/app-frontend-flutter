@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:baixingshenghuo_shop/pages/home/home_page.dart';
-import 'package:baixingshenghuo_shop/pages/cart_page.dart';
-import 'package:baixingshenghuo_shop/pages/category/category_page.dart';
-import 'package:baixingshenghuo_shop/pages/member_page.dart';
+import 'package:app_frontend_flutter/pages/home/home_page.dart';
+import 'package:app_frontend_flutter/pages/cart_page.dart';
+import 'package:app_frontend_flutter/pages/category/category_page.dart';
+import 'package:app_frontend_flutter/pages/member_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:baixingshenghuo_shop/provide/currentIndex.dart';
+import 'package:app_frontend_flutter/provide/currentIndex.dart';
 
 
 class IndexPage extends StatelessWidget {

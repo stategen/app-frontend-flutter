@@ -1,4 +1,4 @@
-package com.example.baixingshenghuo_shop;
+package com.example.app_frontend_flutter;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

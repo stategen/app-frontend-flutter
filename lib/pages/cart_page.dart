@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:baixingshenghuo_shop/provide/cart.dart';
-import 'package:baixingshenghuo_shop/pages/cart_page/cart_item.dart';
-import 'package:baixingshenghuo_shop/pages/cart_page/cart_bottom.dart';
+import 'package:app_frontend_flutter/provide/cart.dart';
+import 'package:app_frontend_flutter/pages/cart_page/cart_item.dart';
+import 'package:app_frontend_flutter/pages/cart_page/cart_bottom.dart';
 
 
 class CartPage extends StatelessWidget {

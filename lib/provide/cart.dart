@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import 'package:baixingshenghuo_shop/model/cardinfo_model.dart';
+import 'package:app_frontend_flutter/model/cardinfo_model.dart';
 
 class CartProvider with ChangeNotifier {
   String cartString = '[]';

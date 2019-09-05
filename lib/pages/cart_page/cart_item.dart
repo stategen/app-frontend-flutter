@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:baixingshenghuo_shop/model/cardinfo_model.dart';
-import 'package:baixingshenghuo_shop/pages/cart_page/cat_count.dart';
+import 'package:app_frontend_flutter/model/cardinfo_model.dart';
+import 'package:app_frontend_flutter/pages/cart_page/cat_count.dart';
 import 'package:provider/provider.dart';
-import 'package:baixingshenghuo_shop/provide/cart.dart';
+import 'package:app_frontend_flutter/provide/cart.dart';
 
 class CartItem extends StatelessWidget {
   final CartInfoMdel item;

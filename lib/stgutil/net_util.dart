@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:baixingshenghuo_shop/intergrade/configs/tradeApp_config.dart';
+import 'package:app_frontend_flutter/intergrade/configs/tradeApp_config.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'log_utils.dart';
 import 'toast.dart';
-import 'package:baixingshenghuo_shop/intergrade/beans/response.dart' as Res;
+import 'package:app_frontend_flutter/intergrade/beans/response.dart' as Res;
 import 'dart:convert';
 
 import 'package:path_provider/path_provider.dart';

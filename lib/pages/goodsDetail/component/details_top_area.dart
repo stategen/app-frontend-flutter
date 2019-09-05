@@ -1,4 +1,4 @@
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
+import 'package:app_frontend_flutter/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 
 

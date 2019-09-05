@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
 import 'category_provider.dart';
-import 'package:baixingshenghuo_shop/intergrade/intergrades.dart';
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
+import 'package:app_frontend_flutter/intergrade/intergrades.dart';
+import 'package:app_frontend_flutter/intergrade/pages.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter_easyrefresh/easy_refresh.dart';

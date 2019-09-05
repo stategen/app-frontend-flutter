@@ -1,11 +1,11 @@
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
-import 'package:baixingshenghuo_shop/stgutil/route_util.dart';
+import 'package:app_frontend_flutter/intergrade/pages.dart';
+import 'package:app_frontend_flutter/stgutil/route_util.dart';
 import 'package:flutter/material.dart';
-import 'package:baixingshenghuo_shop/pages/index_page.dart';
+import 'package:app_frontend_flutter/pages/index_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:baixingshenghuo_shop/provide/cart.dart';
-import 'package:baixingshenghuo_shop/provide/currentIndex.dart';
+import 'package:app_frontend_flutter/provide/cart.dart';
+import 'package:app_frontend_flutter/provide/currentIndex.dart';
 
 void main() {
   runApp(MyApp());

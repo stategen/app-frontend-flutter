@@ -1,9 +1,9 @@
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
+import 'package:app_frontend_flutter/intergrade/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:baixingshenghuo_shop/provide/cart.dart';
-import 'package:baixingshenghuo_shop/provide/currentIndex.dart';
+import 'package:app_frontend_flutter/provide/cart.dart';
+import 'package:app_frontend_flutter/provide/currentIndex.dart';
 
 class DetailsBottom extends StatelessWidget {
   @override

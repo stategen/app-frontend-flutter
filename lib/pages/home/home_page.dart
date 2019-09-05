@@ -7,14 +7,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'home_provider.dart';
-import 'package:baixingshenghuo_shop/intergrade/beans/goods.dart';
-import 'package:baixingshenghuo_shop/intergrade/intergrades.dart';
-import 'package:baixingshenghuo_shop/intergrade/pages.dart';
+import 'package:app_frontend_flutter/intergrade/beans/goods.dart';
+import 'package:app_frontend_flutter/intergrade/intergrades.dart';
+import 'package:app_frontend_flutter/intergrade/pages.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:baixingshenghuo_shop/stgutil/route_util.dart';
+import 'package:app_frontend_flutter/stgutil/route_util.dart';
 
 
 class HomePage extends StatelessWidget {

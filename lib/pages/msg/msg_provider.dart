@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:baixingshenghuo_shop/intergrade/intergrades.dart';
+import 'package:app_frontend_flutter/intergrade/intergrades.dart';
 
 class MsgStateEx {
 

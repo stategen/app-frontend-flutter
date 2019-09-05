@@ -1,4 +1,4 @@
-import 'package:baixingshenghuo_shop/stgutil/init_state.dart';
+import 'package:app_frontend_flutter/stgutil/init_state.dart';
 import 'package:flutter/material.dart';
 
 import '../intergrade/beans/pagination.dart';
