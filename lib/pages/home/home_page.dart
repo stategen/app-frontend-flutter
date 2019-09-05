@@ -162,7 +162,7 @@ class _HomePageState extends State<HomeScene> with AutomaticKeepAliveClientMixin
           onTap: () {
             //路由跳转
             RouterUtil.router
-                .navigateTo(context, '/${GoodsDetailPage.path}?id=${value.goodsId}', transition:
+                .navigateTo(context, '${GoodsDetailPage.path}?goodsId=${value.goodsId}', transition:
             TransitionType.native);
           },
           child: Container(
@@ -244,7 +244,7 @@ class SwiperDiy extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
               onTap: () {
-                RouterUtil.router.navigateTo(context, '/${GoodsDetailPage.path}?id=${swperDateList[index].goodsId}',
+                RouterUtil.router.navigateTo(context, '${GoodsDetailPage.path}?goodsId=${swperDateList[index].goodsId}',
                     transition: TransitionType.native);
               },
               child: Image.network(
@@ -393,7 +393,7 @@ class Recommend extends StatelessWidget {
     return InkWell(
         onTap: () {
           RouterUtil.router.navigateTo(
-              context, '/${GoodsDetailPage.path}?id=${recommendList[index].goodsId}', transition: TransitionType.native);
+              context, '${GoodsDetailPage.path}?goodsId=${recommendList[index].goodsId}', transition: TransitionType.native);
         },
         child: Container(
           height: ScreenUtil().setHeight(330),
@@ -522,7 +522,7 @@ class FloorContent extends StatelessWidget {
       child: InkWell(
           onTap: () {
             RouterUtil.router.navigateTo(
-                context, '/${GoodsDetailPage.path}?id=${goods.goodsId}', transition: TransitionType.native);
+                context, '${GoodsDetailPage.path}?goodsId=${goods.goodsId}', transition: TransitionType.native);
           },
           child: Image.network(goods.image)
 

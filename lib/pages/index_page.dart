@@ -41,7 +41,6 @@ class IndexPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)
       ..init(context); //设置屏幕适配
-    final val = Provider.of<CurrentIndexProvide>(context);
     int currenIndex = Provider.of<CurrentIndexProvide>(context).currentIndex;
     return Scaffold(
       backgroundColor: Color.fromARGB(244, 245, 245, 1),

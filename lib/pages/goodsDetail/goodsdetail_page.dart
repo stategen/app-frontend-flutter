@@ -31,7 +31,7 @@ class GoodsDetailPage extends StatelessWidget {
   Map<String, List<String>> params;
 
   GoodsDetailPage({this.params}) {
-    this.goodsId = params['id'].first;
+    this.goodsId = params['goodsId'].first;
   }
 
 
