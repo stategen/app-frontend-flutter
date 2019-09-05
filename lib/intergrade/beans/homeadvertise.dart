@@ -34,9 +34,9 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
     pictureAddressLike,
     toPlaceLike,
     urlTypes,
-    pICTURE_ADDRESS,
     tO_PLACE,
-  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, pICTURE_ADDRESS: pICTURE_ADDRESS, tO_PLACE: tO_PLACE);
+    pICTURE_ADDRESS,
+  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, tO_PLACE: tO_PLACE, pICTURE_ADDRESS: pICTURE_ADDRESS);
 
   static HomeAdvertise fromJson(Map<String, dynamic> json) {
     if (json == null) {
@@ -51,8 +51,8 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
       pictureAddress: JsonUtil.parseString(json['pictureAddress']),
       toPlace: JsonUtil.parseString(json['toPlace']),
       urlType: JsonUtil.parseInt(json['urlType']),
-      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
       tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
+      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
     );
   }
 
@@ -125,11 +125,11 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
       }
       result['urlTypes'] = list;
     }
-    if (this.pICTURE_ADDRESS != null) {
-      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
-    }
     if (this.tO_PLACE != null) {
       result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
+    }
+    if (this.pICTURE_ADDRESS != null) {
+      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
     }
     return result;
   }
