@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:app_frontend_flutter/provide/cart.dart';
-import 'package:app_frontend_flutter/provide/currentIndex.dart';
+import 'package:app_frontend_flutter/provide/current_index_provider.dart';
 
 class DetailsBottom extends StatelessWidget {
   @override
