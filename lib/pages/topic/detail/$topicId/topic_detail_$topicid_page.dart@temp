@@ -59,7 +59,7 @@ class _Topic_detail_$topicIdPageState extends State<Topic_detail_$topicIdScene> 
     //  topic_detail_$topicIdProvider.xxx(context,);
     //}
 
-    return Text('topic_detail_$topicId Page 创建成功!');
+    return Text('topic_detail_\$topicId Page 创建成功!');
   }
 
 }

@@ -38,13 +38,13 @@ class PaginationColumns{
     //},
   );
 
-  /// totalPages  
-  static ColumnConfig totalPages = ColumnConfig(
-    key: 'totalPages',
-    title: 'totalPages',
+  /// pageNum  
+  static ColumnConfig pageNum = ColumnConfig(
+    key: 'pageNum',
+    title: 'pageNum',
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Pagination, index: number) =>{
-    //  return totalPages.renderColumn(record, null, text, index, totalPages);
+    //  return pageNum.renderColumn(record, null, text, index, pageNum);
     //},
   );
 
@@ -55,6 +55,16 @@ class PaginationColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Pagination, index: number) =>{
     //  return current.renderColumn(record, null, text, index, current);
+    //},
+  );
+
+  /// totalPages  
+  static ColumnConfig totalPages = ColumnConfig(
+    key: 'totalPages',
+    title: 'totalPages',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: Pagination, index: number) =>{
+    //  return totalPages.renderColumn(record, null, text, index, totalPages);
     //},
   );
 

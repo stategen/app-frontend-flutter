@@ -59,7 +59,7 @@ class _User_detail_$usernamePageState extends State<User_detail_$usernameScene> 
     //  user_detail_$usernameProvider.xxx(context,);
     //}
 
-    return Text('user_detail_$username Page 创建成功!');
+    return Text('user_detail_\$username Page 创建成功!');
   }
 
 }
