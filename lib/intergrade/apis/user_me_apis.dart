@@ -15,7 +15,7 @@ class User_meApis {
   /// 
   static Future<User> getCurrentUser() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/user/getCurrentUser';
     requestInit.mediaType = MediaType.FORM;
     requestInit.method = Method.POST;
@@ -27,7 +27,7 @@ class User_meApis {
   /// 
   static Future<User> getTheUser() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/user/getTheUser';
     requestInit.mediaType = MediaType.FORM;
     requestInit.method = Method.POST;
@@ -39,7 +39,7 @@ class User_meApis {
   /// 修改用户
   static Future<User> update({Map<String, dynamic> payload, List<int> hoppyIds, List<int> cascaderPostAddressIds, String username, String password, RoleType roleType, String name, String nickName, int age, String address, String avatarImgId, String email, DateTime valiDatetime, DateTime birthdayDate, DateTime workTime, String provinceId, String cityId, StatusEnum status, int grade, bool sex, String postAddressId, String userId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/user/update';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

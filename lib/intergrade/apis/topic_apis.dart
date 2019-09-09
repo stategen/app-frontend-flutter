@@ -16,7 +16,7 @@ class TopicApis {
   /// 
   static Future<String> delete(String param, {Map<String, dynamic> payload, String topicId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/delete';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -36,7 +36,7 @@ class TopicApis {
   /// 
   static Future<List<String>> deleteBatch(List<String> param, {Map<String, dynamic> payload, List<String> topicIds }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/deleteBatch';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -56,7 +56,7 @@ class TopicApis {
   /// 
   static Future<AntdPageList<Topic>> getTopicPageList({Map<String, dynamic> payload, TopicType topicType, bool mdrender, int page, int pageSize }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/getTopicPageList';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -76,7 +76,7 @@ class TopicApis {
   /// 
   static Future<Topic> update({Map<String, dynamic> payload, String authorId, String topicType, String content, String title, String lastReplyAt, String good, String top, int visitCount, String createAt, DateTime testTimestamp, DateTime testDatetime, DateTime testDate, DateTime testTime, String topicId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/update';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

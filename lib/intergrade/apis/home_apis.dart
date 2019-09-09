@@ -15,7 +15,7 @@ class HomeApis {
   /// 
   static Future<PageList<Goods>> homePageBelowConten({Map<String, dynamic> payload, int pageSize, int pageNum }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/home/homePageBelowConten';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -35,7 +35,7 @@ class HomeApis {
   /// 
   static Future<HomeWrap> homePageContent({Map<String, dynamic> payload, double lon, double lat }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/home/homePageContent';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

@@ -51,7 +51,7 @@ enum MediaType {
 }
 
 class RequestInit {
-  String baseUrlKey;
+  String apiUrlKey;
   String path;
   Method method;
   Map<String, dynamic> data;
@@ -123,10 +123,10 @@ class NetUtil {
     }
   }
 
-  static _findDio(String baseUrlKey) async {
-    Dio dio = DIO_MAP[baseUrlKey];
+  static _findDio(String apiUrlKey) async {
+    Dio dio = DIO_MAP[apiUrlKey];
     if (dio == null) {
-      String baseUrl=BASE_URLS[baseUrlKey];
+      String baseUrl=BASE_URLS[apiUrlKey];
       assert(baseUrl!=null,"baseUrl 不能为空");
 
       dio = Dio();
@@ -139,7 +139,7 @@ class NetUtil {
 
       var persistCookieJar = new PersistCookieJar(dir: tempPath);
       dio.interceptors.add(CookieManager(persistCookieJar));
-      DIO_MAP[baseUrlKey] = dio;
+      DIO_MAP[apiUrlKey] = dio;
     }
     return dio;
   }
@@ -147,7 +147,7 @@ class NetUtil {
   // 统一数据，统一数据流出格式
   static Future<dynamic> fetch(RequestInit requestInit) async {
 //    try {
-    Dio dio = await _findDio(requestInit.baseUrlKey);
+    Dio dio = await _findDio(requestInit.apiUrlKey);
     var method = METHODS[requestInit.method];
     dynamic data;
 

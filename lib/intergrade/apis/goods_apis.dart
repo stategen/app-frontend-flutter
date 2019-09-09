@@ -14,7 +14,7 @@ class GoodsApis {
   /// 
   static Future<PageList<Goods>> getMallGoods({Map<String, dynamic> payload, String categoryId, String categorySubId, int pageSize, int pageNum }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/goods/getMallGoods';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

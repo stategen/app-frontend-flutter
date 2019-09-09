@@ -13,7 +13,7 @@ class CategoryApis {
   /// 
   static Future<List<Category>> getCategory() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/category/getCategory';
     requestInit.mediaType = MediaType.FORM;
     requestInit.method = Method.POST;

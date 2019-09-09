@@ -13,7 +13,7 @@ class GoodsDetailApis {
   /// 
   static Future<Goods> getGoodDetailById(String param, {Map<String, dynamic> payload, String goodsId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/goodsDetail/getGoodDetailById';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

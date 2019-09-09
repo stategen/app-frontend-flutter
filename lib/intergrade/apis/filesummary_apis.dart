@@ -14,7 +14,7 @@ class FileSummaryApis {
   /// 
   static Future<FileSummary> upload(MultipartFile param, {Map<String, dynamic> payload, @required MultipartFile file }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/fileSummary/upload';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

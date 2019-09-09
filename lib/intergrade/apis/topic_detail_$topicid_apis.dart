@@ -16,7 +16,7 @@ class Topic_detail_$topicIdApis {
   /// 
   static Future<TopicReply> PostReply({Map<String, dynamic> payload, @required String topicId, String replyId, String authorId, String content, String parentReplyId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/:topicId/postReply';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -45,7 +45,7 @@ class Topic_detail_$topicIdApis {
   /// 
   static Future<Topic> getTopicDetail(String param, {Map<String, dynamic> payload, @required String topicId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/:topicId';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -65,7 +65,7 @@ class Topic_detail_$topicIdApis {
   /// 
   static Future<PageList<TopicReply>> getTopicReplyPageList({Map<String, dynamic> payload, @required String topicId, int page, int pageSize }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/:topicId/getReplies';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -82,7 +82,7 @@ class Topic_detail_$topicIdApis {
   /// 
   static Future<TopicReply> replyUp(String param, {Map<String, dynamic> payload, @required String replyId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/reply/:replyId';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

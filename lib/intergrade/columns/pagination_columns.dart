@@ -48,16 +48,6 @@ class PaginationColumns{
     //},
   );
 
-  /// current  
-  static ColumnConfig current = ColumnConfig(
-    key: 'current',
-    title: 'current',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: Pagination, index: number) =>{
-    //  return current.renderColumn(record, null, text, index, current);
-    //},
-  );
-
   /// totalPages  
   static ColumnConfig totalPages = ColumnConfig(
     key: 'totalPages',
@@ -65,6 +55,16 @@ class PaginationColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Pagination, index: number) =>{
     //  return totalPages.renderColumn(record, null, text, index, totalPages);
+    //},
+  );
+
+  /// current  
+  static ColumnConfig current = ColumnConfig(
+    key: 'current',
+    title: 'current',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: Pagination, index: number) =>{
+    //  return current.renderColumn(record, null, text, index, current);
     //},
   );
 

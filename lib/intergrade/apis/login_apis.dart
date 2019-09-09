@@ -14,7 +14,7 @@ class LoginApis {
   /// 
   static Future<SimpleResponse> login({Map<String, dynamic> payload, @required String username, @required String password }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/login/login';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -34,7 +34,7 @@ class LoginApis {
   /// 
   static Future<User> loginByMobile({Map<String, dynamic> payload, @required String interCode, @required String mobile, @required String password }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/login/loginByMobile';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

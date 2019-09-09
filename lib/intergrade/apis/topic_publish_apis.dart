@@ -14,7 +14,7 @@ class Topic_publishApis {
   /// 
   static Future<Topic> saveTopic({Map<String, dynamic> payload, String topicId, TopicType topicType, String content, String title }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/saveTopic';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};

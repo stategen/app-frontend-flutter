@@ -19,7 +19,7 @@ class AppApis {
   /// 获所所有菜单
   static Future<List<Menu>> getAllMenus() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/getAllMenus';
     requestInit.method = Method.GET;
     var dest = await NetUtil.fetch(requestInit);
@@ -30,7 +30,7 @@ class AppApis {
   /// 城市
   static Future<List<City>> getCityOptions(String param, {Map<String, dynamic> payload, String provinceId }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/getCityOptions';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -50,7 +50,7 @@ class AppApis {
   /// 
   static Future<User> getCookieUser() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/getCookieUser';
     requestInit.mediaType = MediaType.FORM;
     requestInit.method = Method.POST;
@@ -62,7 +62,7 @@ class AppApis {
   /// 爱好
   static Future<List<Hoppy>> getHoppyOptions() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/getHoppyOptions';
     requestInit.method = Method.GET;
     var dest = await NetUtil.fetch(requestInit);
@@ -73,7 +73,7 @@ class AppApis {
   /// 省份
   static Future<List<Province>> getProvinceOptions() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/getProvinceOptions';
     requestInit.mediaType = MediaType.FORM;
     requestInit.method = Method.POST;
@@ -85,7 +85,7 @@ class AppApis {
   /// 获取地区
   static Future<List<Region>> getRegionOptions(List<int> param, {Map<String, dynamic> payload, List<int> parentRegionIds }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/getRegionOptions';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -105,7 +105,7 @@ class AppApis {
   /// 获取用户
   static Future<List<User>> getUserOptions(List<String> param, {Map<String, dynamic> payload, List<String> userIds }) async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/getUserOptions';
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
@@ -125,7 +125,7 @@ class AppApis {
   /// 
   static Future<SimpleResponse> logout() async {
     var requestInit = RequestInit();
-    requestInit.baseUrlKey = tradeAppBaseUrlKey;
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/app/logout';
     requestInit.mediaType = MediaType.FORM;
     requestInit.method = Method.POST;
