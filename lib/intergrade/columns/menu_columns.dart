@@ -391,17 +391,6 @@ class MenuColumns{
     //},
   );
 
-  /// 打开顺序，前端model存储用  
-  static ColumnConfig opendOrder = ColumnConfig(
-    key: 'opendOrder',
-    title: '打开顺序',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: Menu, index: number) =>{
-    //  return opendOrder.renderColumn(record, null, text, index, opendOrder);
-    //},
-  );
-
   /// menuChildren  
   static ColumnConfig menuChildren = ColumnConfig(
     key: 'menuChildren',
@@ -410,6 +399,17 @@ class MenuColumns{
     isArray: true,
     //render: (text: any, record: Menu, index: number) =>{
     //  return menuChildren.renderColumn(record, null, text, index, menuChildren);
+    //},
+  );
+
+  /// 打开顺序，前端model存储用  
+  static ColumnConfig opendOrder = ColumnConfig(
+    key: 'opendOrder',
+    title: '打开顺序',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: Menu, index: number) =>{
+    //  return opendOrder.renderColumn(record, null, text, index, opendOrder);
     //},
   );
 

@@ -18,19 +18,19 @@ class Pagination with FrontBean {
   /// pageNum
   int pageNum;
 
-  /// totalPages
-  int totalPages;
-
   /// current
   int current;
+
+  /// totalPages
+  int totalPages;
 
   Pagination({
     this.page,
     this.pageSize,
     this.total,
     this.pageNum,
-    this.totalPages,
     this.current,
+    this.totalPages,
   });
 
   static Pagination fromJson(Map<String, dynamic> json) {
@@ -42,8 +42,8 @@ class Pagination with FrontBean {
       pageSize: JsonUtil.parseInt(json['pageSize']),
       total: JsonUtil.parseInt(json['total']),
       pageNum: JsonUtil.parseInt(json['pageNum']),
-      totalPages: JsonUtil.parseInt(json['totalPages']),
       current: JsonUtil.parseInt(json['current']),
+      totalPages: JsonUtil.parseInt(json['totalPages']),
     );
   }
 
@@ -65,11 +65,11 @@ class Pagination with FrontBean {
     if (this.pageNum != null) {
       result['pageNum'] = JsonUtil.intToJson(pageNum);
     }
-    if (this.totalPages != null) {
-      result['totalPages'] = JsonUtil.intToJson(totalPages);
-    }
     if (this.current != null) {
       result['current'] = JsonUtil.intToJson(current);
+    }
+    if (this.totalPages != null) {
+      result['totalPages'] = JsonUtil.intToJson(totalPages);
     }
     return result;
   }

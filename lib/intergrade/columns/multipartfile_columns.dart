@@ -8,4 +8,14 @@ import '../../stgutil/stg_util.dart';
 
 class MultipartFileColumns{
 
+  /// resource  
+  static ColumnConfig resource = ColumnConfig(
+    key: 'resource',
+    title: 'resource',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: MultipartFile, index: number) =>{
+    //  return resource.renderColumn(record, null, text, index, resource);
+    //},
+  );
+
 }
