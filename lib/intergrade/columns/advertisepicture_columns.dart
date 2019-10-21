@@ -19,6 +19,66 @@ class AdvertisePictureColumns{
     //},
   );
 
+  /// advertiseId s  
+  static ColumnConfig advertiseIds = ColumnConfig(
+    key: 'advertiseIds',
+    title: 'advertiseId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// 创建时间  TIMESTAMP
+  static ColumnConfig createTime = ColumnConfig(
+    key: 'createTime',
+    title: '创建时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+    //render: (text: any, record: AdvertisePicture, index: number) =>{
+    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //},
+  );
+
+  /// 创建时间Max  TIMESTAMP
+  static ColumnConfig createTimeMax = ColumnConfig(
+    key: 'createTimeMax',
+    title: '创建时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 创建时间Min  TIMESTAMP
+  static ColumnConfig createTimeMin = ColumnConfig(
+    key: 'createTimeMin',
+    title: '创建时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 是否删除(0:正常，1删除)  
+  static ColumnConfig deleteFlag = ColumnConfig(
+    key: 'deleteFlag',
+    title: '是否删除(0:正常',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: AdvertisePicture, index: number) =>{
+    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
+    //},
+  );
+
+  /// pICTURE_ADDRESS  
+  static ColumnConfig pICTURE_ADDRESS = ColumnConfig(
+    key: 'pICTURE_ADDRESS',
+    title: 'pICTURE_ADDRESS',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: AdvertisePicture, index: number) =>{
+    //  return pICTURE_ADDRESS.renderColumn(record, null, text, index, pICTURE_ADDRESS);
+    //},
+  );
+
   /// pictureAddress  
   static ColumnConfig pictureAddress = ColumnConfig(
     key: 'pictureAddress',
@@ -32,6 +92,23 @@ class AdvertisePictureColumns{
     ],
     //render: (text: any, record: AdvertisePicture, index: number) =>{
     //  return pictureAddress.renderColumn(record, null, text, index, pictureAddress);
+    //},
+  );
+
+  /// pictureAddressLike  
+  static ColumnConfig pictureAddressLike = ColumnConfig(
+    key: 'pictureAddressLike',
+    title: 'pictureAddressLike',
+    noJson: true,
+  );
+
+  /// tO_PLACE  
+  static ColumnConfig tO_PLACE = ColumnConfig(
+    key: 'tO_PLACE',
+    title: 'tO_PLACE',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: AdvertisePicture, index: number) =>{
+    //  return tO_PLACE.renderColumn(record, null, text, index, tO_PLACE);
     //},
   );
 
@@ -51,27 +128,11 @@ class AdvertisePictureColumns{
     //},
   );
 
-  /// urlType  
-  static ColumnConfig urlType = ColumnConfig(
-    key: 'urlType',
-    title: 'urlType',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: AdvertisePicture, index: number) =>{
-    //  return urlType.renderColumn(record, null, text, index, urlType);
-    //},
-  );
-
-  /// 创建时间  TIMESTAMP
-  static ColumnConfig createTime = ColumnConfig(
-    key: 'createTime',
-    title: '创建时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-    //render: (text: any, record: AdvertisePicture, index: number) =>{
-    //  return createTime.renderColumn(record, null, text, index, createTime);
-    //},
+  /// toPlaceLike  
+  static ColumnConfig toPlaceLike = ColumnConfig(
+    key: 'toPlaceLike',
+    title: 'toPlaceLike',
+    noJson: true,
   );
 
   /// 更新时间  TIMESTAMP
@@ -87,60 +148,10 @@ class AdvertisePictureColumns{
     //},
   );
 
-  /// 是否删除(0:正常，1删除)  
-  static ColumnConfig deleteFlag = ColumnConfig(
-    key: 'deleteFlag',
-    title: '是否删除(0:正常',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: AdvertisePicture, index: number) =>{
-    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
-    //},
-  );
-
-  /// advertiseId s  
-  static ColumnConfig advertiseIds = ColumnConfig(
-    key: 'advertiseIds',
-    title: 'advertiseId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// pictureAddressLike  
-  static ColumnConfig pictureAddressLike = ColumnConfig(
-    key: 'pictureAddressLike',
-    title: 'pictureAddressLike',
-    noJson: true,
-  );
-
-  /// toPlaceLike  
-  static ColumnConfig toPlaceLike = ColumnConfig(
-    key: 'toPlaceLike',
-    title: 'toPlaceLike',
-    noJson: true,
-  );
-
-  /// urlType s  
-  static ColumnConfig urlTypes = ColumnConfig(
-    key: 'urlTypes',
-    title: 'urlType',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// 创建时间Min  TIMESTAMP
-  static ColumnConfig createTimeMin = ColumnConfig(
-    key: 'createTimeMin',
-    title: '创建时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 创建时间Max  TIMESTAMP
-  static ColumnConfig createTimeMax = ColumnConfig(
-    key: 'createTimeMax',
-    title: '创建时间Max',
+  /// 更新时间Max  TIMESTAMP
+  static ColumnConfig updateTimeMax = ColumnConfig(
+    key: 'updateTimeMax',
+    title: '更新时间Max',
     noJson: true,
     temporalType: TemporalType.TIMESTAMP,
     format: TIMESTAMP_FORMAT,
@@ -155,33 +166,22 @@ class AdvertisePictureColumns{
     format: TIMESTAMP_FORMAT,
   );
 
-  /// 更新时间Max  TIMESTAMP
-  static ColumnConfig updateTimeMax = ColumnConfig(
-    key: 'updateTimeMax',
-    title: '更新时间Max',
+  /// urlType  
+  static ColumnConfig urlType = ColumnConfig(
+    key: 'urlType',
+    title: 'urlType',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: AdvertisePicture, index: number) =>{
+    //  return urlType.renderColumn(record, null, text, index, urlType);
+    //},
+  );
+
+  /// urlType s  
+  static ColumnConfig urlTypes = ColumnConfig(
+    key: 'urlTypes',
+    title: 'urlType',
     noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// pICTURE_ADDRESS  
-  static ColumnConfig pICTURE_ADDRESS = ColumnConfig(
-    key: 'pICTURE_ADDRESS',
-    title: 'pICTURE_ADDRESS',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: AdvertisePicture, index: number) =>{
-    //  return pICTURE_ADDRESS.renderColumn(record, null, text, index, pICTURE_ADDRESS);
-    //},
-  );
-
-  /// tO_PLACE  
-  static ColumnConfig tO_PLACE = ColumnConfig(
-    key: 'tO_PLACE',
-    title: 'tO_PLACE',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: AdvertisePicture, index: number) =>{
-    //  return tO_PLACE.renderColumn(record, null, text, index, tO_PLACE);
-    //},
+    isArray: true,
   );
 
 }

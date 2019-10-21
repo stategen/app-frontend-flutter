@@ -9,87 +9,87 @@ class FileSummary with FrontBean {
   /// fileId
   static const String FileSummary_ID = 'fileId';
 
-  /// fileId
-  String fileId;
-
-  /// url
-  String url;
-
-  /// size
-  int size;
-
-  /// name
-  String name;
-
-  /// type
-  String type;
-
-  /// userId
-  String userId;
-
   /// 创建时间
   DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除 (0:正常，1删除)
-  int deleteFlag;
-
-  /// fileId s
-  List<String> fileIds;
-
-  /// sizeMin
-  int sizeMin;
-
-  /// sizeMax
-  int sizeMax;
-
-  /// nameLike
-  String nameLike;
-
-  /// type s
-  List<String> types;
-
-  /// userId s
-  List<String> userIds;
-
-  /// 创建时间Min
-  DateTime createTimeMin;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
 
-  /// 更新时间Max
-  DateTime updateTimeMax;
+  /// 是否删除 (0:正常，1删除)
+  int deleteFlag;
+
+  /// fileId
+  String fileId;
+
+  /// fileId s
+  List<String> fileIds;
+
+  /// name
+  String name;
+
+  /// nameLike
+  String nameLike;
+
+  /// size
+  int size;
+
+  /// sizeMax
+  int sizeMax;
+
+  /// sizeMin
+  int sizeMin;
+
+  /// type
+  String type;
+
+  /// type s
+  List<String> types;
 
   /// uid
   String uid;
 
+  /// 更新时间
+  DateTime updateTime;
+
+  /// 更新时间Max
+  DateTime updateTimeMax;
+
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
+  /// url
+  String url;
+
+  /// userId
+  String userId;
+
+  /// userId s
+  List<String> userIds;
+
   FileSummary({
-    this.fileId,
-    this.url,
-    this.size,
-    this.name,
-    this.type,
-    this.userId,
     this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.fileIds,
-    this.sizeMin,
-    this.sizeMax,
-    this.nameLike,
-    this.types,
-    this.userIds,
-    this.createTimeMin,
     this.createTimeMax,
-    this.updateTimeMin,
-    this.updateTimeMax,
+    this.createTimeMin,
+    this.deleteFlag,
+    this.fileId,
+    this.fileIds,
+    this.name,
+    this.nameLike,
+    this.size,
+    this.sizeMax,
+    this.sizeMin,
+    this.type,
+    this.types,
     this.uid,
+    this.updateTime,
+    this.updateTimeMax,
+    this.updateTimeMin,
+    this.url,
+    this.userId,
+    this.userIds,
   });
 
   static FileSummary fromJson(Map<String, dynamic> json) {
@@ -97,16 +97,16 @@ class FileSummary with FrontBean {
       return null;
     }
     return FileSummary(
-      fileId: JsonUtil.parseString(json['fileId']),
-      url: JsonUtil.parseString(json['url']),
-      size: JsonUtil.parseInt(json['size']),
-      name: JsonUtil.parseString(json['name']),
-      type: JsonUtil.parseString(json['type']),
-      userId: JsonUtil.parseString(json['userId']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      fileId: JsonUtil.parseString(json['fileId']),
+      name: JsonUtil.parseString(json['name']),
+      size: JsonUtil.parseInt(json['size']),
+      type: JsonUtil.parseString(json['type']),
       uid: JsonUtil.parseString(json['uid']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      url: JsonUtil.parseString(json['url']),
+      userId: JsonUtil.parseString(json['userId']),
     );
   }
 
@@ -116,32 +116,20 @@ class FileSummary with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.fileId != null) {
-      result['fileId'] = JsonUtil.stringToJson(fileId);
-    }
-    if (this.url != null) {
-      result['url'] = JsonUtil.stringToJson(url);
-    }
-    if (this.size != null) {
-      result['size'] = JsonUtil.intToJson(size);
-    }
-    if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
-    }
-    if (this.type != null) {
-      result['type'] = JsonUtil.stringToJson(type);
-    }
-    if (this.userId != null) {
-      result['userId'] = JsonUtil.stringToJson(userId);
-    }
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
     }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+    if (this.createTimeMax != null) {
+      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+    }
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
       result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.fileId != null) {
+      result['fileId'] = JsonUtil.stringToJson(fileId);
     }
     if (this.fileIds != null) {
       var list = List();
@@ -150,14 +138,23 @@ class FileSummary with FrontBean {
       }
       result['fileIds'] = list;
     }
-    if (this.sizeMin != null) {
-      result['sizeMin'] = JsonUtil.intToJson(sizeMin);
+    if (this.name != null) {
+      result['name'] = JsonUtil.stringToJson(name);
+    }
+    if (this.nameLike != null) {
+      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+    }
+    if (this.size != null) {
+      result['size'] = JsonUtil.intToJson(size);
     }
     if (this.sizeMax != null) {
       result['sizeMax'] = JsonUtil.intToJson(sizeMax);
     }
-    if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+    if (this.sizeMin != null) {
+      result['sizeMin'] = JsonUtil.intToJson(sizeMin);
+    }
+    if (this.type != null) {
+      result['type'] = JsonUtil.stringToJson(type);
     }
     if (this.types != null) {
       var list = List();
@@ -166,27 +163,30 @@ class FileSummary with FrontBean {
       }
       result['types'] = list;
     }
+    if (this.uid != null) {
+      result['uid'] = JsonUtil.stringToJson(uid);
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+    }
+    if (this.updateTimeMax != null) {
+      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    }
+    if (this.url != null) {
+      result['url'] = JsonUtil.stringToJson(url);
+    }
+    if (this.userId != null) {
+      result['userId'] = JsonUtil.stringToJson(userId);
+    }
     if (this.userIds != null) {
       var list = List();
       for (var v in userIds) {
         list.add(JsonUtil.stringToJson(v));
       }
       result['userIds'] = list;
-    }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
-    }
-    if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
-    }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
-    }
-    if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
-    }
-    if (this.uid != null) {
-      result['uid'] = JsonUtil.stringToJson(uid);
     }
     return result;
   }

@@ -9,75 +9,75 @@ class Slide with FrontBean {
   /// slideId
   static const String Slide_ID = 'slideId';
 
-  /// slideId
-  String slideId;
-
-  /// goodsId
-  String goodsId;
-
-  /// image
-  String image;
-
-  /// urlType
-  int urlType;
-
-  /// orderNo
-  int orderNo;
-
   /// 创建时间
   DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
-
-  /// slideId s
-  List<String> slideIds;
-
-  /// goodsId s
-  List<String> goodsIds;
-
-  /// urlType s
-  List<int> urlTypes;
-
-  /// orderNoMin
-  int orderNoMin;
-
-  /// orderNoMax
-  int orderNoMax;
-
-  /// 创建时间Min
-  DateTime createTimeMin;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
+
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
+
+  /// goodsId
+  String goodsId;
+
+  /// goodsId s
+  List<String> goodsIds;
+
+  /// image
+  String image;
+
+  /// orderNo
+  int orderNo;
+
+  /// orderNoMax
+  int orderNoMax;
+
+  /// orderNoMin
+  int orderNoMin;
+
+  /// slideId
+  String slideId;
+
+  /// slideId s
+  List<String> slideIds;
+
+  /// 更新时间
+  DateTime updateTime;
 
   /// 更新时间Max
   DateTime updateTimeMax;
 
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
+  /// urlType
+  int urlType;
+
+  /// urlType s
+  List<int> urlTypes;
+
   Slide({
-    this.slideId,
-    this.goodsId,
-    this.image,
-    this.urlType,
-    this.orderNo,
     this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.slideIds,
-    this.goodsIds,
-    this.urlTypes,
-    this.orderNoMin,
-    this.orderNoMax,
-    this.createTimeMin,
     this.createTimeMax,
-    this.updateTimeMin,
+    this.createTimeMin,
+    this.deleteFlag,
+    this.goodsId,
+    this.goodsIds,
+    this.image,
+    this.orderNo,
+    this.orderNoMax,
+    this.orderNoMin,
+    this.slideId,
+    this.slideIds,
+    this.updateTime,
     this.updateTimeMax,
+    this.updateTimeMin,
+    this.urlType,
+    this.urlTypes,
   });
 
   static Slide fromJson(Map<String, dynamic> json) {
@@ -85,14 +85,14 @@ class Slide with FrontBean {
       return null;
     }
     return Slide(
-      slideId: JsonUtil.parseString(json['slideId']),
+      createTime: JsonUtil.parseDateTime(json['createTime']),
+      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
       goodsId: JsonUtil.parseString(json['goodsId']),
       image: JsonUtil.parseString(json['image']),
-      urlType: JsonUtil.parseInt(json['urlType']),
       orderNo: JsonUtil.parseInt(json['orderNo']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
+      slideId: JsonUtil.parseString(json['slideId']),
       updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      urlType: JsonUtil.parseInt(json['urlType']),
     );
   }
 
@@ -102,36 +102,20 @@ class Slide with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.slideId != null) {
-      result['slideId'] = JsonUtil.stringToJson(slideId);
-    }
-    if (this.goodsId != null) {
-      result['goodsId'] = JsonUtil.stringToJson(goodsId);
-    }
-    if (this.image != null) {
-      result['image'] = JsonUtil.stringToJson(image);
-    }
-    if (this.urlType != null) {
-      result['urlType'] = JsonUtil.intToJson(urlType);
-    }
-    if (this.orderNo != null) {
-      result['orderNo'] = JsonUtil.intToJson(orderNo);
-    }
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
     }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+    if (this.createTimeMax != null) {
+      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+    }
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
       result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
     }
-    if (this.slideIds != null) {
-      var list = List();
-      for (var v in slideIds) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['slideIds'] = list;
+    if (this.goodsId != null) {
+      result['goodsId'] = JsonUtil.stringToJson(goodsId);
     }
     if (this.goodsIds != null) {
       var list = List();
@@ -140,30 +124,46 @@ class Slide with FrontBean {
       }
       result['goodsIds'] = list;
     }
+    if (this.image != null) {
+      result['image'] = JsonUtil.stringToJson(image);
+    }
+    if (this.orderNo != null) {
+      result['orderNo'] = JsonUtil.intToJson(orderNo);
+    }
+    if (this.orderNoMax != null) {
+      result['orderNoMax'] = JsonUtil.intToJson(orderNoMax);
+    }
+    if (this.orderNoMin != null) {
+      result['orderNoMin'] = JsonUtil.intToJson(orderNoMin);
+    }
+    if (this.slideId != null) {
+      result['slideId'] = JsonUtil.stringToJson(slideId);
+    }
+    if (this.slideIds != null) {
+      var list = List();
+      for (var v in slideIds) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['slideIds'] = list;
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+    }
+    if (this.updateTimeMax != null) {
+      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    }
+    if (this.urlType != null) {
+      result['urlType'] = JsonUtil.intToJson(urlType);
+    }
     if (this.urlTypes != null) {
       var list = List();
       for (var v in urlTypes) {
         list.add(JsonUtil.intToJson(v));
       }
       result['urlTypes'] = list;
-    }
-    if (this.orderNoMin != null) {
-      result['orderNoMin'] = JsonUtil.intToJson(orderNoMin);
-    }
-    if (this.orderNoMax != null) {
-      result['orderNoMax'] = JsonUtil.intToJson(orderNoMax);
-    }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
-    }
-    if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
-    }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
-    }
-    if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     return result;
   }

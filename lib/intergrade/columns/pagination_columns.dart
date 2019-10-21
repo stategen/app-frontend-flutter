@@ -8,6 +8,16 @@ import '../../stgutil/stg_util.dart';
 
 class PaginationColumns{
 
+  /// current  
+  static ColumnConfig current = ColumnConfig(
+    key: 'current',
+    title: 'current',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: Pagination, index: number) =>{
+    //  return current.renderColumn(record, null, text, index, current);
+    //},
+  );
+
   /// page  
   static ColumnConfig page = ColumnConfig(
     key: 'page',
@@ -15,6 +25,16 @@ class PaginationColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Pagination, index: number) =>{
     //  return page.renderColumn(record, null, text, index, page);
+    //},
+  );
+
+  /// pageNum  
+  static ColumnConfig pageNum = ColumnConfig(
+    key: 'pageNum',
+    title: 'pageNum',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: Pagination, index: number) =>{
+    //  return pageNum.renderColumn(record, null, text, index, pageNum);
     //},
   );
 
@@ -35,26 +55,6 @@ class PaginationColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Pagination, index: number) =>{
     //  return total.renderColumn(record, null, text, index, total);
-    //},
-  );
-
-  /// pageNum  
-  static ColumnConfig pageNum = ColumnConfig(
-    key: 'pageNum',
-    title: 'pageNum',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: Pagination, index: number) =>{
-    //  return pageNum.renderColumn(record, null, text, index, pageNum);
-    //},
-  );
-
-  /// current  
-  static ColumnConfig current = ColumnConfig(
-    key: 'current',
-    title: 'current',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: Pagination, index: number) =>{
-    //  return current.renderColumn(record, null, text, index, current);
     //},
   );
 

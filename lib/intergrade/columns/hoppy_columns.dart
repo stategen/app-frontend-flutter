@@ -8,6 +8,48 @@ import '../../stgutil/stg_util.dart';
 
 class HoppyColumns{
 
+  /// 创建时间  TIMESTAMP
+  static ColumnConfig createTime = ColumnConfig(
+    key: 'createTime',
+    title: '创建时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+    //render: (text: any, record: Hoppy, index: number) =>{
+    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //},
+  );
+
+  /// 创建时间Max  TIMESTAMP
+  static ColumnConfig createTimeMax = ColumnConfig(
+    key: 'createTimeMax',
+    title: '创建时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 创建时间Min  TIMESTAMP
+  static ColumnConfig createTimeMin = ColumnConfig(
+    key: 'createTimeMin',
+    title: '创建时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 是否删除(0:正常，1删除)  
+  static ColumnConfig deleteFlag = ColumnConfig(
+    key: 'deleteFlag',
+    title: '是否删除(0:正常',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: Hoppy, index: number) =>{
+    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
+    //},
+  );
+
   /// hoppyId  
   static ColumnConfig hoppyId = ColumnConfig(
     key: 'hoppyId',
@@ -17,6 +59,14 @@ class HoppyColumns{
     //render: (text: any, record: Hoppy, index: number) =>{
     //  return hoppyId.renderColumn(record, null, text, index, hoppyId);
     //},
+  );
+
+  /// hoppyId s  
+  static ColumnConfig hoppyIds = ColumnConfig(
+    key: 'hoppyIds',
+    title: 'hoppyId',
+    noJson: true,
+    isArray: true,
   );
 
   /// hoppyName  
@@ -35,16 +85,20 @@ class HoppyColumns{
     //},
   );
 
-  /// 创建时间  TIMESTAMP
-  static ColumnConfig createTime = ColumnConfig(
-    key: 'createTime',
-    title: '创建时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
+  /// hoppyNameLike  
+  static ColumnConfig hoppyNameLike = ColumnConfig(
+    key: 'hoppyNameLike',
+    title: 'hoppyNameLike',
+    noJson: true,
+  );
+
+  /// title  
+  static ColumnConfig title = ColumnConfig(
+    key: 'title',
+    title: 'title',
+    // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Hoppy, index: number) =>{
-    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //  return title.renderColumn(record, null, text, index, title);
     //},
   );
 
@@ -61,45 +115,10 @@ class HoppyColumns{
     //},
   );
 
-  /// 是否删除(0:正常，1删除)  
-  static ColumnConfig deleteFlag = ColumnConfig(
-    key: 'deleteFlag',
-    title: '是否删除(0:正常',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: Hoppy, index: number) =>{
-    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
-    //},
-  );
-
-  /// hoppyId s  
-  static ColumnConfig hoppyIds = ColumnConfig(
-    key: 'hoppyIds',
-    title: 'hoppyId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// hoppyNameLike  
-  static ColumnConfig hoppyNameLike = ColumnConfig(
-    key: 'hoppyNameLike',
-    title: 'hoppyNameLike',
-    noJson: true,
-  );
-
-  /// 创建时间Min  TIMESTAMP
-  static ColumnConfig createTimeMin = ColumnConfig(
-    key: 'createTimeMin',
-    title: '创建时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 创建时间Max  TIMESTAMP
-  static ColumnConfig createTimeMax = ColumnConfig(
-    key: 'createTimeMax',
-    title: '创建时间Max',
+  /// 更新时间Max  TIMESTAMP
+  static ColumnConfig updateTimeMax = ColumnConfig(
+    key: 'updateTimeMax',
+    title: '更新时间Max',
     noJson: true,
     temporalType: TemporalType.TIMESTAMP,
     format: TIMESTAMP_FORMAT,
@@ -114,15 +133,6 @@ class HoppyColumns{
     format: TIMESTAMP_FORMAT,
   );
 
-  /// 更新时间Max  TIMESTAMP
-  static ColumnConfig updateTimeMax = ColumnConfig(
-    key: 'updateTimeMax',
-    title: '更新时间Max',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
   /// value  
   static ColumnConfig value = ColumnConfig(
     key: 'value',
@@ -130,16 +140,6 @@ class HoppyColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Hoppy, index: number) =>{
     //  return value.renderColumn(record, null, text, index, value);
-    //},
-  );
-
-  /// title  
-  static ColumnConfig title = ColumnConfig(
-    key: 'title',
-    title: 'title',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: Hoppy, index: number) =>{
-    //  return title.renderColumn(record, null, text, index, title);
     //},
   );
 

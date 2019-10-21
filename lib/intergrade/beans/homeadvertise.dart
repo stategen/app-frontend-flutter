@@ -17,42 +17,42 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
   List<String> homeAdvIds;
 
   HomeAdvertise({
-    this.homeAdvId,
     advertiseId,
-    createTime,
-    updateTime,
-    deleteFlag,
-    this.homeAdvIds,
     advertiseIds,
-    createTimeMin,
+    createTime,
     createTimeMax,
-    updateTimeMin,
-    updateTimeMax,
-    pictureAddress,
-    toPlace,
-    urlType,
-    pictureAddressLike,
-    toPlaceLike,
-    urlTypes,
+    createTimeMin,
+    deleteFlag,
+    this.homeAdvId,
+    this.homeAdvIds,
     pICTURE_ADDRESS,
+    pictureAddress,
+    pictureAddressLike,
     tO_PLACE,
-  }) : super(advertiseId: advertiseId, pictureAddress: pictureAddress, toPlace: toPlace, urlType: urlType, createTime: createTime, updateTime: updateTime, deleteFlag: deleteFlag, advertiseIds: advertiseIds, pictureAddressLike: pictureAddressLike, toPlaceLike: toPlaceLike, urlTypes: urlTypes, createTimeMin: createTimeMin, createTimeMax: createTimeMax, updateTimeMin: updateTimeMin, updateTimeMax: updateTimeMax, pICTURE_ADDRESS: pICTURE_ADDRESS, tO_PLACE: tO_PLACE);
+    toPlace,
+    toPlaceLike,
+    updateTime,
+    updateTimeMax,
+    updateTimeMin,
+    urlType,
+    urlTypes,
+  }) : super(advertiseId: advertiseId, advertiseIds: advertiseIds, createTime: createTime, createTimeMax: createTimeMax, createTimeMin: createTimeMin, deleteFlag: deleteFlag, pICTURE_ADDRESS: pICTURE_ADDRESS, pictureAddress: pictureAddress, pictureAddressLike: pictureAddressLike, tO_PLACE: tO_PLACE, toPlace: toPlace, toPlaceLike: toPlaceLike, updateTime: updateTime, updateTimeMax: updateTimeMax, updateTimeMin: updateTimeMin, urlType: urlType, urlTypes: urlTypes);
 
   static HomeAdvertise fromJson(Map<String, dynamic> json) {
     if (json == null) {
       return null;
     }
     return HomeAdvertise(
-      homeAdvId: JsonUtil.parseString(json['homeAdvId']),
       advertiseId: JsonUtil.parseInt(json['advertiseId']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      pictureAddress: JsonUtil.parseString(json['pictureAddress']),
-      toPlace: JsonUtil.parseString(json['toPlace']),
-      urlType: JsonUtil.parseInt(json['urlType']),
+      homeAdvId: JsonUtil.parseString(json['homeAdvId']),
       pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
+      pictureAddress: JsonUtil.parseString(json['pictureAddress']),
       tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
+      toPlace: JsonUtil.parseString(json['toPlace']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      urlType: JsonUtil.parseInt(json['urlType']),
     );
   }
 
@@ -62,27 +62,8 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.homeAdvId != null) {
-      result['homeAdvId'] = JsonUtil.stringToJson(homeAdvId);
-    }
     if (this.advertiseId != null) {
       result['advertiseId'] = JsonUtil.intToJson(advertiseId);
-    }
-    if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
-    }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
-    }
-    if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
-    }
-    if (this.homeAdvIds != null) {
-      var list = List();
-      for (var v in homeAdvIds) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['homeAdvIds'] = list;
     }
     if (this.advertiseIds != null) {
       var list = List();
@@ -91,32 +72,57 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
       }
       result['advertiseIds'] = list;
     }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    if (this.createTime != null) {
+      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
       result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
     }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
     }
-    if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    if (this.deleteFlag != null) {
+      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.homeAdvId != null) {
+      result['homeAdvId'] = JsonUtil.stringToJson(homeAdvId);
+    }
+    if (this.homeAdvIds != null) {
+      var list = List();
+      for (var v in homeAdvIds) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['homeAdvIds'] = list;
+    }
+    if (this.pICTURE_ADDRESS != null) {
+      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
     }
     if (this.pictureAddress != null) {
       result['pictureAddress'] = JsonUtil.stringToJson(pictureAddress);
     }
-    if (this.toPlace != null) {
-      result['toPlace'] = JsonUtil.stringToJson(toPlace);
-    }
-    if (this.urlType != null) {
-      result['urlType'] = JsonUtil.intToJson(urlType);
-    }
     if (this.pictureAddressLike != null) {
       result['pictureAddressLike'] = JsonUtil.stringToJson(pictureAddressLike);
     }
+    if (this.tO_PLACE != null) {
+      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
+    }
+    if (this.toPlace != null) {
+      result['toPlace'] = JsonUtil.stringToJson(toPlace);
+    }
     if (this.toPlaceLike != null) {
       result['toPlaceLike'] = JsonUtil.stringToJson(toPlaceLike);
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+    }
+    if (this.updateTimeMax != null) {
+      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    }
+    if (this.urlType != null) {
+      result['urlType'] = JsonUtil.intToJson(urlType);
     }
     if (this.urlTypes != null) {
       var list = List();
@@ -124,12 +130,6 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
         list.add(JsonUtil.intToJson(v));
       }
       result['urlTypes'] = list;
-    }
-    if (this.pICTURE_ADDRESS != null) {
-      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
-    }
-    if (this.tO_PLACE != null) {
-      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
     }
     return result;
   }

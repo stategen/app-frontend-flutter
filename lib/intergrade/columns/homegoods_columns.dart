@@ -8,177 +8,46 @@ import '../../stgutil/stg_util.dart';
 
 class HomeGoodsColumns{
 
-  /// recommendId  
-  static ColumnConfig recommendId = ColumnConfig(
-    key: 'recommendId',
-    title: 'recommendId',
-    // renderColumn: UIColumns.InputRender,
-    isId: true,
-    rules: [
-      ValidationRule(
-        max: 64,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return recommendId.renderColumn(record, null, text, index, recommendId);
-    //},
-  );
-
-  /// goodsId  
-  static ColumnConfig goodsId = ColumnConfig(
-    key: 'goodsId',
-    title: 'goodsId',
-    // renderColumn: UIColumns.InputRender,
-    rules: [
-      ValidationRule(
-        max: 255,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return goodsId.renderColumn(record, null, text, index, goodsId);
-    //},
-  );
-
-  /// orderNo  
-  static ColumnConfig orderNo = ColumnConfig(
-    key: 'orderNo',
-    title: 'orderNo',
+  /// advertiseId  
+  static ColumnConfig advertiseId = ColumnConfig(
+    key: 'advertiseId',
+    title: 'advertiseId',
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return orderNo.renderColumn(record, null, text, index, orderNo);
+    //  return advertiseId.renderColumn(record, null, text, index, advertiseId);
     //},
   );
 
-  /// 创建时间  TIMESTAMP
-  static ColumnConfig createTime = ColumnConfig(
-    key: 'createTime',
-    title: '创建时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return createTime.renderColumn(record, null, text, index, createTime);
-    //},
-  );
-
-  /// 更新时间  TIMESTAMP
-  static ColumnConfig updateTime = ColumnConfig(
-    key: 'updateTime',
-    title: '更新时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return updateTime.renderColumn(record, null, text, index, updateTime);
-    //},
-  );
-
-  /// 是否删除(0:正常，1删除)  
-  static ColumnConfig deleteFlag = ColumnConfig(
-    key: 'deleteFlag',
-    title: '是否删除(0:正常',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
-    //},
-  );
-
-  /// recommendId s  
-  static ColumnConfig recommendIds = ColumnConfig(
-    key: 'recommendIds',
-    title: 'recommendId',
+  /// advertiseId s  
+  static ColumnConfig advertiseIds = ColumnConfig(
+    key: 'advertiseIds',
+    title: 'advertiseId',
     noJson: true,
     isArray: true,
   );
 
-  /// goodsId s  
-  static ColumnConfig goodsIds = ColumnConfig(
-    key: 'goodsIds',
-    title: 'goodsId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// orderNoMin  
-  static ColumnConfig orderNoMin = ColumnConfig(
-    key: 'orderNoMin',
-    title: 'orderNoMin',
-    noJson: true,
-  );
-
-  /// orderNoMax  
-  static ColumnConfig orderNoMax = ColumnConfig(
-    key: 'orderNoMax',
-    title: 'orderNoMax',
-    noJson: true,
-  );
-
-  /// 创建时间Min  TIMESTAMP
-  static ColumnConfig createTimeMin = ColumnConfig(
-    key: 'createTimeMin',
-    title: '创建时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 创建时间Max  TIMESTAMP
-  static ColumnConfig createTimeMax = ColumnConfig(
-    key: 'createTimeMax',
-    title: '创建时间Max',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 更新时间Min  TIMESTAMP
-  static ColumnConfig updateTimeMin = ColumnConfig(
-    key: 'updateTimeMin',
-    title: '更新时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 更新时间Max  TIMESTAMP
-  static ColumnConfig updateTimeMax = ColumnConfig(
-    key: 'updateTimeMax',
-    title: '更新时间Max',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// goodComments  
-  static ColumnConfig goodComments = ColumnConfig(
-    key: 'goodComments',
-    title: 'goodComments',
+  /// 数量 代替count  
+  static ColumnConfig amount = ColumnConfig(
+    key: 'amount',
+    title: '数量',
     // renderColumn: UIColumns.InputRender,
-    isArray: true,
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return goodComments.renderColumn(record, null, text, index, goodComments);
+    //  return amount.renderColumn(record, null, text, index, amount);
     //},
   );
 
-  /// 商品名称  
-  static ColumnConfig goodsName = ColumnConfig(
-    key: 'goodsName',
-    title: '商品名称',
-    // renderColumn: UIColumns.InputRender,
-    rules: [
-      ValidationRule(
-        max: 64,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return goodsName.renderColumn(record, null, text, index, goodsName);
-    //},
+  /// 数量Max  
+  static ColumnConfig amountMax = ColumnConfig(
+    key: 'amountMax',
+    title: '数量Max',
+    noJson: true,
+  );
+
+  /// 数量Min  
+  static ColumnConfig amountMin = ColumnConfig(
+    key: 'amountMin',
+    title: '数量Min',
+    noJson: true,
   );
 
   /// categorySubId  
@@ -197,30 +66,115 @@ class HomeGoodsColumns{
     //},
   );
 
-  /// 数量 代替count  
-  static ColumnConfig amount = ColumnConfig(
-    key: 'amount',
-    title: '数量',
+  /// categorySubId s  
+  static ColumnConfig categorySubIds = ColumnConfig(
+    key: 'categorySubIds',
+    title: 'categorySubId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// comPic  
+  static ColumnConfig comPic = ColumnConfig(
+    key: 'comPic',
+    title: 'comPic',
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return amount.renderColumn(record, null, text, index, amount);
+    //  return comPic.renderColumn(record, null, text, index, comPic);
     //},
   );
 
-  /// 价格  
-  static ColumnConfig price = ColumnConfig(
-    key: 'price',
-    title: '价格',
+  /// count  
+  static ColumnConfig count = ColumnConfig(
+    key: 'count',
+    title: 'count',
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return price.renderColumn(record, null, text, index, price);
+    //  return count.renderColumn(record, null, text, index, count);
     //},
   );
 
-  /// 图片地址  
-  static ColumnConfig images = ColumnConfig(
-    key: 'images',
-    title: '图片地址',
+  /// 创建时间  TIMESTAMP
+  static ColumnConfig createTime = ColumnConfig(
+    key: 'createTime',
+    title: '创建时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //},
+  );
+
+  /// 创建时间Max  TIMESTAMP
+  static ColumnConfig createTimeMax = ColumnConfig(
+    key: 'createTimeMax',
+    title: '创建时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 创建时间Min  TIMESTAMP
+  static ColumnConfig createTimeMin = ColumnConfig(
+    key: 'createTimeMin',
+    title: '创建时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 是否删除(0:正常，1删除)  
+  static ColumnConfig deleteFlag = ColumnConfig(
+    key: 'deleteFlag',
+    title: '是否删除(0:正常',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
+    //},
+  );
+
+  /// goodComments  
+  static ColumnConfig goodComments = ColumnConfig(
+    key: 'goodComments',
+    title: 'goodComments',
+    // renderColumn: UIColumns.InputRender,
+    isArray: true,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return goodComments.renderColumn(record, null, text, index, goodComments);
+    //},
+  );
+
+  /// goodsDetail  
+  static ColumnConfig goodsDetail = ColumnConfig(
+    key: 'goodsDetail',
+    title: 'goodsDetail',
+    // renderColumn: UIColumns.TextareaRender,
+    rules: [
+      ValidationRule(
+        max: 65535,
+        message: "最大不能超过{max}",
+      ),
+    ],
+    nullTitle: '请选择',
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return goodsDetail.renderColumn(record, null, text, index, goodsDetail);
+    //},
+  );
+
+  /// goodsDetailLike  
+  static ColumnConfig goodsDetailLike = ColumnConfig(
+    key: 'goodsDetailLike',
+    title: 'goodsDetailLike',
+    noJson: true,
+  );
+
+  /// goodsId  
+  static ColumnConfig goodsId = ColumnConfig(
+    key: 'goodsId',
+    title: 'goodsId',
     // renderColumn: UIColumns.InputRender,
     rules: [
       ValidationRule(
@@ -229,48 +183,62 @@ class HomeGoodsColumns{
       ),
     ],
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return images.renderColumn(record, null, text, index, images);
+    //  return goodsId.renderColumn(record, null, text, index, goodsId);
     //},
   );
 
-  /// 是否选择  
-  static ColumnConfig isCheck = ColumnConfig(
-    key: 'isCheck',
-    title: '是否选择',
+  /// goodsId s  
+  static ColumnConfig goodsIds = ColumnConfig(
+    key: 'goodsIds',
+    title: 'goodsId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// 商品名称  
+  static ColumnConfig goodsName = ColumnConfig(
+    key: 'goodsName',
+    title: '商品名称',
     // renderColumn: UIColumns.InputRender,
+    rules: [
+      ValidationRule(
+        max: 64,
+        message: "最大不能超过{max}",
+      ),
+    ],
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return isCheck.renderColumn(record, null, text, index, isCheck);
+    //  return goodsName.renderColumn(record, null, text, index, goodsName);
     //},
   );
 
-  /// isHot  
-  static ColumnConfig isHot = ColumnConfig(
-    key: 'isHot',
-    title: 'isHot',
+  /// 商品名称Like  
+  static ColumnConfig goodsNameLike = ColumnConfig(
+    key: 'goodsNameLike',
+    title: '商品名称Like',
+    noJson: true,
+  );
+
+  /// goodsSerialNumber  
+  static ColumnConfig goodsSerialNumber = ColumnConfig(
+    key: 'goodsSerialNumber',
+    title: 'goodsSerialNumber',
     // renderColumn: UIColumns.InputRender,
+    rules: [
+      ValidationRule(
+        max: 64,
+        message: "最大不能超过{max}",
+      ),
+    ],
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return isHot.renderColumn(record, null, text, index, isHot);
+    //  return goodsSerialNumber.renderColumn(record, null, text, index, goodsSerialNumber);
     //},
   );
 
-  /// advertiseId  
-  static ColumnConfig advertiseId = ColumnConfig(
-    key: 'advertiseId',
-    title: 'advertiseId',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return advertiseId.renderColumn(record, null, text, index, advertiseId);
-    //},
-  );
-
-  /// presentPrice  
-  static ColumnConfig presentPrice = ColumnConfig(
-    key: 'presentPrice',
-    title: 'presentPrice',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return presentPrice.renderColumn(record, null, text, index, presentPrice);
-    //},
+  /// goodsSerialNumberLike  
+  static ColumnConfig goodsSerialNumberLike = ColumnConfig(
+    key: 'goodsSerialNumberLike',
+    title: 'goodsSerialNumberLike',
+    noJson: true,
   );
 
   /// image  
@@ -305,6 +273,13 @@ class HomeGoodsColumns{
     //},
   );
 
+  /// image1Like  
+  static ColumnConfig image1Like = ColumnConfig(
+    key: 'image1Like',
+    title: 'image1Like',
+    noJson: true,
+  );
+
   /// image2  
   static ColumnConfig image2 = ColumnConfig(
     key: 'image2',
@@ -319,6 +294,13 @@ class HomeGoodsColumns{
     //render: (text: any, record: HomeGoods, index: number) =>{
     //  return image2.renderColumn(record, null, text, index, image2);
     //},
+  );
+
+  /// image2Like  
+  static ColumnConfig image2Like = ColumnConfig(
+    key: 'image2Like',
+    title: 'image2Like',
+    noJson: true,
   );
 
   /// image3  
@@ -337,6 +319,13 @@ class HomeGoodsColumns{
     //},
   );
 
+  /// image3Like  
+  static ColumnConfig image3Like = ColumnConfig(
+    key: 'image3Like',
+    title: 'image3Like',
+    noJson: true,
+  );
+
   /// image4  
   static ColumnConfig image4 = ColumnConfig(
     key: 'image4',
@@ -353,6 +342,13 @@ class HomeGoodsColumns{
     //},
   );
 
+  /// image4Like  
+  static ColumnConfig image4Like = ColumnConfig(
+    key: 'image4Like',
+    title: 'image4Like',
+    noJson: true,
+  );
+
   /// image5  
   static ColumnConfig image5 = ColumnConfig(
     key: 'image5',
@@ -366,6 +362,56 @@ class HomeGoodsColumns{
     ],
     //render: (text: any, record: HomeGoods, index: number) =>{
     //  return image5.renderColumn(record, null, text, index, image5);
+    //},
+  );
+
+  /// image5Like  
+  static ColumnConfig image5Like = ColumnConfig(
+    key: 'image5Like',
+    title: 'image5Like',
+    noJson: true,
+  );
+
+  /// 图片地址  
+  static ColumnConfig images = ColumnConfig(
+    key: 'images',
+    title: '图片地址',
+    // renderColumn: UIColumns.InputRender,
+    rules: [
+      ValidationRule(
+        max: 255,
+        message: "最大不能超过{max}",
+      ),
+    ],
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return images.renderColumn(record, null, text, index, images);
+    //},
+  );
+
+  /// 图片地址Like  
+  static ColumnConfig imagesLike = ColumnConfig(
+    key: 'imagesLike',
+    title: '图片地址Like',
+    noJson: true,
+  );
+
+  /// 是否选择  
+  static ColumnConfig isCheck = ColumnConfig(
+    key: 'isCheck',
+    title: '是否选择',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return isCheck.renderColumn(record, null, text, index, isCheck);
+    //},
+  );
+
+  /// isHot  
+  static ColumnConfig isHot = ColumnConfig(
+    key: 'isHot',
+    title: 'isHot',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return isHot.renderColumn(record, null, text, index, isHot);
     //},
   );
 
@@ -385,11 +431,121 @@ class HomeGoodsColumns{
     //},
   );
 
-  /// goodsSerialNumber  
-  static ColumnConfig goodsSerialNumber = ColumnConfig(
-    key: 'goodsSerialNumber',
-    title: 'goodsSerialNumber',
+  /// isOnLineLike  
+  static ColumnConfig isOnLineLike = ColumnConfig(
+    key: 'isOnLineLike',
+    title: 'isOnLineLike',
+    noJson: true,
+  );
+
+  /// mallPrice  
+  static ColumnConfig mallPrice = ColumnConfig(
+    key: 'mallPrice',
+    title: 'mallPrice',
     // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return mallPrice.renderColumn(record, null, text, index, mallPrice);
+    //},
+  );
+
+  /// name  
+  static ColumnConfig name = ColumnConfig(
+    key: 'name',
+    title: 'name',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return name.renderColumn(record, null, text, index, name);
+    //},
+  );
+
+  /// orderNo  
+  static ColumnConfig orderNo = ColumnConfig(
+    key: 'orderNo',
+    title: 'orderNo',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return orderNo.renderColumn(record, null, text, index, orderNo);
+    //},
+  );
+
+  /// orderNoMax  
+  static ColumnConfig orderNoMax = ColumnConfig(
+    key: 'orderNoMax',
+    title: 'orderNoMax',
+    noJson: true,
+  );
+
+  /// orderNoMin  
+  static ColumnConfig orderNoMin = ColumnConfig(
+    key: 'orderNoMin',
+    title: 'orderNoMin',
+    noJson: true,
+  );
+
+  /// oriPrice  
+  static ColumnConfig oriPrice = ColumnConfig(
+    key: 'oriPrice',
+    title: 'oriPrice',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return oriPrice.renderColumn(record, null, text, index, oriPrice);
+    //},
+  );
+
+  /// presentPrice  
+  static ColumnConfig presentPrice = ColumnConfig(
+    key: 'presentPrice',
+    title: 'presentPrice',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return presentPrice.renderColumn(record, null, text, index, presentPrice);
+    //},
+  );
+
+  /// presentPriceMax  
+  static ColumnConfig presentPriceMax = ColumnConfig(
+    key: 'presentPriceMax',
+    title: 'presentPriceMax',
+    noJson: true,
+  );
+
+  /// presentPriceMin  
+  static ColumnConfig presentPriceMin = ColumnConfig(
+    key: 'presentPriceMin',
+    title: 'presentPriceMin',
+    noJson: true,
+  );
+
+  /// 价格  
+  static ColumnConfig price = ColumnConfig(
+    key: 'price',
+    title: '价格',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return price.renderColumn(record, null, text, index, price);
+    //},
+  );
+
+  /// 价格Max  
+  static ColumnConfig priceMax = ColumnConfig(
+    key: 'priceMax',
+    title: '价格Max',
+    noJson: true,
+  );
+
+  /// 价格Min  
+  static ColumnConfig priceMin = ColumnConfig(
+    key: 'priceMin',
+    title: '价格Min',
+    noJson: true,
+  );
+
+  /// recommendId  
+  static ColumnConfig recommendId = ColumnConfig(
+    key: 'recommendId',
+    title: 'recommendId',
+    // renderColumn: UIColumns.InputRender,
+    isId: true,
     rules: [
       ValidationRule(
         max: 64,
@@ -397,18 +553,16 @@ class HomeGoodsColumns{
       ),
     ],
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return goodsSerialNumber.renderColumn(record, null, text, index, goodsSerialNumber);
+    //  return recommendId.renderColumn(record, null, text, index, recommendId);
     //},
   );
 
-  /// state  
-  static ColumnConfig state = ColumnConfig(
-    key: 'state',
-    title: 'state',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return state.renderColumn(record, null, text, index, state);
-    //},
+  /// recommendId s  
+  static ColumnConfig recommendIds = ColumnConfig(
+    key: 'recommendIds',
+    title: 'recommendId',
+    noJson: true,
+    isArray: true,
   );
 
   /// shopId  
@@ -427,141 +581,28 @@ class HomeGoodsColumns{
     //},
   );
 
-  /// goodsDetail  
-  static ColumnConfig goodsDetail = ColumnConfig(
-    key: 'goodsDetail',
-    title: 'goodsDetail',
-    // renderColumn: UIColumns.TextareaRender,
-    rules: [
-      ValidationRule(
-        max: 65535,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    nullTitle: '请选择',
+  /// shopId s  
+  static ColumnConfig shopIds = ColumnConfig(
+    key: 'shopIds',
+    title: 'shopId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// state  
+  static ColumnConfig state = ColumnConfig(
+    key: 'state',
+    title: 'state',
+    // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return goodsDetail.renderColumn(record, null, text, index, goodsDetail);
+    //  return state.renderColumn(record, null, text, index, state);
     //},
   );
 
-  /// 商品名称Like  
-  static ColumnConfig goodsNameLike = ColumnConfig(
-    key: 'goodsNameLike',
-    title: '商品名称Like',
-    noJson: true,
-  );
-
-  /// categorySubId s  
-  static ColumnConfig categorySubIds = ColumnConfig(
-    key: 'categorySubIds',
-    title: 'categorySubId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// 数量Min  
-  static ColumnConfig amountMin = ColumnConfig(
-    key: 'amountMin',
-    title: '数量Min',
-    noJson: true,
-  );
-
-  /// 数量Max  
-  static ColumnConfig amountMax = ColumnConfig(
-    key: 'amountMax',
-    title: '数量Max',
-    noJson: true,
-  );
-
-  /// 价格Min  
-  static ColumnConfig priceMin = ColumnConfig(
-    key: 'priceMin',
-    title: '价格Min',
-    noJson: true,
-  );
-
-  /// 价格Max  
-  static ColumnConfig priceMax = ColumnConfig(
-    key: 'priceMax',
-    title: '价格Max',
-    noJson: true,
-  );
-
-  /// 图片地址Like  
-  static ColumnConfig imagesLike = ColumnConfig(
-    key: 'imagesLike',
-    title: '图片地址Like',
-    noJson: true,
-  );
-
-  /// advertiseId s  
-  static ColumnConfig advertiseIds = ColumnConfig(
-    key: 'advertiseIds',
-    title: 'advertiseId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// presentPriceMin  
-  static ColumnConfig presentPriceMin = ColumnConfig(
-    key: 'presentPriceMin',
-    title: 'presentPriceMin',
-    noJson: true,
-  );
-
-  /// presentPriceMax  
-  static ColumnConfig presentPriceMax = ColumnConfig(
-    key: 'presentPriceMax',
-    title: 'presentPriceMax',
-    noJson: true,
-  );
-
-  /// image1Like  
-  static ColumnConfig image1Like = ColumnConfig(
-    key: 'image1Like',
-    title: 'image1Like',
-    noJson: true,
-  );
-
-  /// image2Like  
-  static ColumnConfig image2Like = ColumnConfig(
-    key: 'image2Like',
-    title: 'image2Like',
-    noJson: true,
-  );
-
-  /// image3Like  
-  static ColumnConfig image3Like = ColumnConfig(
-    key: 'image3Like',
-    title: 'image3Like',
-    noJson: true,
-  );
-
-  /// image4Like  
-  static ColumnConfig image4Like = ColumnConfig(
-    key: 'image4Like',
-    title: 'image4Like',
-    noJson: true,
-  );
-
-  /// image5Like  
-  static ColumnConfig image5Like = ColumnConfig(
-    key: 'image5Like',
-    title: 'image5Like',
-    noJson: true,
-  );
-
-  /// isOnLineLike  
-  static ColumnConfig isOnLineLike = ColumnConfig(
-    key: 'isOnLineLike',
-    title: 'isOnLineLike',
-    noJson: true,
-  );
-
-  /// goodsSerialNumberLike  
-  static ColumnConfig goodsSerialNumberLike = ColumnConfig(
-    key: 'goodsSerialNumberLike',
-    title: 'goodsSerialNumberLike',
+  /// stateMax  
+  static ColumnConfig stateMax = ColumnConfig(
+    key: 'stateMax',
+    title: 'stateMax',
     noJson: true,
   );
 
@@ -572,76 +613,35 @@ class HomeGoodsColumns{
     noJson: true,
   );
 
-  /// stateMax  
-  static ColumnConfig stateMax = ColumnConfig(
-    key: 'stateMax',
-    title: 'stateMax',
+  /// 更新时间  TIMESTAMP
+  static ColumnConfig updateTime = ColumnConfig(
+    key: 'updateTime',
+    title: '更新时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+    //render: (text: any, record: HomeGoods, index: number) =>{
+    //  return updateTime.renderColumn(record, null, text, index, updateTime);
+    //},
+  );
+
+  /// 更新时间Max  TIMESTAMP
+  static ColumnConfig updateTimeMax = ColumnConfig(
+    key: 'updateTimeMax',
+    title: '更新时间Max',
     noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
   );
 
-  /// shopId s  
-  static ColumnConfig shopIds = ColumnConfig(
-    key: 'shopIds',
-    title: 'shopId',
+  /// 更新时间Min  TIMESTAMP
+  static ColumnConfig updateTimeMin = ColumnConfig(
+    key: 'updateTimeMin',
+    title: '更新时间Min',
     noJson: true,
-    isArray: true,
-  );
-
-  /// goodsDetailLike  
-  static ColumnConfig goodsDetailLike = ColumnConfig(
-    key: 'goodsDetailLike',
-    title: 'goodsDetailLike',
-    noJson: true,
-  );
-
-  /// name  
-  static ColumnConfig name = ColumnConfig(
-    key: 'name',
-    title: 'name',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return name.renderColumn(record, null, text, index, name);
-    //},
-  );
-
-  /// count  
-  static ColumnConfig count = ColumnConfig(
-    key: 'count',
-    title: 'count',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return count.renderColumn(record, null, text, index, count);
-    //},
-  );
-
-  /// oriPrice  
-  static ColumnConfig oriPrice = ColumnConfig(
-    key: 'oriPrice',
-    title: 'oriPrice',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return oriPrice.renderColumn(record, null, text, index, oriPrice);
-    //},
-  );
-
-  /// mallPrice  
-  static ColumnConfig mallPrice = ColumnConfig(
-    key: 'mallPrice',
-    title: 'mallPrice',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return mallPrice.renderColumn(record, null, text, index, mallPrice);
-    //},
-  );
-
-  /// comPic  
-  static ColumnConfig comPic = ColumnConfig(
-    key: 'comPic',
-    title: 'comPic',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeGoods, index: number) =>{
-    //  return comPic.renderColumn(record, null, text, index, comPic);
-    //},
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
   );
 
 }

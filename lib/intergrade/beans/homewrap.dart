@@ -12,31 +12,31 @@ import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
 class HomeWrap with FrontBean {
-  /// slides
-  List<Slide> slides;
-
-  /// shopInfo
-  HomeShop shopInfo;
-
-  /// recommend
-  List<HomeGoods> recommend;
-
   /// advertesPicture
   HomeAdvertise advertesPicture;
-
-  /// floors
-  List<Floor> floors;
 
   /// category
   List<Category> category;
 
+  /// floors
+  List<Floor> floors;
+
+  /// recommend
+  List<HomeGoods> recommend;
+
+  /// shopInfo
+  HomeShop shopInfo;
+
+  /// slides
+  List<Slide> slides;
+
   HomeWrap({
-    this.slides,
-    this.shopInfo,
-    this.recommend,
     this.advertesPicture,
-    this.floors,
     this.category,
+    this.floors,
+    this.recommend,
+    this.shopInfo,
+    this.slides,
   });
 
   static HomeWrap fromJson(Map<String, dynamic> json) {
@@ -44,12 +44,12 @@ class HomeWrap with FrontBean {
       return null;
     }
     return HomeWrap(
-      slides: Slide.fromJsonList(json['slides']),
-      shopInfo: HomeShop.fromJson(json['shopInfo']),
-      recommend: HomeGoods.fromJsonList(json['recommend']),
       advertesPicture: HomeAdvertise.fromJson(json['advertesPicture']),
-      floors: Floor.fromJsonList(json['floors']),
       category: Category.fromJsonList(json['category']),
+      floors: Floor.fromJsonList(json['floors']),
+      recommend: HomeGoods.fromJsonList(json['recommend']),
+      shopInfo: HomeShop.fromJson(json['shopInfo']),
+      slides: Slide.fromJsonList(json['slides']),
     );
   }
 
@@ -59,25 +59,15 @@ class HomeWrap with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.slides != null) {
-      var list = List();
-      for (var v in slides) {
-        list.add(v.toMap());
-      }
-      result['slides'] = list;
-    }
-    if (this.shopInfo != null) {
-      result['shopInfo'] = shopInfo.toMap();
-    }
-    if (this.recommend != null) {
-      var list = List();
-      for (var v in recommend) {
-        list.add(v.toMap());
-      }
-      result['recommend'] = list;
-    }
     if (this.advertesPicture != null) {
       result['advertesPicture'] = advertesPicture.toMap();
+    }
+    if (this.category != null) {
+      var list = List();
+      for (var v in category) {
+        list.add(v.toMap());
+      }
+      result['category'] = list;
     }
     if (this.floors != null) {
       var list = List();
@@ -86,12 +76,22 @@ class HomeWrap with FrontBean {
       }
       result['floors'] = list;
     }
-    if (this.category != null) {
+    if (this.recommend != null) {
       var list = List();
-      for (var v in category) {
+      for (var v in recommend) {
         list.add(v.toMap());
       }
-      result['category'] = list;
+      result['recommend'] = list;
+    }
+    if (this.shopInfo != null) {
+      result['shopInfo'] = shopInfo.toMap();
+    }
+    if (this.slides != null) {
+      var list = List();
+      for (var v in slides) {
+        list.add(v.toMap());
+      }
+      result['slides'] = list;
     }
     return result;
   }

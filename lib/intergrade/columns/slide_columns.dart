@@ -8,20 +8,45 @@ import '../../stgutil/stg_util.dart';
 
 class SlideColumns{
 
-  /// slideId  
-  static ColumnConfig slideId = ColumnConfig(
-    key: 'slideId',
-    title: 'slideId',
-    // renderColumn: UIColumns.InputRender,
-    isId: true,
-    rules: [
-      ValidationRule(
-        max: 64,
-        message: "最大不能超过{max}",
-      ),
-    ],
+  /// 创建时间  TIMESTAMP
+  static ColumnConfig createTime = ColumnConfig(
+    key: 'createTime',
+    title: '创建时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
     //render: (text: any, record: Slide, index: number) =>{
-    //  return slideId.renderColumn(record, null, text, index, slideId);
+    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //},
+  );
+
+  /// 创建时间Max  TIMESTAMP
+  static ColumnConfig createTimeMax = ColumnConfig(
+    key: 'createTimeMax',
+    title: '创建时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 创建时间Min  TIMESTAMP
+  static ColumnConfig createTimeMin = ColumnConfig(
+    key: 'createTimeMin',
+    title: '创建时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 是否删除(0:正常，1删除)  
+  static ColumnConfig deleteFlag = ColumnConfig(
+    key: 'deleteFlag',
+    title: '是否删除(0:正常',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: Slide, index: number) =>{
+    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
     //},
   );
 
@@ -41,6 +66,14 @@ class SlideColumns{
     //},
   );
 
+  /// goodsId s  
+  static ColumnConfig goodsIds = ColumnConfig(
+    key: 'goodsIds',
+    title: 'goodsId',
+    noJson: true,
+    isArray: true,
+  );
+
   /// image  
   static ColumnConfig image = ColumnConfig(
     key: 'image',
@@ -57,16 +90,6 @@ class SlideColumns{
     //},
   );
 
-  /// urlType  
-  static ColumnConfig urlType = ColumnConfig(
-    key: 'urlType',
-    title: 'urlType',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: Slide, index: number) =>{
-    //  return urlType.renderColumn(record, null, text, index, urlType);
-    //},
-  );
-
   /// orderNo  
   static ColumnConfig orderNo = ColumnConfig(
     key: 'orderNo',
@@ -77,17 +100,43 @@ class SlideColumns{
     //},
   );
 
-  /// 创建时间  TIMESTAMP
-  static ColumnConfig createTime = ColumnConfig(
-    key: 'createTime',
-    title: '创建时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
+  /// orderNoMax  
+  static ColumnConfig orderNoMax = ColumnConfig(
+    key: 'orderNoMax',
+    title: 'orderNoMax',
+    noJson: true,
+  );
+
+  /// orderNoMin  
+  static ColumnConfig orderNoMin = ColumnConfig(
+    key: 'orderNoMin',
+    title: 'orderNoMin',
+    noJson: true,
+  );
+
+  /// slideId  
+  static ColumnConfig slideId = ColumnConfig(
+    key: 'slideId',
+    title: 'slideId',
+    // renderColumn: UIColumns.InputRender,
+    isId: true,
+    rules: [
+      ValidationRule(
+        max: 64,
+        message: "最大不能超过{max}",
+      ),
+    ],
     //render: (text: any, record: Slide, index: number) =>{
-    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //  return slideId.renderColumn(record, null, text, index, slideId);
     //},
+  );
+
+  /// slideId s  
+  static ColumnConfig slideIds = ColumnConfig(
+    key: 'slideIds',
+    title: 'slideId',
+    noJson: true,
+    isArray: true,
   );
 
   /// 更新时间  TIMESTAMP
@@ -103,68 +152,10 @@ class SlideColumns{
     //},
   );
 
-  /// 是否删除(0:正常，1删除)  
-  static ColumnConfig deleteFlag = ColumnConfig(
-    key: 'deleteFlag',
-    title: '是否删除(0:正常',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: Slide, index: number) =>{
-    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
-    //},
-  );
-
-  /// slideId s  
-  static ColumnConfig slideIds = ColumnConfig(
-    key: 'slideIds',
-    title: 'slideId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// goodsId s  
-  static ColumnConfig goodsIds = ColumnConfig(
-    key: 'goodsIds',
-    title: 'goodsId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// urlType s  
-  static ColumnConfig urlTypes = ColumnConfig(
-    key: 'urlTypes',
-    title: 'urlType',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// orderNoMin  
-  static ColumnConfig orderNoMin = ColumnConfig(
-    key: 'orderNoMin',
-    title: 'orderNoMin',
-    noJson: true,
-  );
-
-  /// orderNoMax  
-  static ColumnConfig orderNoMax = ColumnConfig(
-    key: 'orderNoMax',
-    title: 'orderNoMax',
-    noJson: true,
-  );
-
-  /// 创建时间Min  TIMESTAMP
-  static ColumnConfig createTimeMin = ColumnConfig(
-    key: 'createTimeMin',
-    title: '创建时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 创建时间Max  TIMESTAMP
-  static ColumnConfig createTimeMax = ColumnConfig(
-    key: 'createTimeMax',
-    title: '创建时间Max',
+  /// 更新时间Max  TIMESTAMP
+  static ColumnConfig updateTimeMax = ColumnConfig(
+    key: 'updateTimeMax',
+    title: '更新时间Max',
     noJson: true,
     temporalType: TemporalType.TIMESTAMP,
     format: TIMESTAMP_FORMAT,
@@ -179,13 +170,22 @@ class SlideColumns{
     format: TIMESTAMP_FORMAT,
   );
 
-  /// 更新时间Max  TIMESTAMP
-  static ColumnConfig updateTimeMax = ColumnConfig(
-    key: 'updateTimeMax',
-    title: '更新时间Max',
+  /// urlType  
+  static ColumnConfig urlType = ColumnConfig(
+    key: 'urlType',
+    title: 'urlType',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: Slide, index: number) =>{
+    //  return urlType.renderColumn(record, null, text, index, urlType);
+    //},
+  );
+
+  /// urlType s  
+  static ColumnConfig urlTypes = ColumnConfig(
+    key: 'urlTypes',
+    title: 'urlType',
     noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
+    isArray: true,
   );
 
 }

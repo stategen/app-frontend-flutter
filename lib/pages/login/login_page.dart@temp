@@ -1,56 +1,56 @@
 ///  Do not remove this unless you get business authorization.
-///  User_detail_$username
+///  Login
 ///  init by [stategen.progen] ,can be edit manually ,keep when "keep this"
 ///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
-import 'user_detail_\$username_provider.dart';
+import 'login_provider.dart';
 
 
-class User_detail_$usernamePage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   // 路由路径
-  static final String path = '/user/detail/\$username';
+  static final String path = '/login';
 
   // 路由创建方式
   static final Handler handler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return User_detail_$usernameProvider.create(
-        child: User_detail_$usernamePage(params: params)
+      return LoginProvider.create(
+        child: LoginPage(params: params)
       );
     }
   );
 
   Map<String, List<String>> params;
 
-  User_detail_$usernamePage({this.params});
+  LoginPage({this.params});
 
   @override
-  createState() => _User_detail_$usernamePageState();
+  createState() => _LoginPageState();
 
 }
 
-class _User_detail_$usernamePageState extends State<User_detail_$usernamePage> {
+class _LoginPageState extends State<LoginPage> {
 
-  User_detail_$usernameProvider user_detail_$usernameProvider;
+  LoginProvider loginProvider;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     // state在整个生部周期只需要拿和注册一次
-    user_detail_$usernameProvider = User_detail_$usernameProvider.of(context);
+    loginProvider = LoginProvider.of(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    //var fetched = user_detail_$usernameProvider.user_detail_$usernameWrapArea.fetched ?? false;
+    //var fetched = loginProvider.loginWrapArea.fetched ?? false;
     //if (!fetched) {
-    //  user_detail_$usernameProvider.xxx(context,);
+    //  loginProvider.xxx(context,);
     //}
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("User_detail_$usernamePage"),
+        title: Text("LoginPage"),
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {

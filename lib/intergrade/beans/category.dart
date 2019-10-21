@@ -10,67 +10,67 @@ class Category with FrontBean {
   /// categoryId
   static const String Category_ID = 'categoryId';
 
-  /// categorySubs
-  List<CategorySub> categorySubs;
-
   /// 大类目录ID
   String categoryId;
-
-  /// 大类目录名称
-  String categoryName;
-
-  /// 描述
-  String comments;
-
-  /// 图片地址
-  String image;
-
-  /// 创建时间
-  DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
 
   /// 大类目录ID s
   List<String> categoryIds;
 
+  /// 大类目录名称
+  String categoryName;
+
   /// 大类目录名称Like
   String categoryNameLike;
+
+  /// categorySubs
+  List<CategorySub> categorySubs;
+
+  /// 描述
+  String comments;
 
   /// 描述Like
   String commentsLike;
 
-  /// 创建时间Min
-  DateTime createTimeMin;
+  /// 创建时间
+  DateTime createTime;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
+
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
+
+  /// 图片地址
+  String image;
+
+  /// 更新时间
+  DateTime updateTime;
 
   /// 更新时间Max
   DateTime updateTimeMax;
 
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
   Category({
-    this.categorySubs,
     this.categoryId,
-    this.categoryName,
-    this.comments,
-    this.image,
-    this.createTime,
-    this.updateTime,
-    this.deleteFlag,
     this.categoryIds,
+    this.categoryName,
     this.categoryNameLike,
+    this.categorySubs,
+    this.comments,
     this.commentsLike,
-    this.createTimeMin,
+    this.createTime,
     this.createTimeMax,
-    this.updateTimeMin,
+    this.createTimeMin,
+    this.deleteFlag,
+    this.image,
+    this.updateTime,
     this.updateTimeMax,
+    this.updateTimeMin,
   });
 
   static Category fromJson(Map<String, dynamic> json) {
@@ -78,14 +78,14 @@ class Category with FrontBean {
       return null;
     }
     return Category(
-      categorySubs: CategorySub.fromJsonList(json['categorySubs']),
       categoryId: JsonUtil.parseString(json['categoryId']),
       categoryName: JsonUtil.parseString(json['categoryName']),
+      categorySubs: CategorySub.fromJsonList(json['categorySubs']),
       comments: JsonUtil.parseString(json['comments']),
-      image: JsonUtil.parseString(json['image']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      image: JsonUtil.parseString(json['image']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
     );
   }
 
@@ -95,33 +95,8 @@ class Category with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.categorySubs != null) {
-      var list = List();
-      for (var v in categorySubs) {
-        list.add(v.toMap());
-      }
-      result['categorySubs'] = list;
-    }
     if (this.categoryId != null) {
       result['categoryId'] = JsonUtil.stringToJson(categoryId);
-    }
-    if (this.categoryName != null) {
-      result['categoryName'] = JsonUtil.stringToJson(categoryName);
-    }
-    if (this.comments != null) {
-      result['comments'] = JsonUtil.stringToJson(comments);
-    }
-    if (this.image != null) {
-      result['image'] = JsonUtil.stringToJson(image);
-    }
-    if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
-    }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
-    }
-    if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.categoryIds != null) {
       var list = List();
@@ -130,23 +105,48 @@ class Category with FrontBean {
       }
       result['categoryIds'] = list;
     }
+    if (this.categoryName != null) {
+      result['categoryName'] = JsonUtil.stringToJson(categoryName);
+    }
     if (this.categoryNameLike != null) {
       result['categoryNameLike'] = JsonUtil.stringToJson(categoryNameLike);
+    }
+    if (this.categorySubs != null) {
+      var list = List();
+      for (var v in categorySubs) {
+        list.add(v.toMap());
+      }
+      result['categorySubs'] = list;
+    }
+    if (this.comments != null) {
+      result['comments'] = JsonUtil.stringToJson(comments);
     }
     if (this.commentsLike != null) {
       result['commentsLike'] = JsonUtil.stringToJson(commentsLike);
     }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    if (this.createTime != null) {
+      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
       result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
     }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    }
+    if (this.deleteFlag != null) {
+      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.image != null) {
+      result['image'] = JsonUtil.stringToJson(image);
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

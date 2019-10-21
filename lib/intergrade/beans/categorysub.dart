@@ -9,67 +9,67 @@ class CategorySub with FrontBean {
   /// categorySubId
   static const String CategorySub_ID = 'categorySubId';
 
-  /// categorySubId
-  String categorySubId;
-
   /// categoryId
   String categoryId;
-
-  /// subName
-  String subName;
-
-  /// comments
-  String comments;
-
-  /// 创建时间
-  DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
-
-  /// categorySubId s
-  List<String> categorySubIds;
 
   /// categoryId s
   List<String> categoryIds;
 
-  /// subNameLike
-  String subNameLike;
+  /// categorySubId
+  String categorySubId;
+
+  /// categorySubId s
+  List<String> categorySubIds;
+
+  /// comments
+  String comments;
 
   /// commentsLike
   String commentsLike;
 
-  /// 创建时间Min
-  DateTime createTimeMin;
+  /// 创建时间
+  DateTime createTime;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
+
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
+
+  /// subName
+  String subName;
+
+  /// subNameLike
+  String subNameLike;
+
+  /// 更新时间
+  DateTime updateTime;
 
   /// 更新时间Max
   DateTime updateTimeMax;
 
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
   CategorySub({
-    this.categorySubId,
     this.categoryId,
-    this.subName,
-    this.comments,
-    this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.categorySubIds,
     this.categoryIds,
-    this.subNameLike,
+    this.categorySubId,
+    this.categorySubIds,
+    this.comments,
     this.commentsLike,
-    this.createTimeMin,
+    this.createTime,
     this.createTimeMax,
-    this.updateTimeMin,
+    this.createTimeMin,
+    this.deleteFlag,
+    this.subName,
+    this.subNameLike,
+    this.updateTime,
     this.updateTimeMax,
+    this.updateTimeMin,
   });
 
   static CategorySub fromJson(Map<String, dynamic> json) {
@@ -77,13 +77,13 @@ class CategorySub with FrontBean {
       return null;
     }
     return CategorySub(
-      categorySubId: JsonUtil.parseString(json['categorySubId']),
       categoryId: JsonUtil.parseString(json['categoryId']),
-      subName: JsonUtil.parseString(json['subName']),
+      categorySubId: JsonUtil.parseString(json['categorySubId']),
       comments: JsonUtil.parseString(json['comments']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      subName: JsonUtil.parseString(json['subName']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
     );
   }
 
@@ -93,33 +93,8 @@ class CategorySub with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.categorySubId != null) {
-      result['categorySubId'] = JsonUtil.stringToJson(categorySubId);
-    }
     if (this.categoryId != null) {
       result['categoryId'] = JsonUtil.stringToJson(categoryId);
-    }
-    if (this.subName != null) {
-      result['subName'] = JsonUtil.stringToJson(subName);
-    }
-    if (this.comments != null) {
-      result['comments'] = JsonUtil.stringToJson(comments);
-    }
-    if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
-    }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
-    }
-    if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
-    }
-    if (this.categorySubIds != null) {
-      var list = List();
-      for (var v in categorySubIds) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['categorySubIds'] = list;
     }
     if (this.categoryIds != null) {
       var list = List();
@@ -128,23 +103,48 @@ class CategorySub with FrontBean {
       }
       result['categoryIds'] = list;
     }
-    if (this.subNameLike != null) {
-      result['subNameLike'] = JsonUtil.stringToJson(subNameLike);
+    if (this.categorySubId != null) {
+      result['categorySubId'] = JsonUtil.stringToJson(categorySubId);
+    }
+    if (this.categorySubIds != null) {
+      var list = List();
+      for (var v in categorySubIds) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['categorySubIds'] = list;
+    }
+    if (this.comments != null) {
+      result['comments'] = JsonUtil.stringToJson(comments);
     }
     if (this.commentsLike != null) {
       result['commentsLike'] = JsonUtil.stringToJson(commentsLike);
     }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    if (this.createTime != null) {
+      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
       result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
     }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    }
+    if (this.deleteFlag != null) {
+      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.subName != null) {
+      result['subName'] = JsonUtil.stringToJson(subName);
+    }
+    if (this.subNameLike != null) {
+      result['subNameLike'] = JsonUtil.stringToJson(subNameLike);
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

@@ -4,17 +4,20 @@
 ///  由 [stategen.progen]代码生成器初始化，可以手工修改,但如果遇到 keep this ,请保留导出设置以备外部自动化调用
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:provider/provider.dart';
+import 'component/details_bottom.dart';
+import 'component/details_explain.dart';
+import 'component/details_tabbar.dart';
+import 'component/details_top_area.dart';
+import 'component/details_web.dart';
 import 'goodsdetail_provider.dart';
-import './component/details_top_area.dart';
-import './component/details_explain.dart';
-import './component/details_tabbar.dart';
-import './component/details_web.dart';
-import './component/details_bottom.dart';
 
 
-class GoodsDetailPage extends StatelessWidget {
+class GoodsDetailPage extends StatefulWidget {
+  // 路由路径
   static final String path = '/goodsDetail';
 
+  // 路由创建方式
   static final Handler handler = Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params) {
         return GoodsDetailProvider.create(
@@ -23,18 +26,28 @@ class GoodsDetailPage extends StatelessWidget {
       }
   );
 
-  static url({String goodsId}) {
-    return '$path?goodsId=$goodsId';
-  }
-
-
-  String goodsId;
   Map<String, List<String>> params;
+  String goodsId;
 
-  GoodsDetailPage({this.params}) {
+  GoodsDetailPage({this.params}){
     this.goodsId = params['goodsId'].first;
   }
 
+  @override
+  createState() => _GoodsDetailPageState();
+
+}
+
+class _GoodsDetailPageState extends State<GoodsDetailPage> {
+
+  GoodsDetailProvider goodsDetailProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // state在整个生部周期只需要拿和注册一次
+    goodsDetailProvider = GoodsDetailProvider.of(context,listen: false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +61,7 @@ class GoodsDetailPage extends StatelessWidget {
             }),
       ),
       body: FutureBuilder(
-          future: _getGoodsInfo(context),
+          future: _getGoodsDetail(context),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Stack(
@@ -78,11 +91,10 @@ class GoodsDetailPage extends StatelessWidget {
   }
 
 
-  _getGoodsInfo(BuildContext context) async {
-    GoodsDetailProvider goodsDetailProvider = GoodsDetailProvider.of(context, listen: false);
-    await goodsDetailProvider.getGoodDetailById(context, goodsId: goodsId);
+  _getGoodsDetail(BuildContext context) async {
+    await goodsDetailProvider.getGoodDetailById(context, goodsId: widget.goodsId);
     return '完成加载';
   }
 
-}
 
+}

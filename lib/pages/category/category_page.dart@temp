@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'category_provider.dart';
 
 
-class CategoryPage extends StatelessWidget {
+class CategoryPage extends StatefulWidget {
   // 路由路径
   static final String path = '/category';
 
@@ -26,22 +26,11 @@ class CategoryPage extends StatelessWidget {
   CategoryPage({this.params});
 
   @override
-  Widget build(BuildContext context) {
-    // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
-    return CategoryProvider.create(
-      child: CategoryScene(),
-    );
-  }
-}
-
-class CategoryScene extends StatefulWidget {
-
-  @override
-  _CategoryPageState createState() => _CategoryPageState();
+  createState() => _CategoryPageState();
 
 }
 
-class _CategoryPageState extends State<CategoryScene> {
+class _CategoryPageState extends State<CategoryPage> {
 
   CategoryProvider categoryProvider;
 
@@ -59,7 +48,26 @@ class _CategoryPageState extends State<CategoryScene> {
     //  categoryProvider.xxx(context,);
     //}
 
-    return Text('category Page 创建成功!');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("CategoryPage"),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Container(
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+          ),
+        ],
+      ),
+    );
   }
 
 }

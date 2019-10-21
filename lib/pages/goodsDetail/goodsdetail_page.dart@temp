@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'goodsdetail_provider.dart';
 
 
-class GoodsDetailPage extends StatelessWidget {
+class GoodsDetailPage extends StatefulWidget {
   // 路由路径
   static final String path = '/goodsDetail';
 
@@ -26,22 +26,11 @@ class GoodsDetailPage extends StatelessWidget {
   GoodsDetailPage({this.params});
 
   @override
-  Widget build(BuildContext context) {
-    // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
-    return GoodsDetailProvider.create(
-      child: GoodsDetailScene(),
-    );
-  }
-}
-
-class GoodsDetailScene extends StatefulWidget {
-
-  @override
-  _GoodsDetailPageState createState() => _GoodsDetailPageState();
+  createState() => _GoodsDetailPageState();
 
 }
 
-class _GoodsDetailPageState extends State<GoodsDetailScene> {
+class _GoodsDetailPageState extends State<GoodsDetailPage> {
 
   GoodsDetailProvider goodsDetailProvider;
 
@@ -59,7 +48,26 @@ class _GoodsDetailPageState extends State<GoodsDetailScene> {
     //  goodsDetailProvider.xxx(context,);
     //}
 
-    return Text('goodsDetail Page 创建成功!');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("GoodsDetailPage"),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Container(
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+          ),
+        ],
+      ),
+    );
   }
 
 }

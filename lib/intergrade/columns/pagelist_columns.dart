@@ -8,13 +8,14 @@ import '../../stgutil/stg_util.dart';
 
 class PageListColumns{
 
-  /// pageSize  
-  static ColumnConfig pageSize = ColumnConfig(
-    key: 'pageSize',
-    title: 'pageSize',
+  /// items  
+  static ColumnConfig items = ColumnConfig(
+    key: 'items',
+    title: 'items',
     // renderColumn: UIColumns.InputRender,
+    isArray: true,
     //render: (text: any, record: PageList<dynamic>, index: number) =>{
-    //  return pageSize.renderColumn(record, null, text, index, pageSize);
+    //  return items.renderColumn(record, null, text, index, items);
     //},
   );
 
@@ -25,6 +26,26 @@ class PageListColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: PageList<dynamic>, index: number) =>{
     //  return pageNum.renderColumn(record, null, text, index, pageNum);
+    //},
+  );
+
+  /// pageSize  
+  static ColumnConfig pageSize = ColumnConfig(
+    key: 'pageSize',
+    title: 'pageSize',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: PageList<dynamic>, index: number) =>{
+    //  return pageSize.renderColumn(record, null, text, index, pageSize);
+    //},
+  );
+
+  /// pagination  
+  static ColumnConfig pagination = ColumnConfig(
+    key: 'pagination',
+    title: 'pagination',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: PageList<dynamic>, index: number) =>{
+    //  return pagination.renderColumn(record, null, text, index, pagination);
     //},
   );
 
@@ -45,27 +66,6 @@ class PageListColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: PageList<dynamic>, index: number) =>{
     //  return totalPages.renderColumn(record, null, text, index, totalPages);
-    //},
-  );
-
-  /// items  
-  static ColumnConfig items = ColumnConfig(
-    key: 'items',
-    title: 'items',
-    // renderColumn: UIColumns.InputRender,
-    isArray: true,
-    //render: (text: any, record: PageList<dynamic>, index: number) =>{
-    //  return items.renderColumn(record, null, text, index, items);
-    //},
-  );
-
-  /// pagination  
-  static ColumnConfig pagination = ColumnConfig(
-    key: 'pagination',
-    title: 'pagination',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: PageList<dynamic>, index: number) =>{
-    //  return pagination.renderColumn(record, null, text, index, pagination);
     //},
   );
 

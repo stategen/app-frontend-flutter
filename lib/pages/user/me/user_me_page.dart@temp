@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'user_me_provider.dart';
 
 
-class User_mePage extends StatelessWidget {
+class User_mePage extends StatefulWidget {
   // 路由路径
   static final String path = '/user/me';
 
@@ -26,22 +26,11 @@ class User_mePage extends StatelessWidget {
   User_mePage({this.params});
 
   @override
-  Widget build(BuildContext context) {
-    // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
-    return User_meProvider.create(
-      child: User_meScene(),
-    );
-  }
-}
-
-class User_meScene extends StatefulWidget {
-
-  @override
-  _User_mePageState createState() => _User_mePageState();
+  createState() => _User_mePageState();
 
 }
 
-class _User_mePageState extends State<User_meScene> {
+class _User_mePageState extends State<User_mePage> {
 
   User_meProvider user_meProvider;
 
@@ -59,7 +48,26 @@ class _User_mePageState extends State<User_meScene> {
     //  user_meProvider.xxx(context,);
     //}
 
-    return Text('user_me Page 创建成功!');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("User_mePage"),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Container(
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+          ),
+        ],
+      ),
+    );
   }
 
 }

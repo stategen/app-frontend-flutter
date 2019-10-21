@@ -18,70 +18,6 @@ class TopicReplyColumns{
     //},
   );
 
-  /// ups  
-  static ColumnConfig ups = ColumnConfig(
-    key: 'ups',
-    title: 'ups',
-    // renderColumn: UIColumns.InputRender,
-    isArray: true,
-    //render: (text: any, record: TopicReply, index: number) =>{
-    //  return ups.renderColumn(record, null, text, index, ups);
-    //},
-  );
-
-  /// isUped  
-  static ColumnConfig isUped = ColumnConfig(
-    key: 'isUped',
-    title: 'isUped',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: TopicReply, index: number) =>{
-    //  return isUped.renderColumn(record, null, text, index, isUped);
-    //},
-  );
-
-  /// upCount  
-  static ColumnConfig upCount = ColumnConfig(
-    key: 'upCount',
-    title: 'upCount',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: TopicReply, index: number) =>{
-    //  return upCount.renderColumn(record, null, text, index, upCount);
-    //},
-  );
-
-  /// replyId  
-  static ColumnConfig replyId = ColumnConfig(
-    key: 'replyId',
-    title: 'replyId',
-    // renderColumn: UIColumns.InputRender,
-    isId: true,
-    rules: [
-      ValidationRule(
-        max: 64,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    //render: (text: any, record: TopicReply, index: number) =>{
-    //  return replyId.renderColumn(record, null, text, index, replyId);
-    //},
-  );
-
-  /// topicId  
-  static ColumnConfig topicId = ColumnConfig(
-    key: 'topicId',
-    title: 'topicId',
-    // renderColumn: UIColumns.InputRender,
-    rules: [
-      ValidationRule(
-        max: 64,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    //render: (text: any, record: TopicReply, index: number) =>{
-    //  return topicId.renderColumn(record, null, text, index, topicId);
-    //},
-  );
-
   /// authorId  
   static ColumnConfig authorId = ColumnConfig(
     key: 'authorId',
@@ -103,6 +39,14 @@ class TopicReplyColumns{
     //},
   );
 
+  /// authorId s  
+  static ColumnConfig authorIds = ColumnConfig(
+    key: 'authorIds',
+    title: 'authorId',
+    noJson: true,
+    isArray: true,
+  );
+
   /// content  
   static ColumnConfig content = ColumnConfig(
     key: 'content',
@@ -117,6 +61,75 @@ class TopicReplyColumns{
     nullTitle: '请选择',
     //render: (text: any, record: TopicReply, index: number) =>{
     //  return content.renderColumn(record, null, text, index, content);
+    //},
+  );
+
+  /// contentLike  
+  static ColumnConfig contentLike = ColumnConfig(
+    key: 'contentLike',
+    title: 'contentLike',
+    noJson: true,
+  );
+
+  /// 创建时间  TIMESTAMP
+  static ColumnConfig createTime = ColumnConfig(
+    key: 'createTime',
+    title: '创建时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+    //render: (text: any, record: TopicReply, index: number) =>{
+    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //},
+  );
+
+  /// 创建时间Max  TIMESTAMP
+  static ColumnConfig createTimeMax = ColumnConfig(
+    key: 'createTimeMax',
+    title: '创建时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 创建时间Min  TIMESTAMP
+  static ColumnConfig createTimeMin = ColumnConfig(
+    key: 'createTimeMin',
+    title: '创建时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 是否删除(0:正常，1删除)  
+  static ColumnConfig deleteFlag = ColumnConfig(
+    key: 'deleteFlag',
+    title: '是否删除(0:正常',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: TopicReply, index: number) =>{
+    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
+    //},
+  );
+
+  /// id  
+  static ColumnConfig id = ColumnConfig(
+    key: 'id',
+    title: 'id',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: TopicReply, index: number) =>{
+    //  return id.renderColumn(record, null, text, index, id);
+    //},
+  );
+
+  /// isUped  
+  static ColumnConfig isUped = ColumnConfig(
+    key: 'isUped',
+    title: 'isUped',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: TopicReply, index: number) =>{
+    //  return isUped.renderColumn(record, null, text, index, isUped);
     //},
   );
 
@@ -136,16 +149,70 @@ class TopicReplyColumns{
     //},
   );
 
-  /// 创建时间  TIMESTAMP
-  static ColumnConfig createTime = ColumnConfig(
-    key: 'createTime',
-    title: '创建时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
+  /// parentReplyId s  
+  static ColumnConfig parentReplyIds = ColumnConfig(
+    key: 'parentReplyIds',
+    title: 'parentReplyId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// replyId  
+  static ColumnConfig replyId = ColumnConfig(
+    key: 'replyId',
+    title: 'replyId',
+    // renderColumn: UIColumns.InputRender,
+    isId: true,
+    rules: [
+      ValidationRule(
+        max: 64,
+        message: "最大不能超过{max}",
+      ),
+    ],
     //render: (text: any, record: TopicReply, index: number) =>{
-    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //  return replyId.renderColumn(record, null, text, index, replyId);
+    //},
+  );
+
+  /// replyId s  
+  static ColumnConfig replyIds = ColumnConfig(
+    key: 'replyIds',
+    title: 'replyId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// topicId  
+  static ColumnConfig topicId = ColumnConfig(
+    key: 'topicId',
+    title: 'topicId',
+    // renderColumn: UIColumns.InputRender,
+    rules: [
+      ValidationRule(
+        max: 64,
+        message: "最大不能超过{max}",
+      ),
+    ],
+    //render: (text: any, record: TopicReply, index: number) =>{
+    //  return topicId.renderColumn(record, null, text, index, topicId);
+    //},
+  );
+
+  /// topicId s  
+  static ColumnConfig topicIds = ColumnConfig(
+    key: 'topicIds',
+    title: 'topicId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// upCount  
+  static ColumnConfig upCount = ColumnConfig(
+    key: 'upCount',
+    title: 'upCount',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: TopicReply, index: number) =>{
+    //  return upCount.renderColumn(record, null, text, index, upCount);
     //},
   );
 
@@ -162,69 +229,10 @@ class TopicReplyColumns{
     //},
   );
 
-  /// 是否删除(0:正常，1删除)  
-  static ColumnConfig deleteFlag = ColumnConfig(
-    key: 'deleteFlag',
-    title: '是否删除(0:正常',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: TopicReply, index: number) =>{
-    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
-    //},
-  );
-
-  /// replyId s  
-  static ColumnConfig replyIds = ColumnConfig(
-    key: 'replyIds',
-    title: 'replyId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// topicId s  
-  static ColumnConfig topicIds = ColumnConfig(
-    key: 'topicIds',
-    title: 'topicId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// authorId s  
-  static ColumnConfig authorIds = ColumnConfig(
-    key: 'authorIds',
-    title: 'authorId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// contentLike  
-  static ColumnConfig contentLike = ColumnConfig(
-    key: 'contentLike',
-    title: 'contentLike',
-    noJson: true,
-  );
-
-  /// parentReplyId s  
-  static ColumnConfig parentReplyIds = ColumnConfig(
-    key: 'parentReplyIds',
-    title: 'parentReplyId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// 创建时间Min  TIMESTAMP
-  static ColumnConfig createTimeMin = ColumnConfig(
-    key: 'createTimeMin',
-    title: '创建时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 创建时间Max  TIMESTAMP
-  static ColumnConfig createTimeMax = ColumnConfig(
-    key: 'createTimeMax',
-    title: '创建时间Max',
+  /// 更新时间Max  TIMESTAMP
+  static ColumnConfig updateTimeMax = ColumnConfig(
+    key: 'updateTimeMax',
+    title: '更新时间Max',
     noJson: true,
     temporalType: TemporalType.TIMESTAMP,
     format: TIMESTAMP_FORMAT,
@@ -239,22 +247,14 @@ class TopicReplyColumns{
     format: TIMESTAMP_FORMAT,
   );
 
-  /// 更新时间Max  TIMESTAMP
-  static ColumnConfig updateTimeMax = ColumnConfig(
-    key: 'updateTimeMax',
-    title: '更新时间Max',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// id  
-  static ColumnConfig id = ColumnConfig(
-    key: 'id',
-    title: 'id',
+  /// ups  
+  static ColumnConfig ups = ColumnConfig(
+    key: 'ups',
+    title: 'ups',
     // renderColumn: UIColumns.InputRender,
+    isArray: true,
     //render: (text: any, record: TopicReply, index: number) =>{
-    //  return id.renderColumn(record, null, text, index, id);
+    //  return ups.renderColumn(record, null, text, index, ups);
     //},
   );
 

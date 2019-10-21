@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'topic_publish_provider.dart';
 
 
-class Topic_publishPage extends StatelessWidget {
+class Topic_publishPage extends StatefulWidget {
   // 路由路径
   static final String path = '/topic/publish';
 
@@ -26,22 +26,11 @@ class Topic_publishPage extends StatelessWidget {
   Topic_publishPage({this.params});
 
   @override
-  Widget build(BuildContext context) {
-    // 这里提供provider是避免省事，将provider全部配到main下，而不能释放资源
-    return Topic_publishProvider.create(
-      child: Topic_publishScene(),
-    );
-  }
-}
-
-class Topic_publishScene extends StatefulWidget {
-
-  @override
-  _Topic_publishPageState createState() => _Topic_publishPageState();
+  createState() => _Topic_publishPageState();
 
 }
 
-class _Topic_publishPageState extends State<Topic_publishScene> {
+class _Topic_publishPageState extends State<Topic_publishPage> {
 
   Topic_publishProvider topic_publishProvider;
 
@@ -59,7 +48,26 @@ class _Topic_publishPageState extends State<Topic_publishScene> {
     //  topic_publishProvider.xxx(context,);
     //}
 
-    return Text('topic_publish Page 创建成功!');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Topic_publishPage"),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Container(
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+          ),
+        ],
+      ),
+    );
   }
 
 }

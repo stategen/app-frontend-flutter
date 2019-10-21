@@ -19,6 +19,16 @@ class ResponseColumns{
     //},
   );
 
+  /// data  
+  static ColumnConfig data = ColumnConfig(
+    key: 'data',
+    title: 'data',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: Response<dynamic>, index: number) =>{
+    //  return data.renderColumn(record, null, text, index, data);
+    //},
+  );
+
   /// exeptionClass  
   static ColumnConfig exeptionClass = ColumnConfig(
     key: 'exeptionClass',
@@ -29,13 +39,13 @@ class ResponseColumns{
     //},
   );
 
-  /// data  
-  static ColumnConfig data = ColumnConfig(
-    key: 'data',
-    title: 'data',
+  /// message  
+  static ColumnConfig message = ColumnConfig(
+    key: 'message',
+    title: 'message',
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: Response<dynamic>, index: number) =>{
-    //  return data.renderColumn(record, null, text, index, data);
+    //  return message.renderColumn(record, null, text, index, message);
     //},
   );
 
@@ -50,16 +60,6 @@ class ResponseColumns{
     ),
     //render: (text: any, record: Response<dynamic>, index: number) =>{
     //  return status.renderColumn(record, null, text, index, status);
-    //},
-  );
-
-  /// message  
-  static ColumnConfig message = ColumnConfig(
-    key: 'message',
-    title: 'message',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: Response<dynamic>, index: number) =>{
-    //  return message.renderColumn(record, null, text, index, message);
     //},
   );
 

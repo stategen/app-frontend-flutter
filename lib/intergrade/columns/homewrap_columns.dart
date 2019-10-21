@@ -8,38 +8,6 @@ import '../../stgutil/stg_util.dart';
 
 class HomeWrapColumns{
 
-  /// slides  
-  static ColumnConfig slides = ColumnConfig(
-    key: 'slides',
-    title: 'slides',
-    // renderColumn: UIColumns.InputRender,
-    isArray: true,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return slides.renderColumn(record, null, text, index, slides);
-    //},
-  );
-
-  /// shopInfo  
-  static ColumnConfig shopInfo = ColumnConfig(
-    key: 'shopInfo',
-    title: 'shopInfo',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return shopInfo.renderColumn(record, null, text, index, shopInfo);
-    //},
-  );
-
-  /// recommend  
-  static ColumnConfig recommend = ColumnConfig(
-    key: 'recommend',
-    title: 'recommend',
-    // renderColumn: UIColumns.InputRender,
-    isArray: true,
-    //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return recommend.renderColumn(record, null, text, index, recommend);
-    //},
-  );
-
   /// advertesPicture  
   static ColumnConfig advertesPicture = ColumnConfig(
     key: 'advertesPicture',
@@ -47,6 +15,17 @@ class HomeWrapColumns{
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: HomeWrap, index: number) =>{
     //  return advertesPicture.renderColumn(record, null, text, index, advertesPicture);
+    //},
+  );
+
+  /// category  
+  static ColumnConfig category = ColumnConfig(
+    key: 'category',
+    title: 'category',
+    // renderColumn: UIColumns.InputRender,
+    isArray: true,
+    //render: (text: any, record: HomeWrap, index: number) =>{
+    //  return category.renderColumn(record, null, text, index, category);
     //},
   );
 
@@ -61,14 +40,35 @@ class HomeWrapColumns{
     //},
   );
 
-  /// category  
-  static ColumnConfig category = ColumnConfig(
-    key: 'category',
-    title: 'category',
+  /// recommend  
+  static ColumnConfig recommend = ColumnConfig(
+    key: 'recommend',
+    title: 'recommend',
     // renderColumn: UIColumns.InputRender,
     isArray: true,
     //render: (text: any, record: HomeWrap, index: number) =>{
-    //  return category.renderColumn(record, null, text, index, category);
+    //  return recommend.renderColumn(record, null, text, index, recommend);
+    //},
+  );
+
+  /// shopInfo  
+  static ColumnConfig shopInfo = ColumnConfig(
+    key: 'shopInfo',
+    title: 'shopInfo',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeWrap, index: number) =>{
+    //  return shopInfo.renderColumn(record, null, text, index, shopInfo);
+    //},
+  );
+
+  /// slides  
+  static ColumnConfig slides = ColumnConfig(
+    key: 'slides',
+    title: 'slides',
+    // renderColumn: UIColumns.InputRender,
+    isArray: true,
+    //render: (text: any, record: HomeWrap, index: number) =>{
+    //  return slides.renderColumn(record, null, text, index, slides);
     //},
   );
 

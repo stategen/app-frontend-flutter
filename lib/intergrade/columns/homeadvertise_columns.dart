@@ -8,6 +8,66 @@ import '../../stgutil/stg_util.dart';
 
 class HomeAdvertiseColumns{
 
+  /// advertiseId  
+  static ColumnConfig advertiseId = ColumnConfig(
+    key: 'advertiseId',
+    title: 'advertiseId',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeAdvertise, index: number) =>{
+    //  return advertiseId.renderColumn(record, null, text, index, advertiseId);
+    //},
+  );
+
+  /// advertiseId s  
+  static ColumnConfig advertiseIds = ColumnConfig(
+    key: 'advertiseIds',
+    title: 'advertiseId',
+    noJson: true,
+    isArray: true,
+  );
+
+  /// 创建时间  TIMESTAMP
+  static ColumnConfig createTime = ColumnConfig(
+    key: 'createTime',
+    title: '创建时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+    //render: (text: any, record: HomeAdvertise, index: number) =>{
+    //  return createTime.renderColumn(record, null, text, index, createTime);
+    //},
+  );
+
+  /// 创建时间Max  TIMESTAMP
+  static ColumnConfig createTimeMax = ColumnConfig(
+    key: 'createTimeMax',
+    title: '创建时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 创建时间Min  TIMESTAMP
+  static ColumnConfig createTimeMin = ColumnConfig(
+    key: 'createTimeMin',
+    title: '创建时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 是否删除(0:正常，1删除)  
+  static ColumnConfig deleteFlag = ColumnConfig(
+    key: 'deleteFlag',
+    title: '是否删除(0:正常',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: HomeAdvertise, index: number) =>{
+    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
+    //},
+  );
+
   /// homeAdvId  
   static ColumnConfig homeAdvId = ColumnConfig(
     key: 'homeAdvId',
@@ -25,53 +85,6 @@ class HomeAdvertiseColumns{
     //},
   );
 
-  /// advertiseId  
-  static ColumnConfig advertiseId = ColumnConfig(
-    key: 'advertiseId',
-    title: 'advertiseId',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeAdvertise, index: number) =>{
-    //  return advertiseId.renderColumn(record, null, text, index, advertiseId);
-    //},
-  );
-
-  /// 创建时间  TIMESTAMP
-  static ColumnConfig createTime = ColumnConfig(
-    key: 'createTime',
-    title: '创建时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-    //render: (text: any, record: HomeAdvertise, index: number) =>{
-    //  return createTime.renderColumn(record, null, text, index, createTime);
-    //},
-  );
-
-  /// 更新时间  TIMESTAMP
-  static ColumnConfig updateTime = ColumnConfig(
-    key: 'updateTime',
-    title: '更新时间',
-    // renderColumn: UIColumns.TimeStampRender,
-    hidden: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-    //render: (text: any, record: HomeAdvertise, index: number) =>{
-    //  return updateTime.renderColumn(record, null, text, index, updateTime);
-    //},
-  );
-
-  /// 是否删除(0:正常，1删除)  
-  static ColumnConfig deleteFlag = ColumnConfig(
-    key: 'deleteFlag',
-    title: '是否删除(0:正常',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: HomeAdvertise, index: number) =>{
-    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
-    //},
-  );
-
   /// homeAdvId s  
   static ColumnConfig homeAdvIds = ColumnConfig(
     key: 'homeAdvIds',
@@ -80,48 +93,14 @@ class HomeAdvertiseColumns{
     isArray: true,
   );
 
-  /// advertiseId s  
-  static ColumnConfig advertiseIds = ColumnConfig(
-    key: 'advertiseIds',
-    title: 'advertiseId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// 创建时间Min  TIMESTAMP
-  static ColumnConfig createTimeMin = ColumnConfig(
-    key: 'createTimeMin',
-    title: '创建时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 创建时间Max  TIMESTAMP
-  static ColumnConfig createTimeMax = ColumnConfig(
-    key: 'createTimeMax',
-    title: '创建时间Max',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 更新时间Min  TIMESTAMP
-  static ColumnConfig updateTimeMin = ColumnConfig(
-    key: 'updateTimeMin',
-    title: '更新时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 更新时间Max  TIMESTAMP
-  static ColumnConfig updateTimeMax = ColumnConfig(
-    key: 'updateTimeMax',
-    title: '更新时间Max',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
+  /// pICTURE_ADDRESS  
+  static ColumnConfig pICTURE_ADDRESS = ColumnConfig(
+    key: 'pICTURE_ADDRESS',
+    title: 'pICTURE_ADDRESS',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeAdvertise, index: number) =>{
+    //  return pICTURE_ADDRESS.renderColumn(record, null, text, index, pICTURE_ADDRESS);
+    //},
   );
 
   /// pictureAddress  
@@ -137,6 +116,23 @@ class HomeAdvertiseColumns{
     ],
     //render: (text: any, record: HomeAdvertise, index: number) =>{
     //  return pictureAddress.renderColumn(record, null, text, index, pictureAddress);
+    //},
+  );
+
+  /// pictureAddressLike  
+  static ColumnConfig pictureAddressLike = ColumnConfig(
+    key: 'pictureAddressLike',
+    title: 'pictureAddressLike',
+    noJson: true,
+  );
+
+  /// tO_PLACE  
+  static ColumnConfig tO_PLACE = ColumnConfig(
+    key: 'tO_PLACE',
+    title: 'tO_PLACE',
+    // renderColumn: UIColumns.InputRender,
+    //render: (text: any, record: HomeAdvertise, index: number) =>{
+    //  return tO_PLACE.renderColumn(record, null, text, index, tO_PLACE);
     //},
   );
 
@@ -156,6 +152,44 @@ class HomeAdvertiseColumns{
     //},
   );
 
+  /// toPlaceLike  
+  static ColumnConfig toPlaceLike = ColumnConfig(
+    key: 'toPlaceLike',
+    title: 'toPlaceLike',
+    noJson: true,
+  );
+
+  /// 更新时间  TIMESTAMP
+  static ColumnConfig updateTime = ColumnConfig(
+    key: 'updateTime',
+    title: '更新时间',
+    // renderColumn: UIColumns.TimeStampRender,
+    hidden: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+    //render: (text: any, record: HomeAdvertise, index: number) =>{
+    //  return updateTime.renderColumn(record, null, text, index, updateTime);
+    //},
+  );
+
+  /// 更新时间Max  TIMESTAMP
+  static ColumnConfig updateTimeMax = ColumnConfig(
+    key: 'updateTimeMax',
+    title: '更新时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 更新时间Min  TIMESTAMP
+  static ColumnConfig updateTimeMin = ColumnConfig(
+    key: 'updateTimeMin',
+    title: '更新时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
   /// urlType  
   static ColumnConfig urlType = ColumnConfig(
     key: 'urlType',
@@ -166,46 +200,12 @@ class HomeAdvertiseColumns{
     //},
   );
 
-  /// pictureAddressLike  
-  static ColumnConfig pictureAddressLike = ColumnConfig(
-    key: 'pictureAddressLike',
-    title: 'pictureAddressLike',
-    noJson: true,
-  );
-
-  /// toPlaceLike  
-  static ColumnConfig toPlaceLike = ColumnConfig(
-    key: 'toPlaceLike',
-    title: 'toPlaceLike',
-    noJson: true,
-  );
-
   /// urlType s  
   static ColumnConfig urlTypes = ColumnConfig(
     key: 'urlTypes',
     title: 'urlType',
     noJson: true,
     isArray: true,
-  );
-
-  /// pICTURE_ADDRESS  
-  static ColumnConfig pICTURE_ADDRESS = ColumnConfig(
-    key: 'pICTURE_ADDRESS',
-    title: 'pICTURE_ADDRESS',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeAdvertise, index: number) =>{
-    //  return pICTURE_ADDRESS.renderColumn(record, null, text, index, pICTURE_ADDRESS);
-    //},
-  );
-
-  /// tO_PLACE  
-  static ColumnConfig tO_PLACE = ColumnConfig(
-    key: 'tO_PLACE',
-    title: 'tO_PLACE',
-    // renderColumn: UIColumns.InputRender,
-    //render: (text: any, record: HomeAdvertise, index: number) =>{
-    //  return tO_PLACE.renderColumn(record, null, text, index, tO_PLACE);
-    //},
   );
 
 }

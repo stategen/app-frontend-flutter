@@ -8,6 +8,30 @@ import '../../stgutil/stg_util.dart';
 
 class CategorySubColumns{
 
+  /// categoryId  
+  static ColumnConfig categoryId = ColumnConfig(
+    key: 'categoryId',
+    title: 'categoryId',
+    // renderColumn: UIColumns.InputRender,
+    rules: [
+      ValidationRule(
+        max: 64,
+        message: "最大不能超过{max}",
+      ),
+    ],
+    //render: (text: any, record: CategorySub, index: number) =>{
+    //  return categoryId.renderColumn(record, null, text, index, categoryId);
+    //},
+  );
+
+  /// categoryId s  
+  static ColumnConfig categoryIds = ColumnConfig(
+    key: 'categoryIds',
+    title: 'categoryId',
+    noJson: true,
+    isArray: true,
+  );
+
   /// categorySubId  
   static ColumnConfig categorySubId = ColumnConfig(
     key: 'categorySubId',
@@ -25,36 +49,12 @@ class CategorySubColumns{
     //},
   );
 
-  /// categoryId  
-  static ColumnConfig categoryId = ColumnConfig(
-    key: 'categoryId',
-    title: 'categoryId',
-    // renderColumn: UIColumns.InputRender,
-    rules: [
-      ValidationRule(
-        max: 64,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    //render: (text: any, record: CategorySub, index: number) =>{
-    //  return categoryId.renderColumn(record, null, text, index, categoryId);
-    //},
-  );
-
-  /// subName  
-  static ColumnConfig subName = ColumnConfig(
-    key: 'subName',
-    title: 'subName',
-    // renderColumn: UIColumns.InputRender,
-    rules: [
-      ValidationRule(
-        max: 255,
-        message: "最大不能超过{max}",
-      ),
-    ],
-    //render: (text: any, record: CategorySub, index: number) =>{
-    //  return subName.renderColumn(record, null, text, index, subName);
-    //},
+  /// categorySubId s  
+  static ColumnConfig categorySubIds = ColumnConfig(
+    key: 'categorySubIds',
+    title: 'categorySubId',
+    noJson: true,
+    isArray: true,
   );
 
   /// comments  
@@ -74,6 +74,13 @@ class CategorySubColumns{
     //},
   );
 
+  /// commentsLike  
+  static ColumnConfig commentsLike = ColumnConfig(
+    key: 'commentsLike',
+    title: 'commentsLike',
+    noJson: true,
+  );
+
   /// 创建时间  TIMESTAMP
   static ColumnConfig createTime = ColumnConfig(
     key: 'createTime',
@@ -85,6 +92,58 @@ class CategorySubColumns{
     //render: (text: any, record: CategorySub, index: number) =>{
     //  return createTime.renderColumn(record, null, text, index, createTime);
     //},
+  );
+
+  /// 创建时间Max  TIMESTAMP
+  static ColumnConfig createTimeMax = ColumnConfig(
+    key: 'createTimeMax',
+    title: '创建时间Max',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 创建时间Min  TIMESTAMP
+  static ColumnConfig createTimeMin = ColumnConfig(
+    key: 'createTimeMin',
+    title: '创建时间Min',
+    noJson: true,
+    temporalType: TemporalType.TIMESTAMP,
+    format: TIMESTAMP_FORMAT,
+  );
+
+  /// 是否删除(0:正常，1删除)  
+  static ColumnConfig deleteFlag = ColumnConfig(
+    key: 'deleteFlag',
+    title: '是否删除(0:正常',
+    // renderColumn: UIColumns.InputRender,
+    hidden: true,
+    //render: (text: any, record: CategorySub, index: number) =>{
+    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
+    //},
+  );
+
+  /// subName  
+  static ColumnConfig subName = ColumnConfig(
+    key: 'subName',
+    title: 'subName',
+    // renderColumn: UIColumns.InputRender,
+    rules: [
+      ValidationRule(
+        max: 255,
+        message: "最大不能超过{max}",
+      ),
+    ],
+    //render: (text: any, record: CategorySub, index: number) =>{
+    //  return subName.renderColumn(record, null, text, index, subName);
+    //},
+  );
+
+  /// subNameLike  
+  static ColumnConfig subNameLike = ColumnConfig(
+    key: 'subNameLike',
+    title: 'subNameLike',
+    noJson: true,
   );
 
   /// 更新时间  TIMESTAMP
@@ -100,60 +159,10 @@ class CategorySubColumns{
     //},
   );
 
-  /// 是否删除(0:正常，1删除)  
-  static ColumnConfig deleteFlag = ColumnConfig(
-    key: 'deleteFlag',
-    title: '是否删除(0:正常',
-    // renderColumn: UIColumns.InputRender,
-    hidden: true,
-    //render: (text: any, record: CategorySub, index: number) =>{
-    //  return deleteFlag.renderColumn(record, null, text, index, deleteFlag);
-    //},
-  );
-
-  /// categorySubId s  
-  static ColumnConfig categorySubIds = ColumnConfig(
-    key: 'categorySubIds',
-    title: 'categorySubId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// categoryId s  
-  static ColumnConfig categoryIds = ColumnConfig(
-    key: 'categoryIds',
-    title: 'categoryId',
-    noJson: true,
-    isArray: true,
-  );
-
-  /// subNameLike  
-  static ColumnConfig subNameLike = ColumnConfig(
-    key: 'subNameLike',
-    title: 'subNameLike',
-    noJson: true,
-  );
-
-  /// commentsLike  
-  static ColumnConfig commentsLike = ColumnConfig(
-    key: 'commentsLike',
-    title: 'commentsLike',
-    noJson: true,
-  );
-
-  /// 创建时间Min  TIMESTAMP
-  static ColumnConfig createTimeMin = ColumnConfig(
-    key: 'createTimeMin',
-    title: '创建时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 创建时间Max  TIMESTAMP
-  static ColumnConfig createTimeMax = ColumnConfig(
-    key: 'createTimeMax',
-    title: '创建时间Max',
+  /// 更新时间Max  TIMESTAMP
+  static ColumnConfig updateTimeMax = ColumnConfig(
+    key: 'updateTimeMax',
+    title: '更新时间Max',
     noJson: true,
     temporalType: TemporalType.TIMESTAMP,
     format: TIMESTAMP_FORMAT,
@@ -163,15 +172,6 @@ class CategorySubColumns{
   static ColumnConfig updateTimeMin = ColumnConfig(
     key: 'updateTimeMin',
     title: '更新时间Min',
-    noJson: true,
-    temporalType: TemporalType.TIMESTAMP,
-    format: TIMESTAMP_FORMAT,
-  );
-
-  /// 更新时间Max  TIMESTAMP
-  static ColumnConfig updateTimeMax = ColumnConfig(
-    key: 'updateTimeMax',
-    title: '更新时间Max',
     noJson: true,
     temporalType: TemporalType.TIMESTAMP,
     format: TIMESTAMP_FORMAT,

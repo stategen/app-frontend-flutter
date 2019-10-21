@@ -11,79 +11,79 @@ class Floor with FrontBean {
   /// floorId
   static const String Floor_ID = 'floorId';
 
-  /// floorGoodss
-  List<FloorGoods> floorGoodss;
-
-  /// advertisePicture
-  AdvertisePicture advertisePicture;
-
-  /// floorId
-  String floorId;
-
   /// advertiseId
   int advertiseId;
-
-  /// orderNo
-  int orderNo;
-
-  /// floorName
-  String floorName;
-
-  /// 创建时间
-  DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
-
-  /// floorId s
-  List<String> floorIds;
 
   /// advertiseId s
   List<int> advertiseIds;
 
-  /// orderNoMin
-  int orderNoMin;
+  /// advertisePicture
+  AdvertisePicture advertisePicture;
 
-  /// orderNoMax
-  int orderNoMax;
-
-  /// floorNameLike
-  String floorNameLike;
-
-  /// 创建时间Min
-  DateTime createTimeMin;
+  /// 创建时间
+  DateTime createTime;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
+
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
+
+  /// floorGoodss
+  List<FloorGoods> floorGoodss;
+
+  /// floorId
+  String floorId;
+
+  /// floorId s
+  List<String> floorIds;
+
+  /// floorName
+  String floorName;
+
+  /// floorNameLike
+  String floorNameLike;
+
+  /// orderNo
+  int orderNo;
+
+  /// orderNoMax
+  int orderNoMax;
+
+  /// orderNoMin
+  int orderNoMin;
+
+  /// 更新时间
+  DateTime updateTime;
 
   /// 更新时间Max
   DateTime updateTimeMax;
 
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
   Floor({
-    this.floorGoodss,
-    this.advertisePicture,
-    this.floorId,
     this.advertiseId,
-    this.orderNo,
-    this.floorName,
-    this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.floorIds,
     this.advertiseIds,
-    this.orderNoMin,
-    this.orderNoMax,
-    this.floorNameLike,
-    this.createTimeMin,
+    this.advertisePicture,
+    this.createTime,
     this.createTimeMax,
-    this.updateTimeMin,
+    this.createTimeMin,
+    this.deleteFlag,
+    this.floorGoodss,
+    this.floorId,
+    this.floorIds,
+    this.floorName,
+    this.floorNameLike,
+    this.orderNo,
+    this.orderNoMax,
+    this.orderNoMin,
+    this.updateTime,
     this.updateTimeMax,
+    this.updateTimeMin,
   });
 
   static Floor fromJson(Map<String, dynamic> json) {
@@ -91,15 +91,15 @@ class Floor with FrontBean {
       return null;
     }
     return Floor(
-      floorGoodss: FloorGoods.fromJsonList(json['floorGoodss']),
-      advertisePicture: AdvertisePicture.fromJson(json['advertisePicture']),
-      floorId: JsonUtil.parseString(json['floorId']),
       advertiseId: JsonUtil.parseInt(json['advertiseId']),
-      orderNo: JsonUtil.parseInt(json['orderNo']),
-      floorName: JsonUtil.parseString(json['floorName']),
+      advertisePicture: AdvertisePicture.fromJson(json['advertisePicture']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      floorGoodss: FloorGoods.fromJsonList(json['floorGoodss']),
+      floorId: JsonUtil.parseString(json['floorId']),
+      floorName: JsonUtil.parseString(json['floorName']),
+      orderNo: JsonUtil.parseInt(json['orderNo']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
     );
   }
 
@@ -109,43 +109,8 @@ class Floor with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.floorGoodss != null) {
-      var list = List();
-      for (var v in floorGoodss) {
-        list.add(v.toMap());
-      }
-      result['floorGoodss'] = list;
-    }
-    if (this.advertisePicture != null) {
-      result['advertisePicture'] = advertisePicture.toMap();
-    }
-    if (this.floorId != null) {
-      result['floorId'] = JsonUtil.stringToJson(floorId);
-    }
     if (this.advertiseId != null) {
       result['advertiseId'] = JsonUtil.intToJson(advertiseId);
-    }
-    if (this.orderNo != null) {
-      result['orderNo'] = JsonUtil.intToJson(orderNo);
-    }
-    if (this.floorName != null) {
-      result['floorName'] = JsonUtil.stringToJson(floorName);
-    }
-    if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
-    }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
-    }
-    if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
-    }
-    if (this.floorIds != null) {
-      var list = List();
-      for (var v in floorIds) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['floorIds'] = list;
     }
     if (this.advertiseIds != null) {
       var list = List();
@@ -154,26 +119,61 @@ class Floor with FrontBean {
       }
       result['advertiseIds'] = list;
     }
-    if (this.orderNoMin != null) {
-      result['orderNoMin'] = JsonUtil.intToJson(orderNoMin);
+    if (this.advertisePicture != null) {
+      result['advertisePicture'] = advertisePicture.toMap();
     }
-    if (this.orderNoMax != null) {
-      result['orderNoMax'] = JsonUtil.intToJson(orderNoMax);
-    }
-    if (this.floorNameLike != null) {
-      result['floorNameLike'] = JsonUtil.stringToJson(floorNameLike);
-    }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    if (this.createTime != null) {
+      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
       result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
     }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    }
+    if (this.deleteFlag != null) {
+      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.floorGoodss != null) {
+      var list = List();
+      for (var v in floorGoodss) {
+        list.add(v.toMap());
+      }
+      result['floorGoodss'] = list;
+    }
+    if (this.floorId != null) {
+      result['floorId'] = JsonUtil.stringToJson(floorId);
+    }
+    if (this.floorIds != null) {
+      var list = List();
+      for (var v in floorIds) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['floorIds'] = list;
+    }
+    if (this.floorName != null) {
+      result['floorName'] = JsonUtil.stringToJson(floorName);
+    }
+    if (this.floorNameLike != null) {
+      result['floorNameLike'] = JsonUtil.stringToJson(floorNameLike);
+    }
+    if (this.orderNo != null) {
+      result['orderNo'] = JsonUtil.intToJson(orderNo);
+    }
+    if (this.orderNoMax != null) {
+      result['orderNoMax'] = JsonUtil.intToJson(orderNoMax);
+    }
+    if (this.orderNoMin != null) {
+      result['orderNoMin'] = JsonUtil.intToJson(orderNoMin);
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

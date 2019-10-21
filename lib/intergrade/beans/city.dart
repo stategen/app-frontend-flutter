@@ -9,91 +9,91 @@ class City with FrontBean {
   /// cityId
   static const String City_ID = 'cityId';
 
-  /// cityId
-  String cityId;
-
-  /// name
-  String name;
-
-  /// pycode
-  String pycode;
-
-  /// provinceId
-  String provinceId;
-
-  /// postcode
-  String postcode;
-
   /// areacode
   String areacode;
-
-  /// 创建时间
-  DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
-
-  /// cityId s
-  List<String> cityIds;
-
-  /// nameLike
-  String nameLike;
-
-  /// pycodeLike
-  String pycodeLike;
-
-  /// provinceId s
-  List<String> provinceIds;
-
-  /// postcodeLike
-  String postcodeLike;
 
   /// areacodeLike
   String areacodeLike;
 
-  /// 创建时间Min
-  DateTime createTimeMin;
+  /// cityId
+  String cityId;
+
+  /// cityId s
+  List<String> cityIds;
+
+  /// 创建时间
+  DateTime createTime;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
 
-  /// 更新时间Max
-  DateTime updateTimeMax;
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
 
-  /// value
-  String value;
+  /// name
+  String name;
+
+  /// nameLike
+  String nameLike;
+
+  /// postcode
+  String postcode;
+
+  /// postcodeLike
+  String postcodeLike;
+
+  /// provinceId
+  String provinceId;
+
+  /// provinceId s
+  List<String> provinceIds;
+
+  /// pycode
+  String pycode;
+
+  /// pycodeLike
+  String pycodeLike;
 
   /// title
   String title;
 
+  /// 更新时间
+  DateTime updateTime;
+
+  /// 更新时间Max
+  DateTime updateTimeMax;
+
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
+  /// value
+  String value;
+
   City({
-    this.cityId,
-    this.name,
-    this.pycode,
-    this.provinceId,
-    this.postcode,
     this.areacode,
-    this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.cityIds,
-    this.nameLike,
-    this.pycodeLike,
-    this.provinceIds,
-    this.postcodeLike,
     this.areacodeLike,
-    this.createTimeMin,
+    this.cityId,
+    this.cityIds,
+    this.createTime,
     this.createTimeMax,
-    this.updateTimeMin,
-    this.updateTimeMax,
-    this.value,
+    this.createTimeMin,
+    this.deleteFlag,
+    this.name,
+    this.nameLike,
+    this.postcode,
+    this.postcodeLike,
+    this.provinceId,
+    this.provinceIds,
+    this.pycode,
+    this.pycodeLike,
     this.title,
+    this.updateTime,
+    this.updateTimeMax,
+    this.updateTimeMin,
+    this.value,
   });
 
   static City fromJson(Map<String, dynamic> json) {
@@ -101,17 +101,17 @@ class City with FrontBean {
       return null;
     }
     return City(
-      cityId: JsonUtil.parseString(json['cityId']),
-      name: JsonUtil.parseString(json['name']),
-      pycode: JsonUtil.parseString(json['pycode']),
-      provinceId: JsonUtil.parseString(json['provinceId']),
-      postcode: JsonUtil.parseString(json['postcode']),
       areacode: JsonUtil.parseString(json['areacode']),
+      cityId: JsonUtil.parseString(json['cityId']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      value: JsonUtil.parseString(json['value']),
+      name: JsonUtil.parseString(json['name']),
+      postcode: JsonUtil.parseString(json['postcode']),
+      provinceId: JsonUtil.parseString(json['provinceId']),
+      pycode: JsonUtil.parseString(json['pycode']),
       title: JsonUtil.parseString(json['title']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      value: JsonUtil.parseString(json['value']),
     );
   }
 
@@ -121,32 +121,14 @@ class City with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.cityId != null) {
-      result['cityId'] = JsonUtil.stringToJson(cityId);
-    }
-    if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
-    }
-    if (this.pycode != null) {
-      result['pycode'] = JsonUtil.stringToJson(pycode);
-    }
-    if (this.provinceId != null) {
-      result['provinceId'] = JsonUtil.stringToJson(provinceId);
-    }
-    if (this.postcode != null) {
-      result['postcode'] = JsonUtil.stringToJson(postcode);
-    }
     if (this.areacode != null) {
       result['areacode'] = JsonUtil.stringToJson(areacode);
     }
-    if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+    if (this.areacodeLike != null) {
+      result['areacodeLike'] = JsonUtil.stringToJson(areacodeLike);
     }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
-    }
-    if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    if (this.cityId != null) {
+      result['cityId'] = JsonUtil.stringToJson(cityId);
     }
     if (this.cityIds != null) {
       var list = List();
@@ -155,11 +137,32 @@ class City with FrontBean {
       }
       result['cityIds'] = list;
     }
+    if (this.createTime != null) {
+      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+    }
+    if (this.createTimeMax != null) {
+      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+    }
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    }
+    if (this.deleteFlag != null) {
+      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.name != null) {
+      result['name'] = JsonUtil.stringToJson(name);
+    }
     if (this.nameLike != null) {
       result['nameLike'] = JsonUtil.stringToJson(nameLike);
     }
-    if (this.pycodeLike != null) {
-      result['pycodeLike'] = JsonUtil.stringToJson(pycodeLike);
+    if (this.postcode != null) {
+      result['postcode'] = JsonUtil.stringToJson(postcode);
+    }
+    if (this.postcodeLike != null) {
+      result['postcodeLike'] = JsonUtil.stringToJson(postcodeLike);
+    }
+    if (this.provinceId != null) {
+      result['provinceId'] = JsonUtil.stringToJson(provinceId);
     }
     if (this.provinceIds != null) {
       var list = List();
@@ -168,29 +171,26 @@ class City with FrontBean {
       }
       result['provinceIds'] = list;
     }
-    if (this.postcodeLike != null) {
-      result['postcodeLike'] = JsonUtil.stringToJson(postcodeLike);
+    if (this.pycode != null) {
+      result['pycode'] = JsonUtil.stringToJson(pycode);
     }
-    if (this.areacodeLike != null) {
-      result['areacodeLike'] = JsonUtil.stringToJson(areacodeLike);
+    if (this.pycodeLike != null) {
+      result['pycodeLike'] = JsonUtil.stringToJson(pycodeLike);
     }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    if (this.title != null) {
+      result['title'] = JsonUtil.stringToJson(title);
     }
-    if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
-    }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    }
     if (this.value != null) {
       result['value'] = JsonUtil.stringToJson(value);
-    }
-    if (this.title != null) {
-      result['title'] = JsonUtil.stringToJson(title);
     }
     return result;
   }

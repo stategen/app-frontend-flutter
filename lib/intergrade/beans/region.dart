@@ -10,23 +10,35 @@ class Region with FrontBean {
   /// regionId
   static const String Region_ID = 'regionId';
 
+  /// 代码
+  String code;
+
+  /// 代码Like
+  String codeLike;
+
+  /// 创建时间
+  DateTime createTime;
+
+  /// 创建时间Max
+  DateTime createTimeMax;
+
+  /// 创建时间Min
+  DateTime createTimeMin;
+
+  /// 是否删除 (0:正常，1删除)
+  int deleteFlag;
+
   /// isLeaf
   bool isLeaf;
-
-  /// 主键
-  int regionId;
-
-  /// 父ID
-  int parentRegionId;
-
-  /// 路径
-  String path;
 
   /// 层级
   int level;
 
-  /// regionType
-  RegionType regionType;
+  /// 层级Max
+  int levelMax;
+
+  /// 层级Min
+  int levelMin;
 
   /// 中文名称
   String name;
@@ -34,99 +46,87 @@ class Region with FrontBean {
   /// 英文名称
   String nameEn;
 
-  /// 中文拼音
-  String namePinyin;
-
-  /// 代码
-  String code;
-
-  /// 创建时间
-  DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除 (0:正常，1删除)
-  int deleteFlag;
-
-  /// 主键 s
-  List<int> regionIds;
-
-  /// 父ID s
-  List<int> parentRegionIds;
-
-  /// 路径Like
-  String pathLike;
-
-  /// 层级Min
-  int levelMin;
-
-  /// 层级Max
-  int levelMax;
-
-  /// regionType s
-  List<RegionType> regionTypes;
+  /// 英文名称Like
+  String nameEnLike;
 
   /// 中文名称Like
   String nameLike;
 
-  /// 英文名称Like
-  String nameEnLike;
+  /// 中文拼音
+  String namePinyin;
 
   /// 中文拼音Like
   String namePinyinLike;
 
-  /// 代码Like
-  String codeLike;
+  /// 父ID
+  int parentRegionId;
 
-  /// 创建时间Min
-  DateTime createTimeMin;
+  /// 父ID s
+  List<int> parentRegionIds;
 
-  /// 创建时间Max
-  DateTime createTimeMax;
+  /// 路径
+  String path;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 路径Like
+  String pathLike;
 
-  /// 更新时间Max
-  DateTime updateTimeMax;
+  /// 主键
+  int regionId;
 
-  /// value
-  String value;
+  /// 主键 s
+  List<int> regionIds;
+
+  /// regionType
+  RegionType regionType;
+
+  /// regionType s
+  List<RegionType> regionTypes;
 
   /// title
   String title;
 
+  /// 更新时间
+  DateTime updateTime;
+
+  /// 更新时间Max
+  DateTime updateTimeMax;
+
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
+  /// value
+  String value;
+
   Region({
+    this.code,
+    this.codeLike,
+    this.createTime,
+    this.createTimeMax,
+    this.createTimeMin,
+    this.deleteFlag,
     this.isLeaf,
-    this.regionId,
-    this.parentRegionId,
-    this.path,
     this.level,
-    this.regionType,
+    this.levelMax,
+    this.levelMin,
     this.name,
     this.nameEn,
-    this.namePinyin,
-    this.code,
-    this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.regionIds,
-    this.parentRegionIds,
-    this.pathLike,
-    this.levelMin,
-    this.levelMax,
-    this.regionTypes,
-    this.nameLike,
     this.nameEnLike,
+    this.nameLike,
+    this.namePinyin,
     this.namePinyinLike,
-    this.codeLike,
-    this.createTimeMin,
-    this.createTimeMax,
-    this.updateTimeMin,
-    this.updateTimeMax,
-    this.value,
+    this.parentRegionId,
+    this.parentRegionIds,
+    this.path,
+    this.pathLike,
+    this.regionId,
+    this.regionIds,
+    this.regionType,
+    this.regionTypes,
     this.title,
+    this.updateTime,
+    this.updateTimeMax,
+    this.updateTimeMin,
+    this.value,
   });
 
   static Region fromJson(Map<String, dynamic> json) {
@@ -134,21 +134,21 @@ class Region with FrontBean {
       return null;
     }
     return Region(
+      code: JsonUtil.parseString(json['code']),
+      createTime: JsonUtil.parseDateTime(json['createTime']),
+      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
       isLeaf: JsonUtil.parseBool(json['isLeaf']),
-      regionId: JsonUtil.parseInt(json['regionId']),
-      parentRegionId: JsonUtil.parseInt(json['parentRegionId']),
-      path: JsonUtil.parseString(json['path']),
       level: JsonUtil.parseInt(json['level']),
-      regionType: RegionType.fromJson(json['regionType']),
       name: JsonUtil.parseString(json['name']),
       nameEn: JsonUtil.parseString(json['nameEn']),
       namePinyin: JsonUtil.parseString(json['namePinyin']),
-      code: JsonUtil.parseString(json['code']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      value: JsonUtil.parseString(json['value']),
+      parentRegionId: JsonUtil.parseInt(json['parentRegionId']),
+      path: JsonUtil.parseString(json['path']),
+      regionId: JsonUtil.parseInt(json['regionId']),
+      regionType: RegionType.fromJson(json['regionType']),
       title: JsonUtil.parseString(json['title']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      value: JsonUtil.parseString(json['value']),
     );
   }
 
@@ -158,23 +158,35 @@ class Region with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
+    if (this.code != null) {
+      result['code'] = JsonUtil.stringToJson(code);
+    }
+    if (this.codeLike != null) {
+      result['codeLike'] = JsonUtil.stringToJson(codeLike);
+    }
+    if (this.createTime != null) {
+      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+    }
+    if (this.createTimeMax != null) {
+      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+    }
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    }
+    if (this.deleteFlag != null) {
+      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
     if (this.isLeaf != null) {
       result['isLeaf'] = JsonUtil.boolToJson(isLeaf);
-    }
-    if (this.regionId != null) {
-      result['regionId'] = JsonUtil.intToJson(regionId);
-    }
-    if (this.parentRegionId != null) {
-      result['parentRegionId'] = JsonUtil.intToJson(parentRegionId);
-    }
-    if (this.path != null) {
-      result['path'] = JsonUtil.stringToJson(path);
     }
     if (this.level != null) {
       result['level'] = JsonUtil.intToJson(level);
     }
-    if (this.regionType != null) {
-      result['regionType'] = regionType.toString();
+    if (this.levelMax != null) {
+      result['levelMax'] = JsonUtil.intToJson(levelMax);
+    }
+    if (this.levelMin != null) {
+      result['levelMin'] = JsonUtil.intToJson(levelMin);
     }
     if (this.name != null) {
       result['name'] = JsonUtil.stringToJson(name);
@@ -182,27 +194,20 @@ class Region with FrontBean {
     if (this.nameEn != null) {
       result['nameEn'] = JsonUtil.stringToJson(nameEn);
     }
+    if (this.nameEnLike != null) {
+      result['nameEnLike'] = JsonUtil.stringToJson(nameEnLike);
+    }
+    if (this.nameLike != null) {
+      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+    }
     if (this.namePinyin != null) {
       result['namePinyin'] = JsonUtil.stringToJson(namePinyin);
     }
-    if (this.code != null) {
-      result['code'] = JsonUtil.stringToJson(code);
+    if (this.namePinyinLike != null) {
+      result['namePinyinLike'] = JsonUtil.stringToJson(namePinyinLike);
     }
-    if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
-    }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
-    }
-    if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
-    }
-    if (this.regionIds != null) {
-      var list = List();
-      for (var v in regionIds) {
-        list.add(JsonUtil.intToJson(v));
-      }
-      result['regionIds'] = list;
+    if (this.parentRegionId != null) {
+      result['parentRegionId'] = JsonUtil.intToJson(parentRegionId);
     }
     if (this.parentRegionIds != null) {
       var list = List();
@@ -211,14 +216,24 @@ class Region with FrontBean {
       }
       result['parentRegionIds'] = list;
     }
+    if (this.path != null) {
+      result['path'] = JsonUtil.stringToJson(path);
+    }
     if (this.pathLike != null) {
       result['pathLike'] = JsonUtil.stringToJson(pathLike);
     }
-    if (this.levelMin != null) {
-      result['levelMin'] = JsonUtil.intToJson(levelMin);
+    if (this.regionId != null) {
+      result['regionId'] = JsonUtil.intToJson(regionId);
     }
-    if (this.levelMax != null) {
-      result['levelMax'] = JsonUtil.intToJson(levelMax);
+    if (this.regionIds != null) {
+      var list = List();
+      for (var v in regionIds) {
+        list.add(JsonUtil.intToJson(v));
+      }
+      result['regionIds'] = list;
+    }
+    if (this.regionType != null) {
+      result['regionType'] = regionType.toString();
     }
     if (this.regionTypes != null) {
       var list = List();
@@ -227,35 +242,20 @@ class Region with FrontBean {
       }
       result['regionTypes'] = list;
     }
-    if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+    if (this.title != null) {
+      result['title'] = JsonUtil.stringToJson(title);
     }
-    if (this.nameEnLike != null) {
-      result['nameEnLike'] = JsonUtil.stringToJson(nameEnLike);
-    }
-    if (this.namePinyinLike != null) {
-      result['namePinyinLike'] = JsonUtil.stringToJson(namePinyinLike);
-    }
-    if (this.codeLike != null) {
-      result['codeLike'] = JsonUtil.stringToJson(codeLike);
-    }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
-    }
-    if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
-    }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    }
     if (this.value != null) {
       result['value'] = JsonUtil.stringToJson(value);
-    }
-    if (this.title != null) {
-      result['title'] = JsonUtil.stringToJson(title);
     }
     return result;
   }

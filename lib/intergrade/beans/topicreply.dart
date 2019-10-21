@@ -13,92 +13,92 @@ class TopicReply with FrontBean {
   /// author
   User author;
 
-  /// ups
-  List<String> ups;
-
-  /// isUped
-  bool isUped;
-
-  /// upCount
-  int upCount;
-
-  /// replyId
-  String replyId;
-
-  /// topicId
-  String topicId;
-
   /// authorId
   String authorId;
-
-  /// content
-  String content;
-
-  /// parentReplyId
-  String parentReplyId;
-
-  /// 创建时间
-  DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
-
-  /// replyId s
-  List<String> replyIds;
-
-  /// topicId s
-  List<String> topicIds;
 
   /// authorId s
   List<String> authorIds;
 
+  /// content
+  String content;
+
   /// contentLike
   String contentLike;
 
-  /// parentReplyId s
-  List<String> parentReplyIds;
-
-  /// 创建时间Min
-  DateTime createTimeMin;
+  /// 创建时间
+  DateTime createTime;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
 
-  /// 更新时间Max
-  DateTime updateTimeMax;
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
 
   /// id
   String id;
 
+  /// isUped
+  bool isUped;
+
+  /// parentReplyId
+  String parentReplyId;
+
+  /// parentReplyId s
+  List<String> parentReplyIds;
+
+  /// replyId
+  String replyId;
+
+  /// replyId s
+  List<String> replyIds;
+
+  /// topicId
+  String topicId;
+
+  /// topicId s
+  List<String> topicIds;
+
+  /// upCount
+  int upCount;
+
+  /// 更新时间
+  DateTime updateTime;
+
+  /// 更新时间Max
+  DateTime updateTimeMax;
+
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
+  /// ups
+  List<String> ups;
+
   TopicReply({
     this.author,
-    this.ups,
-    this.isUped,
-    this.upCount,
-    this.replyId,
-    this.topicId,
     this.authorId,
-    this.content,
-    this.parentReplyId,
-    this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.replyIds,
-    this.topicIds,
     this.authorIds,
+    this.content,
     this.contentLike,
-    this.parentReplyIds,
-    this.createTimeMin,
+    this.createTime,
     this.createTimeMax,
-    this.updateTimeMin,
-    this.updateTimeMax,
+    this.createTimeMin,
+    this.deleteFlag,
     this.id,
+    this.isUped,
+    this.parentReplyId,
+    this.parentReplyIds,
+    this.replyId,
+    this.replyIds,
+    this.topicId,
+    this.topicIds,
+    this.upCount,
+    this.updateTime,
+    this.updateTimeMax,
+    this.updateTimeMin,
+    this.ups,
   });
 
   static TopicReply fromJson(Map<String, dynamic> json) {
@@ -107,18 +107,18 @@ class TopicReply with FrontBean {
     }
     return TopicReply(
       author: User.fromJson(json['author']),
-      ups: JsonUtil.parseList<String>(json['ups'], JsonUtil.parseString),
-      isUped: JsonUtil.parseBool(json['isUped']),
-      upCount: JsonUtil.parseInt(json['upCount']),
-      replyId: JsonUtil.parseString(json['replyId']),
-      topicId: JsonUtil.parseString(json['topicId']),
       authorId: JsonUtil.parseString(json['authorId']),
       content: JsonUtil.parseString(json['content']),
-      parentReplyId: JsonUtil.parseString(json['parentReplyId']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
       id: JsonUtil.parseString(json['id']),
+      isUped: JsonUtil.parseBool(json['isUped']),
+      parentReplyId: JsonUtil.parseString(json['parentReplyId']),
+      replyId: JsonUtil.parseString(json['replyId']),
+      topicId: JsonUtil.parseString(json['topicId']),
+      upCount: JsonUtil.parseInt(json['upCount']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      ups: JsonUtil.parseList<String>(json['ups'], JsonUtil.parseString),
     );
   }
 
@@ -131,56 +131,8 @@ class TopicReply with FrontBean {
     if (this.author != null) {
       result['author'] = author.toMap();
     }
-    if (this.ups != null) {
-      var list = List();
-      for (var v in ups) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['ups'] = list;
-    }
-    if (this.isUped != null) {
-      result['isUped'] = JsonUtil.boolToJson(isUped);
-    }
-    if (this.upCount != null) {
-      result['upCount'] = JsonUtil.intToJson(upCount);
-    }
-    if (this.replyId != null) {
-      result['replyId'] = JsonUtil.stringToJson(replyId);
-    }
-    if (this.topicId != null) {
-      result['topicId'] = JsonUtil.stringToJson(topicId);
-    }
     if (this.authorId != null) {
       result['authorId'] = JsonUtil.stringToJson(authorId);
-    }
-    if (this.content != null) {
-      result['content'] = JsonUtil.stringToJson(content);
-    }
-    if (this.parentReplyId != null) {
-      result['parentReplyId'] = JsonUtil.stringToJson(parentReplyId);
-    }
-    if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
-    }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
-    }
-    if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
-    }
-    if (this.replyIds != null) {
-      var list = List();
-      for (var v in replyIds) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['replyIds'] = list;
-    }
-    if (this.topicIds != null) {
-      var list = List();
-      for (var v in topicIds) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['topicIds'] = list;
     }
     if (this.authorIds != null) {
       var list = List();
@@ -189,8 +141,32 @@ class TopicReply with FrontBean {
       }
       result['authorIds'] = list;
     }
+    if (this.content != null) {
+      result['content'] = JsonUtil.stringToJson(content);
+    }
     if (this.contentLike != null) {
       result['contentLike'] = JsonUtil.stringToJson(contentLike);
+    }
+    if (this.createTime != null) {
+      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+    }
+    if (this.createTimeMax != null) {
+      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+    }
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    }
+    if (this.deleteFlag != null) {
+      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.id != null) {
+      result['id'] = JsonUtil.stringToJson(id);
+    }
+    if (this.isUped != null) {
+      result['isUped'] = JsonUtil.boolToJson(isUped);
+    }
+    if (this.parentReplyId != null) {
+      result['parentReplyId'] = JsonUtil.stringToJson(parentReplyId);
     }
     if (this.parentReplyIds != null) {
       var list = List();
@@ -199,20 +175,44 @@ class TopicReply with FrontBean {
       }
       result['parentReplyIds'] = list;
     }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+    if (this.replyId != null) {
+      result['replyId'] = JsonUtil.stringToJson(replyId);
     }
-    if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+    if (this.replyIds != null) {
+      var list = List();
+      for (var v in replyIds) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['replyIds'] = list;
     }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    if (this.topicId != null) {
+      result['topicId'] = JsonUtil.stringToJson(topicId);
+    }
+    if (this.topicIds != null) {
+      var list = List();
+      for (var v in topicIds) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['topicIds'] = list;
+    }
+    if (this.upCount != null) {
+      result['upCount'] = JsonUtil.intToJson(upCount);
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
       result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
-    if (this.id != null) {
-      result['id'] = JsonUtil.stringToJson(id);
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+    }
+    if (this.ups != null) {
+      var list = List();
+      for (var v in ups) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['ups'] = list;
     }
     return result;
   }

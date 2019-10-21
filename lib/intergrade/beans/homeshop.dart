@@ -9,38 +9,23 @@ class HomeShop with FrontBean {
   /// homeShopId
   static const String HomeShop_ID = 'homeShopId';
 
-  /// homeShopId
-  String homeShopId;
-
-  /// shopId
-  String shopId;
-
   /// 创建时间
   DateTime createTime;
-
-  /// 更新时间
-  DateTime updateTime;
-
-  /// 是否删除(0:正常，1删除)
-  int deleteFlag;
-
-  /// homeShopId s
-  List<String> homeShopIds;
-
-  /// shopId s
-  List<String> shopIds;
-
-  /// 创建时间Min
-  DateTime createTimeMin;
 
   /// 创建时间Max
   DateTime createTimeMax;
 
-  /// 更新时间Min
-  DateTime updateTimeMin;
+  /// 创建时间Min
+  DateTime createTimeMin;
 
-  /// 更新时间Max
-  DateTime updateTimeMax;
+  /// 是否删除(0:正常，1删除)
+  int deleteFlag;
+
+  /// homeShopId
+  String homeShopId;
+
+  /// homeShopId s
+  List<String> homeShopIds;
 
   /// leaderImage
   String leaderImage;
@@ -51,21 +36,36 @@ class HomeShop with FrontBean {
   /// leaderPhoneLike
   String leaderPhoneLike;
 
+  /// shopId
+  String shopId;
+
+  /// shopId s
+  List<String> shopIds;
+
+  /// 更新时间
+  DateTime updateTime;
+
+  /// 更新时间Max
+  DateTime updateTimeMax;
+
+  /// 更新时间Min
+  DateTime updateTimeMin;
+
   HomeShop({
-    this.homeShopId,
-    this.shopId,
     this.createTime,
-    this.updateTime,
-    this.deleteFlag,
-    this.homeShopIds,
-    this.shopIds,
-    this.createTimeMin,
     this.createTimeMax,
-    this.updateTimeMin,
-    this.updateTimeMax,
+    this.createTimeMin,
+    this.deleteFlag,
+    this.homeShopId,
+    this.homeShopIds,
     this.leaderImage,
     this.leaderPhone,
     this.leaderPhoneLike,
+    this.shopId,
+    this.shopIds,
+    this.updateTime,
+    this.updateTimeMax,
+    this.updateTimeMin,
   });
 
   static HomeShop fromJson(Map<String, dynamic> json) {
@@ -73,13 +73,13 @@ class HomeShop with FrontBean {
       return null;
     }
     return HomeShop(
-      homeShopId: JsonUtil.parseString(json['homeShopId']),
-      shopId: JsonUtil.parseString(json['shopId']),
       createTime: JsonUtil.parseDateTime(json['createTime']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
       deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
+      homeShopId: JsonUtil.parseString(json['homeShopId']),
       leaderImage: JsonUtil.parseString(json['leaderImage']),
       leaderPhone: JsonUtil.parseString(json['leaderPhone']),
+      shopId: JsonUtil.parseString(json['shopId']),
+      updateTime: JsonUtil.parseDateTime(json['updateTime']),
     );
   }
 
@@ -89,20 +89,20 @@ class HomeShop with FrontBean {
 
   Map<String, dynamic> toMap() {
     var result = new Map<String, dynamic>();
-    if (this.homeShopId != null) {
-      result['homeShopId'] = JsonUtil.stringToJson(homeShopId);
-    }
-    if (this.shopId != null) {
-      result['shopId'] = JsonUtil.stringToJson(shopId);
-    }
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
     }
-    if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+    if (this.createTimeMax != null) {
+      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+    }
+    if (this.createTimeMin != null) {
+      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
       result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+    }
+    if (this.homeShopId != null) {
+      result['homeShopId'] = JsonUtil.stringToJson(homeShopId);
     }
     if (this.homeShopIds != null) {
       var list = List();
@@ -110,25 +110,6 @@ class HomeShop with FrontBean {
         list.add(JsonUtil.stringToJson(v));
       }
       result['homeShopIds'] = list;
-    }
-    if (this.shopIds != null) {
-      var list = List();
-      for (var v in shopIds) {
-        list.add(JsonUtil.stringToJson(v));
-      }
-      result['shopIds'] = list;
-    }
-    if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
-    }
-    if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
-    }
-    if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
-    }
-    if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.leaderImage != null) {
       result['leaderImage'] = JsonUtil.stringToJson(leaderImage);
@@ -138,6 +119,25 @@ class HomeShop with FrontBean {
     }
     if (this.leaderPhoneLike != null) {
       result['leaderPhoneLike'] = JsonUtil.stringToJson(leaderPhoneLike);
+    }
+    if (this.shopId != null) {
+      result['shopId'] = JsonUtil.stringToJson(shopId);
+    }
+    if (this.shopIds != null) {
+      var list = List();
+      for (var v in shopIds) {
+        list.add(JsonUtil.stringToJson(v));
+      }
+      result['shopIds'] = list;
+    }
+    if (this.updateTime != null) {
+      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+    }
+    if (this.updateTimeMax != null) {
+      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+    }
+    if (this.updateTimeMin != null) {
+      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }
