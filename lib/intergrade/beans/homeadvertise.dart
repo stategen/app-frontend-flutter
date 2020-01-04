@@ -60,7 +60,9 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, HomeAdvertise.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.advertiseId != null) {
       result['advertiseId'] = JsonUtil.intToJson(advertiseId);
@@ -140,18 +142,6 @@ class HomeAdvertise extends AdvertisePicture with FrontBean {
       for (var homeAdvertise in homeAdvertiseList) {
         if (homeAdvertise != null) {
           result[homeAdvertise.homeAdvId] = homeAdvertise;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<HomeAdvertise> homeAdvertiseList) {
-    var result = List<Map<String, dynamic>>();
-    if (homeAdvertiseList != null) {
-      for (var homeAdvertise in homeAdvertiseList) {
-        if (homeAdvertise != null) {
-          result.add(homeAdvertise.toMap());
         }
       }
     }

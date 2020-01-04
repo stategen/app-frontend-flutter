@@ -83,7 +83,9 @@ class Hoppy with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Hoppy.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
@@ -137,18 +139,6 @@ class Hoppy with FrontBean {
       for (var hoppy in hoppyList) {
         if (hoppy != null) {
           result[hoppy.hoppyId] = hoppy;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Hoppy> hoppyList) {
-    var result = List<Map<String, dynamic>>();
-    if (hoppyList != null) {
-      for (var hoppy in hoppyList) {
-        if (hoppy != null) {
-          result.add(hoppy.toMap());
         }
       }
     }

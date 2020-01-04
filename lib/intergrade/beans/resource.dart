@@ -19,7 +19,9 @@ class Resource with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Resource.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     return result;
   }
@@ -31,18 +33,6 @@ class Resource with FrontBean {
       for (var resource in resourceList) {
         result[index] = resource;
         index ++;
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Resource> resourceList) {
-    var result = List<Map<String, dynamic>>();
-    if (resourceList != null) {
-      for (var resource in resourceList) {
-        if (resource != null) {
-          result.add(resource.toMap());
-        }
       }
     }
     return result;

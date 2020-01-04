@@ -126,10 +126,12 @@ class TopicReply with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, TopicReply.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.author != null) {
-      result['author'] = author.toMap();
+      result['author'] = author.toJson();
     }
     if (this.authorId != null) {
       result['authorId'] = JsonUtil.stringToJson(authorId);
@@ -223,18 +225,6 @@ class TopicReply with FrontBean {
       for (var topicReply in topicReplyList) {
         if (topicReply != null) {
           result[topicReply.replyId] = topicReply;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<TopicReply> topicReplyList) {
-    var result = List<Map<String, dynamic>>();
-    if (topicReplyList != null) {
-      for (var topicReply in topicReplyList) {
-        if (topicReply != null) {
-          result.add(topicReply.toMap());
         }
       }
     }

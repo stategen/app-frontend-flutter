@@ -195,7 +195,9 @@ class Menu with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Menu.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.bpid != null) {
       result['bpid'] = JsonUtil.intToJson(bpid);
@@ -247,7 +249,7 @@ class Menu with FrontBean {
     if (this.menuChildren != null) {
       var list = List();
       for (var v in menuChildren) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['menuChildren'] = list;
     }
@@ -341,18 +343,6 @@ class Menu with FrontBean {
       for (var menu in menuList) {
         if (menu != null) {
           result[menu.menuId] = menu;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Menu> menuList) {
-    var result = List<Map<String, dynamic>>();
-    if (menuList != null) {
-      for (var menu in menuList) {
-        if (menu != null) {
-          result.add(menu.toMap());
         }
       }
     }

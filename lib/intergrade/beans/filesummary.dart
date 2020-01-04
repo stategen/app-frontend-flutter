@@ -114,7 +114,9 @@ class FileSummary with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, FileSummary.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
@@ -197,18 +199,6 @@ class FileSummary with FrontBean {
       for (var fileSummary in fileSummaryList) {
         if (fileSummary != null) {
           result[fileSummary.fileId] = fileSummary;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<FileSummary> fileSummaryList) {
-    var result = List<Map<String, dynamic>>();
-    if (fileSummaryList != null) {
-      for (var fileSummary in fileSummaryList) {
-        if (fileSummary != null) {
-          result.add(fileSummary.toMap());
         }
       }
     }

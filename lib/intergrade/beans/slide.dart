@@ -100,7 +100,9 @@ class Slide with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Slide.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
@@ -174,18 +176,6 @@ class Slide with FrontBean {
       for (var slide in slideList) {
         if (slide != null) {
           result[slide.slideId] = slide;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Slide> slideList) {
-    var result = List<Map<String, dynamic>>();
-    if (slideList != null) {
-      for (var slide in slideList) {
-        if (slide != null) {
-          result.add(slide.toMap());
         }
       }
     }

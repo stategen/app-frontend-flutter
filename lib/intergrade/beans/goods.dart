@@ -279,7 +279,9 @@ class Goods with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Goods.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.advertiseId != null) {
       result['advertiseId'] = JsonUtil.intToJson(advertiseId);
@@ -331,7 +333,7 @@ class Goods with FrontBean {
     if (this.goodComments != null) {
       var list = List();
       for (var v in goodComments) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['goodComments'] = list;
     }
@@ -478,18 +480,6 @@ class Goods with FrontBean {
       for (var goods in goodsList) {
         if (goods != null) {
           result[goods.goodsId] = goods;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Goods> goodsList) {
-    var result = List<Map<String, dynamic>>();
-    if (goodsList != null) {
-      for (var goods in goodsList) {
-        if (goods != null) {
-          result.add(goods.toMap());
         }
       }
     }

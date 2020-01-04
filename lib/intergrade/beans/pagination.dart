@@ -51,7 +51,9 @@ class Pagination with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Pagination.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.current != null) {
       result['current'] = JsonUtil.intToJson(current);
@@ -81,18 +83,6 @@ class Pagination with FrontBean {
       for (var pagination in paginationList) {
         result[index] = pagination;
         index ++;
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Pagination> paginationList) {
-    var result = List<Map<String, dynamic>>();
-    if (paginationList != null) {
-      for (var pagination in paginationList) {
-        if (pagination != null) {
-          result.add(pagination.toMap());
-        }
       }
     }
     return result;

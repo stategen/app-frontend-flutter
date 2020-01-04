@@ -27,10 +27,12 @@ class MultipartFile with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, MultipartFile.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.resource != null) {
-      result['resource'] = resource.toMap();
+      result['resource'] = resource.toJson();
     }
     return result;
   }
@@ -42,18 +44,6 @@ class MultipartFile with FrontBean {
       for (var multipartFile in multipartFileList) {
         result[index] = multipartFile;
         index ++;
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<MultipartFile> multipartFileList) {
-    var result = List<Map<String, dynamic>>();
-    if (multipartFileList != null) {
-      for (var multipartFile in multipartFileList) {
-        if (multipartFile != null) {
-          result.add(multipartFile.toMap());
-        }
       }
     }
     return result;

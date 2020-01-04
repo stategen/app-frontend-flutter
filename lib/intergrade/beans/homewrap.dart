@@ -57,39 +57,41 @@ class HomeWrap with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, HomeWrap.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.advertesPicture != null) {
-      result['advertesPicture'] = advertesPicture.toMap();
+      result['advertesPicture'] = advertesPicture.toJson();
     }
     if (this.category != null) {
       var list = List();
       for (var v in category) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['category'] = list;
     }
     if (this.floors != null) {
       var list = List();
       for (var v in floors) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['floors'] = list;
     }
     if (this.recommend != null) {
       var list = List();
       for (var v in recommend) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['recommend'] = list;
     }
     if (this.shopInfo != null) {
-      result['shopInfo'] = shopInfo.toMap();
+      result['shopInfo'] = shopInfo.toJson();
     }
     if (this.slides != null) {
       var list = List();
       for (var v in slides) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['slides'] = list;
     }
@@ -103,18 +105,6 @@ class HomeWrap with FrontBean {
       for (var homeWrap in homeWrapList) {
         result[index] = homeWrap;
         index ++;
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<HomeWrap> homeWrapList) {
-    var result = List<Map<String, dynamic>>();
-    if (homeWrapList != null) {
-      for (var homeWrap in homeWrapList) {
-        if (homeWrap != null) {
-          result.add(homeWrap.toMap());
-        }
       }
     }
     return result;

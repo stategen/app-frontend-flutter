@@ -87,7 +87,9 @@ class HomeShop with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, HomeShop.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
@@ -148,18 +150,6 @@ class HomeShop with FrontBean {
       for (var homeShop in homeShopList) {
         if (homeShop != null) {
           result[homeShop.homeShopId] = homeShop;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<HomeShop> homeShopList) {
-    var result = List<Map<String, dynamic>>();
-    if (homeShopList != null) {
-      for (var homeShop in homeShopList) {
-        if (homeShop != null) {
-          result.add(homeShop.toMap());
         }
       }
     }

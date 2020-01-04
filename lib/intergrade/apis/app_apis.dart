@@ -69,6 +69,25 @@ class AppApis {
     return Hoppy.fromJsonList(dest as List);
   }
 
+  /// GET /api/app/getLongs
+  /// 
+  static Future<List<int>> getLongs(int param, {Map<String, dynamic> payload, int parentRegionId }) async {
+    var requestInit = RequestInit();
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
+    requestInit.path = '/api/app/getLongs';
+    payload ??= {};
+    if (param != null) {
+      payload['parentRegionId'] = param;
+    }
+    if (parentRegionId != null) {
+      payload['parentRegionId'] = parentRegionId;
+    }
+    requestInit.data = payload;
+    requestInit.method = Method.GET;
+    var dest = await NetUtil.fetch(requestInit);
+    return dest;
+  }
+
   /// POST /api/app/getProvinceOptions
   /// 省份
   static Future<List<Province>> getProvinceOptions() async {
@@ -131,6 +150,25 @@ class AppApis {
     requestInit.method = Method.POST;
     var dest = await NetUtil.fetch(requestInit);
     return SimpleResponse.fromJson(dest);
+  }
+
+  /// GET /api/app/testRegions
+  /// 
+  static Future<List<Region>> testRegions(int param, {Map<String, dynamic> payload, int parentRegionId }) async {
+    var requestInit = RequestInit();
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
+    requestInit.path = '/api/app/testRegions';
+    payload ??= {};
+    if (param != null) {
+      payload['parentRegionId'] = param;
+    }
+    if (parentRegionId != null) {
+      payload['parentRegionId'] = parentRegionId;
+    }
+    requestInit.data = payload;
+    requestInit.method = Method.GET;
+    var dest = await NetUtil.fetch(requestInit);
+    return Region.fromJsonList(dest as List);
   }
 
 }

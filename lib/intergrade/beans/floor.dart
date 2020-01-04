@@ -107,7 +107,9 @@ class Floor with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Floor.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.advertiseId != null) {
       result['advertiseId'] = JsonUtil.intToJson(advertiseId);
@@ -120,7 +122,7 @@ class Floor with FrontBean {
       result['advertiseIds'] = list;
     }
     if (this.advertisePicture != null) {
-      result['advertisePicture'] = advertisePicture.toMap();
+      result['advertisePicture'] = advertisePicture.toJson();
     }
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
@@ -137,7 +139,7 @@ class Floor with FrontBean {
     if (this.floorGoodss != null) {
       var list = List();
       for (var v in floorGoodss) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['floorGoodss'] = list;
     }
@@ -184,18 +186,6 @@ class Floor with FrontBean {
       for (var floor in floorList) {
         if (floor != null) {
           result[floor.floorId] = floor;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Floor> floorList) {
-    var result = List<Map<String, dynamic>>();
-    if (floorList != null) {
-      for (var floor in floorList) {
-        if (floor != null) {
-          result.add(floor.toMap());
         }
       }
     }

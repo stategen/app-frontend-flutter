@@ -92,7 +92,9 @@ class Province with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Province.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.createTime != null) {
       result['createTime'] = JsonUtil.dateTimeToJson(createTime);
@@ -152,18 +154,6 @@ class Province with FrontBean {
       for (var province in provinceList) {
         if (province != null) {
           result[province.provinceId] = province;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Province> provinceList) {
-    var result = List<Map<String, dynamic>>();
-    if (provinceList != null) {
-      for (var province in provinceList) {
-        if (province != null) {
-          result.add(province.toMap());
         }
       }
     }

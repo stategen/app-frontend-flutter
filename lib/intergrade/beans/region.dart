@@ -156,7 +156,9 @@ class Region with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, Region.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.code != null) {
       result['code'] = JsonUtil.stringToJson(code);
@@ -266,18 +268,6 @@ class Region with FrontBean {
       for (var region in regionList) {
         if (region != null) {
           result[region.regionId] = region;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<Region> regionList) {
-    var result = List<Map<String, dynamic>>();
-    if (regionList != null) {
-      for (var region in regionList) {
-        if (region != null) {
-          result.add(region.toMap());
         }
       }
     }

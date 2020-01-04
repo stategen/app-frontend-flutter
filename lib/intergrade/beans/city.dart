@@ -119,7 +119,9 @@ class City with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, City.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.areacode != null) {
       result['areacode'] = JsonUtil.stringToJson(areacode);
@@ -201,18 +203,6 @@ class City with FrontBean {
       for (var city in cityList) {
         if (city != null) {
           result[city.cityId] = city;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<City> cityList) {
-    var result = List<Map<String, dynamic>>();
-    if (cityList != null) {
-      for (var city in cityList) {
-        if (city != null) {
-          result.add(city.toMap());
         }
       }
     }

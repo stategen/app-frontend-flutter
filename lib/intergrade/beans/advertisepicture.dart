@@ -101,7 +101,9 @@ class AdvertisePicture with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, AdvertisePicture.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.advertiseId != null) {
       result['advertiseId'] = JsonUtil.intToJson(advertiseId);
@@ -171,18 +173,6 @@ class AdvertisePicture with FrontBean {
       for (var advertisePicture in advertisePictureList) {
         if (advertisePicture != null) {
           result[advertisePicture.advertiseId] = advertisePicture;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<AdvertisePicture> advertisePictureList) {
-    var result = List<Map<String, dynamic>>();
-    if (advertisePictureList != null) {
-      for (var advertisePicture in advertisePictureList) {
-        if (advertisePicture != null) {
-          result.add(advertisePicture.toMap());
         }
       }
     }

@@ -22,19 +22,11 @@ import '../../stgutil/base_provider.dart';
 import '../apis/app_apis.dart';
 
 class AppBaseState {
-  AreaState<City> cityArea = AreaState<City>.init();
-  AreaState<Hoppy> hoppyArea = AreaState<Hoppy>.init();
   AreaState<Menu> menuArea = AreaState<Menu>.init();
-  AreaState<Province> provinceArea = AreaState<Province>.init();
-  AreaState<Region> regionArea = AreaState<Region>.init();
   AreaState<User> userArea = AreaState<User>.init();
 
   void merge(AppBaseState source) {
-    cityArea != null ? cityArea.merge(source.cityArea) : cityArea = source.cityArea;
-    hoppyArea != null ? hoppyArea.merge(source.hoppyArea) : hoppyArea = source.hoppyArea;
     menuArea != null ? menuArea.merge(source.menuArea) : menuArea = source.menuArea;
-    provinceArea != null ? provinceArea.merge(source.provinceArea) : provinceArea = source.provinceArea;
-    regionArea != null ? regionArea.merge(source.regionArea) : regionArea = source.regionArea;
     userArea != null ? userArea.merge(source.userArea) : userArea = source.userArea;
   }
 
@@ -42,18 +34,10 @@ class AppBaseState {
 
 class _AppState with AppBaseState {
   _AppState({
-    AreaState<City> cityArea,
-    AreaState<Hoppy> hoppyArea,
     AreaState<Menu> menuArea,
-    AreaState<Province> provinceArea,
-    AreaState<Region> regionArea,
     AreaState<User> userArea,
   }) {
-    this.cityArea = cityArea;
-    this.hoppyArea = hoppyArea;
     this.menuArea = menuArea;
-    this.provinceArea = provinceArea;
-    this.regionArea = regionArea;
     this.userArea = userArea;
   }
 

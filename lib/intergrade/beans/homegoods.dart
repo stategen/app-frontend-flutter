@@ -134,7 +134,9 @@ class HomeGoods extends Goods with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, HomeGoods.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.advertiseId != null) {
       result['advertiseId'] = JsonUtil.intToJson(advertiseId);
@@ -186,7 +188,7 @@ class HomeGoods extends Goods with FrontBean {
     if (this.goodComments != null) {
       var list = List();
       for (var v in goodComments) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['goodComments'] = list;
     }
@@ -352,18 +354,6 @@ class HomeGoods extends Goods with FrontBean {
       for (var homeGoods in homeGoodsList) {
         if (homeGoods != null) {
           result[homeGoods.recommendId] = homeGoods;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<HomeGoods> homeGoodsList) {
-    var result = List<Map<String, dynamic>>();
-    if (homeGoodsList != null) {
-      for (var homeGoods in homeGoodsList) {
-        if (homeGoods != null) {
-          result.add(homeGoods.toMap());
         }
       }
     }

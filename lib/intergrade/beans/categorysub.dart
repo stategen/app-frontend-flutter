@@ -91,7 +91,9 @@ class CategorySub with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, CategorySub.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.categoryId != null) {
       result['categoryId'] = JsonUtil.stringToJson(categoryId);
@@ -155,18 +157,6 @@ class CategorySub with FrontBean {
       for (var categorySub in categorySubList) {
         if (categorySub != null) {
           result[categorySub.categorySubId] = categorySub;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<CategorySub> categorySubList) {
-    var result = List<Map<String, dynamic>>();
-    if (categorySubList != null) {
-      for (var categorySub in categorySubList) {
-        if (categorySub != null) {
-          result.add(categorySub.toMap());
         }
       }
     }

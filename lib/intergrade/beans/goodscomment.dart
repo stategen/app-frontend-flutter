@@ -117,7 +117,9 @@ class GoodsComment with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, GoodsComment.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.comments != null) {
       result['comments'] = JsonUtil.stringToJson(comments);
@@ -199,18 +201,6 @@ class GoodsComment with FrontBean {
       for (var goodsComment in goodsCommentList) {
         if (goodsComment != null) {
           result[goodsComment.commentsId] = goodsComment;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<GoodsComment> goodsCommentList) {
-    var result = List<Map<String, dynamic>>();
-    if (goodsCommentList != null) {
-      for (var goodsComment in goodsCommentList) {
-        if (goodsComment != null) {
-          result.add(goodsComment.toMap());
         }
       }
     }

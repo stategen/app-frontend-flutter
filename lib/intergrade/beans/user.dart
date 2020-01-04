@@ -310,7 +310,9 @@ class User with FrontBean {
     return JsonUtil.genFromJsonList(jsonList, User.fromJson);
   }
 
-  Map<String, dynamic> toMap() {
+  /// jsonEncode会调用这个方法
+  @override
+  Map<String, dynamic> toJson() {
     var result = new Map<String, dynamic>();
     if (this.address != null) {
       result['address'] = JsonUtil.stringToJson(address);
@@ -328,7 +330,7 @@ class User with FrontBean {
       result['ageMin'] = JsonUtil.intToJson(ageMin);
     }
     if (this.avatarImg != null) {
-      result['avatarImg'] = avatarImg.toMap();
+      result['avatarImg'] = avatarImg.toJson();
     }
     if (this.avatarImgId != null) {
       result['avatarImgId'] = JsonUtil.stringToJson(avatarImgId);
@@ -359,12 +361,12 @@ class User with FrontBean {
     if (this.cascaderPostAddresss != null) {
       var list = List();
       for (var v in cascaderPostAddresss) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['cascaderPostAddresss'] = list;
     }
     if (this.city != null) {
-      result['city'] = city.toMap();
+      result['city'] = city.toJson();
     }
     if (this.cityId != null) {
       result['cityId'] = JsonUtil.stringToJson(cityId);
@@ -413,7 +415,7 @@ class User with FrontBean {
     if (this.hoppys != null) {
       var list = List();
       for (var v in hoppys) {
-        list.add(v.toMap());
+        list.add(v.toJson());
       }
       result['hoppys'] = list;
     }
@@ -455,7 +457,7 @@ class User with FrontBean {
       result['postAddressIds'] = list;
     }
     if (this.province != null) {
-      result['province'] = province.toMap();
+      result['province'] = province.toJson();
     }
     if (this.provinceId != null) {
       result['provinceId'] = JsonUtil.stringToJson(provinceId);
@@ -555,18 +557,6 @@ class User with FrontBean {
       for (var user in userList) {
         if (user != null) {
           result[user.userId] = user;
-        }
-      }
-    }
-    return result;
-  }
-
-  static List<Map<String, dynamic>> toMaps(List<User> userList) {
-    var result = List<Map<String, dynamic>>();
-    if (userList != null) {
-      for (var user in userList) {
-        if (user != null) {
-          result.add(user.toMap());
         }
       }
     }
