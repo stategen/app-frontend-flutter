@@ -1,14 +1,16 @@
 import 'dart:io';
 
-import '../intergrade/configs/tradeApp_config.dart';
+
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter/material.dart';
 import 'log_utils.dart';
 import 'toast.dart';
 import '../intergrade/beans/response.dart' as Res;
 
 import 'package:path_provider/path_provider.dart';
+import 'app_config.dart';
 
 // 数据格式太乱,简单处理一下
 
@@ -81,9 +83,7 @@ class NetError {
   const NetError({this.code, this.status, this.message});
 }
 
-final Map<String, String> BASE_URLS = {
-  tradeAppBaseUrlKey: "http://192.168.43.14:8080/tradeApp/",
-};
+
 
 final Map<String, Dio> DIO_MAP = Map();
 
@@ -126,7 +126,7 @@ class NetUtil {
   static _findDio(String apiUrlKey) async {
     Dio dio = DIO_MAP[apiUrlKey];
     if (dio == null) {
-      String baseUrl=BASE_URLS[apiUrlKey];
+      String baseUrl=AppConfig.BASE_URLS[apiUrlKey];
       assert(baseUrl!=null,"baseUrl 不能为空");
 
       dio = Dio();
@@ -154,11 +154,12 @@ class NetUtil {
     //组装data
     if (requestInit.mediaType == MediaType.FORM) {
       if (requestInit.data != null) {
-        data = FormData.from(requestInit.data);
+        data = FormData.fromMap(requestInit.data);
       }
     } else {
       data = requestInit.data;
     }
+
 
     //method类型
     var options = Options();
