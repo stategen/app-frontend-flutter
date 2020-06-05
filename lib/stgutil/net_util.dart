@@ -1,6 +1,9 @@
 import 'dart:io';
 
+import 'package:app_frontend_flutter/stgutil/app_config.dart';
+import 'package:path_to_regexp/path_to_regexp.dart';
 
+import '../intergrade/configs/tradeApp_config.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
@@ -95,6 +98,15 @@ _onError(NetError netError) {
   Toast.show(netError.message);
 }
 
+class CustomInterceptors extends InterceptorsWrapper {
+  @override
+  Future onRequest(RequestOptions options) {
+    if (options.path.indexOf("/api/wx")>0){
+      options.headers["appId"] =AppConfig.appId;
+    }
+    return super.onRequest(options);
+  }
+}
 
 class NetUtil {
 
@@ -130,7 +142,7 @@ class NetUtil {
       assert(baseUrl!=null,"baseUrl 不能为空");
 
       dio = Dio();
-      dio.options.baseUrl =baseUrl;
+      dio.options.baseUrl = baseUrl;
       dio.options.connectTimeout = 100000; // 100s
       dio.options.receiveTimeout = 100000; // 100s
       Directory tempDir = await getTemporaryDirectory();
@@ -145,11 +157,18 @@ class NetUtil {
   }
 
   // 统一数据，统一数据流出格式
-  static Future<dynamic> fetch(RequestInit requestInit) async {
+  static Future<dynamic> fetch(RequestInit requestInit, [bool responseWrapped = true]) async {
 //    try {
     Dio dio = await _findDio(requestInit.apiUrlKey);
     var method = METHODS[requestInit.method];
     dynamic data;
+
+    //TODO 像typescript一样处理 path-to-regexp
+    if (requestInit.path.indexOf(":") >= 0) {
+      final toPath = pathToFunction(requestInit.path); // =>/user/:id
+      requestInit.path = toPath(requestInit.data); // => '/user/12'
+      assert(requestInit.path.indexOf(":") < 0, "${requestInit.path} 路径中还有变量没有填充!");
+    }
 
     //组装data
     if (requestInit.mediaType == MediaType.FORM) {
@@ -160,20 +179,29 @@ class NetUtil {
       data = requestInit.data;
     }
 
-
     //method类型
     var options = Options();
     options.method = method;
 
     var response = await dio.request(requestInit.path, options: options, data: data);
     if (response != null) {
-      if (response.statusCode == 200) {
-        var resEx = Res.Response.fromJson(response.data);
-        if (!resEx.success) {
+      //stategen会强制包装服务器500执行错误和权限校验不通过401
+      bool parseReponse = (responseWrapped && response.statusCode == 200) || (response.statusCode == 500) ||
+          (response.statusCode == 401);
+      var reponseData = response.data;
+      if (parseReponse) {
+        var resEx = Res.Response.fromJson(reponseData);
+        if (responseWrapped && !resEx.success) {
           throw NetError(code: resEx.code, status: resEx.status?.toString(), message: resEx.message);
         }
         return resEx.data;
       }
+
+      if (response.statusCode == 200) {
+        return reponseData;
+      }
+
+      //其它，抛出错误码
       throw {'code': response.statusCode};
     }
     else {
