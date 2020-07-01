@@ -22,6 +22,14 @@ abstract class JsonUtil {
     return value;
   }
 
+  static String parseDynamic(dynamic value){
+    return parseString(value);
+  }
+
+  static dynamic dynamicToJson(String value){
+    return value;
+  }
+
   static int parseInt(dynamic value) {
     if (value == null) {
       return null;

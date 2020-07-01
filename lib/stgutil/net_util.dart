@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:app_frontend_flutter/stgutil/app_config.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:path_to_regexp/path_to_regexp.dart';
 
 import '../intergrade/configs/tradeApp_config.dart';
@@ -59,7 +61,7 @@ class RequestInit {
   String apiUrlKey;
   String path;
   Method method;
-  Map<String, dynamic> data;
+  dynamic data;
   MediaType mediaType;
 }
 
@@ -98,11 +100,11 @@ _onError(NetError netError) {
   Toast.show(netError.message);
 }
 
-class CustomInterceptors extends InterceptorsWrapper {
+class _RequestInterceptors extends InterceptorsWrapper {
   @override
   Future onRequest(RequestOptions options) {
-    if (options.path.indexOf("/api/wx")>0){
-      options.headers["appId"] =AppConfig.appId;
+    if (options.path.contains("/api/wx")){
+      options.headers["appid"] =AppConfig.appid;
     }
     return super.onRequest(options);
   }
@@ -138,23 +140,26 @@ class NetUtil {
   static _findDio(String apiUrlKey) async {
     Dio dio = DIO_MAP[apiUrlKey];
     if (dio == null) {
-      String baseUrl=AppConfig.BASE_URLS[apiUrlKey];
-      assert(baseUrl!=null,"baseUrl 不能为空");
+      String domainUrl=AppConfig.BASE_URLS[apiUrlKey];
+      assert(domainUrl!=null,"domainUrl 不能为空");
 
       dio = Dio();
-      dio.options.baseUrl = baseUrl;
-      dio.options.connectTimeout = 100000; // 100s
-      dio.options.receiveTimeout = 100000; // 100s
+      dio.options.baseUrl = domainUrl;
+      dio.options.connectTimeout = AppConfig.netwait; // 100s
+      dio.options.receiveTimeout = AppConfig.netwait; // 100s
       Directory tempDir = await getTemporaryDirectory();
       String tempPath = tempDir.path;
 
 
       var persistCookieJar = new PersistCookieJar(dir: tempPath);
       dio.interceptors.add(CookieManager(persistCookieJar));
+      dio.interceptors.add(_RequestInterceptors());
       DIO_MAP[apiUrlKey] = dio;
     }
     return dio;
   }
+
+  static final _netErrorCodes=[401,500];
 
   // 统一数据，统一数据流出格式
   static Future<dynamic> fetch(RequestInit requestInit, [bool responseWrapped = true]) async {
@@ -186,18 +191,18 @@ class NetUtil {
     var response = await dio.request(requestInit.path, options: options, data: data);
     if (response != null) {
       //stategen会强制包装服务器500执行错误和权限校验不通过401
-      bool parseReponse = (responseWrapped && response.statusCode == 200) || (response.statusCode == 500) ||
-          (response.statusCode == 401);
+      bool parseReponse = (responseWrapped && response.statusCode == 200) || (_netErrorCodes.contains(response.statusCode) );
       var reponseData = response.data;
       if (parseReponse) {
         var resEx = Res.Response.fromJson(reponseData);
         if (responseWrapped && !resEx.success) {
+          showToast(resEx.message);
           throw NetError(code: resEx.code, status: resEx.status?.toString(), message: resEx.message);
         }
         return resEx.data;
       }
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 ) {
         return reponseData;
       }
 
