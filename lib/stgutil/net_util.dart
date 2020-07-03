@@ -19,8 +19,7 @@ import 'app_config.dart';
 
 // 数据格式太乱,简单处理一下
 
-//const _BASE_URL = "https://douban.uieee.com/v2";
-//const _BASE_URL = "http://localhost:8080/tradeApp/";
+
 
 const CODE_SUCCESS = 1; //自定义成功
 
