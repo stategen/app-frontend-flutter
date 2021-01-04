@@ -5,9 +5,32 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class SlideFields {
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const goodsId = 'goodsId';
+  static const goodsIds = 'goodsIds';
+  static const image = 'image';
+  static const orderNo = 'orderNo';
+  static const orderNoMax = 'orderNoMax';
+  static const orderNoMin = 'orderNoMin';
+  static const orderNos = 'orderNos';
+  static const slideId = 'slideId';
+  static const slideIds = 'slideIds';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const urlType = 'urlType';
+  static const urlTypeMax = 'urlTypeMax';
+  static const urlTypeMin = 'urlTypeMin';
+  static const urlTypes = 'urlTypes';
+}
+
 class Slide with FrontBean {
   /// slideId
-  static const String Slide_ID = 'slideId';
+  static const String ID = SlideFields.slideId;
 
   /// 创建时间
   DateTime createTime;
@@ -39,6 +62,9 @@ class Slide with FrontBean {
   /// orderNoMin
   int orderNoMin;
 
+  /// orderNo s
+  List<int> orderNos;
+
   /// slideId
   String slideId;
 
@@ -57,6 +83,12 @@ class Slide with FrontBean {
   /// urlType
   int urlType;
 
+  /// urlTypeMax
+  int urlTypeMax;
+
+  /// urlTypeMin
+  int urlTypeMin;
+
   /// urlType s
   List<int> urlTypes;
 
@@ -71,12 +103,15 @@ class Slide with FrontBean {
     this.orderNo,
     this.orderNoMax,
     this.orderNoMin,
+    this.orderNos,
     this.slideId,
     this.slideIds,
     this.updateTime,
     this.updateTimeMax,
     this.updateTimeMin,
     this.urlType,
+    this.urlTypeMax,
+    this.urlTypeMin,
     this.urlTypes,
   });
 
@@ -85,14 +120,14 @@ class Slide with FrontBean {
       return null;
     }
     return Slide(
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      goodsId: JsonUtil.parseString(json['goodsId']),
-      image: JsonUtil.parseString(json['image']),
-      orderNo: JsonUtil.parseInt(json['orderNo']),
-      slideId: JsonUtil.parseString(json['slideId']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      urlType: JsonUtil.parseInt(json['urlType']),
+      createTime: JsonUtil.parseDateTime(json[SlideFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[SlideFields.deleteFlag]),
+      goodsId: JsonUtil.parseString(json[SlideFields.goodsId]),
+      image: JsonUtil.parseString(json[SlideFields.image]),
+      orderNo: JsonUtil.parseInt(json[SlideFields.orderNo]),
+      slideId: JsonUtil.parseString(json[SlideFields.slideId]),
+      updateTime: JsonUtil.parseDateTime(json[SlideFields.updateTime]),
+      urlType: JsonUtil.parseInt(json[SlideFields.urlType]),
     );
   }
 
@@ -103,69 +138,82 @@ class Slide with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[SlideFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[SlideFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[SlideFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[SlideFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.goodsId != null) {
-      result['goodsId'] = JsonUtil.stringToJson(goodsId);
+      result[SlideFields.goodsId] = JsonUtil.stringToJson(goodsId);
     }
     if (this.goodsIds != null) {
       var list = List();
       for (var v in goodsIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['goodsIds'] = list;
+      result[SlideFields.goodsIds] = list;
     }
     if (this.image != null) {
-      result['image'] = JsonUtil.stringToJson(image);
+      result[SlideFields.image] = JsonUtil.stringToJson(image);
     }
     if (this.orderNo != null) {
-      result['orderNo'] = JsonUtil.intToJson(orderNo);
+      result[SlideFields.orderNo] = JsonUtil.intToJson(orderNo);
     }
     if (this.orderNoMax != null) {
-      result['orderNoMax'] = JsonUtil.intToJson(orderNoMax);
+      result[SlideFields.orderNoMax] = JsonUtil.intToJson(orderNoMax);
     }
     if (this.orderNoMin != null) {
-      result['orderNoMin'] = JsonUtil.intToJson(orderNoMin);
+      result[SlideFields.orderNoMin] = JsonUtil.intToJson(orderNoMin);
+    }
+    if (this.orderNos != null) {
+      var list = List();
+      for (var v in orderNos) {
+        list.add(JsonUtil.intToJson(v));
+      }
+      result[SlideFields.orderNos] = list;
     }
     if (this.slideId != null) {
-      result['slideId'] = JsonUtil.stringToJson(slideId);
+      result[SlideFields.slideId] = JsonUtil.stringToJson(slideId);
     }
     if (this.slideIds != null) {
       var list = List();
       for (var v in slideIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['slideIds'] = list;
+      result[SlideFields.slideIds] = list;
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[SlideFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[SlideFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[SlideFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.urlType != null) {
-      result['urlType'] = JsonUtil.intToJson(urlType);
+      result[SlideFields.urlType] = JsonUtil.intToJson(urlType);
+    }
+    if (this.urlTypeMax != null) {
+      result[SlideFields.urlTypeMax] = JsonUtil.intToJson(urlTypeMax);
+    }
+    if (this.urlTypeMin != null) {
+      result[SlideFields.urlTypeMin] = JsonUtil.intToJson(urlTypeMin);
     }
     if (this.urlTypes != null) {
       var list = List();
       for (var v in urlTypes) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['urlTypes'] = list;
+      result[SlideFields.urlTypes] = list;
     }
     return result;
   }

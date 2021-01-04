@@ -6,9 +6,69 @@ import '../beans/goodscomment.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class GoodsFields {
+  static const advertiseId = 'advertiseId';
+  static const advertiseIds = 'advertiseIds';
+  static const amount = 'amount';
+  static const amountMax = 'amountMax';
+  static const amountMin = 'amountMin';
+  static const categorySubId = 'categorySubId';
+  static const categorySubIdLike = 'categorySubIdLike';
+  static const categorySubIds = 'categorySubIds';
+  static const comPic = 'comPic';
+  static const count = 'count';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const goodComments = 'goodComments';
+  static const goodsDetail = 'goodsDetail';
+  static const goodsDetailLike = 'goodsDetailLike';
+  static const goodsId = 'goodsId';
+  static const goodsIds = 'goodsIds';
+  static const goodsName = 'goodsName';
+  static const goodsNameLike = 'goodsNameLike';
+  static const goodsSerialNumber = 'goodsSerialNumber';
+  static const goodsSerialNumberLike = 'goodsSerialNumberLike';
+  static const image = 'image';
+  static const image1 = 'image1';
+  static const image1Like = 'image1Like';
+  static const image2 = 'image2';
+  static const image2Like = 'image2Like';
+  static const image3 = 'image3';
+  static const image3Like = 'image3Like';
+  static const image4 = 'image4';
+  static const image4Like = 'image4Like';
+  static const image5 = 'image5';
+  static const image5Like = 'image5Like';
+  static const images = 'images';
+  static const imagesLike = 'imagesLike';
+  static const isCheck = 'isCheck';
+  static const isHot = 'isHot';
+  static const isOnLine = 'isOnLine';
+  static const isOnLineLike = 'isOnLineLike';
+  static const mallPrice = 'mallPrice';
+  static const name = 'name';
+  static const oriPrice = 'oriPrice';
+  static const presentPrice = 'presentPrice';
+  static const presentPriceMax = 'presentPriceMax';
+  static const presentPriceMin = 'presentPriceMin';
+  static const price = 'price';
+  static const priceMax = 'priceMax';
+  static const priceMin = 'priceMin';
+  static const shopId = 'shopId';
+  static const shopIds = 'shopIds';
+  static const state = 'state';
+  static const stateMax = 'stateMax';
+  static const stateMin = 'stateMin';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+}
+
 class Goods with FrontBean {
   /// goodsId
-  static const String Goods_ID = 'goodsId';
+  static const String ID = GoodsFields.goodsId;
 
   /// advertiseId
   int advertiseId;
@@ -27,6 +87,9 @@ class Goods with FrontBean {
 
   /// categorySubId
   String categorySubId;
+
+  /// categorySubIdLike
+  String categorySubIdLike;
 
   /// categorySubId s
   List<String> categorySubIds;
@@ -185,6 +248,7 @@ class Goods with FrontBean {
     this.amountMax,
     this.amountMin,
     this.categorySubId,
+    this.categorySubIdLike,
     this.categorySubIds,
     this.comPic,
     this.count,
@@ -242,36 +306,36 @@ class Goods with FrontBean {
       return null;
     }
     return Goods(
-      advertiseId: JsonUtil.parseInt(json['advertiseId']),
-      amount: JsonUtil.parseInt(json['amount']),
-      categorySubId: JsonUtil.parseString(json['categorySubId']),
-      comPic: JsonUtil.parseString(json['comPic']),
-      count: JsonUtil.parseInt(json['count']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      goodComments: GoodsComment.fromJsonList(json['goodComments']),
-      goodsDetail: JsonUtil.parseString(json['goodsDetail']),
-      goodsId: JsonUtil.parseString(json['goodsId']),
-      goodsName: JsonUtil.parseString(json['goodsName']),
-      goodsSerialNumber: JsonUtil.parseString(json['goodsSerialNumber']),
-      image: JsonUtil.parseString(json['image']),
-      image1: JsonUtil.parseString(json['image1']),
-      image2: JsonUtil.parseString(json['image2']),
-      image3: JsonUtil.parseString(json['image3']),
-      image4: JsonUtil.parseString(json['image4']),
-      image5: JsonUtil.parseString(json['image5']),
-      images: JsonUtil.parseString(json['images']),
-      isCheck: JsonUtil.parseBool(json['isCheck']),
-      isHot: JsonUtil.parseBool(json['isHot']),
-      isOnLine: JsonUtil.parseString(json['isOnLine']),
-      mallPrice: JsonUtil.parseDouble(json['mallPrice']),
-      name: JsonUtil.parseString(json['name']),
-      oriPrice: JsonUtil.parseDouble(json['oriPrice']),
-      presentPrice: JsonUtil.parseDouble(json['presentPrice']),
-      price: JsonUtil.parseDouble(json['price']),
-      shopId: JsonUtil.parseString(json['shopId']),
-      state: JsonUtil.parseInt(json['state']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      advertiseId: JsonUtil.parseInt(json[GoodsFields.advertiseId]),
+      amount: JsonUtil.parseInt(json[GoodsFields.amount]),
+      categorySubId: JsonUtil.parseString(json[GoodsFields.categorySubId]),
+      comPic: JsonUtil.parseString(json[GoodsFields.comPic]),
+      count: JsonUtil.parseInt(json[GoodsFields.count]),
+      createTime: JsonUtil.parseDateTime(json[GoodsFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[GoodsFields.deleteFlag]),
+      goodComments: GoodsComment.fromJsonList(json[GoodsFields.goodComments]),
+      goodsDetail: JsonUtil.parseString(json[GoodsFields.goodsDetail]),
+      goodsId: JsonUtil.parseString(json[GoodsFields.goodsId]),
+      goodsName: JsonUtil.parseString(json[GoodsFields.goodsName]),
+      goodsSerialNumber: JsonUtil.parseString(json[GoodsFields.goodsSerialNumber]),
+      image: JsonUtil.parseString(json[GoodsFields.image]),
+      image1: JsonUtil.parseString(json[GoodsFields.image1]),
+      image2: JsonUtil.parseString(json[GoodsFields.image2]),
+      image3: JsonUtil.parseString(json[GoodsFields.image3]),
+      image4: JsonUtil.parseString(json[GoodsFields.image4]),
+      image5: JsonUtil.parseString(json[GoodsFields.image5]),
+      images: JsonUtil.parseString(json[GoodsFields.images]),
+      isCheck: JsonUtil.parseBool(json[GoodsFields.isCheck]),
+      isHot: JsonUtil.parseBool(json[GoodsFields.isHot]),
+      isOnLine: JsonUtil.parseString(json[GoodsFields.isOnLine]),
+      mallPrice: JsonUtil.parseDouble(json[GoodsFields.mallPrice]),
+      name: JsonUtil.parseString(json[GoodsFields.name]),
+      oriPrice: JsonUtil.parseDouble(json[GoodsFields.oriPrice]),
+      presentPrice: JsonUtil.parseDouble(json[GoodsFields.presentPrice]),
+      price: JsonUtil.parseDouble(json[GoodsFields.price]),
+      shopId: JsonUtil.parseString(json[GoodsFields.shopId]),
+      state: JsonUtil.parseInt(json[GoodsFields.state]),
+      updateTime: JsonUtil.parseDateTime(json[GoodsFields.updateTime]),
     );
   }
 
@@ -282,194 +346,197 @@ class Goods with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.advertiseId != null) {
-      result['advertiseId'] = JsonUtil.intToJson(advertiseId);
+      result[GoodsFields.advertiseId] = JsonUtil.intToJson(advertiseId);
     }
     if (this.advertiseIds != null) {
       var list = List();
       for (var v in advertiseIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['advertiseIds'] = list;
+      result[GoodsFields.advertiseIds] = list;
     }
     if (this.amount != null) {
-      result['amount'] = JsonUtil.intToJson(amount);
+      result[GoodsFields.amount] = JsonUtil.intToJson(amount);
     }
     if (this.amountMax != null) {
-      result['amountMax'] = JsonUtil.intToJson(amountMax);
+      result[GoodsFields.amountMax] = JsonUtil.intToJson(amountMax);
     }
     if (this.amountMin != null) {
-      result['amountMin'] = JsonUtil.intToJson(amountMin);
+      result[GoodsFields.amountMin] = JsonUtil.intToJson(amountMin);
     }
     if (this.categorySubId != null) {
-      result['categorySubId'] = JsonUtil.stringToJson(categorySubId);
+      result[GoodsFields.categorySubId] = JsonUtil.stringToJson(categorySubId);
+    }
+    if (this.categorySubIdLike != null) {
+      result[GoodsFields.categorySubIdLike] = JsonUtil.stringToJson(categorySubIdLike);
     }
     if (this.categorySubIds != null) {
       var list = List();
       for (var v in categorySubIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['categorySubIds'] = list;
+      result[GoodsFields.categorySubIds] = list;
     }
     if (this.comPic != null) {
-      result['comPic'] = JsonUtil.stringToJson(comPic);
+      result[GoodsFields.comPic] = JsonUtil.stringToJson(comPic);
     }
     if (this.count != null) {
-      result['count'] = JsonUtil.intToJson(count);
+      result[GoodsFields.count] = JsonUtil.intToJson(count);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[GoodsFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[GoodsFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[GoodsFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[GoodsFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.goodComments != null) {
       var list = List();
       for (var v in goodComments) {
         list.add(v.toJson());
       }
-      result['goodComments'] = list;
+      result[GoodsFields.goodComments] = list;
     }
     if (this.goodsDetail != null) {
-      result['goodsDetail'] = JsonUtil.stringToJson(goodsDetail);
+      result[GoodsFields.goodsDetail] = JsonUtil.stringToJson(goodsDetail);
     }
     if (this.goodsDetailLike != null) {
-      result['goodsDetailLike'] = JsonUtil.stringToJson(goodsDetailLike);
+      result[GoodsFields.goodsDetailLike] = JsonUtil.stringToJson(goodsDetailLike);
     }
     if (this.goodsId != null) {
-      result['goodsId'] = JsonUtil.stringToJson(goodsId);
+      result[GoodsFields.goodsId] = JsonUtil.stringToJson(goodsId);
     }
     if (this.goodsIds != null) {
       var list = List();
       for (var v in goodsIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['goodsIds'] = list;
+      result[GoodsFields.goodsIds] = list;
     }
     if (this.goodsName != null) {
-      result['goodsName'] = JsonUtil.stringToJson(goodsName);
+      result[GoodsFields.goodsName] = JsonUtil.stringToJson(goodsName);
     }
     if (this.goodsNameLike != null) {
-      result['goodsNameLike'] = JsonUtil.stringToJson(goodsNameLike);
+      result[GoodsFields.goodsNameLike] = JsonUtil.stringToJson(goodsNameLike);
     }
     if (this.goodsSerialNumber != null) {
-      result['goodsSerialNumber'] = JsonUtil.stringToJson(goodsSerialNumber);
+      result[GoodsFields.goodsSerialNumber] = JsonUtil.stringToJson(goodsSerialNumber);
     }
     if (this.goodsSerialNumberLike != null) {
-      result['goodsSerialNumberLike'] = JsonUtil.stringToJson(goodsSerialNumberLike);
+      result[GoodsFields.goodsSerialNumberLike] = JsonUtil.stringToJson(goodsSerialNumberLike);
     }
     if (this.image != null) {
-      result['image'] = JsonUtil.stringToJson(image);
+      result[GoodsFields.image] = JsonUtil.stringToJson(image);
     }
     if (this.image1 != null) {
-      result['image1'] = JsonUtil.stringToJson(image1);
+      result[GoodsFields.image1] = JsonUtil.stringToJson(image1);
     }
     if (this.image1Like != null) {
-      result['image1Like'] = JsonUtil.stringToJson(image1Like);
+      result[GoodsFields.image1Like] = JsonUtil.stringToJson(image1Like);
     }
     if (this.image2 != null) {
-      result['image2'] = JsonUtil.stringToJson(image2);
+      result[GoodsFields.image2] = JsonUtil.stringToJson(image2);
     }
     if (this.image2Like != null) {
-      result['image2Like'] = JsonUtil.stringToJson(image2Like);
+      result[GoodsFields.image2Like] = JsonUtil.stringToJson(image2Like);
     }
     if (this.image3 != null) {
-      result['image3'] = JsonUtil.stringToJson(image3);
+      result[GoodsFields.image3] = JsonUtil.stringToJson(image3);
     }
     if (this.image3Like != null) {
-      result['image3Like'] = JsonUtil.stringToJson(image3Like);
+      result[GoodsFields.image3Like] = JsonUtil.stringToJson(image3Like);
     }
     if (this.image4 != null) {
-      result['image4'] = JsonUtil.stringToJson(image4);
+      result[GoodsFields.image4] = JsonUtil.stringToJson(image4);
     }
     if (this.image4Like != null) {
-      result['image4Like'] = JsonUtil.stringToJson(image4Like);
+      result[GoodsFields.image4Like] = JsonUtil.stringToJson(image4Like);
     }
     if (this.image5 != null) {
-      result['image5'] = JsonUtil.stringToJson(image5);
+      result[GoodsFields.image5] = JsonUtil.stringToJson(image5);
     }
     if (this.image5Like != null) {
-      result['image5Like'] = JsonUtil.stringToJson(image5Like);
+      result[GoodsFields.image5Like] = JsonUtil.stringToJson(image5Like);
     }
     if (this.images != null) {
-      result['images'] = JsonUtil.stringToJson(images);
+      result[GoodsFields.images] = JsonUtil.stringToJson(images);
     }
     if (this.imagesLike != null) {
-      result['imagesLike'] = JsonUtil.stringToJson(imagesLike);
+      result[GoodsFields.imagesLike] = JsonUtil.stringToJson(imagesLike);
     }
     if (this.isCheck != null) {
-      result['isCheck'] = JsonUtil.boolToJson(isCheck);
+      result[GoodsFields.isCheck] = JsonUtil.boolToJson(isCheck);
     }
     if (this.isHot != null) {
-      result['isHot'] = JsonUtil.boolToJson(isHot);
+      result[GoodsFields.isHot] = JsonUtil.boolToJson(isHot);
     }
     if (this.isOnLine != null) {
-      result['isOnLine'] = JsonUtil.stringToJson(isOnLine);
+      result[GoodsFields.isOnLine] = JsonUtil.stringToJson(isOnLine);
     }
     if (this.isOnLineLike != null) {
-      result['isOnLineLike'] = JsonUtil.stringToJson(isOnLineLike);
+      result[GoodsFields.isOnLineLike] = JsonUtil.stringToJson(isOnLineLike);
     }
     if (this.mallPrice != null) {
-      result['mallPrice'] = JsonUtil.doubleToJson(mallPrice);
+      result[GoodsFields.mallPrice] = JsonUtil.doubleToJson(mallPrice);
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[GoodsFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.oriPrice != null) {
-      result['oriPrice'] = JsonUtil.doubleToJson(oriPrice);
+      result[GoodsFields.oriPrice] = JsonUtil.doubleToJson(oriPrice);
     }
     if (this.presentPrice != null) {
-      result['presentPrice'] = JsonUtil.doubleToJson(presentPrice);
+      result[GoodsFields.presentPrice] = JsonUtil.doubleToJson(presentPrice);
     }
     if (this.presentPriceMax != null) {
-      result['presentPriceMax'] = JsonUtil.doubleToJson(presentPriceMax);
+      result[GoodsFields.presentPriceMax] = JsonUtil.doubleToJson(presentPriceMax);
     }
     if (this.presentPriceMin != null) {
-      result['presentPriceMin'] = JsonUtil.doubleToJson(presentPriceMin);
+      result[GoodsFields.presentPriceMin] = JsonUtil.doubleToJson(presentPriceMin);
     }
     if (this.price != null) {
-      result['price'] = JsonUtil.doubleToJson(price);
+      result[GoodsFields.price] = JsonUtil.doubleToJson(price);
     }
     if (this.priceMax != null) {
-      result['priceMax'] = JsonUtil.doubleToJson(priceMax);
+      result[GoodsFields.priceMax] = JsonUtil.doubleToJson(priceMax);
     }
     if (this.priceMin != null) {
-      result['priceMin'] = JsonUtil.doubleToJson(priceMin);
+      result[GoodsFields.priceMin] = JsonUtil.doubleToJson(priceMin);
     }
     if (this.shopId != null) {
-      result['shopId'] = JsonUtil.stringToJson(shopId);
+      result[GoodsFields.shopId] = JsonUtil.stringToJson(shopId);
     }
     if (this.shopIds != null) {
       var list = List();
       for (var v in shopIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['shopIds'] = list;
+      result[GoodsFields.shopIds] = list;
     }
     if (this.state != null) {
-      result['state'] = JsonUtil.intToJson(state);
+      result[GoodsFields.state] = JsonUtil.intToJson(state);
     }
     if (this.stateMax != null) {
-      result['stateMax'] = JsonUtil.intToJson(stateMax);
+      result[GoodsFields.stateMax] = JsonUtil.intToJson(stateMax);
     }
     if (this.stateMin != null) {
-      result['stateMin'] = JsonUtil.intToJson(stateMin);
+      result[GoodsFields.stateMin] = JsonUtil.intToJson(stateMin);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[GoodsFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[GoodsFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[GoodsFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

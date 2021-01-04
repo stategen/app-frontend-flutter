@@ -5,9 +5,27 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class ProvinceFields {
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const name = 'name';
+  static const nameLike = 'nameLike';
+  static const provinceId = 'provinceId';
+  static const provinceIds = 'provinceIds';
+  static const pycode = 'pycode';
+  static const pycodeLike = 'pycodeLike';
+  static const title = 'title';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const value = 'value';
+}
+
 class Province with FrontBean {
   /// provinceId
-  static const String Province_ID = 'provinceId';
+  static const String ID = ProvinceFields.provinceId;
 
   /// 创建时间
   DateTime createTime;
@@ -77,14 +95,14 @@ class Province with FrontBean {
       return null;
     }
     return Province(
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      name: JsonUtil.parseString(json['name']),
-      provinceId: JsonUtil.parseString(json['provinceId']),
-      pycode: JsonUtil.parseString(json['pycode']),
-      title: JsonUtil.parseString(json['title']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      value: JsonUtil.parseString(json['value']),
+      createTime: JsonUtil.parseDateTime(json[ProvinceFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[ProvinceFields.deleteFlag]),
+      name: JsonUtil.parseString(json[ProvinceFields.name]),
+      provinceId: JsonUtil.parseString(json[ProvinceFields.provinceId]),
+      pycode: JsonUtil.parseString(json[ProvinceFields.pycode]),
+      title: JsonUtil.parseString(json[ProvinceFields.title]),
+      updateTime: JsonUtil.parseDateTime(json[ProvinceFields.updateTime]),
+      value: JsonUtil.parseString(json[ProvinceFields.value]),
     );
   }
 
@@ -95,55 +113,55 @@ class Province with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[ProvinceFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[ProvinceFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[ProvinceFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[ProvinceFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[ProvinceFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+      result[ProvinceFields.nameLike] = JsonUtil.stringToJson(nameLike);
     }
     if (this.provinceId != null) {
-      result['provinceId'] = JsonUtil.stringToJson(provinceId);
+      result[ProvinceFields.provinceId] = JsonUtil.stringToJson(provinceId);
     }
     if (this.provinceIds != null) {
       var list = List();
       for (var v in provinceIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['provinceIds'] = list;
+      result[ProvinceFields.provinceIds] = list;
     }
     if (this.pycode != null) {
-      result['pycode'] = JsonUtil.stringToJson(pycode);
+      result[ProvinceFields.pycode] = JsonUtil.stringToJson(pycode);
     }
     if (this.pycodeLike != null) {
-      result['pycodeLike'] = JsonUtil.stringToJson(pycodeLike);
+      result[ProvinceFields.pycodeLike] = JsonUtil.stringToJson(pycodeLike);
     }
     if (this.title != null) {
-      result['title'] = JsonUtil.stringToJson(title);
+      result[ProvinceFields.title] = JsonUtil.stringToJson(title);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[ProvinceFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[ProvinceFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[ProvinceFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.value != null) {
-      result['value'] = JsonUtil.stringToJson(value);
+      result[ProvinceFields.value] = JsonUtil.stringToJson(value);
     }
     return result;
   }

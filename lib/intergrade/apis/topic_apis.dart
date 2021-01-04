@@ -10,6 +10,7 @@ import '../enums/topictype.dart';
 import "../configs/tradeApp_config.dart";
 import '../../stgutil/net_util.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert' as convert;
 
 class TopicApis {
   /// POST /api/topic/delete
@@ -74,7 +75,7 @@ class TopicApis {
 
   /// POST /api/topic/update
   /// 
-  static Future<Topic> update({Map<String, dynamic> payload, String authorId, String topicType, String content, String title, String lastReplyAt, String good, String top, int visitCount, String createAt, DateTime testTimestamp, DateTime testDatetime, DateTime testDate, DateTime testTime, String topicId }) async {
+  static Future<Topic> update({Map<String, dynamic> payload, String authorId, TopicType topicType, String content, String title, DateTime lastReplyAt, int good, TopicType top, int visitCount, String topicId }) async {
     var requestInit = RequestInit();
     requestInit.apiUrlKey = tradeAppBaseUrlKey;
     requestInit.path = '/api/topic/update';
@@ -103,21 +104,6 @@ class TopicApis {
     }
     if (visitCount != null) {
       payload['visitCount'] = visitCount;
-    }
-    if (createAt != null) {
-      payload['createAt'] = createAt;
-    }
-    if (testTimestamp != null) {
-      payload['testTimestamp'] = testTimestamp;
-    }
-    if (testDatetime != null) {
-      payload['testDatetime'] = testDatetime;
-    }
-    if (testDate != null) {
-      payload['testDate'] = testDate;
-    }
-    if (testTime != null) {
-      payload['testTime'] = testTime;
     }
     if (topicId != null) {
       payload['topicId'] = topicId;

@@ -11,6 +11,15 @@ import '../beans/slide.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class HomeWrapFields {
+  static const advertesPicture = 'advertesPicture';
+  static const category = 'category';
+  static const floors = 'floors';
+  static const recommend = 'recommend';
+  static const shopInfo = 'shopInfo';
+  static const slides = 'slides';
+}
+
 class HomeWrap with FrontBean {
   /// advertesPicture
   HomeAdvertise advertesPicture;
@@ -44,12 +53,12 @@ class HomeWrap with FrontBean {
       return null;
     }
     return HomeWrap(
-      advertesPicture: HomeAdvertise.fromJson(json['advertesPicture']),
-      category: Category.fromJsonList(json['category']),
-      floors: Floor.fromJsonList(json['floors']),
-      recommend: HomeGoods.fromJsonList(json['recommend']),
-      shopInfo: HomeShop.fromJson(json['shopInfo']),
-      slides: Slide.fromJsonList(json['slides']),
+      advertesPicture: HomeAdvertise.fromJson(json[HomeWrapFields.advertesPicture]),
+      category: Category.fromJsonList(json[HomeWrapFields.category]),
+      floors: Floor.fromJsonList(json[HomeWrapFields.floors]),
+      recommend: HomeGoods.fromJsonList(json[HomeWrapFields.recommend]),
+      shopInfo: HomeShop.fromJson(json[HomeWrapFields.shopInfo]),
+      slides: Slide.fromJsonList(json[HomeWrapFields.slides]),
     );
   }
 
@@ -60,40 +69,40 @@ class HomeWrap with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.advertesPicture != null) {
-      result['advertesPicture'] = advertesPicture.toJson();
+      result[HomeWrapFields.advertesPicture] = advertesPicture.toJson();
     }
     if (this.category != null) {
       var list = List();
       for (var v in category) {
         list.add(v.toJson());
       }
-      result['category'] = list;
+      result[HomeWrapFields.category] = list;
     }
     if (this.floors != null) {
       var list = List();
       for (var v in floors) {
         list.add(v.toJson());
       }
-      result['floors'] = list;
+      result[HomeWrapFields.floors] = list;
     }
     if (this.recommend != null) {
       var list = List();
       for (var v in recommend) {
         list.add(v.toJson());
       }
-      result['recommend'] = list;
+      result[HomeWrapFields.recommend] = list;
     }
     if (this.shopInfo != null) {
-      result['shopInfo'] = shopInfo.toJson();
+      result[HomeWrapFields.shopInfo] = shopInfo.toJson();
     }
     if (this.slides != null) {
       var list = List();
       for (var v in slides) {
         list.add(v.toJson());
       }
-      result['slides'] = list;
+      result[HomeWrapFields.slides] = list;
     }
     return result;
   }

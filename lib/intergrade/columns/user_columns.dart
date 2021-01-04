@@ -83,9 +83,6 @@ class UserColumns{
     referConfig: ReferConfig(
       api: 'getFileSummaryOptions',
       referField: 'avatarImg',
-      optionConvertor: OptionConvertor(
-        value: 'fileId',
-      ),
     ),
     rules: [
       ValidationRule(
@@ -593,6 +590,17 @@ class UserColumns{
     //render: (text: any, record: User, index: number) =>{
     //  return status.renderColumn(record, null, text, index, status);
     //},
+  );
+
+  /// 状态Like  
+  static ColumnConfig statusLike = ColumnConfig(
+    key: 'statusLike',
+    title: '状态Like',
+    noJson: true,
+    isEnum: true,
+    referConfig: ReferConfig(
+      options: StatusEnum.statusEnumOptions,
+    ),
   );
 
   /// 状态 s  

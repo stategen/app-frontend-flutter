@@ -60,13 +60,6 @@ class TopicColumns{
     //},
   );
 
-  /// 内容Like  
-  static ColumnConfig contentLike = ColumnConfig(
-    key: 'contentLike',
-    title: '内容Like',
-    noJson: true,
-  );
-
   /// 创建时间  TIMESTAMP
   static ColumnConfig createTime = ColumnConfig(
     key: 'createTime',
@@ -96,6 +89,20 @@ class TopicColumns{
     noJson: true,
     temporalType: TemporalType.TIMESTAMP,
     format: TIMESTAMP_FORMAT,
+  );
+
+  /// 树(类似部门)主键currOrgId  
+  static ColumnConfig currOrgId = ColumnConfig(
+    key: 'currOrgId',
+    title: '树(类似部门)主键currOrgId',
+    noJson: true,
+  );
+
+  /// 所有者currUserId  
+  static ColumnConfig currUserId = ColumnConfig(
+    key: 'currUserId',
+    title: '所有者currUserId',
+    noJson: true,
   );
 
   /// 是否删除(0:正常，1删除)  
@@ -130,6 +137,13 @@ class TopicColumns{
   static ColumnConfig goodMin = ColumnConfig(
     key: 'goodMin',
     title: '精华Min',
+    noJson: true,
+  );
+
+  /// inclCurrOrgId  
+  static ColumnConfig inclCurrOrgId = ColumnConfig(
+    key: 'inclCurrOrgId',
+    title: 'inclCurrOrgId',
     noJson: true,
   );
 
@@ -224,16 +238,14 @@ class TopicColumns{
   static ColumnConfig topicId = ColumnConfig(
     key: 'topicId',
     title: '主题ID',
-    // renderColumn: UIColumns.HiddenRender,
+    // renderColumn: UIColumns.InputRender,
     isId: true,
-    typeIsHidden: true,
     rules: [
       ValidationRule(
         max: 64,
         message: "最大不能超过{max}",
       ),
     ],
-    nullTitle: '请选择',
     //render: (text: any, record: Topic, index: number) =>{
     //  return topicId.renderColumn(record, null, text, index, topicId);
     //},

@@ -153,13 +153,13 @@ class GoodsCommentColumns{
     isArray: true,
   );
 
-  /// sCORE  
-  static ColumnConfig sCORE = ColumnConfig(
-    key: 'sCORE',
-    title: 'sCORE',
+  /// score  
+  static ColumnConfig score = ColumnConfig(
+    key: 'score',
+    title: 'score',
     // renderColumn: UIColumns.InputRender,
     //render: (text: any, record: GoodsComment, index: number) =>{
-    //  return sCORE.renderColumn(record, null, text, index, sCORE);
+    //  return score.renderColumn(record, null, text, index, score);
     //},
   );
 

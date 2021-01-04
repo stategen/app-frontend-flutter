@@ -138,6 +138,13 @@ class FileSummaryColumns{
     //},
   );
 
+  /// typeLike  
+  static ColumnConfig typeLike = ColumnConfig(
+    key: 'typeLike',
+    title: 'typeLike',
+    noJson: true,
+  );
+
   /// type s  
   static ColumnConfig types = ColumnConfig(
     key: 'types',

@@ -76,8 +76,8 @@ abstract class TopicAbstractProvider with ChangeNotifier, BaseProvider, TopicBas
   }
 
   /// 
-  Future<void> update(BuildContext context, {Map<String, dynamic> payload, String authorId, String topicType, String content, String title, String lastReplyAt, String good, String top, int visitCount, String createAt, DateTime testTimestamp, DateTime testDatetime, DateTime testDate, DateTime testTime, String topicId }) async {
-    var newState = await TopicCommand.update(this, payload: payload, authorId: authorId, topicType: topicType, content: content, title: title, lastReplyAt: lastReplyAt, good: good, top: top, visitCount: visitCount, createAt: createAt, testTimestamp: testTimestamp, testDatetime: testDatetime, testDate: testDate, testTime: testTime, topicId: topicId);
+  Future<void> update(BuildContext context, {Map<String, dynamic> payload, String authorId, TopicType topicType, String content, String title, DateTime lastReplyAt, int good, TopicType top, int visitCount, String topicId }) async {
+    var newState = await TopicCommand.update(this, payload: payload, authorId: authorId, topicType: topicType, content: content, title: title, lastReplyAt: lastReplyAt, good: good, top: top, visitCount: visitCount, topicId: topicId);
     mergeState(context, newState);
   }
 
@@ -174,8 +174,8 @@ abstract class TopicCommand {
   }
 
   /// 
-  static Future<TopicBaseState> update(TopicAbstractProvider topicState, {Map<String, dynamic> payload, String authorId, String topicType, String content, String title, String lastReplyAt, String good, String top, int visitCount, String createAt, DateTime testTimestamp, DateTime testDatetime, DateTime testDate, DateTime testTime, String topicId }) async {
-    Topic topic = await TopicApis.update(payload: payload, authorId: authorId, topicType: topicType, content: content, title: title, lastReplyAt: lastReplyAt, good: good, top: top, visitCount: visitCount, createAt: createAt, testTimestamp: testTimestamp, testDatetime: testDatetime, testDate: testDate, testTime: testTime, topicId: topicId);
+  static Future<TopicBaseState> update(TopicAbstractProvider topicState, {Map<String, dynamic> payload, String authorId, TopicType topicType, String content, String title, DateTime lastReplyAt, int good, TopicType top, int visitCount, String topicId }) async {
+    Topic topic = await TopicApis.update(payload: payload, authorId: authorId, topicType: topicType, content: content, title: title, lastReplyAt: lastReplyAt, good: good, top: top, visitCount: visitCount, topicId: topicId);
     var oldTopicArea = topicState.topicArea;
     var topicMap = CollectionUtil.appendOrUpdateMap(oldTopicArea?.clone()?.valueMap,  Topic.toIdMap([topic]));
 

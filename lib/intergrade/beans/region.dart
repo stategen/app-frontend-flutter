@@ -6,9 +6,41 @@ import '../enums/regiontype.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class RegionFields {
+  static const code = 'code';
+  static const codeLike = 'codeLike';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const isLeaf = 'isLeaf';
+  static const level = 'level';
+  static const levelMax = 'levelMax';
+  static const levelMin = 'levelMin';
+  static const name = 'name';
+  static const nameEn = 'nameEn';
+  static const nameEnLike = 'nameEnLike';
+  static const nameLike = 'nameLike';
+  static const namePinyin = 'namePinyin';
+  static const namePinyinLike = 'namePinyinLike';
+  static const parentRegionId = 'parentRegionId';
+  static const parentRegionIds = 'parentRegionIds';
+  static const path = 'path';
+  static const pathLike = 'pathLike';
+  static const regionId = 'regionId';
+  static const regionIds = 'regionIds';
+  static const regionType = 'regionType';
+  static const regionTypes = 'regionTypes';
+  static const title = 'title';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const value = 'value';
+}
+
 class Region with FrontBean {
   /// regionId
-  static const String Region_ID = 'regionId';
+  static const String ID = RegionFields.regionId;
 
   /// 代码
   String code;
@@ -26,7 +58,7 @@ class Region with FrontBean {
   DateTime createTimeMin;
 
   /// 是否删除 (0:正常，1删除)
-  int deleteFlag;
+  bool deleteFlag;
 
   /// isLeaf
   bool isLeaf;
@@ -134,21 +166,21 @@ class Region with FrontBean {
       return null;
     }
     return Region(
-      code: JsonUtil.parseString(json['code']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      isLeaf: JsonUtil.parseBool(json['isLeaf']),
-      level: JsonUtil.parseInt(json['level']),
-      name: JsonUtil.parseString(json['name']),
-      nameEn: JsonUtil.parseString(json['nameEn']),
-      namePinyin: JsonUtil.parseString(json['namePinyin']),
-      parentRegionId: JsonUtil.parseInt(json['parentRegionId']),
-      path: JsonUtil.parseString(json['path']),
-      regionId: JsonUtil.parseInt(json['regionId']),
-      regionType: RegionType.fromJson(json['regionType']),
-      title: JsonUtil.parseString(json['title']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      value: JsonUtil.parseString(json['value']),
+      code: JsonUtil.parseString(json[RegionFields.code]),
+      createTime: JsonUtil.parseDateTime(json[RegionFields.createTime]),
+      deleteFlag: JsonUtil.parseBool(json[RegionFields.deleteFlag]),
+      isLeaf: JsonUtil.parseBool(json[RegionFields.isLeaf]),
+      level: JsonUtil.parseInt(json[RegionFields.level]),
+      name: JsonUtil.parseString(json[RegionFields.name]),
+      nameEn: JsonUtil.parseString(json[RegionFields.nameEn]),
+      namePinyin: JsonUtil.parseString(json[RegionFields.namePinyin]),
+      parentRegionId: JsonUtil.parseInt(json[RegionFields.parentRegionId]),
+      path: JsonUtil.parseString(json[RegionFields.path]),
+      regionId: JsonUtil.parseInt(json[RegionFields.regionId]),
+      regionType: RegionType.fromJson(json[RegionFields.regionType]),
+      title: JsonUtil.parseString(json[RegionFields.title]),
+      updateTime: JsonUtil.parseDateTime(json[RegionFields.updateTime]),
+      value: JsonUtil.parseString(json[RegionFields.value]),
     );
   }
 
@@ -159,105 +191,105 @@ class Region with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.code != null) {
-      result['code'] = JsonUtil.stringToJson(code);
+      result[RegionFields.code] = JsonUtil.stringToJson(code);
     }
     if (this.codeLike != null) {
-      result['codeLike'] = JsonUtil.stringToJson(codeLike);
+      result[RegionFields.codeLike] = JsonUtil.stringToJson(codeLike);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[RegionFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[RegionFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[RegionFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[RegionFields.deleteFlag] = JsonUtil.boolToJson(deleteFlag);
     }
     if (this.isLeaf != null) {
-      result['isLeaf'] = JsonUtil.boolToJson(isLeaf);
+      result[RegionFields.isLeaf] = JsonUtil.boolToJson(isLeaf);
     }
     if (this.level != null) {
-      result['level'] = JsonUtil.intToJson(level);
+      result[RegionFields.level] = JsonUtil.intToJson(level);
     }
     if (this.levelMax != null) {
-      result['levelMax'] = JsonUtil.intToJson(levelMax);
+      result[RegionFields.levelMax] = JsonUtil.intToJson(levelMax);
     }
     if (this.levelMin != null) {
-      result['levelMin'] = JsonUtil.intToJson(levelMin);
+      result[RegionFields.levelMin] = JsonUtil.intToJson(levelMin);
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[RegionFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.nameEn != null) {
-      result['nameEn'] = JsonUtil.stringToJson(nameEn);
+      result[RegionFields.nameEn] = JsonUtil.stringToJson(nameEn);
     }
     if (this.nameEnLike != null) {
-      result['nameEnLike'] = JsonUtil.stringToJson(nameEnLike);
+      result[RegionFields.nameEnLike] = JsonUtil.stringToJson(nameEnLike);
     }
     if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+      result[RegionFields.nameLike] = JsonUtil.stringToJson(nameLike);
     }
     if (this.namePinyin != null) {
-      result['namePinyin'] = JsonUtil.stringToJson(namePinyin);
+      result[RegionFields.namePinyin] = JsonUtil.stringToJson(namePinyin);
     }
     if (this.namePinyinLike != null) {
-      result['namePinyinLike'] = JsonUtil.stringToJson(namePinyinLike);
+      result[RegionFields.namePinyinLike] = JsonUtil.stringToJson(namePinyinLike);
     }
     if (this.parentRegionId != null) {
-      result['parentRegionId'] = JsonUtil.intToJson(parentRegionId);
+      result[RegionFields.parentRegionId] = JsonUtil.intToJson(parentRegionId);
     }
     if (this.parentRegionIds != null) {
       var list = List();
       for (var v in parentRegionIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['parentRegionIds'] = list;
+      result[RegionFields.parentRegionIds] = list;
     }
     if (this.path != null) {
-      result['path'] = JsonUtil.stringToJson(path);
+      result[RegionFields.path] = JsonUtil.stringToJson(path);
     }
     if (this.pathLike != null) {
-      result['pathLike'] = JsonUtil.stringToJson(pathLike);
+      result[RegionFields.pathLike] = JsonUtil.stringToJson(pathLike);
     }
     if (this.regionId != null) {
-      result['regionId'] = JsonUtil.intToJson(regionId);
+      result[RegionFields.regionId] = JsonUtil.intToJson(regionId);
     }
     if (this.regionIds != null) {
       var list = List();
       for (var v in regionIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['regionIds'] = list;
+      result[RegionFields.regionIds] = list;
     }
     if (this.regionType != null) {
-      result['regionType'] = regionType.toString();
+      result[RegionFields.regionType] = regionType.toString();
     }
     if (this.regionTypes != null) {
       var list = List();
       for (var v in regionTypes) {
         list.add(v.toString());
       }
-      result['regionTypes'] = list;
+      result[RegionFields.regionTypes] = list;
     }
     if (this.title != null) {
-      result['title'] = JsonUtil.stringToJson(title);
+      result[RegionFields.title] = JsonUtil.stringToJson(title);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[RegionFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[RegionFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[RegionFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.value != null) {
-      result['value'] = JsonUtil.stringToJson(value);
+      result[RegionFields.value] = JsonUtil.stringToJson(value);
     }
     return result;
   }

@@ -7,9 +7,77 @@ import '../beans/goodscomment.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class FloorGoodsFields {
+  static const advertiseId = 'advertiseId';
+  static const advertiseIds = 'advertiseIds';
+  static const amount = 'amount';
+  static const amountMax = 'amountMax';
+  static const amountMin = 'amountMin';
+  static const categorySubId = 'categorySubId';
+  static const categorySubIdLike = 'categorySubIdLike';
+  static const categorySubIds = 'categorySubIds';
+  static const comPic = 'comPic';
+  static const count = 'count';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const floorGoodsId = 'floorGoodsId';
+  static const floorGoodsIds = 'floorGoodsIds';
+  static const floorId = 'floorId';
+  static const floorIds = 'floorIds';
+  static const goodComments = 'goodComments';
+  static const goodsDetail = 'goodsDetail';
+  static const goodsDetailLike = 'goodsDetailLike';
+  static const goodsId = 'goodsId';
+  static const goodsIds = 'goodsIds';
+  static const goodsName = 'goodsName';
+  static const goodsNameLike = 'goodsNameLike';
+  static const goodsSerialNumber = 'goodsSerialNumber';
+  static const goodsSerialNumberLike = 'goodsSerialNumberLike';
+  static const image = 'image';
+  static const image1 = 'image1';
+  static const image1Like = 'image1Like';
+  static const image2 = 'image2';
+  static const image2Like = 'image2Like';
+  static const image3 = 'image3';
+  static const image3Like = 'image3Like';
+  static const image4 = 'image4';
+  static const image4Like = 'image4Like';
+  static const image5 = 'image5';
+  static const image5Like = 'image5Like';
+  static const images = 'images';
+  static const imagesLike = 'imagesLike';
+  static const isCheck = 'isCheck';
+  static const isHot = 'isHot';
+  static const isOnLine = 'isOnLine';
+  static const isOnLineLike = 'isOnLineLike';
+  static const mallPrice = 'mallPrice';
+  static const name = 'name';
+  static const orderNo = 'orderNo';
+  static const orderNoMax = 'orderNoMax';
+  static const orderNoMin = 'orderNoMin';
+  static const orderNos = 'orderNos';
+  static const oriPrice = 'oriPrice';
+  static const presentPrice = 'presentPrice';
+  static const presentPriceMax = 'presentPriceMax';
+  static const presentPriceMin = 'presentPriceMin';
+  static const price = 'price';
+  static const priceMax = 'priceMax';
+  static const priceMin = 'priceMin';
+  static const shopId = 'shopId';
+  static const shopIds = 'shopIds';
+  static const state = 'state';
+  static const stateMax = 'stateMax';
+  static const stateMin = 'stateMin';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+}
+
 class FloorGoods extends Goods with FrontBean {
   /// floorGoodsId
-  static const String FloorGoods_ID = 'floorGoodsId';
+  static const String ID = FloorGoodsFields.floorGoodsId;
 
   /// floorGoodsId
   String floorGoodsId;
@@ -32,6 +100,9 @@ class FloorGoods extends Goods with FrontBean {
   /// orderNoMin
   int orderNoMin;
 
+  /// orderNo s
+  List<int> orderNos;
+
   FloorGoods({
     advertiseId,
     advertiseIds,
@@ -39,6 +110,7 @@ class FloorGoods extends Goods with FrontBean {
     amountMax,
     amountMin,
     categorySubId,
+    categorySubIdLike,
     categorySubIds,
     comPic,
     count,
@@ -81,6 +153,7 @@ class FloorGoods extends Goods with FrontBean {
     this.orderNo,
     this.orderNoMax,
     this.orderNoMin,
+    this.orderNos,
     oriPrice,
     presentPrice,
     presentPriceMax,
@@ -96,46 +169,46 @@ class FloorGoods extends Goods with FrontBean {
     updateTime,
     updateTimeMax,
     updateTimeMin,
-  }) : super(advertiseId: advertiseId, advertiseIds: advertiseIds, amount: amount, amountMax: amountMax, amountMin: amountMin, categorySubId: categorySubId, categorySubIds: categorySubIds, comPic: comPic, count: count, createTime: createTime, createTimeMax: createTimeMax, createTimeMin: createTimeMin, deleteFlag: deleteFlag, goodComments: goodComments, goodsDetail: goodsDetail, goodsDetailLike: goodsDetailLike, goodsId: goodsId, goodsIds: goodsIds, goodsName: goodsName, goodsNameLike: goodsNameLike, goodsSerialNumber: goodsSerialNumber, goodsSerialNumberLike: goodsSerialNumberLike, image: image, image1: image1, image1Like: image1Like, image2: image2, image2Like: image2Like, image3: image3, image3Like: image3Like, image4: image4, image4Like: image4Like, image5: image5, image5Like: image5Like, images: images, imagesLike: imagesLike, isCheck: isCheck, isHot: isHot, isOnLine: isOnLine, isOnLineLike: isOnLineLike, mallPrice: mallPrice, name: name, oriPrice: oriPrice, presentPrice: presentPrice, presentPriceMax: presentPriceMax, presentPriceMin: presentPriceMin, price: price, priceMax: priceMax, priceMin: priceMin, shopId: shopId, shopIds: shopIds, state: state, stateMax: stateMax, stateMin: stateMin, updateTime: updateTime, updateTimeMax: updateTimeMax, updateTimeMin: updateTimeMin);
+  }) : super(advertiseId: advertiseId, advertiseIds: advertiseIds, amount: amount, amountMax: amountMax, amountMin: amountMin, categorySubId: categorySubId, categorySubIdLike: categorySubIdLike, categorySubIds: categorySubIds, comPic: comPic, count: count, createTime: createTime, createTimeMax: createTimeMax, createTimeMin: createTimeMin, deleteFlag: deleteFlag, goodComments: goodComments, goodsDetail: goodsDetail, goodsDetailLike: goodsDetailLike, goodsId: goodsId, goodsIds: goodsIds, goodsName: goodsName, goodsNameLike: goodsNameLike, goodsSerialNumber: goodsSerialNumber, goodsSerialNumberLike: goodsSerialNumberLike, image: image, image1: image1, image1Like: image1Like, image2: image2, image2Like: image2Like, image3: image3, image3Like: image3Like, image4: image4, image4Like: image4Like, image5: image5, image5Like: image5Like, images: images, imagesLike: imagesLike, isCheck: isCheck, isHot: isHot, isOnLine: isOnLine, isOnLineLike: isOnLineLike, mallPrice: mallPrice, name: name, oriPrice: oriPrice, presentPrice: presentPrice, presentPriceMax: presentPriceMax, presentPriceMin: presentPriceMin, price: price, priceMax: priceMax, priceMin: priceMin, shopId: shopId, shopIds: shopIds, state: state, stateMax: stateMax, stateMin: stateMin, updateTime: updateTime, updateTimeMax: updateTimeMax, updateTimeMin: updateTimeMin);
 
   static FloorGoods fromJson(Map<String, dynamic> json) {
     if (json == null) {
       return null;
     }
     return FloorGoods(
-      advertiseId: JsonUtil.parseInt(json['advertiseId']),
-      amount: JsonUtil.parseInt(json['amount']),
-      categorySubId: JsonUtil.parseString(json['categorySubId']),
-      comPic: JsonUtil.parseString(json['comPic']),
-      count: JsonUtil.parseInt(json['count']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      floorGoodsId: JsonUtil.parseString(json['floorGoodsId']),
-      floorId: JsonUtil.parseString(json['floorId']),
-      goodComments: GoodsComment.fromJsonList(json['goodComments']),
-      goodsDetail: JsonUtil.parseString(json['goodsDetail']),
-      goodsId: JsonUtil.parseString(json['goodsId']),
-      goodsName: JsonUtil.parseString(json['goodsName']),
-      goodsSerialNumber: JsonUtil.parseString(json['goodsSerialNumber']),
-      image: JsonUtil.parseString(json['image']),
-      image1: JsonUtil.parseString(json['image1']),
-      image2: JsonUtil.parseString(json['image2']),
-      image3: JsonUtil.parseString(json['image3']),
-      image4: JsonUtil.parseString(json['image4']),
-      image5: JsonUtil.parseString(json['image5']),
-      images: JsonUtil.parseString(json['images']),
-      isCheck: JsonUtil.parseBool(json['isCheck']),
-      isHot: JsonUtil.parseBool(json['isHot']),
-      isOnLine: JsonUtil.parseString(json['isOnLine']),
-      mallPrice: JsonUtil.parseDouble(json['mallPrice']),
-      name: JsonUtil.parseString(json['name']),
-      orderNo: JsonUtil.parseInt(json['orderNo']),
-      oriPrice: JsonUtil.parseDouble(json['oriPrice']),
-      presentPrice: JsonUtil.parseDouble(json['presentPrice']),
-      price: JsonUtil.parseDouble(json['price']),
-      shopId: JsonUtil.parseString(json['shopId']),
-      state: JsonUtil.parseInt(json['state']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      advertiseId: JsonUtil.parseInt(json[FloorGoodsFields.advertiseId]),
+      amount: JsonUtil.parseInt(json[FloorGoodsFields.amount]),
+      categorySubId: JsonUtil.parseString(json[FloorGoodsFields.categorySubId]),
+      comPic: JsonUtil.parseString(json[FloorGoodsFields.comPic]),
+      count: JsonUtil.parseInt(json[FloorGoodsFields.count]),
+      createTime: JsonUtil.parseDateTime(json[FloorGoodsFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[FloorGoodsFields.deleteFlag]),
+      floorGoodsId: JsonUtil.parseString(json[FloorGoodsFields.floorGoodsId]),
+      floorId: JsonUtil.parseString(json[FloorGoodsFields.floorId]),
+      goodComments: GoodsComment.fromJsonList(json[FloorGoodsFields.goodComments]),
+      goodsDetail: JsonUtil.parseString(json[FloorGoodsFields.goodsDetail]),
+      goodsId: JsonUtil.parseString(json[FloorGoodsFields.goodsId]),
+      goodsName: JsonUtil.parseString(json[FloorGoodsFields.goodsName]),
+      goodsSerialNumber: JsonUtil.parseString(json[FloorGoodsFields.goodsSerialNumber]),
+      image: JsonUtil.parseString(json[FloorGoodsFields.image]),
+      image1: JsonUtil.parseString(json[FloorGoodsFields.image1]),
+      image2: JsonUtil.parseString(json[FloorGoodsFields.image2]),
+      image3: JsonUtil.parseString(json[FloorGoodsFields.image3]),
+      image4: JsonUtil.parseString(json[FloorGoodsFields.image4]),
+      image5: JsonUtil.parseString(json[FloorGoodsFields.image5]),
+      images: JsonUtil.parseString(json[FloorGoodsFields.images]),
+      isCheck: JsonUtil.parseBool(json[FloorGoodsFields.isCheck]),
+      isHot: JsonUtil.parseBool(json[FloorGoodsFields.isHot]),
+      isOnLine: JsonUtil.parseString(json[FloorGoodsFields.isOnLine]),
+      mallPrice: JsonUtil.parseDouble(json[FloorGoodsFields.mallPrice]),
+      name: JsonUtil.parseString(json[FloorGoodsFields.name]),
+      orderNo: JsonUtil.parseInt(json[FloorGoodsFields.orderNo]),
+      oriPrice: JsonUtil.parseDouble(json[FloorGoodsFields.oriPrice]),
+      presentPrice: JsonUtil.parseDouble(json[FloorGoodsFields.presentPrice]),
+      price: JsonUtil.parseDouble(json[FloorGoodsFields.price]),
+      shopId: JsonUtil.parseString(json[FloorGoodsFields.shopId]),
+      state: JsonUtil.parseInt(json[FloorGoodsFields.state]),
+      updateTime: JsonUtil.parseDateTime(json[FloorGoodsFields.updateTime]),
     );
   }
 
@@ -146,223 +219,233 @@ class FloorGoods extends Goods with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.advertiseId != null) {
-      result['advertiseId'] = JsonUtil.intToJson(advertiseId);
+      result[FloorGoodsFields.advertiseId] = JsonUtil.intToJson(advertiseId);
     }
     if (this.advertiseIds != null) {
       var list = List();
       for (var v in advertiseIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['advertiseIds'] = list;
+      result[FloorGoodsFields.advertiseIds] = list;
     }
     if (this.amount != null) {
-      result['amount'] = JsonUtil.intToJson(amount);
+      result[FloorGoodsFields.amount] = JsonUtil.intToJson(amount);
     }
     if (this.amountMax != null) {
-      result['amountMax'] = JsonUtil.intToJson(amountMax);
+      result[FloorGoodsFields.amountMax] = JsonUtil.intToJson(amountMax);
     }
     if (this.amountMin != null) {
-      result['amountMin'] = JsonUtil.intToJson(amountMin);
+      result[FloorGoodsFields.amountMin] = JsonUtil.intToJson(amountMin);
     }
     if (this.categorySubId != null) {
-      result['categorySubId'] = JsonUtil.stringToJson(categorySubId);
+      result[FloorGoodsFields.categorySubId] = JsonUtil.stringToJson(categorySubId);
+    }
+    if (this.categorySubIdLike != null) {
+      result[FloorGoodsFields.categorySubIdLike] = JsonUtil.stringToJson(categorySubIdLike);
     }
     if (this.categorySubIds != null) {
       var list = List();
       for (var v in categorySubIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['categorySubIds'] = list;
+      result[FloorGoodsFields.categorySubIds] = list;
     }
     if (this.comPic != null) {
-      result['comPic'] = JsonUtil.stringToJson(comPic);
+      result[FloorGoodsFields.comPic] = JsonUtil.stringToJson(comPic);
     }
     if (this.count != null) {
-      result['count'] = JsonUtil.intToJson(count);
+      result[FloorGoodsFields.count] = JsonUtil.intToJson(count);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[FloorGoodsFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[FloorGoodsFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[FloorGoodsFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[FloorGoodsFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.floorGoodsId != null) {
-      result['floorGoodsId'] = JsonUtil.stringToJson(floorGoodsId);
+      result[FloorGoodsFields.floorGoodsId] = JsonUtil.stringToJson(floorGoodsId);
     }
     if (this.floorGoodsIds != null) {
       var list = List();
       for (var v in floorGoodsIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['floorGoodsIds'] = list;
+      result[FloorGoodsFields.floorGoodsIds] = list;
     }
     if (this.floorId != null) {
-      result['floorId'] = JsonUtil.stringToJson(floorId);
+      result[FloorGoodsFields.floorId] = JsonUtil.stringToJson(floorId);
     }
     if (this.floorIds != null) {
       var list = List();
       for (var v in floorIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['floorIds'] = list;
+      result[FloorGoodsFields.floorIds] = list;
     }
     if (this.goodComments != null) {
       var list = List();
       for (var v in goodComments) {
         list.add(v.toJson());
       }
-      result['goodComments'] = list;
+      result[FloorGoodsFields.goodComments] = list;
     }
     if (this.goodsDetail != null) {
-      result['goodsDetail'] = JsonUtil.stringToJson(goodsDetail);
+      result[FloorGoodsFields.goodsDetail] = JsonUtil.stringToJson(goodsDetail);
     }
     if (this.goodsDetailLike != null) {
-      result['goodsDetailLike'] = JsonUtil.stringToJson(goodsDetailLike);
+      result[FloorGoodsFields.goodsDetailLike] = JsonUtil.stringToJson(goodsDetailLike);
     }
     if (this.goodsId != null) {
-      result['goodsId'] = JsonUtil.stringToJson(goodsId);
+      result[FloorGoodsFields.goodsId] = JsonUtil.stringToJson(goodsId);
     }
     if (this.goodsIds != null) {
       var list = List();
       for (var v in goodsIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['goodsIds'] = list;
+      result[FloorGoodsFields.goodsIds] = list;
     }
     if (this.goodsName != null) {
-      result['goodsName'] = JsonUtil.stringToJson(goodsName);
+      result[FloorGoodsFields.goodsName] = JsonUtil.stringToJson(goodsName);
     }
     if (this.goodsNameLike != null) {
-      result['goodsNameLike'] = JsonUtil.stringToJson(goodsNameLike);
+      result[FloorGoodsFields.goodsNameLike] = JsonUtil.stringToJson(goodsNameLike);
     }
     if (this.goodsSerialNumber != null) {
-      result['goodsSerialNumber'] = JsonUtil.stringToJson(goodsSerialNumber);
+      result[FloorGoodsFields.goodsSerialNumber] = JsonUtil.stringToJson(goodsSerialNumber);
     }
     if (this.goodsSerialNumberLike != null) {
-      result['goodsSerialNumberLike'] = JsonUtil.stringToJson(goodsSerialNumberLike);
+      result[FloorGoodsFields.goodsSerialNumberLike] = JsonUtil.stringToJson(goodsSerialNumberLike);
     }
     if (this.image != null) {
-      result['image'] = JsonUtil.stringToJson(image);
+      result[FloorGoodsFields.image] = JsonUtil.stringToJson(image);
     }
     if (this.image1 != null) {
-      result['image1'] = JsonUtil.stringToJson(image1);
+      result[FloorGoodsFields.image1] = JsonUtil.stringToJson(image1);
     }
     if (this.image1Like != null) {
-      result['image1Like'] = JsonUtil.stringToJson(image1Like);
+      result[FloorGoodsFields.image1Like] = JsonUtil.stringToJson(image1Like);
     }
     if (this.image2 != null) {
-      result['image2'] = JsonUtil.stringToJson(image2);
+      result[FloorGoodsFields.image2] = JsonUtil.stringToJson(image2);
     }
     if (this.image2Like != null) {
-      result['image2Like'] = JsonUtil.stringToJson(image2Like);
+      result[FloorGoodsFields.image2Like] = JsonUtil.stringToJson(image2Like);
     }
     if (this.image3 != null) {
-      result['image3'] = JsonUtil.stringToJson(image3);
+      result[FloorGoodsFields.image3] = JsonUtil.stringToJson(image3);
     }
     if (this.image3Like != null) {
-      result['image3Like'] = JsonUtil.stringToJson(image3Like);
+      result[FloorGoodsFields.image3Like] = JsonUtil.stringToJson(image3Like);
     }
     if (this.image4 != null) {
-      result['image4'] = JsonUtil.stringToJson(image4);
+      result[FloorGoodsFields.image4] = JsonUtil.stringToJson(image4);
     }
     if (this.image4Like != null) {
-      result['image4Like'] = JsonUtil.stringToJson(image4Like);
+      result[FloorGoodsFields.image4Like] = JsonUtil.stringToJson(image4Like);
     }
     if (this.image5 != null) {
-      result['image5'] = JsonUtil.stringToJson(image5);
+      result[FloorGoodsFields.image5] = JsonUtil.stringToJson(image5);
     }
     if (this.image5Like != null) {
-      result['image5Like'] = JsonUtil.stringToJson(image5Like);
+      result[FloorGoodsFields.image5Like] = JsonUtil.stringToJson(image5Like);
     }
     if (this.images != null) {
-      result['images'] = JsonUtil.stringToJson(images);
+      result[FloorGoodsFields.images] = JsonUtil.stringToJson(images);
     }
     if (this.imagesLike != null) {
-      result['imagesLike'] = JsonUtil.stringToJson(imagesLike);
+      result[FloorGoodsFields.imagesLike] = JsonUtil.stringToJson(imagesLike);
     }
     if (this.isCheck != null) {
-      result['isCheck'] = JsonUtil.boolToJson(isCheck);
+      result[FloorGoodsFields.isCheck] = JsonUtil.boolToJson(isCheck);
     }
     if (this.isHot != null) {
-      result['isHot'] = JsonUtil.boolToJson(isHot);
+      result[FloorGoodsFields.isHot] = JsonUtil.boolToJson(isHot);
     }
     if (this.isOnLine != null) {
-      result['isOnLine'] = JsonUtil.stringToJson(isOnLine);
+      result[FloorGoodsFields.isOnLine] = JsonUtil.stringToJson(isOnLine);
     }
     if (this.isOnLineLike != null) {
-      result['isOnLineLike'] = JsonUtil.stringToJson(isOnLineLike);
+      result[FloorGoodsFields.isOnLineLike] = JsonUtil.stringToJson(isOnLineLike);
     }
     if (this.mallPrice != null) {
-      result['mallPrice'] = JsonUtil.doubleToJson(mallPrice);
+      result[FloorGoodsFields.mallPrice] = JsonUtil.doubleToJson(mallPrice);
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[FloorGoodsFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.orderNo != null) {
-      result['orderNo'] = JsonUtil.intToJson(orderNo);
+      result[FloorGoodsFields.orderNo] = JsonUtil.intToJson(orderNo);
     }
     if (this.orderNoMax != null) {
-      result['orderNoMax'] = JsonUtil.intToJson(orderNoMax);
+      result[FloorGoodsFields.orderNoMax] = JsonUtil.intToJson(orderNoMax);
     }
     if (this.orderNoMin != null) {
-      result['orderNoMin'] = JsonUtil.intToJson(orderNoMin);
+      result[FloorGoodsFields.orderNoMin] = JsonUtil.intToJson(orderNoMin);
+    }
+    if (this.orderNos != null) {
+      var list = List();
+      for (var v in orderNos) {
+        list.add(JsonUtil.intToJson(v));
+      }
+      result[FloorGoodsFields.orderNos] = list;
     }
     if (this.oriPrice != null) {
-      result['oriPrice'] = JsonUtil.doubleToJson(oriPrice);
+      result[FloorGoodsFields.oriPrice] = JsonUtil.doubleToJson(oriPrice);
     }
     if (this.presentPrice != null) {
-      result['presentPrice'] = JsonUtil.doubleToJson(presentPrice);
+      result[FloorGoodsFields.presentPrice] = JsonUtil.doubleToJson(presentPrice);
     }
     if (this.presentPriceMax != null) {
-      result['presentPriceMax'] = JsonUtil.doubleToJson(presentPriceMax);
+      result[FloorGoodsFields.presentPriceMax] = JsonUtil.doubleToJson(presentPriceMax);
     }
     if (this.presentPriceMin != null) {
-      result['presentPriceMin'] = JsonUtil.doubleToJson(presentPriceMin);
+      result[FloorGoodsFields.presentPriceMin] = JsonUtil.doubleToJson(presentPriceMin);
     }
     if (this.price != null) {
-      result['price'] = JsonUtil.doubleToJson(price);
+      result[FloorGoodsFields.price] = JsonUtil.doubleToJson(price);
     }
     if (this.priceMax != null) {
-      result['priceMax'] = JsonUtil.doubleToJson(priceMax);
+      result[FloorGoodsFields.priceMax] = JsonUtil.doubleToJson(priceMax);
     }
     if (this.priceMin != null) {
-      result['priceMin'] = JsonUtil.doubleToJson(priceMin);
+      result[FloorGoodsFields.priceMin] = JsonUtil.doubleToJson(priceMin);
     }
     if (this.shopId != null) {
-      result['shopId'] = JsonUtil.stringToJson(shopId);
+      result[FloorGoodsFields.shopId] = JsonUtil.stringToJson(shopId);
     }
     if (this.shopIds != null) {
       var list = List();
       for (var v in shopIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['shopIds'] = list;
+      result[FloorGoodsFields.shopIds] = list;
     }
     if (this.state != null) {
-      result['state'] = JsonUtil.intToJson(state);
+      result[FloorGoodsFields.state] = JsonUtil.intToJson(state);
     }
     if (this.stateMax != null) {
-      result['stateMax'] = JsonUtil.intToJson(stateMax);
+      result[FloorGoodsFields.stateMax] = JsonUtil.intToJson(stateMax);
     }
     if (this.stateMin != null) {
-      result['stateMin'] = JsonUtil.intToJson(stateMin);
+      result[FloorGoodsFields.stateMin] = JsonUtil.intToJson(stateMin);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[FloorGoodsFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[FloorGoodsFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[FloorGoodsFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

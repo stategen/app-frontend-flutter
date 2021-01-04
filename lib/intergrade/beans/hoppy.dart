@@ -5,9 +5,25 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class HoppyFields {
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const hoppyId = 'hoppyId';
+  static const hoppyIds = 'hoppyIds';
+  static const hoppyName = 'hoppyName';
+  static const hoppyNameLike = 'hoppyNameLike';
+  static const title = 'title';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const value = 'value';
+}
+
 class Hoppy with FrontBean {
   /// hoppyId
-  static const String Hoppy_ID = 'hoppyId';
+  static const String ID = HoppyFields.hoppyId;
 
   /// 创建时间
   DateTime createTime;
@@ -69,13 +85,13 @@ class Hoppy with FrontBean {
       return null;
     }
     return Hoppy(
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      hoppyId: JsonUtil.parseInt(json['hoppyId']),
-      hoppyName: JsonUtil.parseString(json['hoppyName']),
-      title: JsonUtil.parseString(json['title']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      value: JsonUtil.parseString(json['value']),
+      createTime: JsonUtil.parseDateTime(json[HoppyFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[HoppyFields.deleteFlag]),
+      hoppyId: JsonUtil.parseInt(json[HoppyFields.hoppyId]),
+      hoppyName: JsonUtil.parseString(json[HoppyFields.hoppyName]),
+      title: JsonUtil.parseString(json[HoppyFields.title]),
+      updateTime: JsonUtil.parseDateTime(json[HoppyFields.updateTime]),
+      value: JsonUtil.parseString(json[HoppyFields.value]),
     );
   }
 
@@ -86,49 +102,49 @@ class Hoppy with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[HoppyFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[HoppyFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[HoppyFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[HoppyFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.hoppyId != null) {
-      result['hoppyId'] = JsonUtil.intToJson(hoppyId);
+      result[HoppyFields.hoppyId] = JsonUtil.intToJson(hoppyId);
     }
     if (this.hoppyIds != null) {
       var list = List();
       for (var v in hoppyIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['hoppyIds'] = list;
+      result[HoppyFields.hoppyIds] = list;
     }
     if (this.hoppyName != null) {
-      result['hoppyName'] = JsonUtil.stringToJson(hoppyName);
+      result[HoppyFields.hoppyName] = JsonUtil.stringToJson(hoppyName);
     }
     if (this.hoppyNameLike != null) {
-      result['hoppyNameLike'] = JsonUtil.stringToJson(hoppyNameLike);
+      result[HoppyFields.hoppyNameLike] = JsonUtil.stringToJson(hoppyNameLike);
     }
     if (this.title != null) {
-      result['title'] = JsonUtil.stringToJson(title);
+      result[HoppyFields.title] = JsonUtil.stringToJson(title);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[HoppyFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[HoppyFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[HoppyFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.value != null) {
-      result['value'] = JsonUtil.stringToJson(value);
+      result[HoppyFields.value] = JsonUtil.stringToJson(value);
     }
     return result;
   }

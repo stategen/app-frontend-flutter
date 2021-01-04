@@ -5,9 +5,29 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class AdvertisePictureFields {
+  static const advertiseId = 'advertiseId';
+  static const advertiseIds = 'advertiseIds';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const pICTURE_ADDRESS = 'pICTURE_ADDRESS';
+  static const pictureAddress = 'pictureAddress';
+  static const pictureAddressLike = 'pictureAddressLike';
+  static const tO_PLACE = 'tO_PLACE';
+  static const toPlace = 'toPlace';
+  static const toPlaceLike = 'toPlaceLike';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const urlType = 'urlType';
+  static const urlTypes = 'urlTypes';
+}
+
 class AdvertisePicture with FrontBean {
   /// advertiseId
-  static const String AdvertisePicture_ID = 'advertiseId';
+  static const String ID = AdvertisePictureFields.advertiseId;
 
   /// advertiseId
   int advertiseId;
@@ -85,15 +105,15 @@ class AdvertisePicture with FrontBean {
       return null;
     }
     return AdvertisePicture(
-      advertiseId: JsonUtil.parseInt(json['advertiseId']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      pICTURE_ADDRESS: JsonUtil.parseString(json['pICTURE_ADDRESS']),
-      pictureAddress: JsonUtil.parseString(json['pictureAddress']),
-      tO_PLACE: JsonUtil.parseString(json['tO_PLACE']),
-      toPlace: JsonUtil.parseString(json['toPlace']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      urlType: JsonUtil.parseInt(json['urlType']),
+      advertiseId: JsonUtil.parseInt(json[AdvertisePictureFields.advertiseId]),
+      createTime: JsonUtil.parseDateTime(json[AdvertisePictureFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[AdvertisePictureFields.deleteFlag]),
+      pICTURE_ADDRESS: JsonUtil.parseString(json[AdvertisePictureFields.pICTURE_ADDRESS]),
+      pictureAddress: JsonUtil.parseString(json[AdvertisePictureFields.pictureAddress]),
+      tO_PLACE: JsonUtil.parseString(json[AdvertisePictureFields.tO_PLACE]),
+      toPlace: JsonUtil.parseString(json[AdvertisePictureFields.toPlace]),
+      updateTime: JsonUtil.parseDateTime(json[AdvertisePictureFields.updateTime]),
+      urlType: JsonUtil.parseInt(json[AdvertisePictureFields.urlType]),
     );
   }
 
@@ -104,65 +124,65 @@ class AdvertisePicture with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.advertiseId != null) {
-      result['advertiseId'] = JsonUtil.intToJson(advertiseId);
+      result[AdvertisePictureFields.advertiseId] = JsonUtil.intToJson(advertiseId);
     }
     if (this.advertiseIds != null) {
       var list = List();
       for (var v in advertiseIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['advertiseIds'] = list;
+      result[AdvertisePictureFields.advertiseIds] = list;
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[AdvertisePictureFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[AdvertisePictureFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[AdvertisePictureFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[AdvertisePictureFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.pICTURE_ADDRESS != null) {
-      result['pICTURE_ADDRESS'] = JsonUtil.stringToJson(pICTURE_ADDRESS);
+      result[AdvertisePictureFields.pICTURE_ADDRESS] = JsonUtil.stringToJson(pICTURE_ADDRESS);
     }
     if (this.pictureAddress != null) {
-      result['pictureAddress'] = JsonUtil.stringToJson(pictureAddress);
+      result[AdvertisePictureFields.pictureAddress] = JsonUtil.stringToJson(pictureAddress);
     }
     if (this.pictureAddressLike != null) {
-      result['pictureAddressLike'] = JsonUtil.stringToJson(pictureAddressLike);
+      result[AdvertisePictureFields.pictureAddressLike] = JsonUtil.stringToJson(pictureAddressLike);
     }
     if (this.tO_PLACE != null) {
-      result['tO_PLACE'] = JsonUtil.stringToJson(tO_PLACE);
+      result[AdvertisePictureFields.tO_PLACE] = JsonUtil.stringToJson(tO_PLACE);
     }
     if (this.toPlace != null) {
-      result['toPlace'] = JsonUtil.stringToJson(toPlace);
+      result[AdvertisePictureFields.toPlace] = JsonUtil.stringToJson(toPlace);
     }
     if (this.toPlaceLike != null) {
-      result['toPlaceLike'] = JsonUtil.stringToJson(toPlaceLike);
+      result[AdvertisePictureFields.toPlaceLike] = JsonUtil.stringToJson(toPlaceLike);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[AdvertisePictureFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[AdvertisePictureFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[AdvertisePictureFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.urlType != null) {
-      result['urlType'] = JsonUtil.intToJson(urlType);
+      result[AdvertisePictureFields.urlType] = JsonUtil.intToJson(urlType);
     }
     if (this.urlTypes != null) {
       var list = List();
       for (var v in urlTypes) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['urlTypes'] = list;
+      result[AdvertisePictureFields.urlTypes] = list;
     }
     return result;
   }

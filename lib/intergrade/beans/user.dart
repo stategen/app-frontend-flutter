@@ -12,9 +12,75 @@ import '../enums/statusenum.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class UserFields {
+  static const address = 'address';
+  static const addressLike = 'addressLike';
+  static const age = 'age';
+  static const ageMax = 'ageMax';
+  static const ageMin = 'ageMin';
+  static const avatarImg = 'avatarImg';
+  static const avatarImgId = 'avatarImgId';
+  static const avatarImgIds = 'avatarImgIds';
+  static const birthdayDate = 'birthdayDate';
+  static const birthdayDateMax = 'birthdayDateMax';
+  static const birthdayDateMin = 'birthdayDateMin';
+  static const cascaderPostAddressIds = 'cascaderPostAddressIds';
+  static const cascaderPostAddresss = 'cascaderPostAddresss';
+  static const city = 'city';
+  static const cityId = 'cityId';
+  static const cityIds = 'cityIds';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const email = 'email';
+  static const emailLike = 'emailLike';
+  static const grade = 'grade';
+  static const gradeMax = 'gradeMax';
+  static const gradeMin = 'gradeMin';
+  static const hoppyIds = 'hoppyIds';
+  static const hoppys = 'hoppys';
+  static const interCode = 'interCode';
+  static const interCodeLike = 'interCodeLike';
+  static const mobile = 'mobile';
+  static const mobileLike = 'mobileLike';
+  static const name = 'name';
+  static const nameLike = 'nameLike';
+  static const nickName = 'nickName';
+  static const nickNameLike = 'nickNameLike';
+  static const passwordLike = 'passwordLike';
+  static const postAddressId = 'postAddressId';
+  static const postAddressIds = 'postAddressIds';
+  static const province = 'province';
+  static const provinceId = 'provinceId';
+  static const provinceIds = 'provinceIds';
+  static const remark = 'remark';
+  static const remarkLike = 'remarkLike';
+  static const roleType = 'roleType';
+  static const roleTypes = 'roleTypes';
+  static const sex = 'sex';
+  static const status = 'status';
+  static const statusLike = 'statusLike';
+  static const statuss = 'statuss';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const userId = 'userId';
+  static const userIds = 'userIds';
+  static const username = 'username';
+  static const usernameLike = 'usernameLike';
+  static const valiDatetime = 'valiDatetime';
+  static const valiDatetimeMax = 'valiDatetimeMax';
+  static const valiDatetimeMin = 'valiDatetimeMin';
+  static const visitsIds = 'visitsIds';
+  static const workTime = 'workTime';
+  static const workTimeMax = 'workTimeMax';
+  static const workTimeMin = 'workTimeMin';
+}
+
 class User with FrontBean {
   /// userId
-  static const String User_ID = 'userId';
+  static const String ID = UserFields.userId;
 
   /// 详细地址
   String address;
@@ -74,7 +140,7 @@ class User with FrontBean {
   DateTime createTimeMin;
 
   /// 是否删除 (0:正常，1删除)
-  int deleteFlag;
+  bool deleteFlag;
 
   /// 邮箱
   String email;
@@ -156,6 +222,9 @@ class User with FrontBean {
 
   /// 状态 enum
   StatusEnum status;
+
+  /// 状态Like
+  StatusEnum statusLike;
 
   /// 状态 s
   List<StatusEnum> statuss;
@@ -250,6 +319,7 @@ class User with FrontBean {
     this.roleTypes,
     this.sex,
     this.status,
+    this.statusLike,
     this.statuss,
     this.updateTime,
     this.updateTimeMax,
@@ -272,37 +342,37 @@ class User with FrontBean {
       return null;
     }
     return User(
-      address: JsonUtil.parseString(json['address']),
-      age: JsonUtil.parseInt(json['age']),
-      avatarImg: FileSummary.fromJson(json['avatarImg']),
-      avatarImgId: JsonUtil.parseString(json['avatarImgId']),
-      birthdayDate: JsonUtil.parseDateTime(json['birthdayDate']),
-      cascaderPostAddressIds: JsonUtil.parseList<int>(json['cascaderPostAddressIds'], JsonUtil.parseInt),
-      cascaderPostAddresss: Region.fromJsonList(json['cascaderPostAddresss']),
-      city: City.fromJson(json['city']),
-      cityId: JsonUtil.parseString(json['cityId']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      email: JsonUtil.parseString(json['email']),
-      grade: JsonUtil.parseInt(json['grade']),
-      hoppyIds: JsonUtil.parseList<int>(json['hoppyIds'], JsonUtil.parseInt),
-      hoppys: Hoppy.fromJsonList(json['hoppys']),
-      interCode: JsonUtil.parseString(json['interCode']),
-      mobile: JsonUtil.parseString(json['mobile']),
-      name: JsonUtil.parseString(json['name']),
-      nickName: JsonUtil.parseString(json['nickName']),
-      postAddressId: JsonUtil.parseInt(json['postAddressId']),
-      province: Province.fromJson(json['province']),
-      provinceId: JsonUtil.parseString(json['provinceId']),
-      remark: JsonUtil.parseString(json['remark']),
-      roleType: RoleType.fromJson(json['roleType']),
-      sex: JsonUtil.parseBool(json['sex']),
-      status: StatusEnum.fromJson(json['status']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      userId: JsonUtil.parseString(json['userId']),
-      username: JsonUtil.parseString(json['username']),
-      valiDatetime: JsonUtil.parseDateTime(json['valiDatetime']),
-      workTime: JsonUtil.parseDateTime(json['workTime']),
+      address: JsonUtil.parseString(json[UserFields.address]),
+      age: JsonUtil.parseInt(json[UserFields.age]),
+      avatarImg: FileSummary.fromJson(json[UserFields.avatarImg]),
+      avatarImgId: JsonUtil.parseString(json[UserFields.avatarImgId]),
+      birthdayDate: JsonUtil.parseDateTime(json[UserFields.birthdayDate]),
+      cascaderPostAddressIds: JsonUtil.parseList<int>(json[UserFields.cascaderPostAddressIds], JsonUtil.parseInt),
+      cascaderPostAddresss: Region.fromJsonList(json[UserFields.cascaderPostAddresss]),
+      city: City.fromJson(json[UserFields.city]),
+      cityId: JsonUtil.parseString(json[UserFields.cityId]),
+      createTime: JsonUtil.parseDateTime(json[UserFields.createTime]),
+      deleteFlag: JsonUtil.parseBool(json[UserFields.deleteFlag]),
+      email: JsonUtil.parseString(json[UserFields.email]),
+      grade: JsonUtil.parseInt(json[UserFields.grade]),
+      hoppyIds: JsonUtil.parseList<int>(json[UserFields.hoppyIds], JsonUtil.parseInt),
+      hoppys: Hoppy.fromJsonList(json[UserFields.hoppys]),
+      interCode: JsonUtil.parseString(json[UserFields.interCode]),
+      mobile: JsonUtil.parseString(json[UserFields.mobile]),
+      name: JsonUtil.parseString(json[UserFields.name]),
+      nickName: JsonUtil.parseString(json[UserFields.nickName]),
+      postAddressId: JsonUtil.parseInt(json[UserFields.postAddressId]),
+      province: Province.fromJson(json[UserFields.province]),
+      provinceId: JsonUtil.parseString(json[UserFields.provinceId]),
+      remark: JsonUtil.parseString(json[UserFields.remark]),
+      roleType: RoleType.fromJson(json[UserFields.roleType]),
+      sex: JsonUtil.parseBool(json[UserFields.sex]),
+      status: StatusEnum.fromJson(json[UserFields.status]),
+      updateTime: JsonUtil.parseDateTime(json[UserFields.updateTime]),
+      userId: JsonUtil.parseString(json[UserFields.userId]),
+      username: JsonUtil.parseString(json[UserFields.username]),
+      valiDatetime: JsonUtil.parseDateTime(json[UserFields.valiDatetime]),
+      workTime: JsonUtil.parseDateTime(json[UserFields.workTime]),
     );
   }
 
@@ -313,240 +383,243 @@ class User with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.address != null) {
-      result['address'] = JsonUtil.stringToJson(address);
+      result[UserFields.address] = JsonUtil.stringToJson(address);
     }
     if (this.addressLike != null) {
-      result['addressLike'] = JsonUtil.stringToJson(addressLike);
+      result[UserFields.addressLike] = JsonUtil.stringToJson(addressLike);
     }
     if (this.age != null) {
-      result['age'] = JsonUtil.intToJson(age);
+      result[UserFields.age] = JsonUtil.intToJson(age);
     }
     if (this.ageMax != null) {
-      result['ageMax'] = JsonUtil.intToJson(ageMax);
+      result[UserFields.ageMax] = JsonUtil.intToJson(ageMax);
     }
     if (this.ageMin != null) {
-      result['ageMin'] = JsonUtil.intToJson(ageMin);
+      result[UserFields.ageMin] = JsonUtil.intToJson(ageMin);
     }
     if (this.avatarImg != null) {
-      result['avatarImg'] = avatarImg.toJson();
+      result[UserFields.avatarImg] = avatarImg.toJson();
     }
     if (this.avatarImgId != null) {
-      result['avatarImgId'] = JsonUtil.stringToJson(avatarImgId);
+      result[UserFields.avatarImgId] = JsonUtil.stringToJson(avatarImgId);
     }
     if (this.avatarImgIds != null) {
       var list = List();
       for (var v in avatarImgIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['avatarImgIds'] = list;
+      result[UserFields.avatarImgIds] = list;
     }
     if (this.birthdayDate != null) {
-      result['birthdayDate'] = JsonUtil.dateTimeToJson(birthdayDate);
+      result[UserFields.birthdayDate] = JsonUtil.dateTimeToJson(birthdayDate);
     }
     if (this.birthdayDateMax != null) {
-      result['birthdayDateMax'] = JsonUtil.dateTimeToJson(birthdayDateMax);
+      result[UserFields.birthdayDateMax] = JsonUtil.dateTimeToJson(birthdayDateMax);
     }
     if (this.birthdayDateMin != null) {
-      result['birthdayDateMin'] = JsonUtil.dateTimeToJson(birthdayDateMin);
+      result[UserFields.birthdayDateMin] = JsonUtil.dateTimeToJson(birthdayDateMin);
     }
     if (this.cascaderPostAddressIds != null) {
       var list = List();
       for (var v in cascaderPostAddressIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['cascaderPostAddressIds'] = list;
+      result[UserFields.cascaderPostAddressIds] = list;
     }
     if (this.cascaderPostAddresss != null) {
       var list = List();
       for (var v in cascaderPostAddresss) {
         list.add(v.toJson());
       }
-      result['cascaderPostAddresss'] = list;
+      result[UserFields.cascaderPostAddresss] = list;
     }
     if (this.city != null) {
-      result['city'] = city.toJson();
+      result[UserFields.city] = city.toJson();
     }
     if (this.cityId != null) {
-      result['cityId'] = JsonUtil.stringToJson(cityId);
+      result[UserFields.cityId] = JsonUtil.stringToJson(cityId);
     }
     if (this.cityIds != null) {
       var list = List();
       for (var v in cityIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['cityIds'] = list;
+      result[UserFields.cityIds] = list;
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[UserFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[UserFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[UserFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[UserFields.deleteFlag] = JsonUtil.boolToJson(deleteFlag);
     }
     if (this.email != null) {
-      result['email'] = JsonUtil.stringToJson(email);
+      result[UserFields.email] = JsonUtil.stringToJson(email);
     }
     if (this.emailLike != null) {
-      result['emailLike'] = JsonUtil.stringToJson(emailLike);
+      result[UserFields.emailLike] = JsonUtil.stringToJson(emailLike);
     }
     if (this.grade != null) {
-      result['grade'] = JsonUtil.intToJson(grade);
+      result[UserFields.grade] = JsonUtil.intToJson(grade);
     }
     if (this.gradeMax != null) {
-      result['gradeMax'] = JsonUtil.intToJson(gradeMax);
+      result[UserFields.gradeMax] = JsonUtil.intToJson(gradeMax);
     }
     if (this.gradeMin != null) {
-      result['gradeMin'] = JsonUtil.intToJson(gradeMin);
+      result[UserFields.gradeMin] = JsonUtil.intToJson(gradeMin);
     }
     if (this.hoppyIds != null) {
       var list = List();
       for (var v in hoppyIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['hoppyIds'] = list;
+      result[UserFields.hoppyIds] = list;
     }
     if (this.hoppys != null) {
       var list = List();
       for (var v in hoppys) {
         list.add(v.toJson());
       }
-      result['hoppys'] = list;
+      result[UserFields.hoppys] = list;
     }
     if (this.interCode != null) {
-      result['interCode'] = JsonUtil.stringToJson(interCode);
+      result[UserFields.interCode] = JsonUtil.stringToJson(interCode);
     }
     if (this.interCodeLike != null) {
-      result['interCodeLike'] = JsonUtil.stringToJson(interCodeLike);
+      result[UserFields.interCodeLike] = JsonUtil.stringToJson(interCodeLike);
     }
     if (this.mobile != null) {
-      result['mobile'] = JsonUtil.stringToJson(mobile);
+      result[UserFields.mobile] = JsonUtil.stringToJson(mobile);
     }
     if (this.mobileLike != null) {
-      result['mobileLike'] = JsonUtil.stringToJson(mobileLike);
+      result[UserFields.mobileLike] = JsonUtil.stringToJson(mobileLike);
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[UserFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+      result[UserFields.nameLike] = JsonUtil.stringToJson(nameLike);
     }
     if (this.nickName != null) {
-      result['nickName'] = JsonUtil.stringToJson(nickName);
+      result[UserFields.nickName] = JsonUtil.stringToJson(nickName);
     }
     if (this.nickNameLike != null) {
-      result['nickNameLike'] = JsonUtil.stringToJson(nickNameLike);
+      result[UserFields.nickNameLike] = JsonUtil.stringToJson(nickNameLike);
     }
     if (this.passwordLike != null) {
-      result['passwordLike'] = JsonUtil.stringToJson(passwordLike);
+      result[UserFields.passwordLike] = JsonUtil.stringToJson(passwordLike);
     }
     if (this.postAddressId != null) {
-      result['postAddressId'] = JsonUtil.intToJson(postAddressId);
+      result[UserFields.postAddressId] = JsonUtil.intToJson(postAddressId);
     }
     if (this.postAddressIds != null) {
       var list = List();
       for (var v in postAddressIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['postAddressIds'] = list;
+      result[UserFields.postAddressIds] = list;
     }
     if (this.province != null) {
-      result['province'] = province.toJson();
+      result[UserFields.province] = province.toJson();
     }
     if (this.provinceId != null) {
-      result['provinceId'] = JsonUtil.stringToJson(provinceId);
+      result[UserFields.provinceId] = JsonUtil.stringToJson(provinceId);
     }
     if (this.provinceIds != null) {
       var list = List();
       for (var v in provinceIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['provinceIds'] = list;
+      result[UserFields.provinceIds] = list;
     }
     if (this.remark != null) {
-      result['remark'] = JsonUtil.stringToJson(remark);
+      result[UserFields.remark] = JsonUtil.stringToJson(remark);
     }
     if (this.remarkLike != null) {
-      result['remarkLike'] = JsonUtil.stringToJson(remarkLike);
+      result[UserFields.remarkLike] = JsonUtil.stringToJson(remarkLike);
     }
     if (this.roleType != null) {
-      result['roleType'] = roleType.toString();
+      result[UserFields.roleType] = roleType.toString();
     }
     if (this.roleTypes != null) {
       var list = List();
       for (var v in roleTypes) {
         list.add(v.toString());
       }
-      result['roleTypes'] = list;
+      result[UserFields.roleTypes] = list;
     }
     if (this.sex != null) {
-      result['sex'] = JsonUtil.boolToJson(sex);
+      result[UserFields.sex] = JsonUtil.boolToJson(sex);
     }
     if (this.status != null) {
-      result['status'] = status.toString();
+      result[UserFields.status] = status.toString();
+    }
+    if (this.statusLike != null) {
+      result[UserFields.statusLike] = statusLike.toString();
     }
     if (this.statuss != null) {
       var list = List();
       for (var v in statuss) {
         list.add(v.toString());
       }
-      result['statuss'] = list;
+      result[UserFields.statuss] = list;
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[UserFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[UserFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[UserFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.userId != null) {
-      result['userId'] = JsonUtil.stringToJson(userId);
+      result[UserFields.userId] = JsonUtil.stringToJson(userId);
     }
     if (this.userIds != null) {
       var list = List();
       for (var v in userIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['userIds'] = list;
+      result[UserFields.userIds] = list;
     }
     if (this.username != null) {
-      result['username'] = JsonUtil.stringToJson(username);
+      result[UserFields.username] = JsonUtil.stringToJson(username);
     }
     if (this.usernameLike != null) {
-      result['usernameLike'] = JsonUtil.stringToJson(usernameLike);
+      result[UserFields.usernameLike] = JsonUtil.stringToJson(usernameLike);
     }
     if (this.valiDatetime != null) {
-      result['valiDatetime'] = JsonUtil.dateTimeToJson(valiDatetime);
+      result[UserFields.valiDatetime] = JsonUtil.dateTimeToJson(valiDatetime);
     }
     if (this.valiDatetimeMax != null) {
-      result['valiDatetimeMax'] = JsonUtil.dateTimeToJson(valiDatetimeMax);
+      result[UserFields.valiDatetimeMax] = JsonUtil.dateTimeToJson(valiDatetimeMax);
     }
     if (this.valiDatetimeMin != null) {
-      result['valiDatetimeMin'] = JsonUtil.dateTimeToJson(valiDatetimeMin);
+      result[UserFields.valiDatetimeMin] = JsonUtil.dateTimeToJson(valiDatetimeMin);
     }
     if (this.visitsIds != null) {
       var list = List();
       for (var v in visitsIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['visitsIds'] = list;
+      result[UserFields.visitsIds] = list;
     }
     if (this.workTime != null) {
-      result['workTime'] = JsonUtil.dateTimeToJson(workTime);
+      result[UserFields.workTime] = JsonUtil.dateTimeToJson(workTime);
     }
     if (this.workTimeMax != null) {
-      result['workTimeMax'] = JsonUtil.dateTimeToJson(workTimeMax);
+      result[UserFields.workTimeMax] = JsonUtil.dateTimeToJson(workTimeMax);
     }
     if (this.workTimeMin != null) {
-      result['workTimeMin'] = JsonUtil.dateTimeToJson(workTimeMin);
+      result[UserFields.workTimeMin] = JsonUtil.dateTimeToJson(workTimeMin);
     }
     return result;
   }

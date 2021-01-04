@@ -7,12 +7,62 @@ import '../enums/visitchecktype.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class MenuFields {
+  static const bpid = 'bpid';
+  static const bpidMax = 'bpidMax';
+  static const bpidMin = 'bpidMin';
+  static const bpids = 'bpids';
+  static const checkType = 'checkType';
+  static const checkTypes = 'checkTypes';
+  static const checked = 'checked';
+  static const controllerName = 'controllerName';
+  static const controllerNameLike = 'controllerNameLike';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const icon = 'icon';
+  static const id = 'id';
+  static const menuChildren = 'menuChildren';
+  static const menuId = 'menuId';
+  static const menuIds = 'menuIds';
+  static const menuType = 'menuType';
+  static const menuTypes = 'menuTypes';
+  static const methodName = 'methodName';
+  static const methodNameLike = 'methodNameLike';
+  static const morder = 'morder';
+  static const morderMax = 'morderMax';
+  static const morderMin = 'morderMin';
+  static const mpid = 'mpid';
+  static const mpidMax = 'mpidMax';
+  static const mpidMin = 'mpidMin';
+  static const mpids = 'mpids';
+  static const name = 'name';
+  static const nameLike = 'nameLike';
+  static const opendOrder = 'opendOrder';
+  static const projectName = 'projectName';
+  static const projectNameLike = 'projectNameLike';
+  static const roleId = 'roleId';
+  static const route = 'route';
+  static const routeLike = 'routeLike';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const url = 'url';
+}
+
 class Menu with FrontBean {
   /// menuId
-  static const String Menu_ID = 'menuId';
+  static const String ID = MenuFields.menuId;
 
   /// menuId与bpid组成树图
   int bpid;
+
+  /// menuId与bpid组成树图Max
+  int bpidMax;
+
+  /// menuId与bpid组成树图Min
+  int bpidMin;
 
   /// menuId与bpid组成树图 s
   List<int> bpids;
@@ -83,6 +133,12 @@ class Menu with FrontBean {
   /// 大部分情况下与bpid相同，当为动态目录时，mpid=-1
   int mpid;
 
+  /// 大部分情况下与bpid相同Max
+  int mpidMax;
+
+  /// 大部分情况下与bpid相同Min
+  int mpidMin;
+
   /// 大部分情况下与bpid相同 s
   List<int> mpids;
 
@@ -124,6 +180,8 @@ class Menu with FrontBean {
 
   Menu({
     this.bpid,
+    this.bpidMax,
+    this.bpidMin,
     this.bpids,
     this.checkType,
     this.checkTypes,
@@ -147,6 +205,8 @@ class Menu with FrontBean {
     this.morderMax,
     this.morderMin,
     this.mpid,
+    this.mpidMax,
+    this.mpidMin,
     this.mpids,
     this.name,
     this.nameLike,
@@ -167,27 +227,27 @@ class Menu with FrontBean {
       return null;
     }
     return Menu(
-      bpid: JsonUtil.parseInt(json['bpid']),
-      checkType: VisitCheckType.fromJson(json['checkType']),
-      checked: JsonUtil.parseBool(json['checked']),
-      controllerName: JsonUtil.parseString(json['controllerName']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      icon: JsonUtil.parseString(json['icon']),
-      id: JsonUtil.parseInt(json['id']),
-      menuChildren: Menu.fromJsonList(json['menuChildren']),
-      menuId: JsonUtil.parseInt(json['menuId']),
-      menuType: MenuType.fromJson(json['menuType']),
-      methodName: JsonUtil.parseString(json['methodName']),
-      morder: JsonUtil.parseInt(json['morder']),
-      mpid: JsonUtil.parseInt(json['mpid']),
-      name: JsonUtil.parseString(json['name']),
-      opendOrder: JsonUtil.parseInt(json['opendOrder']),
-      projectName: JsonUtil.parseString(json['projectName']),
-      roleId: JsonUtil.parseString(json['roleId']),
-      route: JsonUtil.parseString(json['route']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      url: JsonUtil.parseString(json['url']),
+      bpid: JsonUtil.parseInt(json[MenuFields.bpid]),
+      checkType: VisitCheckType.fromJson(json[MenuFields.checkType]),
+      checked: JsonUtil.parseBool(json[MenuFields.checked]),
+      controllerName: JsonUtil.parseString(json[MenuFields.controllerName]),
+      createTime: JsonUtil.parseDateTime(json[MenuFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[MenuFields.deleteFlag]),
+      icon: JsonUtil.parseString(json[MenuFields.icon]),
+      id: JsonUtil.parseInt(json[MenuFields.id]),
+      menuChildren: Menu.fromJsonList(json[MenuFields.menuChildren]),
+      menuId: JsonUtil.parseInt(json[MenuFields.menuId]),
+      menuType: MenuType.fromJson(json[MenuFields.menuType]),
+      methodName: JsonUtil.parseString(json[MenuFields.methodName]),
+      morder: JsonUtil.parseInt(json[MenuFields.morder]),
+      mpid: JsonUtil.parseInt(json[MenuFields.mpid]),
+      name: JsonUtil.parseString(json[MenuFields.name]),
+      opendOrder: JsonUtil.parseInt(json[MenuFields.opendOrder]),
+      projectName: JsonUtil.parseString(json[MenuFields.projectName]),
+      roleId: JsonUtil.parseString(json[MenuFields.roleId]),
+      route: JsonUtil.parseString(json[MenuFields.route]),
+      updateTime: JsonUtil.parseDateTime(json[MenuFields.updateTime]),
+      url: JsonUtil.parseString(json[MenuFields.url]),
     );
   }
 
@@ -198,141 +258,153 @@ class Menu with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.bpid != null) {
-      result['bpid'] = JsonUtil.intToJson(bpid);
+      result[MenuFields.bpid] = JsonUtil.intToJson(bpid);
+    }
+    if (this.bpidMax != null) {
+      result[MenuFields.bpidMax] = JsonUtil.intToJson(bpidMax);
+    }
+    if (this.bpidMin != null) {
+      result[MenuFields.bpidMin] = JsonUtil.intToJson(bpidMin);
     }
     if (this.bpids != null) {
       var list = List();
       for (var v in bpids) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['bpids'] = list;
+      result[MenuFields.bpids] = list;
     }
     if (this.checkType != null) {
-      result['checkType'] = checkType.toString();
+      result[MenuFields.checkType] = checkType.toString();
     }
     if (this.checkTypes != null) {
       var list = List();
       for (var v in checkTypes) {
         list.add(v.toString());
       }
-      result['checkTypes'] = list;
+      result[MenuFields.checkTypes] = list;
     }
     if (this.checked != null) {
-      result['checked'] = JsonUtil.boolToJson(checked);
+      result[MenuFields.checked] = JsonUtil.boolToJson(checked);
     }
     if (this.controllerName != null) {
-      result['controllerName'] = JsonUtil.stringToJson(controllerName);
+      result[MenuFields.controllerName] = JsonUtil.stringToJson(controllerName);
     }
     if (this.controllerNameLike != null) {
-      result['controllerNameLike'] = JsonUtil.stringToJson(controllerNameLike);
+      result[MenuFields.controllerNameLike] = JsonUtil.stringToJson(controllerNameLike);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[MenuFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[MenuFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[MenuFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[MenuFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.icon != null) {
-      result['icon'] = JsonUtil.stringToJson(icon);
+      result[MenuFields.icon] = JsonUtil.stringToJson(icon);
     }
     if (this.id != null) {
-      result['id'] = JsonUtil.intToJson(id);
+      result[MenuFields.id] = JsonUtil.intToJson(id);
     }
     if (this.menuChildren != null) {
       var list = List();
       for (var v in menuChildren) {
         list.add(v.toJson());
       }
-      result['menuChildren'] = list;
+      result[MenuFields.menuChildren] = list;
     }
     if (this.menuId != null) {
-      result['menuId'] = JsonUtil.intToJson(menuId);
+      result[MenuFields.menuId] = JsonUtil.intToJson(menuId);
     }
     if (this.menuIds != null) {
       var list = List();
       for (var v in menuIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['menuIds'] = list;
+      result[MenuFields.menuIds] = list;
     }
     if (this.menuType != null) {
-      result['menuType'] = menuType.toString();
+      result[MenuFields.menuType] = menuType.toString();
     }
     if (this.menuTypes != null) {
       var list = List();
       for (var v in menuTypes) {
         list.add(v.toString());
       }
-      result['menuTypes'] = list;
+      result[MenuFields.menuTypes] = list;
     }
     if (this.methodName != null) {
-      result['methodName'] = JsonUtil.stringToJson(methodName);
+      result[MenuFields.methodName] = JsonUtil.stringToJson(methodName);
     }
     if (this.methodNameLike != null) {
-      result['methodNameLike'] = JsonUtil.stringToJson(methodNameLike);
+      result[MenuFields.methodNameLike] = JsonUtil.stringToJson(methodNameLike);
     }
     if (this.morder != null) {
-      result['morder'] = JsonUtil.intToJson(morder);
+      result[MenuFields.morder] = JsonUtil.intToJson(morder);
     }
     if (this.morderMax != null) {
-      result['morderMax'] = JsonUtil.intToJson(morderMax);
+      result[MenuFields.morderMax] = JsonUtil.intToJson(morderMax);
     }
     if (this.morderMin != null) {
-      result['morderMin'] = JsonUtil.intToJson(morderMin);
+      result[MenuFields.morderMin] = JsonUtil.intToJson(morderMin);
     }
     if (this.mpid != null) {
-      result['mpid'] = JsonUtil.intToJson(mpid);
+      result[MenuFields.mpid] = JsonUtil.intToJson(mpid);
+    }
+    if (this.mpidMax != null) {
+      result[MenuFields.mpidMax] = JsonUtil.intToJson(mpidMax);
+    }
+    if (this.mpidMin != null) {
+      result[MenuFields.mpidMin] = JsonUtil.intToJson(mpidMin);
     }
     if (this.mpids != null) {
       var list = List();
       for (var v in mpids) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['mpids'] = list;
+      result[MenuFields.mpids] = list;
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[MenuFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+      result[MenuFields.nameLike] = JsonUtil.stringToJson(nameLike);
     }
     if (this.opendOrder != null) {
-      result['opendOrder'] = JsonUtil.intToJson(opendOrder);
+      result[MenuFields.opendOrder] = JsonUtil.intToJson(opendOrder);
     }
     if (this.projectName != null) {
-      result['projectName'] = JsonUtil.stringToJson(projectName);
+      result[MenuFields.projectName] = JsonUtil.stringToJson(projectName);
     }
     if (this.projectNameLike != null) {
-      result['projectNameLike'] = JsonUtil.stringToJson(projectNameLike);
+      result[MenuFields.projectNameLike] = JsonUtil.stringToJson(projectNameLike);
     }
     if (this.roleId != null) {
-      result['roleId'] = JsonUtil.stringToJson(roleId);
+      result[MenuFields.roleId] = JsonUtil.stringToJson(roleId);
     }
     if (this.route != null) {
-      result['route'] = JsonUtil.stringToJson(route);
+      result[MenuFields.route] = JsonUtil.stringToJson(route);
     }
     if (this.routeLike != null) {
-      result['routeLike'] = JsonUtil.stringToJson(routeLike);
+      result[MenuFields.routeLike] = JsonUtil.stringToJson(routeLike);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[MenuFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[MenuFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[MenuFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.url != null) {
-      result['url'] = JsonUtil.stringToJson(url);
+      result[MenuFields.url] = JsonUtil.stringToJson(url);
     }
     return result;
   }

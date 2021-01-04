@@ -6,6 +6,11 @@ import '../beans/pagination.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class AntdPageListFields {
+  static const list = 'list';
+  static const pagination = 'pagination';
+}
+
 class AntdPageList<E> with FrontBean {
   /// list
   List<E> list;
@@ -23,8 +28,8 @@ class AntdPageList<E> with FrontBean {
       return null;
     }
     return AntdPageList<E>(
-      list: genericFromJsonListFn(List<Map<String,dynamic>>.from(json['list'])),
-      pagination: Pagination.fromJson(json['pagination']),
+      list: genericFromJsonListFn(List<Map<String,dynamic>>.from(json[AntdPageListFields.list])),
+      pagination: Pagination.fromJson(json[AntdPageListFields.pagination]),
     );
   }
 

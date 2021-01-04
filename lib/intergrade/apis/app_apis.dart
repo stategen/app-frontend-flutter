@@ -13,6 +13,7 @@ import '../beans/user.dart';
 import "../configs/tradeApp_config.dart";
 import '../../stgutil/net_util.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert' as convert;
 
 class AppApis {
   /// GET /api/app/getAllMenus
@@ -67,25 +68,6 @@ class AppApis {
     requestInit.method = Method.GET;
     var dest = await NetUtil.fetch(requestInit);
     return Hoppy.fromJsonList(dest as List);
-  }
-
-  /// GET /api/app/getLongs
-  /// 
-  static Future<List<int>> getLongs(int param, {Map<String, dynamic> payload, int parentRegionId }) async {
-    var requestInit = RequestInit();
-    requestInit.apiUrlKey = tradeAppBaseUrlKey;
-    requestInit.path = '/api/app/getLongs';
-    payload ??= {};
-    if (param != null) {
-      payload['parentRegionId'] = param;
-    }
-    if (parentRegionId != null) {
-      payload['parentRegionId'] = parentRegionId;
-    }
-    requestInit.data = payload;
-    requestInit.method = Method.GET;
-    var dest = await NetUtil.fetch(requestInit);
-    return dest;
   }
 
   /// POST /api/app/getProvinceOptions
@@ -152,23 +134,37 @@ class AppApis {
     return SimpleResponse.fromJson(dest);
   }
 
-  /// GET /api/app/testRegions
+  /// GET /api/app/test
   /// 
-  static Future<List<Region>> testRegions(int param, {Map<String, dynamic> payload, int parentRegionId }) async {
+  static Future<String> test() async {
     var requestInit = RequestInit();
     requestInit.apiUrlKey = tradeAppBaseUrlKey;
-    requestInit.path = '/api/app/testRegions';
-    payload ??= {};
-    if (param != null) {
-      payload['parentRegionId'] = param;
-    }
-    if (parentRegionId != null) {
-      payload['parentRegionId'] = parentRegionId;
-    }
-    requestInit.data = payload;
+    requestInit.path = '/api/app/test';
+    requestInit.method = Method.GET;
+    var dest = await NetUtil.fetch(requestInit, false);
+    return dest;
+  }
+
+  /// GET /api/app/testSeataAt
+  /// 
+  static Future<User> testSeataAt() async {
+    var requestInit = RequestInit();
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
+    requestInit.path = '/api/app/testSeataAt';
     requestInit.method = Method.GET;
     var dest = await NetUtil.fetch(requestInit);
-    return Region.fromJsonList(dest as List);
+    return User.fromJson(dest);
+  }
+
+  /// GET /api/app/testUid
+  /// 
+  static Future<String> testUid() async {
+    var requestInit = RequestInit();
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
+    requestInit.path = '/api/app/testUid';
+    requestInit.method = Method.GET;
+    var dest = await NetUtil.fetch(requestInit);
+    return dest;
   }
 
 }

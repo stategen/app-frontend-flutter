@@ -20,6 +20,20 @@ class MenuColumns{
     //},
   );
 
+  /// menuId与bpid组成树图Max  
+  static ColumnConfig bpidMax = ColumnConfig(
+    key: 'bpidMax',
+    title: 'menuId与bpid组成树图Max',
+    noJson: true,
+  );
+
+  /// menuId与bpid组成树图Min  
+  static ColumnConfig bpidMin = ColumnConfig(
+    key: 'bpidMin',
+    title: 'menuId与bpid组成树图Min',
+    noJson: true,
+  );
+
   /// menuId与bpid组成树图 s  
   static ColumnConfig bpids = ColumnConfig(
     key: 'bpids',
@@ -268,6 +282,20 @@ class MenuColumns{
     //},
   );
 
+  /// 大部分情况下与bpid相同Max  
+  static ColumnConfig mpidMax = ColumnConfig(
+    key: 'mpidMax',
+    title: '大部分情况下与bpid相同Max',
+    noJson: true,
+  );
+
+  /// 大部分情况下与bpid相同Min  
+  static ColumnConfig mpidMin = ColumnConfig(
+    key: 'mpidMin',
+    title: '大部分情况下与bpid相同Min',
+    noJson: true,
+  );
+
   /// 大部分情况下与bpid相同 s  
   static ColumnConfig mpids = ColumnConfig(
     key: 'mpids',
@@ -349,6 +377,10 @@ class MenuColumns{
     title: 'route',
     // renderColumn: UIColumns.InputRender,
     rules: [
+      ValidationRule(
+        required: true,
+        message: "不能为null",
+      ),
       ValidationRule(
         max: 64,
         message: "最大不能超过{max}",

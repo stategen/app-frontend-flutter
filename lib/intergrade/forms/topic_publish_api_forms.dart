@@ -12,8 +12,8 @@ import '../../stgutil/stg_util.dart';
 class Topic_publishApiForms {
   /// 主题ID 
   static FormItemConfig saveTopic_topicId = FormItemConfig.clone(TopicColumns.topicId)
-    /// ..UIEditor__: UIEditors.BuildHiddenEditor
-    /// ..Editor: UIEditors.BuildHiddenEditor
+    /// ..UIEditor__: UIEditors.BuildInputEditor
+    /// ..Editor: UIEditors.BuildInputEditor
   ;
   /// 主题类型 
   static FormItemConfig saveTopic_topicType = FormItemConfig.clone(TopicColumns.topicType)

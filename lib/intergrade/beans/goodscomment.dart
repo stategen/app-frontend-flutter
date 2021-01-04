@@ -5,9 +5,33 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class GoodsCommentFields {
+  static const comments = 'comments';
+  static const commentsId = 'commentsId';
+  static const commentsIds = 'commentsIds';
+  static const commentsLike = 'commentsLike';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const discussTime = 'discussTime';
+  static const discussTimeMax = 'discussTimeMax';
+  static const discussTimeMin = 'discussTimeMin';
+  static const goodsId = 'goodsId';
+  static const goodsIds = 'goodsIds';
+  static const score = 'score';
+  static const scoreMax = 'scoreMax';
+  static const scoreMin = 'scoreMin';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const userName = 'userName';
+  static const userNameLike = 'userNameLike';
+}
+
 class GoodsComment with FrontBean {
   /// commentsId
-  static const String GoodsComment_ID = 'commentsId';
+  static const String ID = GoodsCommentFields.commentsId;
 
   /// comments
   String comments;
@@ -48,8 +72,8 @@ class GoodsComment with FrontBean {
   /// goodsId s
   List<String> goodsIds;
 
-  /// sCORE
-  int sCORE;
+  /// score
+  int score;
 
   /// scoreMax
   int scoreMax;
@@ -86,7 +110,7 @@ class GoodsComment with FrontBean {
     this.discussTimeMin,
     this.goodsId,
     this.goodsIds,
-    this.sCORE,
+    this.score,
     this.scoreMax,
     this.scoreMin,
     this.updateTime,
@@ -101,15 +125,15 @@ class GoodsComment with FrontBean {
       return null;
     }
     return GoodsComment(
-      comments: JsonUtil.parseString(json['comments']),
-      commentsId: JsonUtil.parseString(json['commentsId']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      discussTime: JsonUtil.parseDateTime(json['discussTime']),
-      goodsId: JsonUtil.parseString(json['goodsId']),
-      sCORE: JsonUtil.parseInt(json['sCORE']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      userName: JsonUtil.parseString(json['userName']),
+      comments: JsonUtil.parseString(json[GoodsCommentFields.comments]),
+      commentsId: JsonUtil.parseString(json[GoodsCommentFields.commentsId]),
+      createTime: JsonUtil.parseDateTime(json[GoodsCommentFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[GoodsCommentFields.deleteFlag]),
+      discussTime: JsonUtil.parseDateTime(json[GoodsCommentFields.discussTime]),
+      goodsId: JsonUtil.parseString(json[GoodsCommentFields.goodsId]),
+      score: JsonUtil.parseInt(json[GoodsCommentFields.score]),
+      updateTime: JsonUtil.parseDateTime(json[GoodsCommentFields.updateTime]),
+      userName: JsonUtil.parseString(json[GoodsCommentFields.userName]),
     );
   }
 
@@ -120,77 +144,77 @@ class GoodsComment with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.comments != null) {
-      result['comments'] = JsonUtil.stringToJson(comments);
+      result[GoodsCommentFields.comments] = JsonUtil.stringToJson(comments);
     }
     if (this.commentsId != null) {
-      result['commentsId'] = JsonUtil.stringToJson(commentsId);
+      result[GoodsCommentFields.commentsId] = JsonUtil.stringToJson(commentsId);
     }
     if (this.commentsIds != null) {
       var list = List();
       for (var v in commentsIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['commentsIds'] = list;
+      result[GoodsCommentFields.commentsIds] = list;
     }
     if (this.commentsLike != null) {
-      result['commentsLike'] = JsonUtil.stringToJson(commentsLike);
+      result[GoodsCommentFields.commentsLike] = JsonUtil.stringToJson(commentsLike);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[GoodsCommentFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[GoodsCommentFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[GoodsCommentFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[GoodsCommentFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.discussTime != null) {
-      result['discussTime'] = JsonUtil.dateTimeToJson(discussTime);
+      result[GoodsCommentFields.discussTime] = JsonUtil.dateTimeToJson(discussTime);
     }
     if (this.discussTimeMax != null) {
-      result['discussTimeMax'] = JsonUtil.dateTimeToJson(discussTimeMax);
+      result[GoodsCommentFields.discussTimeMax] = JsonUtil.dateTimeToJson(discussTimeMax);
     }
     if (this.discussTimeMin != null) {
-      result['discussTimeMin'] = JsonUtil.dateTimeToJson(discussTimeMin);
+      result[GoodsCommentFields.discussTimeMin] = JsonUtil.dateTimeToJson(discussTimeMin);
     }
     if (this.goodsId != null) {
-      result['goodsId'] = JsonUtil.stringToJson(goodsId);
+      result[GoodsCommentFields.goodsId] = JsonUtil.stringToJson(goodsId);
     }
     if (this.goodsIds != null) {
       var list = List();
       for (var v in goodsIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['goodsIds'] = list;
+      result[GoodsCommentFields.goodsIds] = list;
     }
-    if (this.sCORE != null) {
-      result['sCORE'] = JsonUtil.intToJson(sCORE);
+    if (this.score != null) {
+      result[GoodsCommentFields.score] = JsonUtil.intToJson(score);
     }
     if (this.scoreMax != null) {
-      result['scoreMax'] = JsonUtil.intToJson(scoreMax);
+      result[GoodsCommentFields.scoreMax] = JsonUtil.intToJson(scoreMax);
     }
     if (this.scoreMin != null) {
-      result['scoreMin'] = JsonUtil.intToJson(scoreMin);
+      result[GoodsCommentFields.scoreMin] = JsonUtil.intToJson(scoreMin);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[GoodsCommentFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[GoodsCommentFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[GoodsCommentFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.userName != null) {
-      result['userName'] = JsonUtil.stringToJson(userName);
+      result[GoodsCommentFields.userName] = JsonUtil.stringToJson(userName);
     }
     if (this.userNameLike != null) {
-      result['userNameLike'] = JsonUtil.stringToJson(userNameLike);
+      result[GoodsCommentFields.userNameLike] = JsonUtil.stringToJson(userNameLike);
     }
     return result;
   }

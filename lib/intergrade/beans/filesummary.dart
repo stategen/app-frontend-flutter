@@ -5,9 +5,33 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class FileSummaryFields {
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const fileId = 'fileId';
+  static const fileIds = 'fileIds';
+  static const name = 'name';
+  static const nameLike = 'nameLike';
+  static const size = 'size';
+  static const sizeMax = 'sizeMax';
+  static const sizeMin = 'sizeMin';
+  static const type = 'type';
+  static const typeLike = 'typeLike';
+  static const types = 'types';
+  static const uid = 'uid';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const url = 'url';
+  static const userId = 'userId';
+  static const userIds = 'userIds';
+}
+
 class FileSummary with FrontBean {
   /// fileId
-  static const String FileSummary_ID = 'fileId';
+  static const String ID = FileSummaryFields.fileId;
 
   /// 创建时间
   DateTime createTime;
@@ -44,6 +68,9 @@ class FileSummary with FrontBean {
 
   /// type
   String type;
+
+  /// typeLike
+  String typeLike;
 
   /// type s
   List<String> types;
@@ -82,6 +109,7 @@ class FileSummary with FrontBean {
     this.sizeMax,
     this.sizeMin,
     this.type,
+    this.typeLike,
     this.types,
     this.uid,
     this.updateTime,
@@ -97,16 +125,16 @@ class FileSummary with FrontBean {
       return null;
     }
     return FileSummary(
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      fileId: JsonUtil.parseString(json['fileId']),
-      name: JsonUtil.parseString(json['name']),
-      size: JsonUtil.parseInt(json['size']),
-      type: JsonUtil.parseString(json['type']),
-      uid: JsonUtil.parseString(json['uid']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      url: JsonUtil.parseString(json['url']),
-      userId: JsonUtil.parseString(json['userId']),
+      createTime: JsonUtil.parseDateTime(json[FileSummaryFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[FileSummaryFields.deleteFlag]),
+      fileId: JsonUtil.parseString(json[FileSummaryFields.fileId]),
+      name: JsonUtil.parseString(json[FileSummaryFields.name]),
+      size: JsonUtil.parseInt(json[FileSummaryFields.size]),
+      type: JsonUtil.parseString(json[FileSummaryFields.type]),
+      uid: JsonUtil.parseString(json[FileSummaryFields.uid]),
+      updateTime: JsonUtil.parseDateTime(json[FileSummaryFields.updateTime]),
+      url: JsonUtil.parseString(json[FileSummaryFields.url]),
+      userId: JsonUtil.parseString(json[FileSummaryFields.userId]),
     );
   }
 
@@ -117,78 +145,81 @@ class FileSummary with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[FileSummaryFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[FileSummaryFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[FileSummaryFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[FileSummaryFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.fileId != null) {
-      result['fileId'] = JsonUtil.stringToJson(fileId);
+      result[FileSummaryFields.fileId] = JsonUtil.stringToJson(fileId);
     }
     if (this.fileIds != null) {
       var list = List();
       for (var v in fileIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['fileIds'] = list;
+      result[FileSummaryFields.fileIds] = list;
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[FileSummaryFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+      result[FileSummaryFields.nameLike] = JsonUtil.stringToJson(nameLike);
     }
     if (this.size != null) {
-      result['size'] = JsonUtil.intToJson(size);
+      result[FileSummaryFields.size] = JsonUtil.intToJson(size);
     }
     if (this.sizeMax != null) {
-      result['sizeMax'] = JsonUtil.intToJson(sizeMax);
+      result[FileSummaryFields.sizeMax] = JsonUtil.intToJson(sizeMax);
     }
     if (this.sizeMin != null) {
-      result['sizeMin'] = JsonUtil.intToJson(sizeMin);
+      result[FileSummaryFields.sizeMin] = JsonUtil.intToJson(sizeMin);
     }
     if (this.type != null) {
-      result['type'] = JsonUtil.stringToJson(type);
+      result[FileSummaryFields.type] = JsonUtil.stringToJson(type);
+    }
+    if (this.typeLike != null) {
+      result[FileSummaryFields.typeLike] = JsonUtil.stringToJson(typeLike);
     }
     if (this.types != null) {
       var list = List();
       for (var v in types) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['types'] = list;
+      result[FileSummaryFields.types] = list;
     }
     if (this.uid != null) {
-      result['uid'] = JsonUtil.stringToJson(uid);
+      result[FileSummaryFields.uid] = JsonUtil.stringToJson(uid);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[FileSummaryFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[FileSummaryFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[FileSummaryFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.url != null) {
-      result['url'] = JsonUtil.stringToJson(url);
+      result[FileSummaryFields.url] = JsonUtil.stringToJson(url);
     }
     if (this.userId != null) {
-      result['userId'] = JsonUtil.stringToJson(userId);
+      result[FileSummaryFields.userId] = JsonUtil.stringToJson(userId);
     }
     if (this.userIds != null) {
       var list = List();
       for (var v in userIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['userIds'] = list;
+      result[FileSummaryFields.userIds] = list;
     }
     return result;
   }

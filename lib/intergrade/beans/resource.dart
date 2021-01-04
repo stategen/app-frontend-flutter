@@ -5,6 +5,9 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class ResourceFields {
+}
+
 class Resource with FrontBean {
 
   static Resource fromJson(Map<String, dynamic> json) {
@@ -22,7 +25,7 @@ class Resource with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     return result;
   }
 

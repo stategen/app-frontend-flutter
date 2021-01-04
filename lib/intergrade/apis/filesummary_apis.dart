@@ -8,6 +8,7 @@ import '../beans/multipartfile.dart';
 import "../configs/tradeApp_config.dart";
 import '../../stgutil/net_util.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert' as convert;
 
 class FileSummaryApis {
   /// POST /api/fileSummary/upload
@@ -19,10 +20,12 @@ class FileSummaryApis {
     requestInit.mediaType = MediaType.FORM;
     payload ??= {};
     if (param != null) {
-      payload['file'] = param;
+      var json = param.toJson();
+      payload.addAll(json);
     }
     if (file != null) {
-      payload['file'] = file;
+      var fileJson = file.toJson();
+      payload.addAll(fileJson);
     }
     requestInit.data = payload;
     requestInit.method = Method.POST;

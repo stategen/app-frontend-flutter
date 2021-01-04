@@ -6,9 +6,27 @@ import '../beans/categorysub.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class CategoryFields {
+  static const categoryId = 'categoryId';
+  static const categoryIds = 'categoryIds';
+  static const categoryName = 'categoryName';
+  static const categoryNameLike = 'categoryNameLike';
+  static const categorySubs = 'categorySubs';
+  static const comments = 'comments';
+  static const commentsLike = 'commentsLike';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const image = 'image';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+}
+
 class Category with FrontBean {
   /// categoryId
-  static const String Category_ID = 'categoryId';
+  static const String ID = CategoryFields.categoryId;
 
   /// 大类目录ID
   String categoryId;
@@ -78,14 +96,14 @@ class Category with FrontBean {
       return null;
     }
     return Category(
-      categoryId: JsonUtil.parseString(json['categoryId']),
-      categoryName: JsonUtil.parseString(json['categoryName']),
-      categorySubs: CategorySub.fromJsonList(json['categorySubs']),
-      comments: JsonUtil.parseString(json['comments']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      image: JsonUtil.parseString(json['image']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      categoryId: JsonUtil.parseString(json[CategoryFields.categoryId]),
+      categoryName: JsonUtil.parseString(json[CategoryFields.categoryName]),
+      categorySubs: CategorySub.fromJsonList(json[CategoryFields.categorySubs]),
+      comments: JsonUtil.parseString(json[CategoryFields.comments]),
+      createTime: JsonUtil.parseDateTime(json[CategoryFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[CategoryFields.deleteFlag]),
+      image: JsonUtil.parseString(json[CategoryFields.image]),
+      updateTime: JsonUtil.parseDateTime(json[CategoryFields.updateTime]),
     );
   }
 
@@ -96,59 +114,59 @@ class Category with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.categoryId != null) {
-      result['categoryId'] = JsonUtil.stringToJson(categoryId);
+      result[CategoryFields.categoryId] = JsonUtil.stringToJson(categoryId);
     }
     if (this.categoryIds != null) {
       var list = List();
       for (var v in categoryIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['categoryIds'] = list;
+      result[CategoryFields.categoryIds] = list;
     }
     if (this.categoryName != null) {
-      result['categoryName'] = JsonUtil.stringToJson(categoryName);
+      result[CategoryFields.categoryName] = JsonUtil.stringToJson(categoryName);
     }
     if (this.categoryNameLike != null) {
-      result['categoryNameLike'] = JsonUtil.stringToJson(categoryNameLike);
+      result[CategoryFields.categoryNameLike] = JsonUtil.stringToJson(categoryNameLike);
     }
     if (this.categorySubs != null) {
       var list = List();
       for (var v in categorySubs) {
         list.add(v.toJson());
       }
-      result['categorySubs'] = list;
+      result[CategoryFields.categorySubs] = list;
     }
     if (this.comments != null) {
-      result['comments'] = JsonUtil.stringToJson(comments);
+      result[CategoryFields.comments] = JsonUtil.stringToJson(comments);
     }
     if (this.commentsLike != null) {
-      result['commentsLike'] = JsonUtil.stringToJson(commentsLike);
+      result[CategoryFields.commentsLike] = JsonUtil.stringToJson(commentsLike);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[CategoryFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[CategoryFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[CategoryFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[CategoryFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.image != null) {
-      result['image'] = JsonUtil.stringToJson(image);
+      result[CategoryFields.image] = JsonUtil.stringToJson(image);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[CategoryFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[CategoryFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[CategoryFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

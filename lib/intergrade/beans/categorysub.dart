@@ -5,9 +5,27 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class CategorySubFields {
+  static const categoryId = 'categoryId';
+  static const categoryIds = 'categoryIds';
+  static const categorySubId = 'categorySubId';
+  static const categorySubIds = 'categorySubIds';
+  static const comments = 'comments';
+  static const commentsLike = 'commentsLike';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const subName = 'subName';
+  static const subNameLike = 'subNameLike';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+}
+
 class CategorySub with FrontBean {
   /// categorySubId
-  static const String CategorySub_ID = 'categorySubId';
+  static const String ID = CategorySubFields.categorySubId;
 
   /// categoryId
   String categoryId;
@@ -77,13 +95,13 @@ class CategorySub with FrontBean {
       return null;
     }
     return CategorySub(
-      categoryId: JsonUtil.parseString(json['categoryId']),
-      categorySubId: JsonUtil.parseString(json['categorySubId']),
-      comments: JsonUtil.parseString(json['comments']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      subName: JsonUtil.parseString(json['subName']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      categoryId: JsonUtil.parseString(json[CategorySubFields.categoryId]),
+      categorySubId: JsonUtil.parseString(json[CategorySubFields.categorySubId]),
+      comments: JsonUtil.parseString(json[CategorySubFields.comments]),
+      createTime: JsonUtil.parseDateTime(json[CategorySubFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[CategorySubFields.deleteFlag]),
+      subName: JsonUtil.parseString(json[CategorySubFields.subName]),
+      updateTime: JsonUtil.parseDateTime(json[CategorySubFields.updateTime]),
     );
   }
 
@@ -94,59 +112,59 @@ class CategorySub with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.categoryId != null) {
-      result['categoryId'] = JsonUtil.stringToJson(categoryId);
+      result[CategorySubFields.categoryId] = JsonUtil.stringToJson(categoryId);
     }
     if (this.categoryIds != null) {
       var list = List();
       for (var v in categoryIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['categoryIds'] = list;
+      result[CategorySubFields.categoryIds] = list;
     }
     if (this.categorySubId != null) {
-      result['categorySubId'] = JsonUtil.stringToJson(categorySubId);
+      result[CategorySubFields.categorySubId] = JsonUtil.stringToJson(categorySubId);
     }
     if (this.categorySubIds != null) {
       var list = List();
       for (var v in categorySubIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['categorySubIds'] = list;
+      result[CategorySubFields.categorySubIds] = list;
     }
     if (this.comments != null) {
-      result['comments'] = JsonUtil.stringToJson(comments);
+      result[CategorySubFields.comments] = JsonUtil.stringToJson(comments);
     }
     if (this.commentsLike != null) {
-      result['commentsLike'] = JsonUtil.stringToJson(commentsLike);
+      result[CategorySubFields.commentsLike] = JsonUtil.stringToJson(commentsLike);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[CategorySubFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[CategorySubFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[CategorySubFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[CategorySubFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.subName != null) {
-      result['subName'] = JsonUtil.stringToJson(subName);
+      result[CategorySubFields.subName] = JsonUtil.stringToJson(subName);
     }
     if (this.subNameLike != null) {
-      result['subNameLike'] = JsonUtil.stringToJson(subNameLike);
+      result[CategorySubFields.subNameLike] = JsonUtil.stringToJson(subNameLike);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[CategorySubFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[CategorySubFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[CategorySubFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

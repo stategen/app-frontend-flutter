@@ -167,6 +167,14 @@ class FloorColumns{
     noJson: true,
   );
 
+  /// orderNo s  
+  static ColumnConfig orderNos = ColumnConfig(
+    key: 'orderNos',
+    title: 'orderNo',
+    noJson: true,
+    isArray: true,
+  );
+
   /// 更新时间  TIMESTAMP
   static ColumnConfig updateTime = ColumnConfig(
     key: 'updateTime',

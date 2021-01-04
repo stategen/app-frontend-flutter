@@ -5,9 +5,33 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class CityFields {
+  static const areacode = 'areacode';
+  static const areacodeLike = 'areacodeLike';
+  static const cityId = 'cityId';
+  static const cityIds = 'cityIds';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const name = 'name';
+  static const nameLike = 'nameLike';
+  static const postcode = 'postcode';
+  static const postcodeLike = 'postcodeLike';
+  static const provinceId = 'provinceId';
+  static const provinceIds = 'provinceIds';
+  static const pycode = 'pycode';
+  static const pycodeLike = 'pycodeLike';
+  static const title = 'title';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const value = 'value';
+}
+
 class City with FrontBean {
   /// cityId
-  static const String City_ID = 'cityId';
+  static const String ID = CityFields.cityId;
 
   /// areacode
   String areacode;
@@ -101,17 +125,17 @@ class City with FrontBean {
       return null;
     }
     return City(
-      areacode: JsonUtil.parseString(json['areacode']),
-      cityId: JsonUtil.parseString(json['cityId']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      name: JsonUtil.parseString(json['name']),
-      postcode: JsonUtil.parseString(json['postcode']),
-      provinceId: JsonUtil.parseString(json['provinceId']),
-      pycode: JsonUtil.parseString(json['pycode']),
-      title: JsonUtil.parseString(json['title']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      value: JsonUtil.parseString(json['value']),
+      areacode: JsonUtil.parseString(json[CityFields.areacode]),
+      cityId: JsonUtil.parseString(json[CityFields.cityId]),
+      createTime: JsonUtil.parseDateTime(json[CityFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[CityFields.deleteFlag]),
+      name: JsonUtil.parseString(json[CityFields.name]),
+      postcode: JsonUtil.parseString(json[CityFields.postcode]),
+      provinceId: JsonUtil.parseString(json[CityFields.provinceId]),
+      pycode: JsonUtil.parseString(json[CityFields.pycode]),
+      title: JsonUtil.parseString(json[CityFields.title]),
+      updateTime: JsonUtil.parseDateTime(json[CityFields.updateTime]),
+      value: JsonUtil.parseString(json[CityFields.value]),
     );
   }
 
@@ -122,77 +146,77 @@ class City with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.areacode != null) {
-      result['areacode'] = JsonUtil.stringToJson(areacode);
+      result[CityFields.areacode] = JsonUtil.stringToJson(areacode);
     }
     if (this.areacodeLike != null) {
-      result['areacodeLike'] = JsonUtil.stringToJson(areacodeLike);
+      result[CityFields.areacodeLike] = JsonUtil.stringToJson(areacodeLike);
     }
     if (this.cityId != null) {
-      result['cityId'] = JsonUtil.stringToJson(cityId);
+      result[CityFields.cityId] = JsonUtil.stringToJson(cityId);
     }
     if (this.cityIds != null) {
       var list = List();
       for (var v in cityIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['cityIds'] = list;
+      result[CityFields.cityIds] = list;
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[CityFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[CityFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[CityFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[CityFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.name != null) {
-      result['name'] = JsonUtil.stringToJson(name);
+      result[CityFields.name] = JsonUtil.stringToJson(name);
     }
     if (this.nameLike != null) {
-      result['nameLike'] = JsonUtil.stringToJson(nameLike);
+      result[CityFields.nameLike] = JsonUtil.stringToJson(nameLike);
     }
     if (this.postcode != null) {
-      result['postcode'] = JsonUtil.stringToJson(postcode);
+      result[CityFields.postcode] = JsonUtil.stringToJson(postcode);
     }
     if (this.postcodeLike != null) {
-      result['postcodeLike'] = JsonUtil.stringToJson(postcodeLike);
+      result[CityFields.postcodeLike] = JsonUtil.stringToJson(postcodeLike);
     }
     if (this.provinceId != null) {
-      result['provinceId'] = JsonUtil.stringToJson(provinceId);
+      result[CityFields.provinceId] = JsonUtil.stringToJson(provinceId);
     }
     if (this.provinceIds != null) {
       var list = List();
       for (var v in provinceIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['provinceIds'] = list;
+      result[CityFields.provinceIds] = list;
     }
     if (this.pycode != null) {
-      result['pycode'] = JsonUtil.stringToJson(pycode);
+      result[CityFields.pycode] = JsonUtil.stringToJson(pycode);
     }
     if (this.pycodeLike != null) {
-      result['pycodeLike'] = JsonUtil.stringToJson(pycodeLike);
+      result[CityFields.pycodeLike] = JsonUtil.stringToJson(pycodeLike);
     }
     if (this.title != null) {
-      result['title'] = JsonUtil.stringToJson(title);
+      result[CityFields.title] = JsonUtil.stringToJson(title);
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[CityFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[CityFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[CityFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.value != null) {
-      result['value'] = JsonUtil.stringToJson(value);
+      result[CityFields.value] = JsonUtil.stringToJson(value);
     }
     return result;
   }

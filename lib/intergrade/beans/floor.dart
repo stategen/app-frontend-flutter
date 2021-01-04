@@ -7,9 +7,31 @@ import '../beans/floorgoods.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class FloorFields {
+  static const advertiseId = 'advertiseId';
+  static const advertiseIds = 'advertiseIds';
+  static const advertisePicture = 'advertisePicture';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const floorGoodss = 'floorGoodss';
+  static const floorId = 'floorId';
+  static const floorIds = 'floorIds';
+  static const floorName = 'floorName';
+  static const floorNameLike = 'floorNameLike';
+  static const orderNo = 'orderNo';
+  static const orderNoMax = 'orderNoMax';
+  static const orderNoMin = 'orderNoMin';
+  static const orderNos = 'orderNos';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+}
+
 class Floor with FrontBean {
   /// floorId
-  static const String Floor_ID = 'floorId';
+  static const String ID = FloorFields.floorId;
 
   /// advertiseId
   int advertiseId;
@@ -56,6 +78,9 @@ class Floor with FrontBean {
   /// orderNoMin
   int orderNoMin;
 
+  /// orderNo s
+  List<int> orderNos;
+
   /// 更新时间
   DateTime updateTime;
 
@@ -81,6 +106,7 @@ class Floor with FrontBean {
     this.orderNo,
     this.orderNoMax,
     this.orderNoMin,
+    this.orderNos,
     this.updateTime,
     this.updateTimeMax,
     this.updateTimeMin,
@@ -91,15 +117,15 @@ class Floor with FrontBean {
       return null;
     }
     return Floor(
-      advertiseId: JsonUtil.parseInt(json['advertiseId']),
-      advertisePicture: AdvertisePicture.fromJson(json['advertisePicture']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      floorGoodss: FloorGoods.fromJsonList(json['floorGoodss']),
-      floorId: JsonUtil.parseString(json['floorId']),
-      floorName: JsonUtil.parseString(json['floorName']),
-      orderNo: JsonUtil.parseInt(json['orderNo']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      advertiseId: JsonUtil.parseInt(json[FloorFields.advertiseId]),
+      advertisePicture: AdvertisePicture.fromJson(json[FloorFields.advertisePicture]),
+      createTime: JsonUtil.parseDateTime(json[FloorFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[FloorFields.deleteFlag]),
+      floorGoodss: FloorGoods.fromJsonList(json[FloorFields.floorGoodss]),
+      floorId: JsonUtil.parseString(json[FloorFields.floorId]),
+      floorName: JsonUtil.parseString(json[FloorFields.floorName]),
+      orderNo: JsonUtil.parseInt(json[FloorFields.orderNo]),
+      updateTime: JsonUtil.parseDateTime(json[FloorFields.updateTime]),
     );
   }
 
@@ -110,72 +136,79 @@ class Floor with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.advertiseId != null) {
-      result['advertiseId'] = JsonUtil.intToJson(advertiseId);
+      result[FloorFields.advertiseId] = JsonUtil.intToJson(advertiseId);
     }
     if (this.advertiseIds != null) {
       var list = List();
       for (var v in advertiseIds) {
         list.add(JsonUtil.intToJson(v));
       }
-      result['advertiseIds'] = list;
+      result[FloorFields.advertiseIds] = list;
     }
     if (this.advertisePicture != null) {
-      result['advertisePicture'] = advertisePicture.toJson();
+      result[FloorFields.advertisePicture] = advertisePicture.toJson();
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[FloorFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[FloorFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[FloorFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[FloorFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.floorGoodss != null) {
       var list = List();
       for (var v in floorGoodss) {
         list.add(v.toJson());
       }
-      result['floorGoodss'] = list;
+      result[FloorFields.floorGoodss] = list;
     }
     if (this.floorId != null) {
-      result['floorId'] = JsonUtil.stringToJson(floorId);
+      result[FloorFields.floorId] = JsonUtil.stringToJson(floorId);
     }
     if (this.floorIds != null) {
       var list = List();
       for (var v in floorIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['floorIds'] = list;
+      result[FloorFields.floorIds] = list;
     }
     if (this.floorName != null) {
-      result['floorName'] = JsonUtil.stringToJson(floorName);
+      result[FloorFields.floorName] = JsonUtil.stringToJson(floorName);
     }
     if (this.floorNameLike != null) {
-      result['floorNameLike'] = JsonUtil.stringToJson(floorNameLike);
+      result[FloorFields.floorNameLike] = JsonUtil.stringToJson(floorNameLike);
     }
     if (this.orderNo != null) {
-      result['orderNo'] = JsonUtil.intToJson(orderNo);
+      result[FloorFields.orderNo] = JsonUtil.intToJson(orderNo);
     }
     if (this.orderNoMax != null) {
-      result['orderNoMax'] = JsonUtil.intToJson(orderNoMax);
+      result[FloorFields.orderNoMax] = JsonUtil.intToJson(orderNoMax);
     }
     if (this.orderNoMin != null) {
-      result['orderNoMin'] = JsonUtil.intToJson(orderNoMin);
+      result[FloorFields.orderNoMin] = JsonUtil.intToJson(orderNoMin);
+    }
+    if (this.orderNos != null) {
+      var list = List();
+      for (var v in orderNos) {
+        list.add(JsonUtil.intToJson(v));
+      }
+      result[FloorFields.orderNos] = list;
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[FloorFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[FloorFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[FloorFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

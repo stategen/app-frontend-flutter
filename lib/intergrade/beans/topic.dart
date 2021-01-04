@@ -7,9 +7,45 @@ import '../beans/user.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class TopicFields {
+  static const author = 'author';
+  static const authorId = 'authorId';
+  static const authorIds = 'authorIds';
+  static const content = 'content';
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const currOrgId = 'currOrgId';
+  static const currUserId = 'currUserId';
+  static const deleteFlag = 'deleteFlag';
+  static const good = 'good';
+  static const goodMax = 'goodMax';
+  static const goodMin = 'goodMin';
+  static const inclCurrOrgId = 'inclCurrOrgId';
+  static const lastReplyAt = 'lastReplyAt';
+  static const lastReplyAtMax = 'lastReplyAtMax';
+  static const lastReplyAtMin = 'lastReplyAtMin';
+  static const replyCount = 'replyCount';
+  static const title = 'title';
+  static const titleLike = 'titleLike';
+  static const top = 'top';
+  static const topMax = 'topMax';
+  static const topMin = 'topMin';
+  static const topicId = 'topicId';
+  static const topicIds = 'topicIds';
+  static const topicType = 'topicType';
+  static const topicTypes = 'topicTypes';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+  static const visitCount = 'visitCount';
+  static const visitCountMax = 'visitCountMax';
+  static const visitCountMin = 'visitCountMin';
+}
+
 class Topic with FrontBean {
   /// topicId
-  static const String Topic_ID = 'topicId';
+  static const String ID = TopicFields.topicId;
 
   /// author
   User author;
@@ -23,9 +59,6 @@ class Topic with FrontBean {
   /// 内容
   String content;
 
-  /// 内容Like
-  String contentLike;
-
   /// 创建时间
   DateTime createTime;
 
@@ -35,8 +68,14 @@ class Topic with FrontBean {
   /// 创建时间Min
   DateTime createTimeMin;
 
+  /// 树(类似部门)主键currOrgId
+  int currOrgId;
+
+  /// 所有者currUserId
+  String currUserId;
+
   /// 是否删除(0:正常，1删除)
-  int deleteFlag;
+  bool deleteFlag;
 
   /// 精华
   int good;
@@ -46,6 +85,9 @@ class Topic with FrontBean {
 
   /// 精华Min
   int goodMin;
+
+  /// inclCurrOrgId
+  bool inclCurrOrgId;
 
   /// 最后回复
   DateTime lastReplyAt;
@@ -109,14 +151,16 @@ class Topic with FrontBean {
     this.authorId,
     this.authorIds,
     this.content,
-    this.contentLike,
     this.createTime,
     this.createTimeMax,
     this.createTimeMin,
+    this.currOrgId,
+    this.currUserId,
     this.deleteFlag,
     this.good,
     this.goodMax,
     this.goodMin,
+    this.inclCurrOrgId,
     this.lastReplyAt,
     this.lastReplyAtMax,
     this.lastReplyAtMin,
@@ -143,20 +187,20 @@ class Topic with FrontBean {
       return null;
     }
     return Topic(
-      author: User.fromJson(json['author']),
-      authorId: JsonUtil.parseString(json['authorId']),
-      content: JsonUtil.parseString(json['content']),
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      good: JsonUtil.parseInt(json['good']),
-      lastReplyAt: JsonUtil.parseDateTime(json['lastReplyAt']),
-      replyCount: JsonUtil.parseInt(json['replyCount']),
-      title: JsonUtil.parseString(json['title']),
-      top: JsonUtil.parseInt(json['top']),
-      topicId: JsonUtil.parseString(json['topicId']),
-      topicType: TopicType.fromJson(json['topicType']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
-      visitCount: JsonUtil.parseInt(json['visitCount']),
+      author: User.fromJson(json[TopicFields.author]),
+      authorId: JsonUtil.parseString(json[TopicFields.authorId]),
+      content: JsonUtil.parseString(json[TopicFields.content]),
+      createTime: JsonUtil.parseDateTime(json[TopicFields.createTime]),
+      deleteFlag: JsonUtil.parseBool(json[TopicFields.deleteFlag]),
+      good: JsonUtil.parseInt(json[TopicFields.good]),
+      lastReplyAt: JsonUtil.parseDateTime(json[TopicFields.lastReplyAt]),
+      replyCount: JsonUtil.parseInt(json[TopicFields.replyCount]),
+      title: JsonUtil.parseString(json[TopicFields.title]),
+      top: JsonUtil.parseInt(json[TopicFields.top]),
+      topicId: JsonUtil.parseString(json[TopicFields.topicId]),
+      topicType: TopicType.fromJson(json[TopicFields.topicType]),
+      updateTime: JsonUtil.parseDateTime(json[TopicFields.updateTime]),
+      visitCount: JsonUtil.parseInt(json[TopicFields.visitCount]),
     );
   }
 
@@ -167,111 +211,117 @@ class Topic with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.author != null) {
-      result['author'] = author.toJson();
+      result[TopicFields.author] = author.toJson();
     }
     if (this.authorId != null) {
-      result['authorId'] = JsonUtil.stringToJson(authorId);
+      result[TopicFields.authorId] = JsonUtil.stringToJson(authorId);
     }
     if (this.authorIds != null) {
       var list = List();
       for (var v in authorIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['authorIds'] = list;
+      result[TopicFields.authorIds] = list;
     }
     if (this.content != null) {
-      result['content'] = JsonUtil.stringToJson(content);
-    }
-    if (this.contentLike != null) {
-      result['contentLike'] = JsonUtil.stringToJson(contentLike);
+      result[TopicFields.content] = JsonUtil.stringToJson(content);
     }
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[TopicFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[TopicFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[TopicFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
+    }
+    if (this.currOrgId != null) {
+      result[TopicFields.currOrgId] = JsonUtil.intToJson(currOrgId);
+    }
+    if (this.currUserId != null) {
+      result[TopicFields.currUserId] = JsonUtil.stringToJson(currUserId);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[TopicFields.deleteFlag] = JsonUtil.boolToJson(deleteFlag);
     }
     if (this.good != null) {
-      result['good'] = JsonUtil.intToJson(good);
+      result[TopicFields.good] = JsonUtil.intToJson(good);
     }
     if (this.goodMax != null) {
-      result['goodMax'] = JsonUtil.intToJson(goodMax);
+      result[TopicFields.goodMax] = JsonUtil.intToJson(goodMax);
     }
     if (this.goodMin != null) {
-      result['goodMin'] = JsonUtil.intToJson(goodMin);
+      result[TopicFields.goodMin] = JsonUtil.intToJson(goodMin);
+    }
+    if (this.inclCurrOrgId != null) {
+      result[TopicFields.inclCurrOrgId] = JsonUtil.boolToJson(inclCurrOrgId);
     }
     if (this.lastReplyAt != null) {
-      result['lastReplyAt'] = JsonUtil.dateTimeToJson(lastReplyAt);
+      result[TopicFields.lastReplyAt] = JsonUtil.dateTimeToJson(lastReplyAt);
     }
     if (this.lastReplyAtMax != null) {
-      result['lastReplyAtMax'] = JsonUtil.dateTimeToJson(lastReplyAtMax);
+      result[TopicFields.lastReplyAtMax] = JsonUtil.dateTimeToJson(lastReplyAtMax);
     }
     if (this.lastReplyAtMin != null) {
-      result['lastReplyAtMin'] = JsonUtil.dateTimeToJson(lastReplyAtMin);
+      result[TopicFields.lastReplyAtMin] = JsonUtil.dateTimeToJson(lastReplyAtMin);
     }
     if (this.replyCount != null) {
-      result['replyCount'] = JsonUtil.intToJson(replyCount);
+      result[TopicFields.replyCount] = JsonUtil.intToJson(replyCount);
     }
     if (this.title != null) {
-      result['title'] = JsonUtil.stringToJson(title);
+      result[TopicFields.title] = JsonUtil.stringToJson(title);
     }
     if (this.titleLike != null) {
-      result['titleLike'] = JsonUtil.stringToJson(titleLike);
+      result[TopicFields.titleLike] = JsonUtil.stringToJson(titleLike);
     }
     if (this.top != null) {
-      result['top'] = JsonUtil.intToJson(top);
+      result[TopicFields.top] = JsonUtil.intToJson(top);
     }
     if (this.topMax != null) {
-      result['topMax'] = JsonUtil.intToJson(topMax);
+      result[TopicFields.topMax] = JsonUtil.intToJson(topMax);
     }
     if (this.topMin != null) {
-      result['topMin'] = JsonUtil.intToJson(topMin);
+      result[TopicFields.topMin] = JsonUtil.intToJson(topMin);
     }
     if (this.topicId != null) {
-      result['topicId'] = JsonUtil.stringToJson(topicId);
+      result[TopicFields.topicId] = JsonUtil.stringToJson(topicId);
     }
     if (this.topicIds != null) {
       var list = List();
       for (var v in topicIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['topicIds'] = list;
+      result[TopicFields.topicIds] = list;
     }
     if (this.topicType != null) {
-      result['topicType'] = topicType.toString();
+      result[TopicFields.topicType] = topicType.toString();
     }
     if (this.topicTypes != null) {
       var list = List();
       for (var v in topicTypes) {
         list.add(v.toString());
       }
-      result['topicTypes'] = list;
+      result[TopicFields.topicTypes] = list;
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[TopicFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[TopicFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[TopicFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     if (this.visitCount != null) {
-      result['visitCount'] = JsonUtil.intToJson(visitCount);
+      result[TopicFields.visitCount] = JsonUtil.intToJson(visitCount);
     }
     if (this.visitCountMax != null) {
-      result['visitCountMax'] = JsonUtil.intToJson(visitCountMax);
+      result[TopicFields.visitCountMax] = JsonUtil.intToJson(visitCountMax);
     }
     if (this.visitCountMin != null) {
-      result['visitCountMin'] = JsonUtil.intToJson(visitCountMin);
+      result[TopicFields.visitCountMin] = JsonUtil.intToJson(visitCountMin);
     }
     return result;
   }

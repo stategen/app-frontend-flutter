@@ -5,9 +5,26 @@
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class HomeShopFields {
+  static const createTime = 'createTime';
+  static const createTimeMax = 'createTimeMax';
+  static const createTimeMin = 'createTimeMin';
+  static const deleteFlag = 'deleteFlag';
+  static const homeShopId = 'homeShopId';
+  static const homeShopIds = 'homeShopIds';
+  static const leaderImage = 'leaderImage';
+  static const leaderPhone = 'leaderPhone';
+  static const leaderPhoneLike = 'leaderPhoneLike';
+  static const shopId = 'shopId';
+  static const shopIds = 'shopIds';
+  static const updateTime = 'updateTime';
+  static const updateTimeMax = 'updateTimeMax';
+  static const updateTimeMin = 'updateTimeMin';
+}
+
 class HomeShop with FrontBean {
   /// homeShopId
-  static const String HomeShop_ID = 'homeShopId';
+  static const String ID = HomeShopFields.homeShopId;
 
   /// 创建时间
   DateTime createTime;
@@ -73,13 +90,13 @@ class HomeShop with FrontBean {
       return null;
     }
     return HomeShop(
-      createTime: JsonUtil.parseDateTime(json['createTime']),
-      deleteFlag: JsonUtil.parseInt(json['deleteFlag']),
-      homeShopId: JsonUtil.parseString(json['homeShopId']),
-      leaderImage: JsonUtil.parseString(json['leaderImage']),
-      leaderPhone: JsonUtil.parseString(json['leaderPhone']),
-      shopId: JsonUtil.parseString(json['shopId']),
-      updateTime: JsonUtil.parseDateTime(json['updateTime']),
+      createTime: JsonUtil.parseDateTime(json[HomeShopFields.createTime]),
+      deleteFlag: JsonUtil.parseInt(json[HomeShopFields.deleteFlag]),
+      homeShopId: JsonUtil.parseString(json[HomeShopFields.homeShopId]),
+      leaderImage: JsonUtil.parseString(json[HomeShopFields.leaderImage]),
+      leaderPhone: JsonUtil.parseString(json[HomeShopFields.leaderPhone]),
+      shopId: JsonUtil.parseString(json[HomeShopFields.shopId]),
+      updateTime: JsonUtil.parseDateTime(json[HomeShopFields.updateTime]),
     );
   }
 
@@ -90,56 +107,56 @@ class HomeShop with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.createTime != null) {
-      result['createTime'] = JsonUtil.dateTimeToJson(createTime);
+      result[HomeShopFields.createTime] = JsonUtil.dateTimeToJson(createTime);
     }
     if (this.createTimeMax != null) {
-      result['createTimeMax'] = JsonUtil.dateTimeToJson(createTimeMax);
+      result[HomeShopFields.createTimeMax] = JsonUtil.dateTimeToJson(createTimeMax);
     }
     if (this.createTimeMin != null) {
-      result['createTimeMin'] = JsonUtil.dateTimeToJson(createTimeMin);
+      result[HomeShopFields.createTimeMin] = JsonUtil.dateTimeToJson(createTimeMin);
     }
     if (this.deleteFlag != null) {
-      result['deleteFlag'] = JsonUtil.intToJson(deleteFlag);
+      result[HomeShopFields.deleteFlag] = JsonUtil.intToJson(deleteFlag);
     }
     if (this.homeShopId != null) {
-      result['homeShopId'] = JsonUtil.stringToJson(homeShopId);
+      result[HomeShopFields.homeShopId] = JsonUtil.stringToJson(homeShopId);
     }
     if (this.homeShopIds != null) {
       var list = List();
       for (var v in homeShopIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['homeShopIds'] = list;
+      result[HomeShopFields.homeShopIds] = list;
     }
     if (this.leaderImage != null) {
-      result['leaderImage'] = JsonUtil.stringToJson(leaderImage);
+      result[HomeShopFields.leaderImage] = JsonUtil.stringToJson(leaderImage);
     }
     if (this.leaderPhone != null) {
-      result['leaderPhone'] = JsonUtil.stringToJson(leaderPhone);
+      result[HomeShopFields.leaderPhone] = JsonUtil.stringToJson(leaderPhone);
     }
     if (this.leaderPhoneLike != null) {
-      result['leaderPhoneLike'] = JsonUtil.stringToJson(leaderPhoneLike);
+      result[HomeShopFields.leaderPhoneLike] = JsonUtil.stringToJson(leaderPhoneLike);
     }
     if (this.shopId != null) {
-      result['shopId'] = JsonUtil.stringToJson(shopId);
+      result[HomeShopFields.shopId] = JsonUtil.stringToJson(shopId);
     }
     if (this.shopIds != null) {
       var list = List();
       for (var v in shopIds) {
         list.add(JsonUtil.stringToJson(v));
       }
-      result['shopIds'] = list;
+      result[HomeShopFields.shopIds] = list;
     }
     if (this.updateTime != null) {
-      result['updateTime'] = JsonUtil.dateTimeToJson(updateTime);
+      result[HomeShopFields.updateTime] = JsonUtil.dateTimeToJson(updateTime);
     }
     if (this.updateTimeMax != null) {
-      result['updateTimeMax'] = JsonUtil.dateTimeToJson(updateTimeMax);
+      result[HomeShopFields.updateTimeMax] = JsonUtil.dateTimeToJson(updateTimeMax);
     }
     if (this.updateTimeMin != null) {
-      result['updateTimeMin'] = JsonUtil.dateTimeToJson(updateTimeMin);
+      result[HomeShopFields.updateTimeMin] = JsonUtil.dateTimeToJson(updateTimeMin);
     }
     return result;
   }

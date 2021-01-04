@@ -6,6 +6,15 @@ import '../beans/pagination.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class PageListFields {
+  static const items = 'items';
+  static const pageNum = 'pageNum';
+  static const pageSize = 'pageSize';
+  static const pagination = 'pagination';
+  static const totalCount = 'totalCount';
+  static const totalPages = 'totalPages';
+}
+
 class PageList<E> with FrontBean {
   /// items
   List<E> items;
@@ -39,12 +48,12 @@ class PageList<E> with FrontBean {
       return null;
     }
     return PageList<E>(
-      items: genericFromJsonListFn(List<Map<String,dynamic>>.from(json['items'])),
-      pageNum: JsonUtil.parseInt(json['pageNum']),
-      pageSize: JsonUtil.parseInt(json['pageSize']),
-      pagination: Pagination.fromJson(json['pagination']),
-      totalCount: JsonUtil.parseInt(json['totalCount']),
-      totalPages: JsonUtil.parseInt(json['totalPages']),
+      items: genericFromJsonListFn(List<Map<String,dynamic>>.from(json[PageListFields.items])),
+      pageNum: JsonUtil.parseInt(json[PageListFields.pageNum]),
+      pageSize: JsonUtil.parseInt(json[PageListFields.pageSize]),
+      pagination: Pagination.fromJson(json[PageListFields.pagination]),
+      totalCount: JsonUtil.parseInt(json[PageListFields.totalCount]),
+      totalPages: JsonUtil.parseInt(json[PageListFields.totalPages]),
     );
   }
 

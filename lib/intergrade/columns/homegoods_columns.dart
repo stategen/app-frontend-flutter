@@ -66,6 +66,13 @@ class HomeGoodsColumns{
     //},
   );
 
+  /// categorySubIdLike  
+  static ColumnConfig categorySubIdLike = ColumnConfig(
+    key: 'categorySubIdLike',
+    title: 'categorySubIdLike',
+    noJson: true,
+  );
+
   /// categorySubId s  
   static ColumnConfig categorySubIds = ColumnConfig(
     key: 'categorySubIds',
@@ -480,6 +487,14 @@ class HomeGoodsColumns{
     key: 'orderNoMin',
     title: 'orderNoMin',
     noJson: true,
+  );
+
+  /// orderNo s  
+  static ColumnConfig orderNos = ColumnConfig(
+    key: 'orderNos',
+    title: 'orderNo',
+    noJson: true,
+    isArray: true,
   );
 
   /// oriPrice  

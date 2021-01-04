@@ -66,6 +66,13 @@ class GoodsColumns{
     //},
   );
 
+  /// categorySubIdLike  
+  static ColumnConfig categorySubIdLike = ColumnConfig(
+    key: 'categorySubIdLike',
+    title: 'categorySubIdLike',
+    noJson: true,
+  );
+
   /// categorySubId s  
   static ColumnConfig categorySubIds = ColumnConfig(
     key: 'categorySubIds',

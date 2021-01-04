@@ -6,6 +6,10 @@ import '../beans/resource.dart';
 import '../../stgutil/json_util.dart';
 import '../../stgutil/front_bean.dart';
 
+class MultipartFileFields {
+  static const resource = 'resource';
+}
+
 class MultipartFile with FrontBean {
   /// resource
   Resource resource;
@@ -19,7 +23,7 @@ class MultipartFile with FrontBean {
       return null;
     }
     return MultipartFile(
-      resource: Resource.fromJson(json['resource']),
+      resource: Resource.fromJson(json[MultipartFileFields.resource]),
     );
   }
 
@@ -30,9 +34,9 @@ class MultipartFile with FrontBean {
   /// jsonEncode会调用这个方法
   @override
   Map<String, dynamic> toJson() {
-    var result = new Map<String, dynamic>();
+    var result = Map<String, dynamic>();
     if (this.resource != null) {
-      result['resource'] = resource.toJson();
+      result[MultipartFileFields.resource] = resource.toJson();
     }
     return result;
   }

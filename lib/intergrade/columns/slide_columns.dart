@@ -114,6 +114,14 @@ class SlideColumns{
     noJson: true,
   );
 
+  /// orderNo s  
+  static ColumnConfig orderNos = ColumnConfig(
+    key: 'orderNos',
+    title: 'orderNo',
+    noJson: true,
+    isArray: true,
+  );
+
   /// slideId  
   static ColumnConfig slideId = ColumnConfig(
     key: 'slideId',
@@ -178,6 +186,20 @@ class SlideColumns{
     //render: (text: any, record: Slide, index: number) =>{
     //  return urlType.renderColumn(record, null, text, index, urlType);
     //},
+  );
+
+  /// urlTypeMax  
+  static ColumnConfig urlTypeMax = ColumnConfig(
+    key: 'urlTypeMax',
+    title: 'urlTypeMax',
+    noJson: true,
+  );
+
+  /// urlTypeMin  
+  static ColumnConfig urlTypeMin = ColumnConfig(
+    key: 'urlTypeMin',
+    title: 'urlTypeMin',
+    noJson: true,
   );
 
   /// urlType s  
