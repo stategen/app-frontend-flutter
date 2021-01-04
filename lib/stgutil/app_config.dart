@@ -10,7 +10,6 @@ class AppConfig {
 
   static Map<String, String> BASE_URLS = {
     tradeAppBaseUrlKey: "http://192.168.43.100:8080/tradeApp/",
-
   };
 
 
