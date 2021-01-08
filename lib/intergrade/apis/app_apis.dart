@@ -122,6 +122,26 @@ class AppApis {
     return User.fromJsonList(dest as List);
   }
 
+  /// POST /api/app/login
+  /// 
+  static Future<SimpleResponse> login({Map<String, dynamic> payload, @required String username, @required String password }) async {
+    var requestInit = RequestInit();
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
+    requestInit.path = '/api/app/login';
+    requestInit.mediaType = MediaType.FORM;
+    payload ??= {};
+    if (username != null) {
+      payload['username'] = username;
+    }
+    if (password != null) {
+      payload['password'] = password;
+    }
+    requestInit.data = payload;
+    requestInit.method = Method.POST;
+    var dest = await NetUtil.fetch(requestInit);
+    return SimpleResponse.fromJson(dest);
+  }
+
   /// POST /api/app/logout
   /// 
   static Future<SimpleResponse> logout() async {
@@ -145,12 +165,23 @@ class AppApis {
     return dest;
   }
 
-  /// GET /api/app/testSeataAt
+  /// GET /api/app/testSeata
   /// 
-  static Future<User> testSeataAt() async {
+  static Future<User> testSeata() async {
     var requestInit = RequestInit();
     requestInit.apiUrlKey = tradeAppBaseUrlKey;
-    requestInit.path = '/api/app/testSeataAt';
+    requestInit.path = '/api/app/testSeata';
+    requestInit.method = Method.GET;
+    var dest = await NetUtil.fetch(requestInit);
+    return User.fromJson(dest);
+  }
+
+  /// GET /api/app/testSentinel
+  /// 
+  static Future<User> testSentinel() async {
+    var requestInit = RequestInit();
+    requestInit.apiUrlKey = tradeAppBaseUrlKey;
+    requestInit.path = '/api/app/testSentinel';
     requestInit.method = Method.GET;
     var dest = await NetUtil.fetch(requestInit);
     return User.fromJson(dest);
